@@ -37,7 +37,7 @@ public class Game {
     /**
      * Does all the action of a round beginning
      */
-    private void initRound() {
+    protected void initRound() {
         Player currP = this.currentPlayer;
         Hero hero = currP.getHero();
 
@@ -50,8 +50,10 @@ public class Game {
     /**
      * Helper Method (initRound)
      */
-    private void draw() {
+    protected static Card draw() {
         // TODO implémenter cette méthode
+    	Card card = new Minion(1, "twerk", "http:photoDossier/&normeTeuf", "Cette carte est dingue", null);
+    	return card;
     }
 
 }
