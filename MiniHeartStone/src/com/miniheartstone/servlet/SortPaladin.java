@@ -1,5 +1,5 @@
 package com.miniheartstone.servlet;
 
-public class SortPaladin extends Sorts {
+public class SortPaladin extends Spells{
 
 }

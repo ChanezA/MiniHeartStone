@@ -1,5 +1,5 @@
 package com.miniheartstone.servlet;
 
-public class SortMage extends Sorts {
+public class SortMage extends Spells {
 
 }
