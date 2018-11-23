@@ -1,5 +1,5 @@
 package com.miniheartstone.servlet;
 
-abstract class Sorts {
+abstract class Spells {
 
 }
