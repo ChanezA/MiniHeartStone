@@ -20,5 +20,23 @@ public class Player {
 		hand.add(Game.draw());
 		hand.add(Game.draw());
 	}
+	
+	protected void invock(Card card) {
+		
+	}
+	
+	/*
+	 * méthode pour attaquer le hero adverse
+	*/
+	protected void attackHero(Card card) {
+		// remplire
+	}
+	
+	/*
+	 * méthode pour attaquer un monstre adverse
+	 */
+	protected void attack(Card card1,Card card2) {
+		// remplire
+	}
 
 }
