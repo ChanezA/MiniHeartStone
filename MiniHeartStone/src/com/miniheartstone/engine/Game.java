@@ -23,17 +23,35 @@ public class Game {
         this.currentPlayer = player1;
         this.boardP1 = new ArrayList<Card>();
         this.boardP2 = new ArrayList<Card>();
+        this.round = 0;
     }
 
     // Getters
     Player getCurrentPlayer() { return this.currentPlayer; }
-
     Player getPlayer1() { return this.player1; }
-
     Player getPlayer2() { return this.player2; }
-
     List<Card> getBoardP1() { return this.boardP1; }
-
     List<Card> getBoardP2() { return this.boardP2; }
+    int getRound() { return this.round; }
+
+    /**
+     * Does all the action of a round beginning
+     */
+    private void initRound() {
+        Player currP = this.currentPlayer;
+        Hero hero = currP.getHero();
+
+        if (this.round < hero.MANA_MAX) hero.setMana(this.round);
+        else hero.setMana(hero.MANA_MAX);
+
+        this.draw();
+    }
+
+    /**
+     * Helper Method (initRound)
+     */
+    private void draw() {
+        // TODO implémenter cette méthode
+    }
 
 }
