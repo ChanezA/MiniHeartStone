@@ -76,5 +76,14 @@ public class Game {
     	}
     }
     
+    public Player getOpponentPlayer(Player player){
+    	if (player == this.player1 ) {
+    		return this.player1;
+    	}
+    	else {
+    		return this.player2;
+    	}
+    }
+    
 
 }

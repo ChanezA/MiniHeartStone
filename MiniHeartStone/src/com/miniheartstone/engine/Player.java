@@ -26,24 +26,31 @@ public class Player {
 	protected void invock(Card card) {
 		hand.remove(card);
 		card.setIsInvock(true);
-		//if(game.player1){}; @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-		List<Card> cardOnBoard = game.getBoardP1();
+
+		List<Card> cardOnBoard = game.getBoard(this);
 		cardOnBoard.add(card);
 	}
 	
 	/*
 	 * méthode pour attaquer le hero adverse
 	*/
-	protected void attackHero(Card card) {
-		// selection du hero adv @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-		
+	protected void attackHero(Minion minion) {
+		game.getOpponentPlayer(this).hero.setHealth(
+				game.getOpponentPlayer(this).hero.getHealth()-minion.getAttack()
+		);
 	}
 	
 	/*
 	 * méthode pour attaquer un monstre adverse
 	 */
-	protected void attack(Card card1,Card card2) {
-		// remplire
+	protected void attack(Minion minion1,Minion minion2) {
+		minion1.setLife(
+				minion1.getLife()-minion2.getAttack()
+		);
+		
+		minion2.setLife(
+				minion2.getLife()-minion1.getAttack()
+		);
 	}
 
 }

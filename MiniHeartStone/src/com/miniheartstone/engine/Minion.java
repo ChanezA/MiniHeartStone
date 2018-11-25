@@ -14,7 +14,7 @@ public class Minion extends Card {
 	}
 	
 	//getter attack
-	public int getAttacck(){
+	public int getAttack(){
 		return this.attack;
 	}
 	
