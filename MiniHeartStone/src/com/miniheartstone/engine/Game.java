@@ -51,7 +51,7 @@ public class Game {
      * Helper Method (initRound)
      */
     protected static Card draw(Hero hero) {
-        // TODO implémenter cette méthode
+        // TODO implémenter cette méthode.
     	Minion card = new Minion(69, 69,1, "mdr j'ai le num�ro de la m�re de Alan", "0659453256",null, "lol/vas/y/appel/fait/tooi/plaise");
     	return card;
     }

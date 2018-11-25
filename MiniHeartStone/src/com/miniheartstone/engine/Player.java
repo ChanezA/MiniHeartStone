@@ -32,7 +32,7 @@ public class Player {
 	}
 	
 	/*
-	 * méthode pour attaquer le hero adverse
+	 * méthode pour attaquer le hero adverse.
 	*/
 	protected void attackHero(Minion minion) {
 		game.getOpponentPlayer(this).hero.setHealth(
@@ -41,7 +41,7 @@ public class Player {
 	}
 	
 	/*
-	 * méthode pour attaquer un monstre adverse
+	 * méthode pour attaquer un monstre adverse.
 	 */
 	protected void attack(Minion minion1,Minion minion2) {
 		minion1.setLife(

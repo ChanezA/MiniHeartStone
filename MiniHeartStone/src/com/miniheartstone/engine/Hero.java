@@ -6,7 +6,7 @@ abstract class Hero {
 		protected int health;
 		protected int mana;
 		protected int armor =0;
-		//liste tte les carte que le heros peut avoir a recuperer dans la base de données
+		//liste tte les carte que le heros peut avoir a recuperer dans la base de données.
 		protected int manaMax =MANA_MAX;
 		
 		protected Hero(String name, int health, int mana) {

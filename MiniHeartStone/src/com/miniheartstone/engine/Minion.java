@@ -13,32 +13,32 @@ public class Minion extends Card {
 		this.readyToAttack = false;
 	}
 	
-	//getter attack
+	//getter attack.
 	public int getAttack(){
 		return this.attack;
 	}
 	
-	// setter attack
+	// setter attack.
 	public void setAttack(int att){
 		this.attack = att;
 	}
 	
-	//getter life
+	//getter life.
 	public int getLife(){
 		return this.life;
 	}
 	
-	// setter life
+	// setter life.
 	public void setLife(int life){
 		this.attack = life;
 	}
 	
-	//getter 
+	//getter .
 	public boolean getReadyToAttack(){
 		return this.readyToAttack;
 	}
 	
-	// setter life
+	// setter life.
 	public void setReadyToAttack(boolean readyToAttack){
 		this.readyToAttack = readyToAttack;
 	}
