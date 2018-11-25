@@ -44,16 +44,37 @@ public class Game {
         if (this.round < hero.MANA_MAX) hero.setMana(this.round);
         else hero.setMana(hero.MANA_MAX);
 
-        this.draw();
+        Game.draw(hero);
     }
 
     /**
      * Helper Method (initRound)
      */
-    protected static Card draw(String hero) {
+    protected static Card draw(Hero hero) {
         // TODO implÃ©menter cette mÃ©thode
-    	Card card = new Minion(1, "twerk", "http:photoDossier/&normeTeuf", "Cette carte est dingue", null);
+    	Minion card = new Minion(69, 69,1, "mdr j'ai le numéro de la mère de Alan", "0659453256",null, "lol/vas/y/appel/fait/tooi/plaise");
     	return card;
     }
+    
+    // permet au joueur player de récupperer son board
+    public List<Card> getBoard(Player player){
+    	if (player == this.player1 ) {
+    		return this.boardP1;
+    	}
+    	else {
+    		return this.boardP2;
+    	}
+    }
+    
+    // permet au joueur player de récupperer le voard de son adversaire
+    public List<Card> getOpponentBoard(Player player){
+    	if (player == this.player1 ) {
+    		return this.boardP2;
+    	}
+    	else {
+    		return this.boardP1;
+    	}
+    }
+    
 
 }

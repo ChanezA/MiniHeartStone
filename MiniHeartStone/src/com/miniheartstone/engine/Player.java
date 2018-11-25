@@ -17,10 +17,10 @@ public class Player {
 		this.game = game;
 		
 		List<Card> hand = new ArrayList<Card>();
-		hand.add(Game.draw(hero.getName()));
-		hand.add(Game.draw(hero.getName()));
-		hand.add(Game.draw(hero.getName()));
-		hand.add(Game.draw(hero.getName()));
+		hand.add(Game.draw(hero));
+		hand.add(Game.draw(hero));
+		hand.add(Game.draw(hero));
+		hand.add(Game.draw(hero));
 	}
 	
 	protected void invock(Card card) {
