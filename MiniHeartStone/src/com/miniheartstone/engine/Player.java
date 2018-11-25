@@ -26,14 +26,17 @@ public class Player {
 	protected void invock(Card card) {
 		hand.remove(card);
 		card.setIsInvock(true);
-		if();
+		//if(game.player1){}; @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+		List<Card> cardOnBoard = game.getBoardP1();
+		cardOnBoard.add(card);
 	}
 	
 	/*
 	 * méthode pour attaquer le hero adverse
 	*/
 	protected void attackHero(Card card) {
-		// remplire
+		// selection du hero adv @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+		
 	}
 	
 	/*

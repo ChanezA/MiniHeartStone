@@ -22,6 +22,11 @@ abstract class Hero {
 		public int getHealth() {
 			return this.health;
 		}
+		
+		public void setHealth(int health) {
+			this.health = health;
+		}
+		
 		public int getMana() {
 			return this.mana;
 		}
