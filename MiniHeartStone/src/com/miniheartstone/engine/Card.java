@@ -8,6 +8,7 @@ abstract class Card {
 	protected String pictureURL;
 	protected String name;
 	protected String description;
+	protected boolean isInvock;
 	
 	protected Card(int manaCost, String name, String pictureURL, String description, Effect effect) {
 		this.manaCost = manaCost;
@@ -15,6 +16,7 @@ abstract class Card {
 		this.pictureURL = pictureURL;
 		this.description = description;
 		this.effect = effect;
+		this.isInvock = false;
 	}
 	
 	Effect getEffect() {
@@ -31,5 +33,13 @@ abstract class Card {
 	
 	String getDescription() {
 		return description;
+	}
+	
+	boolean getIsInvock() {
+		return isInvock;
+	}
+	
+	void setIsInvock(boolean bool) {
+		this.isInvock = bool;
 	}
 }

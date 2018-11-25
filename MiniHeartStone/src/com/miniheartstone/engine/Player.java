@@ -8,21 +8,25 @@ public class Player {
 	protected Hero hero;
 	protected int level;
 	protected List<Card> hand;
+	protected Game game;
 	
-	Player(String name,  Hero hero, int level) {
+	Player(String name,  Hero hero, int level, Game game) {
 		this.name = name;
 		this.hero = hero;
 		this.level = level;
+		this.game = game;
 		
 		List<Card> hand = new ArrayList<Card>();
-		hand.add(Game.draw());
-		hand.add(Game.draw());
-		hand.add(Game.draw());
-		hand.add(Game.draw());
+		hand.add(Game.draw(hero.getName()));
+		hand.add(Game.draw(hero.getName()));
+		hand.add(Game.draw(hero.getName()));
+		hand.add(Game.draw(hero.getName()));
 	}
 	
 	protected void invock(Card card) {
-		
+		hand.remove(card);
+		card.setIsInvock(true);
+		if();
 	}
 	
 	/*

@@ -50,7 +50,7 @@ public class Game {
     /**
      * Helper Method (initRound)
      */
-    protected static Card draw() {
+    protected static Card draw(String hero) {
         // TODO implémenter cette méthode
     	Card card = new Minion(1, "twerk", "http:photoDossier/&normeTeuf", "Cette carte est dingue", null);
     	return card;
