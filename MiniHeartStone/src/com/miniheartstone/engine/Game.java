@@ -41,8 +41,8 @@ public class Game {
         Player currP = this.currentPlayer;
         Hero hero = currP.getHero();
 
-        if (this.round < hero.MANA_MAX) hero.setMana(this.round);
-        else hero.setMana(hero.MANA_MAX);
+        if (this.round < Hero.MANA_MAX) hero.setMana(this.round);
+        else hero.setMana(Hero.MANA_MAX);
 
         Game.draw(hero);
     }
@@ -52,11 +52,11 @@ public class Game {
      */
     protected static Card draw(Hero hero) {
         // TODO implÃ©menter cette mÃ©thode.
-    	Minion card = new Minion(69, 69,1, "mdr j'ai le numéro de la mère de Alan", "0659453256",null, "lol/vas/y/appel/fait/tooi/plaise");
+    	Minion card = new Minion(69, 69,1, "mdr j'ai le numï¿½ro de la mï¿½re de Alan", "0659453256",null, "lol/vas/y/appel/fait/tooi/plaise");
     	return card;
     }
     
-    // permet au joueur player de récupperer son board
+    // permet au joueur player de rï¿½cupperer son board
     public List<Card> getBoard(Player player){
     	if (player == this.player1 ) {
     		return this.boardP1;
@@ -66,7 +66,7 @@ public class Game {
     	}
     }
     
-    // permet au joueur player de récupperer le voard de son adversaire
+    // permet au joueur player de rï¿½cupperer le voard de son adversaire
     public List<Card> getOpponentBoard(Player player){
     	if (player == this.player1 ) {
     		return this.boardP2;

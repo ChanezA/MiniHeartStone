@@ -23,7 +23,11 @@ public class Player {
 		hand.add(Game.draw(hero));
 	}
 	
-	protected void invock(Card card) {
+	public Hero getHero() {
+		return this.hero;
+	}
+	
+	public void invock(Card card) {
 		hand.remove(card);
 		card.setIsInvock(true);
 
@@ -32,18 +36,18 @@ public class Player {
 	}
 	
 	/*
-	 * méthode pour attaquer le hero adverse.
+	 * mÃ©thode pour attaquer le hero adverse.
 	*/
-	protected void attackHero(Minion minion) {
+	public void attackHero(Minion minion) {
 		game.getOpponentPlayer(this).hero.setHealth(
 				game.getOpponentPlayer(this).hero.getHealth()-minion.getAttack()
 		);
 	}
 	
 	/*
-	 * méthode pour attaquer un monstre adverse.
+	 * mÃ©thode pour attaquer un monstre adverse.
 	 */
-	protected void attack(Minion minion1,Minion minion2) {
+	public void attack(Minion minion1,Minion minion2) {
 		minion1.setLife(
 				minion1.getLife()-minion2.getAttack()
 		);
