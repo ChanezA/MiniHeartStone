@@ -19,6 +19,7 @@ public class Player {
 		
 		UUID playerID = UUID.randomUUID();
 		List<Card> hand = new ArrayList<Card>();
+		//wala
 	}
 	
 	public Hero getHero() {
