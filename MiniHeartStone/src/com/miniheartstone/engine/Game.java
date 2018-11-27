@@ -19,7 +19,9 @@ public class Game {
     // Constructor
     Game(Player player1, Player player2) {
         this.player1  = player1;
+        this.player1.setGame(this);
         this.player2 = player2;
+        this.player2.setGame(this);
         this.currentPlayer = player1;
         this.boardP1 = new ArrayList<Card>();
         this.boardP2 = new ArrayList<Card>();
@@ -37,7 +39,7 @@ public class Game {
     /**
      * Does all the action of a round beginning
      */
-    protected void initRound() {
+    private void initRound() {
         Player currP = this.currentPlayer;
         Hero hero = currP.getHero();
 
@@ -50,13 +52,15 @@ public class Game {
     /**
      * Helper Method (initRound)
      */
-    protected static Card draw(Hero hero) {
+    private static void draw(Hero hero) {
         // TODO implémenter cette méthode.
-    	Minion card = new Minion(69, 69,1, "mdr j'ai le num�ro de la m�re de Alan", "0659453256",null, "lol/vas/y/appel/fait/tooi/plaise");
-    	return card;
     }
-    
-    // permet au joueur player de r�cupperer son board
+
+    /**
+     * Returns the board of the given player
+     * @param player
+     * @return The board as a List<Card>
+     */
     public List<Card> getBoard(Player player){
     	if (player == this.player1 ) {
     		return this.boardP1;
@@ -65,8 +69,12 @@ public class Game {
     		return this.boardP2;
     	}
     }
-    
-    // permet au joueur player de r�cupperer le voard de son adversaire
+
+    /**
+     * Returns the board the opponenet of the given player
+     * @param player
+     * @return The board as a List<Card>
+     */
     public List<Card> getOpponentBoard(Player player){
     	if (player == this.player1 ) {
     		return this.boardP2;

@@ -10,21 +10,20 @@ public class Player {
 	protected List<Card> hand;
 	protected Game game;
 	
-	Player(String name,  Hero hero, int level, Game game) {
+	Player(String name,  Hero hero, int level) {
 		this.name = name;
 		this.hero = hero;
 		this.level = level;
-		this.game = game;
 		
 		List<Card> hand = new ArrayList<Card>();
-		hand.add(Game.draw(hero));
-		hand.add(Game.draw(hero));
-		hand.add(Game.draw(hero));
-		hand.add(Game.draw(hero));
 	}
 	
 	public Hero getHero() {
 		return this.hero;
+	}
+
+	public void setGame(Game game) {
+		this.game = game;
 	}
 	
 	public void invock(Card card) {
