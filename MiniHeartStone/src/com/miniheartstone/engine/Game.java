@@ -2,6 +2,8 @@ package com.miniheartstone.engine;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
+
 
 public class Game {
 
@@ -13,6 +15,9 @@ public class Game {
 
     private List<Card> boardP1;
     private List<Card> boardP2;
+    
+    private UUID gameID;
+    
 
     private int round;
 
@@ -26,6 +31,10 @@ public class Game {
         this.boardP1 = new ArrayList<Card>();
         this.boardP2 = new ArrayList<Card>();
         this.round = 0;
+        
+        UUID gameID = UUID.randomUUID();
+        
+        this.initRound();
     }
 
     // Getters
@@ -35,6 +44,7 @@ public class Game {
     List<Card> getBoardP1() { return this.boardP1; }
     List<Card> getBoardP2() { return this.boardP2; }
     int getRound() { return this.round; }
+    UUID getGameID () {return this.gameID;}
 
     /**
      * Does all the action of a round beginning

@@ -2,6 +2,7 @@ package com.miniheartstone.engine;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class Player {
 	protected String name;
@@ -9,21 +10,31 @@ public class Player {
 	protected int level;
 	protected List<Card> hand;
 	protected Game game;
+	protected UUID playerID;
 	
 	Player(String name,  Hero hero, int level) {
 		this.name = name;
 		this.hero = hero;
 		this.level = level;
 		
+		UUID playerID = UUID.randomUUID();
 		List<Card> hand = new ArrayList<Card>();
 	}
 	
 	public Hero getHero() {
 		return this.hero;
 	}
+	
+	public List<Card> getHand() {
+		return this.hand;
+	}
 
 	public void setGame(Game game) {
 		this.game = game;
+	}
+	
+	public UUID getPlayerID() {
+		return this.playerID;
 	}
 	
 	public void invock(Card card) {

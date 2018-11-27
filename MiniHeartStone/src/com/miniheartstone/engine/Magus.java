@@ -1,5 +1,5 @@
 package com.miniheartstone.engine;
-import java.util.Properties;
+//import java.util.Properties;
 public class Magus extends Hero {
 	static int PT_DEGATS_POWER_MAGNUS=1;
 	public Magus(String name, int health, int mana) {

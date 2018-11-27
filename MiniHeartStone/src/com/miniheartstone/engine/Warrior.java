@@ -1,8 +1,8 @@
 package com.miniheartstone.engine;
-import java.io.FileOutputStream;
-import java.io.OutputStream;
+//import java.io.FileOutputStream;
+//import java.io.OutputStream;
 import java.util.Properties;
-import java.io.IOException;
+//import java.io.IOException;
 
 public class Warrior extends Hero {
 	Properties prop =new Properties();

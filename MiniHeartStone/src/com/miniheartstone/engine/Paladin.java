@@ -1,5 +1,5 @@
 package com.miniheartstone.engine;
-import java.util.Properties;
+//import java.util.Properties;
 public class Paladin extends Hero {
 	
 	public Paladin (String name, int health, int mana) {
