@@ -1,6 +1,7 @@
 package com.miniheartstone.engine;
-//import java.util.Properties;
-abstract class Hero {
+import java.util.Properties;
+
+public abstract class Hero {
 		static int MANA_MAX= 10;
 		protected String name;
 		protected int health;

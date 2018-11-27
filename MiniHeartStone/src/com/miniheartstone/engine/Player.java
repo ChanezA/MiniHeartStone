@@ -12,7 +12,7 @@ public class Player {
 	protected Game game;
 	protected UUID playerID;
 	
-	Player(String name,  Hero hero, int level) {
+	public Player(String name,  Hero hero, int level) {
 		this.name = name;
 		this.hero = hero;
 		this.level = level;

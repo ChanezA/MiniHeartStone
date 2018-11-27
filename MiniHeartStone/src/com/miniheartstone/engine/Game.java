@@ -22,7 +22,7 @@ public class Game {
     private int round;
 
     // Constructor
-    Game(Player player1, Player player2) {
+    public Game(Player player1, Player player2) {
         this.player1  = player1;
         this.player1.setGame(this);
         this.player2 = player2;
