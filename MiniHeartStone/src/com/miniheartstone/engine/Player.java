@@ -10,7 +10,7 @@ public class Player {
 	protected List<Card> hand;
 	protected Game game;
 	
-	Player(String name,  Hero hero, int level) {
+	public Player(String name,  Hero hero, int level) {
 		this.name = name;
 		this.hero = hero;
 		this.level = level;
