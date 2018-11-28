@@ -1,5 +1,5 @@
 package com.miniheartstone.engine;
-
+// bonjour je suis un commentaire constructof
 abstract class Card {
 	 
 	protected int manaCost;
