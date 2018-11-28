@@ -1,7 +1,7 @@
 package com.miniheartstone.servlet;
 // http://localhost:8080/MiniHeartStone/miniHT
 import java.io.IOException;
-
+/*
 import javax.servlet.http.HttpServlet;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -16,3 +16,4 @@ public class Servlet extends HttpServlet {
 		 		
 	    }
 }
+*/
