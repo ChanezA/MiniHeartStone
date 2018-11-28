@@ -26,15 +26,13 @@ public class Game {
         this.player1.setGame(this);
         this.player2 = player2;
         this.player2.setGame(this);
-        this.currentPlayer = player1;
         this.boardP1 = new ArrayList<Card>();
         this.boardP2 = new ArrayList<Card>();
         this.round = 0;
         
         UUID gameID = UUID.randomUUID();
         
-        this.initRound();
-        //wala
+        this.initGame();
     }
 
     // Getters
@@ -51,6 +49,22 @@ public class Game {
     public UUID getGameID () {return this.gameID;}
 
     /**
+     * Initializes the game
+     */
+    private void initGame() {
+        this.currentPlayer = player1;
+        int i;
+        Hero hero = player1.getHero();
+        for (i = 0; i < 4; i++) {
+            player1.addCardToHand(this.draw(hero));
+        }
+        hero = player2.getHero();
+        for (i = 0; i < 4; i++) {
+            player2.addCardToHand(this.draw(hero));
+        }
+    }
+
+    /**
      * Does all the action of a round beginning
      */
     private void initRound() {
@@ -64,10 +78,12 @@ public class Game {
     }
 
     /**
-     * Helper Method (initRound)
+     * Returns one of the card of the given hero deck
      */
-    private static void draw(Hero hero) {
-        // TODO implémenter cette méthode.
+    private static Card draw(Hero hero) {
+        int size = hero.getDeck().size();
+        int i = (int)(Math.random()*size);
+        return hero.getDeck().get(i);
     }
 
     /**
