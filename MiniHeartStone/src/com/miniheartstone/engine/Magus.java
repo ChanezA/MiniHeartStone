@@ -11,7 +11,7 @@ public class Magus extends Hero {
 	}
 	
 	public String toString() {
-		return "I'am Magus, name: " + this.name + " mana:"+this.mana +" health"+this.health;
+		return "I'am Magus, name: " + this.name + " mana: "+this.mana +" health: "+this.health;
 	}
 }
 

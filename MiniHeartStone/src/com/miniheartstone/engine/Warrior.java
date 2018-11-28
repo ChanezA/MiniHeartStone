@@ -26,6 +26,6 @@ public class Warrior extends Hero {
 		this.armor=this.armor+PT_ARMOR_AUGMENTATION;
 	}
 	public String toString() {
-		return "I'am Warrior, name: " + this.name + " mana:"+this.mana +" health"+this.health +" armor"+ this .armor;
+		return "I'am Warrior, name: " + this.name + " mana: "+this.mana +" health: "+this.health +" armor: "+ this .armor;
 	}
 }
