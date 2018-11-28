@@ -38,17 +38,17 @@ public class Game {
     }
 
     // Getters
-    Player getCurrentPlayer() { return this.currentPlayer; }
-    Player getNotCurrentPlayer() {
+    public Player getCurrentPlayer() { return this.currentPlayer; }
+    public Player getNotCurrentPlayer() {
         if (this.currentPlayer == this.player1) return this.player2;
         else return this.player1;
     }
-    Player getPlayer1() { return this.player1; }
-    Player getPlayer2() { return this.player2; }
-    List<Card> getBoardP1() { return this.boardP1; }
-    List<Card> getBoardP2() { return this.boardP2; }
-    int getRound() { return this.round; }
-    UUID getGameID () {return this.gameID;}
+    public Player getPlayer1() { return this.player1; }
+    public Player getPlayer2() { return this.player2; }
+    public List<Card> getBoardP1() { return this.boardP1; }
+    public List<Card> getBoardP2() { return this.boardP2; }
+    public int getRound() { return this.round; }
+    public UUID getGameID () {return this.gameID;}
 
     /**
      * Does all the action of a round beginning
