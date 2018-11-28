@@ -1,5 +1,8 @@
 package com.miniheartstone.engine;
-// bonjour je suis un commentaire constructof
+
+
+import java.util.UUID;
+
 abstract class Card {
 	 
 	protected int manaCost;
@@ -9,6 +12,8 @@ abstract class Card {
 	protected String name;
 	protected String description;
 	protected boolean isInvock;
+	protected boolean hasAttacked;
+	protected UUID cardID;
 	
 	protected Card(int manaCost, String name, String pictureURL, String description, Effect effect) {
 		this.manaCost = manaCost;
@@ -41,5 +46,21 @@ abstract class Card {
 	
 	void setIsInvock(boolean bool) {
 		this.isInvock = bool;
+	}
+	
+	void setHasAttacked(boolean hasattacked) {
+		this.hasAttacked=hasattacked;
+	}
+	
+	boolean hasAttacked () {
+		return this.hasAttacked;
+		
+	}
+	int getAttack() {
+		return 0;
+	}
+
+	UUID getCardID() {
+		return this.cardID;
 	}
 }

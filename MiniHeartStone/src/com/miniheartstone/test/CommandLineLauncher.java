@@ -18,10 +18,8 @@ public class CommandLineLauncher {
         Game game = new Game(player1, player2);
 
         System.out.println("\n\noO Début de la partie Oo");
-        System.out.println("\n\n" + game.getNotCurrentPlayer().getHero().toString());
-        //System.out.println("\n" + game.getNotCurrentPlayer().getHand().toString());
-        System.out.println("\n" + game.getCurrentPlayer().getHero().toString());
-        System.out.println("\n* Tour de : " + game.getCurrentPlayer().getName());
+        System.out.println("\n\n" + player1.getHero().toString());
+        System.out.println("\n" + player2.getHero().toString());
     }
 
     private static Player getPlayer(int i) {

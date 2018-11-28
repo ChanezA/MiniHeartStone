@@ -35,6 +35,18 @@ public class Player {
 	public List<Card> getHand() {
 		return this.hand;
 	}
+	
+	public Card getSpecificCard(UUID cardId) throws IllegalAccessException{
+		
+		for (Card card : this.hand)
+	         if(card.getCardID()==cardId) {
+	        	 return card;
+	         }
+		
+		throw new IllegalAccessException("la carte choisis n'appartient pas à la main");
+	}
+	 
+	
 
 	public void setGame(Game game) {
 		this.game = game;
@@ -72,6 +84,11 @@ public class Player {
 		minion2.setLife(
 				minion2.getLife()-minion1.getAttack()
 		);
+	}
+
+	public void removeCardHand(Card ourcard) {
+		this.hand.remove(ourcard);
+		
 	}
 
 }

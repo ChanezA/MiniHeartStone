@@ -26,43 +26,25 @@ public class Game {
         this.player1.setGame(this);
         this.player2 = player2;
         this.player2.setGame(this);
+        this.currentPlayer = player1;
         this.boardP1 = new ArrayList<Card>();
         this.boardP2 = new ArrayList<Card>();
         this.round = 0;
         
         UUID gameID = UUID.randomUUID();
         
-        this.initGame();
+        this.initRound();
+        //wala
     }
 
     // Getters
-    public Player getCurrentPlayer() { return this.currentPlayer; }
-    public Player getNotCurrentPlayer() {
-        if (this.currentPlayer == this.player1) return this.player2;
-        else return this.player1;
-    }
-    public Player getPlayer1() { return this.player1; }
-    public Player getPlayer2() { return this.player2; }
-    public List<Card> getBoardP1() { return this.boardP1; }
-    public List<Card> getBoardP2() { return this.boardP2; }
-    public int getRound() { return this.round; }
-    public UUID getGameID () {return this.gameID;}
-
-    /**
-     * Initializes the game
-     */
-    private void initGame() {
-        this.currentPlayer = player1;
-        int i;
-        Hero hero = player1.getHero();
-        for (i = 0; i < 4; i++) {
-            player1.addCardToHand(this.draw(hero));
-        }
-        hero = player2.getHero();
-        for (i = 0; i < 4; i++) {
-            player2.addCardToHand(this.draw(hero));
-        }
-    }
+    Player getCurrentPlayer() { return this.currentPlayer; }
+    Player getPlayer1() { return this.player1; }
+    Player getPlayer2() { return this.player2; }
+    List<Card> getBoardP1() { return this.boardP1; }
+    List<Card> getBoardP2() { return this.boardP2; }
+    int getRound() { return this.round; }
+    UUID getGameID () {return this.gameID;}
 
     /**
      * Does all the action of a round beginning
@@ -78,12 +60,10 @@ public class Game {
     }
 
     /**
-     * Returns one of the card of the given hero deck
+     * Helper Method (initRound)
      */
-    private static Card draw(Hero hero) {
-        int size = hero.getDeck().size();
-        int i = (int)(Math.random()*size);
-        return hero.getDeck().get(i);
+    private static void draw(Hero hero) {
+        // TODO implémenter cette méthode.
     }
 
     /**
@@ -101,7 +81,7 @@ public class Game {
     }
 
     /**
-     * Returns the board the opponent of the given player
+     * Returns the board the opponenet of the given player
      * @param player
      * @return The board as a List<Card>
      */

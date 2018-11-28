@@ -1,8 +1,7 @@
 package com.miniheartstone.engine;
 
 import java.util.*;
-import java.util.HashMap;
-
+//test commit
 
 public class Facade {
 	
@@ -61,6 +60,28 @@ public class Facade {
 	
 	
 	/*public List<Hero> getHero() {
-		return // a finir
+	 * creer une list et la remplir en récuperant les heros de la base de données 
 	}*/
+	//la methode met une card sur le plateau
+	public void invoke (UUID gameID,UUID playerID, UUID cardID) {
+		try {
+		
+			Game game = allCurrentGame.get(gameID);
+			if (game.getCurrentPlayer().getPlayerID() == playerID) {
+				
+				Card ourcard=game.getCurrentPlayer().getSpecificCard(cardID);
+				//ecrire une fonction ajoute carte dans game pour ajouter une carte et appliquer ses effets si elle en as au d'ajouter seulement
+				game.getBoard(game.getCurrentPlayer()).add(ourcard);
+				game.getCurrentPlayer().removeCardHand(ourcard);
+				
+			}
+			
+		} catch (IllegalAccessException e) {
+
+		    System.out.println("la carte n'est pas dans la main");
+
+		  }
+		
+		
+	}
 }
