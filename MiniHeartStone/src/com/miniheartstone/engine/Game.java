@@ -101,7 +101,7 @@ public class Game {
     }
 
     /**
-     * Returns the board the opponenet of the given player
+     * Returns the board the opponent of the given player
      * @param player
      * @return The board as a List<Card>
      */
