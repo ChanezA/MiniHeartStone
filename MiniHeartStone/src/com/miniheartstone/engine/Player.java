@@ -25,6 +25,8 @@ public class Player {
 	public Hero getHero() {
 		return this.hero;
 	}
+
+	public String getName() { return this.name; }
 	
 	public List<Card> getHand() {
 		return this.hand;
