@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 public class Player {
+	//test
 	protected String name;
 	protected Hero hero;
 	protected int level;

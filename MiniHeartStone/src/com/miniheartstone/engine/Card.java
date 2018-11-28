@@ -4,7 +4,7 @@ package com.miniheartstone.engine;
 import java.util.UUID;
 
 abstract class Card {
-	 
+	 //test
 	protected int manaCost;
 	//Every effect the card has
 	protected Effect effect;
