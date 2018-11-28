@@ -17,7 +17,6 @@ public class Game {
     private List<Card> boardP2;
     
     private UUID gameID;
-    
 
     private int round;
 

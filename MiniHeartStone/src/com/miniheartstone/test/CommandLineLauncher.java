@@ -19,6 +19,7 @@ public class CommandLineLauncher {
 
         System.out.println("\n\noO Début de la partie Oo");
         System.out.println("\n\n" + player1.getHero().toString());
+        System.out.println("\n" + player2.getHero().toString());
     }
 
     private static Player getPlayer(int i) {

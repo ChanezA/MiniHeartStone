@@ -11,6 +11,6 @@ public class Paladin extends Hero {
 		//Game.add(serviteur);
 	}
 	public String toString() {
-		return "I'am Paldin" + this.name + "mana:"+this.mana +"health"+this.health;
+		return "I'am Paldin, name: " + this.name + " mana:"+this.mana +" health"+this.health;
 	}
 }
