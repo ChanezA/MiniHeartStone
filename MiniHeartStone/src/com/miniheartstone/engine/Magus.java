@@ -10,7 +10,7 @@ public class Magus extends Hero {
 		//plateau.attaque(""serviteur ou hero,PT_DEGATS_POWER_MAGNUS");
 	}
 	
-	String display() {
+	public String toString() {
 		return "I'am Magus" + this.name + "mana:"+this.mana +"health"+this.health;
 	}
 }

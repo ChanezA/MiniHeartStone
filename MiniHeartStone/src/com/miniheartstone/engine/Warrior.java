@@ -25,7 +25,7 @@ public class Warrior extends Hero {
 		System.out.println("lui confère deux point d'armure");
 		this.armor=this.armor+PT_ARMOR_AUGMENTATION;
 	}
-	String display() {
+	public String toString() {
 		return "I'am Magus" + this.name + "mana:"+this.mana +"health"+this.health +"armor"+ this .armor;
 	}
 }

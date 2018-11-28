@@ -39,7 +39,7 @@ public abstract class Hero {
 		public int getArmor() {
 			return this.armor;
 		}
-		abstract String display();
+		public abstract String toString();
 			
 		
 }

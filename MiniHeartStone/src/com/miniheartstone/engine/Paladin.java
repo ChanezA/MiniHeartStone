@@ -10,7 +10,7 @@ public class Paladin extends Hero {
 		//Serviteur serviteur=new Recrue_de_la_main_d_argent();
 		//Game.add(serviteur);
 	}
-	String display() {
+	public String toString() {
 		return "I'am Paldin" + this.name + "mana:"+this.mana +"health"+this.health;
 	}
 }
