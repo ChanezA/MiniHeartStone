@@ -27,6 +27,10 @@ public class Player {
 	}
 
 	public String getName() { return this.name; }
+
+	public void addCardToHand(Card card) {
+		this.hand.add(card);
+	}
 	
 	public List<Card> getHand() {
 		return this.hand;
