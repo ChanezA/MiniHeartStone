@@ -49,7 +49,7 @@ public class Player {
 	/*
 	 * méthode pour attaquer le hero adverse.
 	*/
-	public void attackHero(Minion minion) {
+	public void attack(Minion minion) {
 		game.getOpponentPlayer(this).hero.setHealth(
 				game.getOpponentPlayer(this).hero.getHealth()-minion.getAttack()
 		);
