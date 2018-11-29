@@ -5,6 +5,7 @@ import engine.*;
 import java.util.Scanner;
 
 public class CommandLineLauncher {
+    // ce commentaire est un test pour savoir si j'arrive a push avec inteiJ
 
     public static void main(String[] args) {
         System.out.println(" /----------------------\\");
