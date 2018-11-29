@@ -1,15 +1,17 @@
 package engine;
 
+import exception.MiniHeartStoneException;
+
 import java.util.*;
 //test commit
 
 public class Facade {
 	
-	protected Queue<Player> JewMatchMaking;
-	protected Queue<Player> collaboratorMatchMaking;
-	protected Queue<Player> onlySSMatchMaking;
-	
-	protected HashMap<UUID,Game> allCurrentGame;
+	private Queue<Player> JewMatchMaking;
+	private Queue<Player> collaboratorMatchMaking;
+    private Queue<Player> onlySSMatchMaking;
+
+    private HashMap<UUID,Game> allCurrentGame;
 	
 	
 	public void play(String pseudo,Hero hero,int level) {
@@ -37,12 +39,12 @@ public class Facade {
 		}
 		
 		else if (level == 3) {
-			if(collaboratorMatchMaking.peek() != null) {
-				Player player2 = collaboratorMatchMaking.poll();
+			if(onlySSMatchMaking.peek() != null) {
+				Player player2 = onlySSMatchMaking.poll();
 				Game game = new Game(player,player2);
 				allCurrentGame.put(game.getGameID(),game);
 			}
-			collaboratorMatchMaking.add(player);
+			onlySSMatchMaking.add(player);
 		}
 	}
 	
@@ -63,7 +65,7 @@ public class Facade {
 	 * creer une list et la remplir en récuperant les heros de la base de données 
 	}*/
 	//la methode met une card sur le plateau
-	public void invoke (UUID gameID,UUID playerID, UUID cardID) {
+	public void invoke (UUID gameID,UUID playerID, UUID cardID) throws MiniHeartStoneException {
 		try {
 		
 			Game game = allCurrentGame.get(gameID);
@@ -73,15 +75,73 @@ public class Facade {
 				//ecrire une fonction ajoute carte dans game pour ajouter une carte et appliquer ses effets si elle en as au d'ajouter seulement
 				game.getBoard(game.getCurrentPlayer()).add(ourcard);
 				game.getCurrentPlayer().removeCardHand(ourcard);
+				ourcard.setIsInvock(true);
 				
 			}
+
+			else {
+                throw new MiniHeartStoneException("Vous n'etes pas le joueur courant");
+            }
 			
 		} catch (IllegalAccessException e) {
 
 		    System.out.println("la carte n'est pas dans la main");
 
 		  }
+		  catch (MiniHeartStoneException e) {
+              System.out.println("Vous n'etes pas le joueur courant");
+          }
 		
 		
 	}
+
+	public void endTurn(UUID gameID,UUID playerID, UUID cardID) {
+	    try {
+            Game game = allCurrentGame.get(gameID);
+            if (game.getCurrentPlayer().getPlayerID() == playerID) {
+                game.changedCurrentPlayer();
+            }
+            else{
+                throw new MiniHeartStoneException("tu peux pas passer si c'est pas à toi de jouer ;)");
+            }
+        }
+        catch (MiniHeartStoneException e){
+            System.out.println("tu peux pas passer si c'est pas à toi de jouer :O");
+        }
+    }
+
+    //à faire quand on aura finit spring
+    /*public List<Hero> getHeros(){
+	    return
+    }*/
+
+    public void power(){
+        // à implémenter je sais pas quand
+    }
+
+    public void attack(UUID gameID,UUID playerID, UUID cardID,UUID cardOpponentID){
+        Game game = allCurrentGame.get(gameID);
+        if(game.getCurrentPlayer().getPlayerID() == playerID){
+            try {
+                Card myCard = game.getCurrentPlayer().getSpecificCard(cardID);
+                Card oppCard = game.getNotCurrentPlayer().getSpecificCard(cardOpponentID);
+                if (myCard instanceof Minion && myCard.getIsInvock() && game.getBoard(game.getCurrentPlayer()).contains(myCard) && oppCard instanceof Minion && oppCard.getIsInvock() && game.getOpponentBoard(game.getCurrentPlayer()).contains(oppCard)){
+                    Minion myMinion = (Minion) myCard;
+                    Minion oppMinion = (Minion) oppCard;
+                    myMinion.setLife(myMinion.getLife()-oppMinion.getAttack());
+                    if(myMinion.getLife()<=0) { game.getBoard(game.getCurrentPlayer()).remove(myCard);}
+
+                    oppMinion.setLife(oppMinion.getLife()-myMinion.getAttack());
+                    if(oppMinion.getLife()<=0) { game.getOpponentBoard(game.getCurrentPlayer()).remove(oppCard);}
+                }
+            }
+            catch (IllegalAccessException e) {
+                System.out.println("la carte n'est pas dans la main");
+            }
+
+        }
+
+
+    }
+
 }

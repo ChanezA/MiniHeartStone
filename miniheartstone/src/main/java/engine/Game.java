@@ -122,6 +122,12 @@ public class Game {
     		return this.player2;
     	}
     }
-    
 
+    public void changedCurrentPlayer() {
+        if (this.currentPlayer == player1) {
+            currentPlayer = player2;
+        } else {
+            currentPlayer = player1;
+        }
+    }
 }
