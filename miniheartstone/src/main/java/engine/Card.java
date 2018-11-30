@@ -1,21 +1,27 @@
 package engine;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 import java.util.UUID;
 
-abstract class Card {
-	 //test
+@Entity
+public abstract class Card {
+
+	//test
 	protected int manaCost;
 	//Every effect the card has
 	protected Effect effect;
 	protected String pictureURL;
+
+	@Id
 	protected String name;
 	protected String description;
 	protected boolean isInvock;
 	protected boolean hasAttacked;
 	protected UUID cardID;
 	
-	protected Card(int manaCost, String name, String pictureURL, String description, Effect effect) {
+	public Card(String name, String description, int manaCost, String pictureURL, Effect effect) {
 		this.manaCost = manaCost;
 		this.name = name;
 		this.pictureURL = pictureURL;

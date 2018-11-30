@@ -6,8 +6,8 @@ public class Minion extends Card {
 	protected int attack;
 	protected boolean readyToAttack;
 	
-	Minion(int life, int attack,int manaCost, String name, String description,Effect effect, String pictureURL){
-		super(manaCost, name, pictureURL, description, effect);
+	public Minion(String name, String description, int life, int attack,int manaCost, Effect effect, String pictureURL){
+		super(name, description, manaCost, pictureURL, effect);
 		this.life = life;
 		this.attack = attack;
 		this.readyToAttack = false;

@@ -1,5 +1,5 @@
 package engine;
 
-public class SpellCommon {
+public class SpellCommon extends Spell {
 
 }
