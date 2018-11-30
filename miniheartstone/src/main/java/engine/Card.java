@@ -1,21 +1,31 @@
 package engine;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Transient;
 
 import java.util.UUID;
 
-abstract class Card {
-	 //test
-	protected int manaCost;
-	//Every effect the card has
-	protected Effect effect;
-	protected String pictureURL;
+@Entity
+public abstract class Card {
+
+	@Id
 	protected String name;
+	protected int manaCost;
+	protected String pictureURL;
 	protected String description;
+	@Transient
 	protected boolean isInvock;
+	@Transient
 	protected boolean hasAttacked;
+	@Transient
+	protected Effect effect;
+	@Transient
 	protected UUID cardID;
-	
-	protected Card(int manaCost, String name, String pictureURL, String description, Effect effect) {
+
+	protected Card() {}
+
+	public Card(String name, String description, int manaCost, String pictureURL, Effect effect) {
 		this.manaCost = manaCost;
 		this.name = name;
 		this.pictureURL = pictureURL;
@@ -62,5 +72,10 @@ abstract class Card {
 
 	UUID getCardID() {
 		return this.cardID;
+	}
+
+	@Override
+	public String toString() {
+		return "Bonjour je suis une carte";
 	}
 }

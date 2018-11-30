@@ -1,7 +1,9 @@
 package engine;
 
-abstract class Spell extends Card{
-    public Spell(int manaCost, String name, String pictureURL, String description, Effect effect) {
-        super(manaCost, name, pictureURL, description, effect);
+public abstract class Spell extends Card {
+
+    public Spell(String name, String description, int manaCost, String pictureURL, Effect effect) {
+        super(name, description, manaCost, pictureURL, effect);
     }
+
 }

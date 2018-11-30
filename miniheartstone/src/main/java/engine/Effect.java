@@ -1,6 +1,6 @@
 package engine;
 
-abstract class Effect {
+public abstract class Effect {
     protected Card carte;
     protected String description;
     protected String nom;
