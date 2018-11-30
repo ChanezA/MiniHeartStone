@@ -43,6 +43,13 @@ public abstract class Hero {
 			return this.armor;
 		}
 		public abstract String toString();
+		public boolean isEqual(Hero hero) {
+			return hero.getName() == getName() && hero.getHealth() == getHealth() && hero.getArmor() == getArmor() && hero.getMana() == getMana();
+		}
+
+		public void setArmor(int i) {
+			armor = i;
+		}
 			
 		
 }

@@ -186,19 +186,18 @@ public class Game {
                 Card myCard = this.getCurrentPlayer().getSpecificCard(cardID);
                 if (myCard instanceof Minion && myCard.getIsInvock() && this.getBoard(this.getCurrentPlayer()).contains(myCard)) {
                     Minion myMinion = (Minion) myCard;
-
-                    /**
-                     * A Finir ! Je m'en occupe #Alan
-                     */
-                   /* int degats = myMinion.getAttack();
-                    while(hero.getArmor() > 0 && degats > 0) {
-                        hero.setArmor(hero.getArmor()-1);
+                    //On vérifie que le hero passé en paramètre soit le même, normalement c'est le cas
+                    assert getNotCurrentPlayer().getHero().isEqual(hero);
+                    int degats = myMinion.getAttack();
+                    while(getNotCurrentPlayer().getHero().getArmor() > 0 && degats > 0) {
+                        getNotCurrentPlayer().getHero().setArmor(getNotCurrentPlayer().getHero().getArmor()-1);
                         degats --;
                     }
-                    hero.setHealth(hero.getHealth() - degats);
-                    if (hero.getHealth() <= 0) {
-                        getOpponentPlayer(playerID.get);
-                    }*/
+                    getNotCurrentPlayer().getHero().setHealth(getNotCurrentPlayer().getHero().getHealth() - degats);
+                    if (getNotCurrentPlayer().getHero().getHealth() <= 0) {
+                        System.out.println(getCurrentPlayer().getName() + "a gagné");
+                        //A remplacer par une méthode aGagné(Player playerWon, Player playerLost)
+                    }
                 }
             } catch (IllegalAccessException e) {
                 System.out.println("la carte n'est pas dans la main");
