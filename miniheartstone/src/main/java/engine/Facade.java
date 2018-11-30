@@ -7,45 +7,13 @@ import java.util.*;
 
 public class Facade {
 	
-	private Queue<Player> JewMatchMaking = new ArrayDeque<Player>();
-	private Queue<Player> collaboratorMatchMaking = new ArrayDeque<Player>();
-    private Queue<Player> onlySSMatchMaking = new ArrayDeque<Player>();
+	private MatchMaking MM;
 
-    private HashMap<UUID,Game> allCurrentGame;
+    private HashMap<UUID,Game> allCurrentGame = new HashMap<UUID,Game>();
 	
 	
 	public void play(String pseudo,Hero hero,int level) {
-		Player player = new Player(pseudo,hero,level);
-		// envoyer son UUID au client
-		
-		if (level == 1) {
-			if(JewMatchMaking.peek() != null) {
-				Player player2 = JewMatchMaking.poll();
-				Game game = new Game(player,player2);
-				allCurrentGame.put(game.getGameID(),game);
-				// envoyer l'UUID de la game aux deux players
-				
-			}
-			JewMatchMaking.add(player);
-		}
-		
-		else if (level == 2) {
-			if(collaboratorMatchMaking.peek() != null) {
-				Player player2 = collaboratorMatchMaking.poll();
-				Game game = new Game(player,player2);
-				allCurrentGame.put(game.getGameID(),game);
-			}
-			collaboratorMatchMaking.add(player);
-		}
-		
-		else if (level == 3) {
-			if(onlySSMatchMaking.peek() != null) {
-				Player player2 = onlySSMatchMaking.poll();
-				Game game = new Game(player,player2);
-				allCurrentGame.put(game.getGameID(),game);
-			}
-			onlySSMatchMaking.add(player);
-		}
+		MatchMaking(pseudo,hero,level,allCurrentGame);
 	}
 	
 	public List<Card> getPioche(UUID gameID,UUID playerID){
