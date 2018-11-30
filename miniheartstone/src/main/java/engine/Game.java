@@ -180,6 +180,33 @@ public class Game {
         }
     }
 
+    public void attack(UUID playerID, UUID cardID, Hero hero){
+        if(this.getCurrentPlayer().getPlayerID() == playerID) {
+            try {
+                Card myCard = this.getCurrentPlayer().getSpecificCard(cardID);
+                if (myCard instanceof Minion && myCard.getIsInvock() && this.getBoard(this.getCurrentPlayer()).contains(myCard)) {
+                    Minion myMinion = (Minion) myCard;
+
+                    /**
+                     * A Finir ! Je m'en occupe #Alan
+                     */
+                   /* int degats = myMinion.getAttack();
+                    while(hero.getArmor() > 0 && degats > 0) {
+                        hero.setArmor(hero.getArmor()-1);
+                        degats --;
+                    }
+                    hero.setHealth(hero.getHealth() - degats);
+                    if (hero.getHealth() <= 0) {
+                        getOpponentPlayer(playerID.get);
+                    }*/
+                }
+            } catch (IllegalAccessException e) {
+                System.out.println("la carte n'est pas dans la main");
+            }
+
+        }
+    }
+
     public void endTurn(UUID playerID){
         try {
             if (this.getCurrentPlayer().getPlayerID() == playerID) {
