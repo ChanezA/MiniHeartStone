@@ -1,11 +1,16 @@
 package engine;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Minion extends Card {
 	
 	protected int life;
 	protected int attack;
 	protected boolean readyToAttack;
-	
+
+	protected Minion() {}
+
 	public Minion(String name, String description, int life, int attack,int manaCost, Effect effect, String pictureURL){
 		super(name, description, manaCost, pictureURL, effect);
 		this.life = life;
@@ -41,5 +46,10 @@ public class Minion extends Card {
 	// setter life.
 	public void setReadyToAttack(boolean readyToAttack){
 		this.readyToAttack = readyToAttack;
+	}
+
+	@Override
+	public String toString() {
+		return "Bonjour je suis un serviteur";
 	}
 }
