@@ -102,6 +102,10 @@ public class Game {
     	}
     }
 
+    public void attack(Card cardAttck, Card cardDeff) {
+
+    }
+
     /**
      * Returns the board the opponent of the given player
      * @param player

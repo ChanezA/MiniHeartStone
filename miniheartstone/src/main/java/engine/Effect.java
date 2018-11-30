@@ -99,6 +99,7 @@ class ChefDeRaidEffect extends Effect {
      * A FAIRE !!!!!!!!!!!!!!! A FAIRE !!!!!!! A FAIRE !!!!!!!
      */
 }
+
 class ImageMiroirEffect extends Effect {
     public ImageMiroirEffect(Spell carte) {
         super(carte);
@@ -110,5 +111,21 @@ class ImageMiroirEffect extends Effect {
         //game.getBoard(player).add(new Minion02());
         //game.getBoard(player).add(new Minion02());
         //Ajouter la destruction de la carte
+    }
+}
+
+class ExplosionDesArcanesEffect extends Effect {
+    public ExplosionDesArcanesEffect(Spell carte) {
+        super(carte);
+        this.nom = "Explosion des arcanes";
+        this.description = "Inflige 1 point de dégats à tous les serviteurs adverses";
+    }
+
+    public void putOnBoardEffect(Game game, Player player) {
+        for (Card card : game.getBoard(player)) {
+            if (card instanceof Minion) {
+                ((Minion) card).setLife(((Minion) card).getLife()-1);
+            }
+        }
     }
 }
