@@ -7,10 +7,13 @@ import java.util.Scanner;
 public class CommandLineLauncher {
 
     public static void main(String[] args) {
-        System.out.println(" /----------------------\\");
-        System.out.println("  --- MiniHeartStone ---");
-        System.out.println(" \\----------------------/\n");
-        System.out.println("Jeu développé par Alan, Alexis, Chanez et Louis\n");
+        System.out.println("___  ____       _ _   _                 _   _____ _                 ");
+        System.out.println("|  \\/  (_)     (_) | | |               | | /  ___| |                  ");
+        System.out.println("| .  . |_ _ __  _| |_| | ___  __ _ _ __| |_\\ `--.| |_ ___  _ __   ___");
+        System.out.println("| |\\/| | | '_ \\| |  _  |/ _ \\/ _` | '__| __|`--. \\ __/ _ \\| '_ \\ / _ \\");
+        System.out.println("| |  | | | | | | | | | |  __/ (_| | |  | |_/\\__/ / || (_) | | | |  __/");
+        System.out.println("\\_|  |_/_|_| |_|_\\_| |_/\\___|\\__,_|_|   \\__\\____/ \\__\\___/|_| |_|\\___|");
+        System.out.println("\nJeu développé par Alan, Alexis, Chanez et Louis\n");
 
         Player player1 = getPlayer(1);
         Player player2 = getPlayer(2);
