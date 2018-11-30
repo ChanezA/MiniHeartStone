@@ -91,5 +91,4 @@ public class Player {
 		this.hand.remove(ourcard);
 		
 	}
-
 }

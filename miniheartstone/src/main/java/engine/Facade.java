@@ -7,9 +7,9 @@ import java.util.*;
 
 public class Facade {
 	
-	private Queue<Player> JewMatchMaking;
-	private Queue<Player> collaboratorMatchMaking;
-    private Queue<Player> onlySSMatchMaking;
+	private Queue<Player> JewMatchMaking = new ArrayDeque<Player>();
+	private Queue<Player> collaboratorMatchMaking = new ArrayDeque<Player>();
+    private Queue<Player> onlySSMatchMaking = new ArrayDeque<Player>();
 
     private HashMap<UUID,Game> allCurrentGame;
 	
@@ -66,48 +66,13 @@ public class Facade {
 	}*/
 	//la methode met une card sur le plateau
 	public void invoke (UUID gameID,UUID playerID, UUID cardID) throws MiniHeartStoneException {
-		try {
-		
-			Game game = allCurrentGame.get(gameID);
-			if (game.getCurrentPlayer().getPlayerID() == playerID) {
-				
-				Card ourcard=game.getCurrentPlayer().getSpecificCard(cardID);
-				//ecrire une fonction ajoute carte dans game pour ajouter une carte et appliquer ses effets si elle en as au d'ajouter seulement
-				game.getBoard(game.getCurrentPlayer()).add(ourcard);
-				game.getCurrentPlayer().removeCardHand(ourcard);
-				ourcard.setIsInvock(true);
-				
-			}
-
-			else {
-                throw new MiniHeartStoneException("Vous n'etes pas le joueur courant");
-            }
-			
-		} catch (IllegalAccessException e) {
-
-		    System.out.println("la carte n'est pas dans la main");
-
-		  }
-		  catch (MiniHeartStoneException e) {
-              System.out.println("Vous n'etes pas le joueur courant");
-          }
-		
-		
+		Game game = allCurrentGame.get(gameID);
+		game.invock(playerID, cardID);
 	}
 
-	public void endTurn(UUID gameID,UUID playerID, UUID cardID) {
-	    try {
-            Game game = allCurrentGame.get(gameID);
-            if (game.getCurrentPlayer().getPlayerID() == playerID) {
-                game.changedCurrentPlayer();
-            }
-            else{
-                throw new MiniHeartStoneException("tu peux pas passer si c'est pas à toi de jouer ;)");
-            }
-        }
-        catch (MiniHeartStoneException e){
-            System.out.println("tu peux pas passer si c'est pas à toi de jouer :O");
-        }
+	public void endTurn(UUID gameID,UUID playerID) {
+		Game game = allCurrentGame.get(gameID);
+		game.endTurn(playerID);
     }
 
     //à faire quand on aura finit spring
@@ -121,27 +86,7 @@ public class Facade {
 
     public void attack(UUID gameID,UUID playerID, UUID cardID,UUID cardOpponentID){
         Game game = allCurrentGame.get(gameID);
-        if(game.getCurrentPlayer().getPlayerID() == playerID){
-            try {
-                Card myCard = game.getCurrentPlayer().getSpecificCard(cardID);
-                Card oppCard = game.getNotCurrentPlayer().getSpecificCard(cardOpponentID);
-                if (myCard instanceof Minion && myCard.getIsInvock() && game.getBoard(game.getCurrentPlayer()).contains(myCard) && oppCard instanceof Minion && oppCard.getIsInvock() && game.getOpponentBoard(game.getCurrentPlayer()).contains(oppCard)){
-                    Minion myMinion = (Minion) myCard;
-                    Minion oppMinion = (Minion) oppCard;
-                    myMinion.setLife(myMinion.getLife()-oppMinion.getAttack());
-                    if(myMinion.getLife()<=0) { game.getBoard(game.getCurrentPlayer()).remove(myCard);}
-
-                    oppMinion.setLife(oppMinion.getLife()-myMinion.getAttack());
-                    if(oppMinion.getLife()<=0) { game.getOpponentBoard(game.getCurrentPlayer()).remove(oppCard);}
-                }
-            }
-            catch (IllegalAccessException e) {
-                System.out.println("la carte n'est pas dans la main");
-            }
-
-        }
-
-
+        game.attack(playerID, cardID, cardOpponentID);
     }
 
 }

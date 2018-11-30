@@ -1,5 +1,7 @@
 package engine;
 
+import exception.MiniHeartStoneException;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -130,4 +132,67 @@ public class Game {
             currentPlayer = player1;
         }
     }
+
+    public void invock(UUID playerID, UUID cardID)throws MiniHeartStoneException {
+        try {
+            if (this.getCurrentPlayer().getPlayerID() == playerID) {
+
+                Card ourcard = this.getCurrentPlayer().getSpecificCard(cardID);
+                //ecrire une fonction ajoute carte dans game pour ajouter une carte et appliquer ses effets si elle en as au d'ajouter seulement
+                this.getBoard(this.getCurrentPlayer()).add(ourcard);
+                this.getCurrentPlayer().removeCardHand(ourcard);
+                ourcard.setIsInvock(true);
+            }
+            else {
+                throw new MiniHeartStoneException("Vous n'etes pas le joueur courant");
+            }
+        }
+        catch (IllegalAccessException e) {
+            System.out.println("la carte n'est pas dans la main");
+        }
+            catch (MiniHeartStoneException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void attack(UUID playerID, UUID cardID,UUID cardOpponentID){
+        if(this.getCurrentPlayer().getPlayerID() == playerID) {
+            try {
+                Card myCard = this.getCurrentPlayer().getSpecificCard(cardID);
+                Card oppCard = this.getNotCurrentPlayer().getSpecificCard(cardOpponentID);
+                if (myCard instanceof Minion && myCard.getIsInvock() && this.getBoard(this.getCurrentPlayer()).contains(myCard) && oppCard instanceof Minion && oppCard.getIsInvock() && this.getOpponentBoard(this.getCurrentPlayer()).contains(oppCard)) {
+                    Minion myMinion = (Minion) myCard;
+                    Minion oppMinion = (Minion) oppCard;
+                    myMinion.setLife(myMinion.getLife() - oppMinion.getAttack());
+                    if (myMinion.getLife() <= 0) {
+                        this.getBoard(this.getCurrentPlayer()).remove(myCard);
+                    }
+
+                    oppMinion.setLife(oppMinion.getLife() - myMinion.getAttack());
+                    if (oppMinion.getLife() <= 0) {
+                        this.getOpponentBoard(this.getCurrentPlayer()).remove(oppCard);
+                    }
+                }
+            } catch (IllegalAccessException e) {
+                System.out.println("la carte n'est pas dans la main");
+            }
+
+        }
+    }
+
+    public void endTurn(UUID playerID){
+        try {
+            if (this.getCurrentPlayer().getPlayerID() == playerID) {
+                this.changedCurrentPlayer();
+                this.getCurrentPlayer().getHand().add(Game.draw(this.getCurrentPlayer().getHero()));
+            }
+            else{
+                throw new MiniHeartStoneException("tu peux pas passer si c'est pas à toi de jouer ;)");
+            }
+        }
+        catch (MiniHeartStoneException e){
+            System.out.println("tu peux pas passer si c'est pas à toi de jouer :O");
+        }
+    }
+
 }
