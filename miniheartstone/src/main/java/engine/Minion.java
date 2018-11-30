@@ -50,6 +50,7 @@ public class Minion extends Card {
 
 	@Override
 	public String toString() {
-		return "Bonjour je suis un serviteur";
+		return name + ":Minion\n" + description + "\nmanaCost : " + manaCost + ", attack : " + attack
+				+ ", life : " + life + ", effects : " + effect;
 	}
 }

@@ -76,6 +76,6 @@ public abstract class Card {
 
 	@Override
 	public String toString() {
-		return "Bonjour je suis une carte";
+		return "SVP implémentez cette méthode dans votre classe";
 	}
 }

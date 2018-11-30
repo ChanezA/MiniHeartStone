@@ -7,14 +7,14 @@ import java.util.*;
 
 public class Facade {
 	
-	private MatchMaking MM;
+	//private MatchMaking MM;
 
     private HashMap<UUID,Game> allCurrentGame = new HashMap<UUID,Game>();
 	
 	
-	public void play(String pseudo,Hero hero,int level) {
+	/*public void play(String pseudo,Hero hero,int level) {
 		MatchMaking(pseudo,hero,level,allCurrentGame);
-	}
+	}*/
 	
 	public List<Card> getPioche(UUID gameID,UUID playerID){
 		
