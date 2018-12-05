@@ -1,5 +1,16 @@
 package engine;
 
+
+
+/*
+
+A FAIRE : FAIRE UNE VERIFICATION DU PLAYER, DE LA CARTE, ... ULTRA IMPORTANT (PLUS UTILISER METHODE POSER CARTE, ...
+POUR L'UTILISATION DU MANA
+
+
+
+
+ */
 public abstract class Effect {
     protected Card carte;
     protected String description;
@@ -127,5 +138,34 @@ class ExplosionDesArcanesEffect extends Effect {
                 ((Minion) card).setLife(((Minion) card).getLife()-1);
             }
         }
+    }
+}
+
+class MetamorphoseEffect extends Effect {
+    public MetamorphoseEffect(Spell carte) {
+        super(carte);
+        this.nom = "Metamorphose";
+        this.description = "Transforme un serviteur en serviteur 1/1 sans effet spécial";
+    }
+
+    public void putOnBoardEffect(Game game, Player player, Card card) {
+        for (Card card1 : game.getBoard(player)) {
+            if (card1.equals(card)) {
+                game.getBoard(player).remove(card);
+                game.getBoard(player).add(new Sheep());
+            }
+        }
+    }
+}
+
+class BenedictionDePuissanceEffect extends Effect {
+    public BenedictionDePuissanceEffect(Spell card) {
+        super(card);
+        this.nom = "Benediction de puissance";
+        this.description = "Confère +3 d'attaque à un serviteur";
+    }
+
+    public void putOnBoardEffect(Game game, Player player, Card card) {
+
     }
 }

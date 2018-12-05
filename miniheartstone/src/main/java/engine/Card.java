@@ -66,6 +66,7 @@ public abstract class Card {
 		return this.hasAttacked;
 		
 	}
+
 	int getAttack() {
 		return 0;
 	}
