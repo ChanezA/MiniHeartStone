@@ -133,13 +133,37 @@ public class Game {
         }
     }
 
+    public Card targetOpponentCard() {
+        while(true) {
+            //REVOIR CETTE METHODE MDR
+            return(getBoard(getOpponentPlayer(this.getCurrentPlayer())).get(0));
+        }
+    }
+
+    /**
+     *  Permet de déduire le mana et d'activer les effets. Attention, revoir targetOpponentCard
+     */
+    public void putOnBoard(Card card, Player player) {
+        player.getHero().setMana(player.getHero().getMana() - card.getManaCost());
+        card.getEffect().putOnBoardEffect(this);
+        if (card.getEffect().hasTarget) {
+            card.getEffect().putOnBoardEffect(this, targetOpponentCard());
+        }
+
+
+    }
+
+
+
     public void invock(UUID playerID, UUID cardID)throws MiniHeartStoneException {
         try {
             if (this.getCurrentPlayer().getPlayerID() == playerID) {
 
                 Card ourcard = this.getCurrentPlayer().getSpecificCard(cardID);
-                //ecrire une fonction ajoute carte dans game pour ajouter une carte et appliquer ses effets si elle en as au d'ajouter seulement
-                this.getBoard(this.getCurrentPlayer()).add(ourcard);
+                putOnBoard(ourcard, this.getCurrentPlayer());
+                if (ourcard instanceof Minion) {
+                    this.getBoard(this.getCurrentPlayer()).add(ourcard);
+                }
                 this.getCurrentPlayer().removeCardHand(ourcard);
                 ourcard.setIsInvock(true);
             }

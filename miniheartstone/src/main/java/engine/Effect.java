@@ -1,23 +1,21 @@
 package engine;
-
-
-
 /*
 
-A FAIRE : FAIRE UNE VERIFICATION DU PLAYER, DE LA CARTE, ... ULTRA IMPORTANT (PLUS UTILISER METHODE POSER CARTE, ...
-POUR L'UTILISATION DU MANA
-
-
-
+A FAIRE : FAIRE UNE VERIFICATION DU PLAYER, DE LA CARTE, ... ULTRA IMPORTANT. Il est bon de noter que player sera toujours
+currentplayer
 
  */
 public abstract class Effect {
     protected Card carte;
     protected String description;
     protected String nom;
+    protected boolean hasTarget;
+
     protected Effect(Card carte) {
         this.carte = carte;
+        hasTarget = false;
     }
+
     public String getDescription() {
         return description;
     }
@@ -45,8 +43,7 @@ public abstract class Effect {
      * Post-condition : Si la carte a un effet lorsque posée, cet effet sera executé.
      */
     void putOnBoardEffect(Game game) {};
-    void putOnBoardEffect(Game game, Player player) {};
-    void putOnBoardEffect(Game game, Player player, Card card) {};
+    void putOnBoardEffect(Game game, Card card) {};
     /**
      * Effet activé lorsque la carte attaque, en général un serviteur.
      * Pré-condition : Le serviteur attaque un autre serviteur ou le héro adverse.
@@ -59,7 +56,6 @@ public abstract class Effect {
      * Post-condition : L'effet s'active et la carte sera retirée du terrain
      */
     void deathEffect(Game game) {};
-    void deathEffect(Game game, Player player) {};
 }
 class ProvocationEffect extends Effect {
     public ProvocationEffect(Minion carte) {
@@ -70,14 +66,14 @@ class ProvocationEffect extends Effect {
     /**
      * Ajoute la carte à la liste des cartes ayant provocation dans un tableau propre au joueur
      */
-    public void putOnBoardEffect(Game game, Player player) {
-        //game.addToProvocList(player, this.card);
+    public void putOnBoardEffect(Game game) {
+        //game.addToProvocList(game.getCurrentPlayer(), this.card);
     }
     /**
      * Retire la carte à la liste
      */
-    public void deathEffect(Game game, Player player) {
-        //game.removeToProvocList(player, this.card);
+    public void deathEffect(Game game) {
+        //game.removeToProvocList(game.getCurrentPlayer(), this.card);
     }
 }
 class ChargeEffect extends Effect {
@@ -96,10 +92,11 @@ class VolDeVieEffect extends Effect {
         this.nom = "Vol de vie";
         this.description = "Les dégâts infligés par cette carte soigneront du même montant votre héros";
     }
-    public void attackEffect(Game game, Player player) {
-        player.getHero().setHealth(player.getHero().getHealth() + this.carte.getAttack());
+    public void attackEffect(Game game) {
+        game.getCurrentPlayer().getHero().setHealth(game.getCurrentPlayer().getHero().getHealth() + this.carte.getAttack());
     }
 }
+
 class ChefDeRaidEffect extends Effect {
     public ChefDeRaidEffect(Minion carte) {
         super(carte);
@@ -117,11 +114,10 @@ class ImageMiroirEffect extends Effect {
         this.nom = "Image Miroir" ;
         this.description = "Invoque deux serviteurs 0/2 avec provocation";
     }
-    public void putOnBoardEffect(Game game, Player player) {
+    public void putOnBoardEffect(Game game) {
         //Minion02 est un minion ayant provocation, 0 d'atk et 2 pv
-        //game.getBoard(player).add(new Minion02());
-        //game.getBoard(player).add(new Minion02());
-        //Ajouter la destruction de la carte
+        //game.getBoard(game.getCurrentPlayer()).add(new Minion02());
+        //game.getBoard(game.getCurrentPlayer()).add(new Minion02());
     }
 }
 
@@ -132,8 +128,8 @@ class ExplosionDesArcanesEffect extends Effect {
         this.description = "Inflige 1 point de dégats à tous les serviteurs adverses";
     }
 
-    public void putOnBoardEffect(Game game, Player player) {
-        for (Card card : game.getBoard(player)) {
+    public void putOnBoardEffect(Game game) {
+        for (Card card : game.getBoard(game.getOpponentPlayer(game.getCurrentPlayer()))) {
             if (card instanceof Minion) {
                 ((Minion) card).setLife(((Minion) card).getLife()-1);
             }
@@ -146,13 +142,14 @@ class MetamorphoseEffect extends Effect {
         super(carte);
         this.nom = "Metamorphose";
         this.description = "Transforme un serviteur en serviteur 1/1 sans effet spécial";
+        this.hasTarget = true;
     }
 
-    public void putOnBoardEffect(Game game, Player player, Card card) {
-        for (Card card1 : game.getBoard(player)) {
+    public void putOnBoardEffect(Game game, Card card) {
+        for (Card card1 : game.getBoard(game.getCurrentPlayer())) {
             if (card1.equals(card)) {
-                game.getBoard(player).remove(card);
-                game.getBoard(player).add(new Sheep());
+                game.getBoard(game.getCurrentPlayer()).remove(card);
+                //game.getBoard(game.getCurrentPlayer()).add(new Sheep());
             }
         }
     }
@@ -165,7 +162,7 @@ class BenedictionDePuissanceEffect extends Effect {
         this.description = "Confère +3 d'attaque à un serviteur";
     }
 
-    public void putOnBoardEffect(Game game, Player player, Card card) {
+    public void putOnBoardEffect(Game game, Card card) {
 
     }
 }
