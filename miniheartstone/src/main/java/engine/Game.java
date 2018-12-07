@@ -96,8 +96,7 @@ public class Game {
     public List<Card> getBoard(Player player){
     	if (player == this.player1 ) {
     		return this.boardP1;
-    	}
-    	else {
+    	} else {
     		return this.boardP2;
     	}
     }
@@ -110,8 +109,7 @@ public class Game {
     public List<Card> getOpponentBoard(Player player){
     	if (player == this.player1 ) {
     		return this.boardP2;
-    	}
-    	else {
+    	} else {
     		return this.boardP1;
     	}
     }
@@ -119,8 +117,7 @@ public class Game {
     public Player getOpponentPlayer(Player player){
     	if (player == this.player1 ) {
     		return this.player1;
-    	}
-    	else {
+    	} else {
     		return this.player2;
     	}
     }
@@ -149,11 +146,7 @@ public class Game {
         if (card.getEffect().hasTarget) {
             card.getEffect().putOnBoardEffect(this, targetOpponentCard());
         }
-
-
     }
-
-
 
     public void invock(UUID playerID, UUID cardID)throws MiniHeartStoneException {
         try {
@@ -166,8 +159,7 @@ public class Game {
                 }
                 this.getCurrentPlayer().removeCardHand(ourcard);
                 ourcard.setIsInvock(true);
-            }
-            else {
+            } else {
                 throw new MiniHeartStoneException("Vous n'etes pas le joueur courant");
             }
         }
@@ -200,7 +192,6 @@ public class Game {
             } catch (IllegalAccessException e) {
                 System.out.println("la carte n'est pas dans la main");
             }
-
         }
     }
 
@@ -226,7 +217,6 @@ public class Game {
             } catch (IllegalAccessException e) {
                 System.out.println("la carte n'est pas dans la main");
             }
-
         }
     }
 
@@ -244,5 +234,4 @@ public class Game {
             System.out.println("tu peux pas passer si c'est pas à toi de jouer :O");
         }
     }
-
 }
