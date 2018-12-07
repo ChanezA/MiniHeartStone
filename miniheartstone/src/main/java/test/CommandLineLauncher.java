@@ -1,6 +1,7 @@
 package test;
 
 import engine.*;
+import org.springframework.boot.SpringApplication;
 
 import java.util.Scanner;
 
@@ -14,6 +15,8 @@ public class CommandLineLauncher {
         System.out.println("| |  | | | | | | | | | |  __/ (_| | |  | |_/\\__/ / || (_) | | | |  __/");
         System.out.println("\\_|  |_/_|_| |_|_\\_| |_/\\___|\\__,_|_|   \\__\\____/ \\__\\___/|_| |_|\\___|");
         System.out.println("\nJeu développé par Alan, Alexis, Chanez et Louis\n");
+
+        SpringApplication.run(Application.class, args);
 
         Player player1 = getPlayer(1);
         Player player2 = getPlayer(2);
