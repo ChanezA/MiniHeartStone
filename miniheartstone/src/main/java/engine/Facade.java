@@ -6,10 +6,21 @@ import java.util.*;
 //test commit
 
 public class Facade {
-	
+
 	//private MatchMaking MM;
 
-    private HashMap<UUID,Game> allCurrentGame = new HashMap<UUID,Game>();
+	private HashMap<UUID,Game> allCurrentGame = new HashMap<UUID,Game>();
+	private MatchMaking MM = new MatchMaking();
+
+
+	/*public void play(String pseudo,Hero hero,int level) {
+		MatchMaking(pseudo,hero,level,allCurrentGame);
+	}*/
+
+	public void wantPlay(Hero hero, String pseudo, int level){
+		Player player = new Player(pseudo,hero,level);
+		MM.addOnMatchMaking(player,allCurrentGame,level);
+	}
 	
 	
 	/*public void play(String pseudo,Hero hero,int level) {
