@@ -20,39 +20,40 @@ public class Application {
     @Bean
     public CommandLineRunner demo(CardRepository repository) {
         return (args) -> {
-            // save a couple of Cards
-            repository.save(new Minion("Yéti norois", "cc je suis le yéti",
-                    4, 3, 4, null, null));
-            repository.save(new Minion("Sanglier brocheroc", "groink",
-                    4, 3, 3, null, null));
+            // save a couple of customers
+            repository.save(new Minion("Chef de raid", "bonjour je suis un chef de raid",2,2,3,null,null));
+            repository.save(new Minion("Chef de raid", "bonjour je suis un chevaucheur de loup",1,3,3,null,null));
+            repository.save(new Minion("Sanglier brocheroc", "groink",1,1,1,null,null));
+            repository.save(new Minion("Soldat du compté-de-l'or", "bonjour je suis un soldat du compté-de-l'or",2,1,1,null,null));
+            repository.save(new Minion("Yéti noroit", "cc",5,4,4,null,null));
 
-            // fetch all cards
-            log.info("Cards found with findAll():");
+            // fetch all customers
+            log.info("Customers found with findAll():");
             log.info("-------------------------------");
             for (Card card : repository.findAll()) {
                 log.info(card.toString());
             }
             log.info("");
 
-            // fetch an individual card by ID
-            repository.findById("Yéti norois")
-                    .ifPresent(card -> {
-                        log.info("Card found with findById(\"Yéti norois\"):");
+            // fetch an individual customer by ID
+            /*repository.findById(1L)
+                    .ifPresent(customer -> {
+                        log.info("Customer found with findById(1L):");
                         log.info("--------------------------------");
-                        log.info(card.toString());
+                        log.info(customer.toString());
                         log.info("");
                     });
-/*
+*/
             // fetch customers by last name
             log.info("Customer found with findByLastName('Bauer'):");
             log.info("--------------------------------------------");
-            repository.findByName("Bauer").forEach(bauer -> {
-                log.info(bauer.toString());
+            repository.findByName("Sanglier brocheroc").forEach(sanglier -> {
+                log.info(sanglier.toString());
             });
             // for (Customer bauer : repository.findByLastName("Bauer")) {
             // 	log.info(bauer.toString());
             // }
-            log.info("");*/
+            log.info("");
         };
     }
 

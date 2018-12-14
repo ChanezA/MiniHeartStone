@@ -143,9 +143,9 @@ public class Game {
     public void putOnBoard(Card card, Player player) {
         player.getHero().setMana(player.getHero().getMana() - card.getManaCost());
         card.getEffect().putOnBoardEffect(this);
-        if (card.getEffect().hasTarget) {
+        /*if (card.getEffect().hasTarget) {
             card.getEffect().putOnBoardEffect(this, targetOpponentCard());
-        }
+        }*/
     }
 
     public void invock(UUID playerID, UUID cardID)throws MiniHeartStoneException {
