@@ -1,4 +1,5 @@
 package engine;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
@@ -17,6 +18,11 @@ public abstract class Hero {
 			this.health=health;
 			this.mana=mana;
 			this.armor =0;
+			this.deck = new ArrayList<Card>();
+			CardRepository repo = Application.repo;
+			for (Card card : repo.findAll()) {
+				this.deck.add(card);
+			}
 		}
 		abstract void power(Game plateau);
 		public String getName() {

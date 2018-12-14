@@ -19,7 +19,7 @@ public class Player {
 		this.level = level;
 		
 		UUID playerID = UUID.randomUUID();
-		List<Card> hand = new ArrayList<Card>();
+		this.hand = new ArrayList<Card>();
 		//wala
 	}
 	
@@ -44,7 +44,7 @@ public class Player {
 	        	 return card;
 	         }
 		
-		throw new IllegalAccessException("la carte choisis n'appartient pas à la main");
+		throw new IllegalAccessException("la carte choisie n'appartient pas à la main");
 	}
 	 
 	

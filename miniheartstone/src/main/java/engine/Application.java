@@ -12,6 +12,7 @@ import org.springframework.context.annotation.Bean;
 public class Application {
 
     private static final Logger log = LoggerFactory.getLogger(Application.class);
+    public static CardRepository repo = null;
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class);
@@ -26,6 +27,8 @@ public class Application {
             repository.save(new Minion("Sanglier brocheroc", "groink",1,1,1,null,null));
             repository.save(new Minion("Soldat du compté-de-l'or", "bonjour je suis un soldat du compté-de-l'or",2,1,1,null,null));
             repository.save(new Minion("Yéti noroit", "cc",5,4,4,null,null));
+
+            Application.repo = repository;
 
             // fetch all customers
             log.info("Customers found with findAll():");
