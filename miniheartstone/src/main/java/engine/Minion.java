@@ -1,12 +1,15 @@
 package engine;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 
 @Entity
 public class Minion extends Card {
-	
-	protected int life;
+
+	@Column(name="attack")
 	protected int attack;
+	@Column(name="life")
+	protected int life;
 	protected boolean readyToAttack;
 
 	protected Minion() {}

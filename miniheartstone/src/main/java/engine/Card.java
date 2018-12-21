@@ -1,7 +1,8 @@
 package engine;
 
-import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Transient;
@@ -12,10 +13,13 @@ import java.util.UUID;
 public abstract class Card {
 
 	@Id
+	@Column(name="name")
 	protected String name;
+	@Column(name="description")
+	protected String description;
+	@Column(name="manaCost")
 	protected int manaCost;
 	protected String pictureURL;
-	protected String description;
 	@Transient
 	protected boolean isInvock;
 	@Transient
