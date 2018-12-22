@@ -7,12 +7,15 @@ import java.util.UUID;
 public class Game {
 
     // Private attributes
-    private Player currentPlayer;
-    private Player notCurrentPlayer;
-    private Player player1;
-    private Player player2;
+    protected Player currentPlayer;
+    protected Player notCurrentPlayer;
+    protected Player player1;
+    protected Player player2;
     
-    private UUID gameID;
+    protected String iAmWaitingFor = "";
+    protected UUID tmpUUID = null;
+    
+    protected UUID gameID;
 
     public static int MANA_MAX = 10;
 
@@ -177,8 +180,75 @@ public class Game {
     				this.getCurrentPlayer().getHero().setMana(this.getCurrentPlayer().getHero().getMana()-4);
     			}
     			// si le spell c'est Métamorphose
-    			
+    			else if(this.getCurrentPlayer().getHero().getCardFromHandByUUID(cardID).getName() == "Métamorphose") {
+    				iAmWaitingFor = "Métamorphose";
+    				this.tmpUUID = cardID;
+    			}
     			// si le spell c'est Bénédiction de puissance
+    			else if(this.getCurrentPlayer().getHero().getCardFromHandByUUID(cardID).getName() == "Bénédiction de puissance") {
+    				iAmWaitingFor = "Bénédiction de puissance";
+    				this.tmpUUID = cardID;
+    			}
+    		}
+    	}
+    }
+    
+    // selection d'un minion ou d'un hero pour spell pouvoirs héroiques etc ...
+    public void select(UUID ennemyUUID) {
+    	if (this.iAmWaitingFor == "Métamorphose") {
+    		// si on cible une créature du board adverse
+    		if(this.getNotCurrentPlayer().getHero().isOnMyBoard(ennemyUUID)) {
+    			Minion min = (Minion)(this.getNotCurrentPlayer().getHero().getCardFromBoardByUUID(ennemyUUID));
+    			// la fameuse moutonification
+    			min.setAttack(1);
+    			min.setLife(1);
+    			min.setManaCost(1);
+    			min.setName("Mouton");
+    			min.setDescription("mdr les moutons c con");
+    			min.setPictureURL("null"); // à modif quand on aura des immages si on en a un jrs
+    			min.setHasCharge(false);
+    			min.setHasVolDeVie(false);
+    			min.setHasProvocation(false);
+    			
+    			// gestion de base après avoir play une carte
+    			// on retire la carte de la main du joueur
+				this.getCurrentPlayer().getHero().getHand().remove(this.getCurrentPlayer().getHero().getCardFromHandByUUID(tmpUUID));
+				// on lui retire le mana en conséquence
+				this.getCurrentPlayer().getHero().setMana(this.getCurrentPlayer().getHero().getMana()-4);
+				
+				this.iAmWaitingFor = "";
+				this.tmpUUID = null;
+    			
+    		}
+    	}
+    	else if (this.iAmWaitingFor == "Bénédiction de puissance") {
+    		// si la créature est sur le board adverse
+    		if(this.getNotCurrentPlayer().getHero().isOnMyBoard(ennemyUUID)) {
+    			Minion min = (Minion)(this.getNotCurrentPlayer().getHero().getCardFromBoardByUUID(ennemyUUID));
+    			min.setAttack(min.getAttack()+3);
+    			
+    			// gestion de base après avoir play une carte
+    			// on retire la carte de la main du joueur
+				this.getCurrentPlayer().getHero().getHand().remove(this.getCurrentPlayer().getHero().getCardFromHandByUUID(tmpUUID));
+				// on lui retire le mana en conséquence
+				this.getCurrentPlayer().getHero().setMana(this.getCurrentPlayer().getHero().getMana()-1);
+				
+				this.iAmWaitingFor = "";
+				this.tmpUUID = null;
+    		}
+    		// si la créature est sur notre board
+    		else if(this.getCurrentPlayer().getHero().isOnMyBoard(ennemyUUID)) {
+    			Minion min = (Minion)(this.getCurrentPlayer().getHero().getCardFromBoardByUUID(ennemyUUID));
+    			min.setAttack(min.getAttack()+3);
+    			
+    			// gestion de base après avoir play une carte
+    			// on retire la carte de la main du joueur
+				this.getCurrentPlayer().getHero().getHand().remove(this.getCurrentPlayer().getHero().getCardFromHandByUUID(tmpUUID));
+				// on lui retire le mana en conséquence
+				this.getCurrentPlayer().getHero().setMana(this.getCurrentPlayer().getHero().getMana()-1);
+				
+				this.iAmWaitingFor = "";
+				this.tmpUUID = null;
     		}
     	}
     }

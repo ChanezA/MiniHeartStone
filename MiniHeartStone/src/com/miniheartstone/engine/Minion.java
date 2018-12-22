@@ -14,11 +14,11 @@ public class Minion extends Card {
 	protected UUID MinionUUID;
 	
 	protected boolean hasProvocation;
-	protected boolean hasLifeSteal;
+	protected boolean hasVolDeVie;
 	protected boolean hasCharge;
 	
 	Minion(int life, int attack,int manaCost, String name, String description, String pictureURL,
-			boolean hasProvocation, boolean hasLifeSteal, boolean hasCharge){
+			boolean hasProvocation, boolean hasVolDeVie, boolean hasCharge){
 		
 		super(manaCost, name, pictureURL, description);
 		this.life = life;
@@ -28,13 +28,13 @@ public class Minion extends Card {
 		this.MinionUUID = UUID.randomUUID();
 		
 		this.hasProvocation = hasProvocation;
-		this.hasLifeSteal = hasLifeSteal;
+		this.hasVolDeVie = hasVolDeVie;
 		this.hasCharge = hasCharge;
 	}
 	
 	public Minion cloneMinion(){
 		Minion theClone = new Minion(this.getLife(), this.getAttack(),this.getManaCost(), this.getName(), this.getDescription(), this.getPictureURL(),
-				this.getHasPrococation(), this.getHasLifeSteal(), this.getHasCharge());
+				this.getHasPrococation(), this.getHasVolDeVie(), this.getHasCharge());
 		return theClone;
 	}
 	
@@ -62,12 +62,24 @@ public class Minion extends Card {
 		return this.hasCharge;
 	}
 	
-	public boolean getHasPrococation() {
-		return this.hasCharge;
+	public void setHasCharge(boolean bl) {
+		this.hasCharge = bl;
 	}
 	
-	public boolean getHasLifeSteal() {
-		return this.hasCharge;
+	public boolean getHasPrococation() {
+		return this.hasProvocation;
+	}
+	
+	public void setHasProvocation(boolean bl) {
+		this.hasProvocation = bl;
+	}
+	
+	public boolean getHasVolDeVie() {
+		return this.hasVolDeVie;
+	}
+	
+	public void setHasVolDeVie(boolean bl) {
+		this.hasVolDeVie = bl;
 	}
 	
 	//getter .
@@ -86,7 +98,7 @@ public class Minion extends Card {
 				"readyToAttack :"+this.readyToAttack+"\n"+
 				"MinionUUID : "+this.MinionUUID+"\n"+
 				"hasProvocation : "+this.hasProvocation+"\n"+
-				"hasLifeSteal : "+this.hasLifeSteal+"\n"+
+				"hasLifeSteal : "+this.hasVolDeVie+"\n"+
 				"hasCharge : "+this.hasCharge+"\n"+"\n"+
 
 				"manaCost : "+this.manaCost+"\n"+

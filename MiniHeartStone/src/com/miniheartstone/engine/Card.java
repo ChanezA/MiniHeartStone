@@ -40,8 +40,23 @@ abstract class Card {
 		return this.name;
 	}
 	
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
+	public void setPictureURL(String pictureURL) {
+		this.pictureURL = pictureURL;
+	}
+	
 	public int getManaCost() {
 		return this.manaCost;
+	}
+	public void setManaCost(int manaCost) {
+		this.manaCost = manaCost;
 	}
 	
 	public String getDescription() {
