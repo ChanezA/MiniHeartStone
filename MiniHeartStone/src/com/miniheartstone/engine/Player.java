@@ -5,59 +5,32 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 public class Player {
-	//test
-	protected String name;
+	
+	protected String pseudo;
 	protected Hero hero;
 	protected int level;
-	protected List<Card> hand;
-	protected Game game;
 	protected UUID playerID;
 	
-	public Player(String name,  Hero hero, int level) {
-		this.name = name;
+	public Player(String pseudo,  Hero hero, int level) {
+		this.pseudo = pseudo;
 		this.hero = hero;
 		this.level = level;
-		
 		UUID playerID = UUID.randomUUID();
-		List<Card> hand = new ArrayList<Card>();
-		//wala
 	}
 	
 	public Hero getHero() {
 		return this.hero;
 	}
 
-	public String getName() { return this.name; }
+	public String getPSeudo() {
+		return this.pseudo;
+	}
 
-	public void addCardToHand(Card card) {
-		this.hand.add(card);
-	}
-	
-	public List<Card> getHand() {
-		return this.hand;
-	}
-	
-	public Card getSpecificCard(UUID cardId) throws IllegalAccessException{
-		
-		for (Card card : this.hand)
-	         if(card.getCardID()==cardId) {
-	        	 return card;
-	         }
-		
-		throw new IllegalAccessException("la carte choisis n'appartient pas à la main");
-	}
-	 
-	
-
-	public void setGame(Game game) {
-		this.game = game;
-	}
-	
 	public UUID getPlayerID() {
 		return this.playerID;
 	}
 	
-	public void invock(Card card) {
+	public void invock(UUID uuid) {
 		hand.remove(card);
 		card.setIsInvock(true);
 

@@ -43,7 +43,7 @@ public class Hero {
 			Card lzl = new Spell(1, "Image miroir", "je suis un spell qui invoque 2 0/2 provoc", null);
 			this.deck.add(lzl);
 			
-			Card lyl = new Spell(1, "Maîtrise du blocage", "je suis un spell qui pioche", null);
+			Card lyl = new Spell(3, "Maîtrise du blocage", "je suis un spell qui pioche", null);
 			this.deck.add(lyl);
 			
 		}
@@ -55,8 +55,11 @@ public class Hero {
 			hand.add((deck.get(rd)).cloneCard());
 		}
 		
-		public void invock(UUID cardID) {
-			if(isOnMyHand (cardID)) {
+		public boolean invock(UUID cardID) {
+			boolean isInvock = false;
+			if(this.isOnMyHand(cardID) && this.getCardFromHandByUUID(cardID).getManaCost() <= this.getMana()) {
+				// on retire le mana au joueur
+				this.setMana(this.getMana() - this.getCardFromHandByUUID(cardID).getManaCost());
 				// si c'est un minion
 				if(this.getCardFromHandByUUID(cardID) instanceof Minion ) {
 					//System.out.println("exsque je passe ici leleâkôeckpaekcp");
@@ -102,6 +105,7 @@ public class Hero {
 					}
 				}
 			}
+			return isInvock;
 		}
 		
 		public void hasBeenAttack(UUID carteAttaquéeUUID, int degats) {
@@ -255,6 +259,7 @@ public class Hero {
 			her.draw();
 			her.draw();
 			
+			her.setMana(20);
 			her.invock(her.getHand().get(0).getCardUUID());
 			her.invock(her.getHand().get(0).getCardUUID());
 			her.invock(her.getHand().get(0).getCardUUID());
@@ -262,5 +267,6 @@ public class Hero {
 			
 			
 			System.out.println(her.superToString());
+			System.out.println(her.getMana());
 		}
 }
