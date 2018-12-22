@@ -25,17 +25,27 @@ public class Hero {
 			this.HeroUUID = UUID.randomUUID();
 			// ici aller chercher dnas Spring pour remplier Deck
 			
-			Card lel = new Minion(1, 0,1, "carte1", "je suis n1", null,false, false, true);
+			Card lel = new Minion(1, 1,1, "Sanglier de brocheroc", "je suis n1", null,false, false, false);
 			this.deck.add(lel);
-
-			Card lal = new Minion(2, 0,2, "Chef de raid", "je suis n2", null,false, false, false);
+			//						vie, attack , mana				provo life steal charge
+			Card lal = new Minion(1, 3,3, "Chevaucheur de loup", "je suis n2", null,false, false, true);
 			this.deck.add(lal);
 
-			Card lul = new Minion(3, 0,3, "carte3", "je suis n3", null,false, true, false);
+			Card lul = new Minion(2, 2,3, "Chef de raid", "je suis fort", null,false, true, false);
 			this.deck.add(lul);
 
-			Card lol = new Minion(4, 0,4, "Chef de raid", "je suis n4", null,true, false, false);
+			Card lol = new Minion(5, 4,4, "Yéti noroit", "je suis n4", null,true, false, false);
 			this.deck.add(lol);
+			
+			Card lil = new Minion(2, 1,1, "Soldat du compté d'or", "je suis n4", null,true, false, false);
+			this.deck.add(lil);
+			
+			Card lzl = new Spell(1, "Image miroir", "je suis un spell qui invoque 2 0/2 provoc", null);
+			this.deck.add(lzl);
+			
+			Card lyl = new Spell(1, "Maîtrise du blocage", "je suis un spell qui pioche", null);
+			this.deck.add(lyl);
+			
 		}
 		
 		//public abstract void power();
@@ -47,8 +57,9 @@ public class Hero {
 		
 		public void invock(UUID cardID) {
 			if(isOnMyHand (cardID)) {
+				// si c'est un minion
 				if(this.getCardFromHandByUUID(cardID) instanceof Minion ) {
-					
+					//System.out.println("exsque je passe ici leleâkôeckpaekcp");
 					Card card = this.getCardFromHandByUUID(cardID);
 					hand.remove(card);
 					// si ma carte est un chef de raid +1 att a toutes les cretures du board
@@ -68,8 +79,48 @@ public class Hero {
 						((Minion)card).setReadyToAttack(true);
 					}
 				}
+				//si c'est un spell
 				else {
+					//System.out.println("et la ");
+					Spell spell = (Spell)(this.getCardFromHandByUUID(cardID));
 					
+					// si c'est image miroir
+					if (spell.getName() == "Image miroir") {
+						Card one =new Minion(2, 0,0, "Serviteurs", "je suis invoque par img mir", null,true, false, false);
+						Card two =new Minion(2, 0,0, "Serviteurs", "je suis invoque par img mir", null,true, false, false);
+						
+						this.hand.add(one);
+						this.hand.add(two);
+						this.invock(one.getCardUUID());
+						this.invock(two.getCardUUID());
+						this.getHand().remove(this.getCardFromHandByUUID(cardID));
+					}
+					if(spell.getName() == "Maîtrise du blocage") {
+						this.getHand().remove(this.getCardFromHandByUUID(cardID));
+						this.setArmor(this.getArmor()+5);
+						this.draw();
+					}
+				}
+			}
+		}
+		
+		public void hasBeenAttack(UUID carteAttaquéeUUID, int degats) {
+			if(this.isOnMyHand(carteAttaquéeUUID)) {
+				Minion min = (Minion)(this.getCardFromHandByUUID(carteAttaquéeUUID));
+				min.setLife(min.getLife()-degats);
+				
+				if (min.getName() == "Chef de raid") {
+					this.getBoard().remove(min);
+				}
+				
+				if (min.getLife() <= 0) {
+					this.getBoard().remove(min);
+					if (min.getName() == "Chef de raid") {
+						for(int i =0; i< board.size(); i++) {
+							Card miniminion = this.getBoard().get(i);
+							((Minion)miniminion).setAttack(((Minion)miniminion).getAttack()-1);
+						}
+					}
 				}
 			}
 		}
@@ -78,6 +129,17 @@ public class Hero {
 		public boolean isOnMyHand (UUID cardID) {
 			boolean present = false;
 			for (Card card : hand) {
+			    if (card.getCardUUID() == cardID) {
+			    	present = true;
+			    	break;
+			    }
+			}
+			return present;
+		}
+		
+		public boolean isOnMyBoard (UUID cardID) {
+			boolean present = false;
+			for (Card card : board) {
 			    if (card.getCardUUID() == cardID) {
 			    	present = true;
 			    	break;
@@ -142,6 +204,10 @@ public class Hero {
 			return this.armor;
 		}
 		
+		public void setArmor(int num) {
+			this.armor = num;
+		}
+		
 		public String toString() {
 			String affHand = "\n"+"\n"+ "------------- affichage de la main courant ------------- \n";
 			for(int i = 0; i < this.hand.size(); i++) {
@@ -159,8 +225,8 @@ public class Hero {
 		}
 		
 		public String superToString() {
-			String aff =    "					 Hero PV					\n"
-							+"					|   "+this.getHealth()+"   |					\n"
+			String aff =    "					 PV Armor					\n"
+							+"					|   "+this.getHealth()+"  "+ this.getArmor()+"  |					\n"
 							+"					----------					\n";
 			
 			aff = aff + "Cartes en main : \n";
@@ -185,7 +251,12 @@ public class Hero {
 			her.draw();
 			her.draw();
 			her.draw();
+			her.draw();
+			her.draw();
+			her.draw();
 			
+			her.invock(her.getHand().get(0).getCardUUID());
+			her.invock(her.getHand().get(0).getCardUUID());
 			her.invock(her.getHand().get(0).getCardUUID());
 			her.invock(her.getHand().get(0).getCardUUID());
 			
