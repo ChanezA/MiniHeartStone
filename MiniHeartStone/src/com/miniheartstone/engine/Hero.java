@@ -16,6 +16,9 @@ public class Hero {
 		protected ArrayList<Card> hand = new ArrayList<Card>();
 		protected ArrayList<Card> board = new ArrayList<Card>();
 		
+		protected boolean looser = false;
+		protected boolean winner = false;
+		
 		protected Hero(String HeroName, int health, String description) {
 			this.HeroName= HeroName;
 			this.health=health;
@@ -108,6 +111,31 @@ public class Hero {
 			return isInvock;
 		}
 		
+		public void myHeroHasBeenAttack(int degats) {
+			// si j'ai de l'armure
+			if(this.getArmor() > 0) {
+				int diff = this.getArmor()-degats;
+				// si les degats son suppérieur à l'armure
+				if(diff < 0) {
+					this.setArmor(0);
+					// je fais + car diff est ici négatif
+					this.setHealth(this.getHealth()+ diff);
+				}
+				// si l'armure suffit
+				else {
+					this.setArmor(diff);
+				}
+			}
+			// si je n'ai pas d'armur
+			else{
+				this.setHealth(this.getHealth()-degats);
+			}
+			// je vérifie que le hero n'est pas mort
+			if (this.getHealth() <=0) {
+				looser = true;
+			}
+		}
+		
 		public void hasBeenAttack(UUID carteAttaquéeUUID, int degats) {
 			if(this.isOnMyHand(carteAttaquéeUUID)) {
 				Minion min = (Minion)(this.getCardFromHandByUUID(carteAttaquéeUUID));
@@ -155,6 +183,15 @@ public class Hero {
 		// retourne la card de la main en fonction d'un UUID ou null si elle n'est pas dans la main du joueur
 		public Card getCardFromHandByUUID (UUID cardID) {
 			for (Card card : hand) {
+				if (card.getCardUUID() == cardID) {
+					return card;
+				}
+			}
+			return null;
+		}
+		
+		public Card getCardFromBoardByUUID (UUID cardID) {
+			for (Card card : board) {
 				if (card.getCardUUID() == cardID) {
 					return card;
 				}

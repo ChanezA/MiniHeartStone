@@ -1,7 +1,6 @@
 package com.miniheartstone.engine;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 
@@ -9,26 +8,18 @@ public class Game {
 
     // Private attributes
     private Player currentPlayer;
-
+    private Player notCurrentPlayer;
     private Player player1;
     private Player player2;
-
-    private List<Card> boardP1;
-    private List<Card> boardP2;
     
     private UUID gameID;
 
-    private int round;
+    public static int MANA_MAX = 10;
 
     // Constructor
     public Game(Player player1, Player player2) {
         this.player1  = player1;
-        this.player1.setGame(this);
         this.player2 = player2;
-        this.player2.setGame(this);
-        this.boardP1 = new ArrayList<Card>();
-        this.boardP2 = new ArrayList<Card>();
-        this.round = 0;
         
         UUID gameID = UUID.randomUUID();
         
@@ -36,17 +27,24 @@ public class Game {
     }
 
     // Getters
-    public Player getCurrentPlayer() { return this.currentPlayer; }
+    public Player getCurrentPlayer() {
+    	return this.currentPlayer;
+    }
     public Player getNotCurrentPlayer() {
-        if (this.currentPlayer == this.player1) return this.player2;
-        else return this.player1;
+        return this.notCurrentPlayer;
     }
     public Player getPlayer1() { return this.player1; }
     public Player getPlayer2() { return this.player2; }
-    public List<Card> getBoardP1() { return this.boardP1; }
-    public List<Card> getBoardP2() { return this.boardP2; }
-    public int getRound() { return this.round; }
+    
     public UUID getGameID () {return this.gameID;}
+    
+    //Setters
+    public void setCurrentPlayer(Player player) {
+    	this.currentPlayer = player;
+    }
+    public void setNotCurrentPlayer(Player player) {
+    	this.notCurrentPlayer = player;
+    }
 
     /**
      * Initializes the game
@@ -54,36 +52,40 @@ public class Game {
     private void initGame() {
         this.currentPlayer = player1;
         int i;
-        Hero hero = player1.getHero();
         for (i = 0; i < 4; i++) {
-            player1.addCardToHand(this.draw(hero));
+            player1.getHero().draw();
+            player2.getHero().draw();
         }
-        hero = player2.getHero();
-        for (i = 0; i < 4; i++) {
-            player2.addCardToHand(this.draw(hero));
-        }
+        this.getCurrentPlayer().getHero().setMana(1);
+        this.getNotCurrentPlayer().getHero().setMana(0);
     }
 
     /**
-     * Does all the action of a round beginning
+     * passage de tour
      */
-    private void initRound() {
-        Player currP = this.currentPlayer;
-        Hero hero = currP.getHero();
-
-        if (this.round < Hero.MANA_MAX) hero.setMana(this.round);
-        else hero.setMana(Hero.MANA_MAX);
-
-        Game.draw(hero);
+    private void passTurn(UUID playerID) {
+    	if(this.CurrentPlayerOrNot(playerID)) {
+	    	// echange le joueur courant avec le non courant
+	        Player tmp = this.getCurrentPlayer();
+	        this.setCurrentPlayer(this.getNotCurrentPlayer());
+	        this.setNotCurrentPlayer(tmp);
+	        
+	        // incrémentation du mana pour le nouveau joueur courant si besoin
+	        if(this.getCurrentPlayer().getHero().getMana() < MANA_MAX) {
+	        	this.getCurrentPlayer().getHero().setMana(this.getCurrentPlayer().getHero().getMana()+1);
+	        }
+	
+	        this.getCurrentPlayer().getHero().draw();
+    	}
     }
-
-    /**
-     * Returns one of the card of the given hero deck
-     */
-    private static Card draw(Hero hero) {
-        int size = hero.getDeck().size();
-        int i = (int)(Math.random()*size);
-        return hero.getDeck().get(i);
+    
+    // retourne vrai si le joueur passé en param est courant ou faux pour tout le reste
+    public boolean CurrentPlayerOrNot(UUID playerUUID) {
+    	boolean crt = false;
+    	if(this.getCurrentPlayer().getPlayerID() == playerUUID) {
+    		crt = true;
+    	}
+    	return crt;
     }
 
     /**
@@ -91,12 +93,12 @@ public class Game {
      * @param player
      * @return The board as a List<Card>
      */
-    public List<Card> getBoard(Player player){
-    	if (player == this.player1 ) {
-    		return this.boardP1;
+    public ArrayList<Card> getMyBoard(UUID playerUUID){
+    	if (playerUUID == this.player1.getPlayerID() ) {
+    		return this.getPlayer1().getHero().getBoard();
     	}
     	else {
-    		return this.boardP2;
+    		return this.getPlayer2().getHero().getBoard();
     	}
     }
 
@@ -105,23 +107,84 @@ public class Game {
      * @param player
      * @return The board as a List<Card>
      */
-    public List<Card> getOpponentBoard(Player player){
-    	if (player == this.player1 ) {
-    		return this.boardP2;
+    public ArrayList<Card> getOpponentBoard(UUID playerUUID){
+    	if (playerUUID == this.player1.getPlayerID() ) {
+    		return this.getPlayer2().getHero().getBoard();
     	}
     	else {
-    		return this.boardP1;
+    		return this.getPlayer1().getHero().getBoard();
     	}
     }
     
-    public Player getOpponentPlayer(Player player){
-    	if (player == this.player1 ) {
-    		return this.player1;
-    	}
-    	else {
-    		return this.player2;
+    public void invock(UUID playerUUID, UUID cardID) {
+    	// si tu es bien le joueur courant et que la carte est bien dans ta main et que tu as bien le mana necessaire
+    	if(this.CurrentPlayerOrNot(playerUUID) && this.getCurrentPlayer().getHero().isOnMyHand(cardID) && this.getCurrentPlayer().getHero().getMana() >= this.getCurrentPlayer().getHero().getCardFromHandByUUID(cardID).getManaCost()) {
+    		
+    		// si cette carte est un minion
+    		if(this.getCurrentPlayer().getHero().getCardFromHandByUUID(cardID) instanceof Minion) {
+    			this.getCurrentPlayer().getHero().invock(cardID);
+    		}
+    		// si c'est un spell
+    		else if(this.getCurrentPlayer().getHero().getCardFromHandByUUID(cardID) instanceof Spell) {
+    			// si ce n'est pas un spell qui affecte l'enemi ni un spell qui necessite un siblage
+    			if(this.getCurrentPlayer().getHero().getCardFromHandByUUID(cardID).getName() == "Image miroir"
+    					|| this.getCurrentPlayer().getHero().getCardFromHandByUUID(cardID).getName() == "Maîtrise du blocage") {
+    				this.getCurrentPlayer().getHero().invock(cardID);
+    			}
+    			
+    			// si c'est un spell c'est tourbilol
+    			else if(this.getCurrentPlayer().getHero().getCardFromHandByUUID(cardID).getName() == "Tourbillon") {
+    				// on retire 1 pv a toutes les invocations des bord des deux joueurs
+    				for(int i=0; i<this.getCurrentPlayer().getHero().getBoard().size(); i++) {
+    					Minion min = (Minion)(this.getCurrentPlayer().getHero().getBoard().get(i));
+    					this.getCurrentPlayer().getHero().hasBeenAttack(min.getCardUUID(), 1);
+    				}
+    				for(int i=0; i<this.getNotCurrentPlayer().getHero().getBoard().size(); i++) {
+    					Minion min = (Minion)(this.getNotCurrentPlayer().getHero().getBoard().get(i));
+    					this.getNotCurrentPlayer().getHero().hasBeenAttack(min.getCardUUID(), 1);
+    				}
+    				// on retire la carte de la main du joueur
+    				this.getCurrentPlayer().getHero().getHand().remove(this.getCurrentPlayer().getHero().getCardFromHandByUUID(cardID));
+    				// on lui retire le mana en conséquence
+    				this.getCurrentPlayer().getHero().setMana(this.getCurrentPlayer().getHero().getMana()-1);
+    			}
+    			
+    			// si c'est le spell consécration
+    			else if(this.getCurrentPlayer().getHero().getCardFromHandByUUID(cardID).getName() == "Consécration") {
+    				// retire 2 pdv a tous les minions adverse
+    				for(int i=0; i<this.getNotCurrentPlayer().getHero().getBoard().size(); i++) {
+    					Minion min = (Minion)(this.getNotCurrentPlayer().getHero().getBoard().get(i));
+    					this.getNotCurrentPlayer().getHero().hasBeenAttack(min.getCardUUID(), 2);
+    				}
+    				// degats sur le joueur adverse
+    				this.getNotCurrentPlayer().getHero().myHeroHasBeenAttack(2);
+    				// on retire la carte de la main du joueur
+    				this.getCurrentPlayer().getHero().getHand().remove(this.getCurrentPlayer().getHero().getCardFromHandByUUID(cardID));
+    				// on lui retire le mana en conséquence
+    				this.getCurrentPlayer().getHero().setMana(this.getCurrentPlayer().getHero().getMana()-4);
+    			}
+    			
+    			// si le spell c'est explosion des arcanes
+    			else if(this.getCurrentPlayer().getHero().getCardFromHandByUUID(cardID).getName() == "Explosion des arcanes") {
+    				// retire 1 pdv a tous les minions adverse
+    				for(int i=0; i<this.getNotCurrentPlayer().getHero().getBoard().size(); i++) {
+    					Minion min = (Minion)(this.getNotCurrentPlayer().getHero().getBoard().get(i));
+    					this.getNotCurrentPlayer().getHero().hasBeenAttack(min.getCardUUID(), 1);
+    				}
+    				// on retire la carte de la main du joueur
+    				this.getCurrentPlayer().getHero().getHand().remove(this.getCurrentPlayer().getHero().getCardFromHandByUUID(cardID));
+    				// on lui retire le mana en conséquence
+    				this.getCurrentPlayer().getHero().setMana(this.getCurrentPlayer().getHero().getMana()-4);
+    			}
+    			// si le spell c'est Métamorphose
+    			
+    			// si le spell c'est Bénédiction de puissance
+    		}
     	}
     }
-    
-
 }
+
+/*
+|| this.getCurrentPlayer().getHero().getCardFromHandByUUID(cardID).getName() == "Consécration"
+|| this.getCurrentPlayer().getHero().getCardFromHandByUUID(cardID).getName() == "Explosion des arcanes"
+*/
