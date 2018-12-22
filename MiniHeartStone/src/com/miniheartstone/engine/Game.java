@@ -177,7 +177,7 @@ public class Game {
     				// on retire la carte de la main du joueur
     				this.getCurrentPlayer().getHero().getHand().remove(this.getCurrentPlayer().getHero().getCardFromHandByUUID(cardID));
     				// on lui retire le mana en conséquence
-    				this.getCurrentPlayer().getHero().setMana(this.getCurrentPlayer().getHero().getMana()-4);
+    				this.getCurrentPlayer().getHero().setMana(this.getCurrentPlayer().getHero().getMana()-2);
     			}
     			// si le spell c'est Métamorphose
     			else if(this.getCurrentPlayer().getHero().getCardFromHandByUUID(cardID).getName() == "Métamorphose") {
@@ -253,8 +253,3 @@ public class Game {
     	}
     }
 }
-
-/*
-|| this.getCurrentPlayer().getHero().getCardFromHandByUUID(cardID).getName() == "Consécration"
-|| this.getCurrentPlayer().getHero().getCardFromHandByUUID(cardID).getName() == "Explosion des arcanes"
-*/
