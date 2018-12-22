@@ -1,66 +1,54 @@
 package com.miniheartstone.engine;
-
-
+/*
+ * Louis le bg
+ *  Nice end
+ */
 import java.util.UUID;
 
 abstract class Card {
-	 //test
+	
 	protected int manaCost;
-	//Every effect the card has
-	protected Effect effect;
-	protected String pictureURL;
-	protected String name;
 	protected String description;
-	protected boolean isInvock;
-	protected boolean hasAttacked;
+	protected String pictureURL;
+	
+	protected String name;
 	protected UUID cardID;
 	
-	protected Card(int manaCost, String name, String pictureURL, String description, Effect effect) {
+	public Card(int manaCost, String name, String pictureURL, String description) {
 		this.manaCost = manaCost;
 		this.name = name;
 		this.pictureURL = pictureURL;
 		this.description = description;
-		this.effect = effect;
-		this.isInvock = false;
-	}
-	
-	Effect getEffect() {
-		return effect;
-	}
-	
-	int getManaCost() {
-		return manaCost;
-	}
-	
-	String getName() {
-		return name;
-	}
-	
-	String getDescription() {
-		return description;
-	}
-	
-	boolean getIsInvock() {
-		return isInvock;
-	}
-	
-	void setIsInvock(boolean bool) {
-		this.isInvock = bool;
-	}
-	
-	void setHasAttacked(boolean hasattacked) {
-		this.hasAttacked=hasattacked;
-	}
-	
-	boolean hasAttacked () {
-		return this.hasAttacked;
 		
+		this.cardID = UUID.randomUUID();
 	}
-	int getAttack() {
-		return 0;
+	
+	public Card cloneCard() {
+		if (this instanceof Minion ) {
+			return (Card)(((Minion)this).cloneMinion());
+		}
+		else {
+			return (Card)(((Spell)this).cloneSpell());
+		}
 	}
-
-	UUID getCardID() {
+	
+	public UUID getCardUUID(){
 		return this.cardID;
+	}
+	
+	public String getName() {
+		return this.name;
+	}
+	
+	public int getManaCost() {
+		return this.manaCost;
+	}
+	
+	public String getDescription() {
+		return this.description;
+	}
+	
+	public String getPictureURL() {
+		return this.pictureURL;
 	}
 }
