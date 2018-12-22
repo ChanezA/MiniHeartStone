@@ -2,7 +2,7 @@ package com.miniheartstone.engine;
 
 public class Paladin extends Hero {
 	
-	public Paladin(String HeroName, int health, String description) {
+	public Paladin() {
 		super("Paladin", 30, "mdr je suis un palalol");
 	}
 	
