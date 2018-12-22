@@ -87,12 +87,12 @@ public class Hero {
 					// si c'est image miroir
 					if (spell.getName() == "Image miroir") {
 						Card one =new Minion(2, 0,0, "Serviteurs", "je suis invoque par img mir", null,true, false, false);
+						((Minion)one).setAttack(((Minion)one).getAttack()+ this.howManyChefDeRaidInMyBoard());
 						Card two =new Minion(2, 0,0, "Serviteurs", "je suis invoque par img mir", null,true, false, false);
+						((Minion)two).setAttack(((Minion)two).getAttack()+ this.howManyChefDeRaidInMyBoard());
+						this.getBoard().add(one);
+						this.getBoard().add(two);
 						
-						this.hand.add(one);
-						this.hand.add(two);
-						this.invock(one.getCardUUID());
-						this.invock(two.getCardUUID());
 						this.getHand().remove(this.getCardFromHandByUUID(cardID));
 					}
 					if(spell.getName() == "Maîtrise du blocage") {
