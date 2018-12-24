@@ -7,7 +7,7 @@ public class Paladin extends Hero {
 	}
 	
 	
-	void power() {
+	public void power() {
 		Card card = new Minion(1, 1,0, "Recrue de la Main d'argent", "je suis la pour LE swag", null,false, false, false);
 		((Minion)card).setAttack(((Minion)card).getAttack()+ this.howManyChefDeRaidInMyBoard());
 		this.getBoard().add(card);

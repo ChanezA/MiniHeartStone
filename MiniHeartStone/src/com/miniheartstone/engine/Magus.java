@@ -8,7 +8,7 @@ public class Magus extends Hero {
 		super("Mage", 30, "Oh lala je suis un mage trrres puissant");
 	}
 
-	void power() {
+	public void power() {
 	}
 	
 	public String toString() {

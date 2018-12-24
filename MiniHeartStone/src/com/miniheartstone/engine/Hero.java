@@ -2,7 +2,7 @@ package com.miniheartstone.engine;
 import java.util.ArrayList;
 import java.util.UUID;
 
-public class Hero {
+public abstract class Hero {
 		static int MANA_MAX= 10;
 		protected int mana;
 		protected UUID HeroUUID;
@@ -51,7 +51,7 @@ public class Hero {
 			
 		}
 		
-		//public abstract void power();
+		public abstract void power();
 		
 		public void draw() {
 			int rd = (int)(Math.random() * (deck.size()));
@@ -209,6 +209,15 @@ public class Hero {
 			return count;
 		}
 		
+		public boolean aCardWithProvocationInMyBorad() {
+			for(int i =0; i< board.size(); i++) {
+				if(((Minion)this.getBoard().get(i)).getHasPrococation()) {
+					return true;
+				}
+			}
+			return false;
+		}
+		
 		public String getHeroName() {
 			return this.HeroName;
 		}
@@ -230,7 +239,12 @@ public class Hero {
 		}
 		
 		public void setHealth(int health) {
-			this.health = health;
+			if(health >= 30) {
+				this.health = 30;
+			}
+			else {
+				this.health = health;
+			}
 		}
 		
 		public int getMana() {
@@ -288,7 +302,7 @@ public class Hero {
 		}
 			
 		public static void main(String[] args) {
-			Hero her = new Hero("Louis le bg", 30, "le plus fort");
+			/*Hero her = new Hero("Louis le bg", 30, "le plus fort");
 			her.draw();
 			her.draw();
 			her.draw();
@@ -304,6 +318,6 @@ public class Hero {
 			
 			
 			System.out.println(her.superToString());
-			System.out.println(her.getMana());
+			System.out.println(her.getMana());*/
 		}
 }

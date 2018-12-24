@@ -14,6 +14,7 @@ public class Game {
     
     protected String iAmWaitingFor = "";
     protected UUID tmpUUID = null;
+    protected boolean HeroicPowerHasBeenUse = false;
     
     protected UUID gameID;
 
@@ -72,10 +73,17 @@ public class Game {
 	        Player tmp = this.getCurrentPlayer();
 	        this.setCurrentPlayer(this.getNotCurrentPlayer());
 	        this.setNotCurrentPlayer(tmp);
+	        HeroicPowerHasBeenUse = false;
 	        
 	        // incrémentation du mana pour le nouveau joueur courant si besoin
 	        if(this.getCurrentPlayer().getHero().getMana() < MANA_MAX) {
 	        	this.getCurrentPlayer().getHero().setMana(this.getCurrentPlayer().getHero().getMana()+1);
+	        }
+	        
+	        // on remet toutes les créatures du joueru courant ready to attack
+	        for(int i = 0; i<this.getCurrentPlayer().getHero().getBoard().size(); i++) {
+	        	Minion min =(Minion)(this.getCurrentPlayer().getHero().getBoard().get(i));
+	        	min.setReadyToAttack(true);
 	        }
 	
 	        this.getCurrentPlayer().getHero().draw();
@@ -194,8 +202,9 @@ public class Game {
     }
     
     // selection d'un minion ou d'un hero pour spell pouvoirs héroiques etc ...
-    public void select(UUID ennemyUUID) {
-    	if (this.iAmWaitingFor == "Métamorphose") {
+    public void select(UUID playerUUID, UUID ennemyUUID) {
+    	
+    	if (this.iAmWaitingFor == "Métamorphose" && playerUUID == this.getCurrentPlayer().getPlayerID()) {
     		// si on cible une créature du board adverse
     		if(this.getNotCurrentPlayer().getHero().isOnMyBoard(ennemyUUID)) {
     			Minion min = (Minion)(this.getNotCurrentPlayer().getHero().getCardFromBoardByUUID(ennemyUUID));
@@ -221,7 +230,7 @@ public class Game {
     			
     		}
     	}
-    	else if (this.iAmWaitingFor == "Bénédiction de puissance") {
+    	else if (this.iAmWaitingFor == "Bénédiction de puissance" && playerUUID == this.getCurrentPlayer().getPlayerID()) {
     		// si la créature est sur le board adverse
     		if(this.getNotCurrentPlayer().getHero().isOnMyBoard(ennemyUUID)) {
     			Minion min = (Minion)(this.getNotCurrentPlayer().getHero().getCardFromBoardByUUID(ennemyUUID));
@@ -251,5 +260,101 @@ public class Game {
 				this.tmpUUID = null;
     		}
     	}
+    	// si on attend pour le pouvoir du mage
+    	else if (this.iAmWaitingFor == "Pouvoir du mage"+this.getCurrentPlayer().getPlayerID().toString() && playerUUID == this.getCurrentPlayer().getPlayerID()) {
+    		// si tu as le mana suffisant pour jouer le pouvoir
+    		if(this.getCurrentPlayer().getHero().getMana()>=2) {
+    			// si la seclection est le joueur adverse
+    			if(this.getNotCurrentPlayer().getPlayerID() == tmpUUID) {
+    				// on applique les degats au hero adverse
+    				this.getNotCurrentPlayer().getHero().myHeroHasBeenAttack(1);
+    				// on retire le prix du pouvoir héroique ici 2
+    				this.getCurrentPlayer().getHero().setMana(this.getCurrentPlayer().getHero().getMana()-2);
+    				
+    				this.iAmWaitingFor = "";
+    				this.tmpUUID = null;
+    				HeroicPowerHasBeenUse = true;
+    			}
+    			// si c'est une créature adverse
+    			else if(this.getNotCurrentPlayer().getHero().isOnMyBoard(tmpUUID)) {
+    				this.getNotCurrentPlayer().getHero().hasBeenAttack(tmpUUID,1);
+    				// on retire le prix du pouvoir héroique ici 2
+    				this.getCurrentPlayer().getHero().setMana(this.getCurrentPlayer().getHero().getMana()-2);
+    				
+    				this.iAmWaitingFor = "";
+    				this.tmpUUID = null;
+    				HeroicPowerHasBeenUse = true;
+    			}
+    		}
+    	}
     }
+	public void power(UUID playerUUID,UUID selectCardUUID) {
+		// si le joueur est bien le joueur courant
+		if(playerUUID == this.getCurrentPlayer().getPlayerID()) {
+			// si tu as le mana suffisant pour jouer le pouvoir et que tu n'as pas deja use ton pouvoir 
+    		if(this.getCurrentPlayer().getHero().getMana()>=2 && HeroicPowerHasBeenUse == false) {
+				// si c'est un mage 
+				if (this.getCurrentPlayer().getHero().getHeroName() == "Mage") {
+					iAmWaitingFor = "Pouvoir du mage"+this.getCurrentPlayer().getPlayerID().toString();
+	    			this.tmpUUID = selectCardUUID;
+				}
+				// si c'est un guerrier ou palladin
+				else{
+					this.getCurrentPlayer().getHero().power();
+					this.getCurrentPlayer().getHero().setMana(this.getCurrentPlayer().getHero().getMana()-2);
+					
+					// le pouvoir heroic est now utilisé pour ce tour;
+					HeroicPowerHasBeenUse = true;
+				}
+    		}
+		}
+	}
+	
+	public void attack(UUID myCardUUID, UUID opponentUUID) {
+		// on vérifie que les deux créatures éxixtent bien
+		if(this.getCurrentPlayer().getHero().isOnMyBoard(myCardUUID) && this.getNotCurrentPlayer().getHero().isOnMyBoard(opponentUUID)){
+			// on vérifie que ma créature n'a pas déja attaqué
+			if (((Minion)(this.getCurrentPlayer().getHero().getCardFromBoardByUUID(myCardUUID))).getReadyToAttack() == true) {
+				Minion monMin = ((Minion)(this.getCurrentPlayer().getHero().getCardFromBoardByUUID(myCardUUID)));
+				Minion oppMin = ((Minion)(this.getNotCurrentPlayer().getHero().getCardFromBoardByUUID(opponentUUID)));
+				// si une créature adverse à provovation
+				if (this.getNotCurrentPlayer().getHero().aCardWithProvocationInMyBorad() && oppMin.getHasPrococation()) {
+					// on fais les degats sur les deux minions oklm
+					this.getNotCurrentPlayer().getHero().hasBeenAttack(opponentUUID, monMin.getAttack());
+					this.getCurrentPlayer().getHero().hasBeenAttack(myCardUUID, oppMin.getAttack());
+					monMin.setReadyToAttack(false);
+					// si ma créature à du vol de vie
+					if(monMin.getHasVolDeVie()) {
+						// on augmente les pv du hero
+						this.getCurrentPlayer().getHero().setHealth(this.getCurrentPlayer().getHero().getHealth()+monMin.getAttack());
+					}
+				}
+				// si il n'y a pas de provoc en face
+				else {
+					// on fais les degats sur les deux minions oklm
+					this.getNotCurrentPlayer().getHero().hasBeenAttack(opponentUUID, monMin.getAttack());
+					this.getCurrentPlayer().getHero().hasBeenAttack(myCardUUID, oppMin.getAttack());
+					monMin.setReadyToAttack(false);
+					// si ma créature à du vol de vie
+					if(monMin.getHasVolDeVie()) {
+						// on augmente les pv du hero
+						this.getCurrentPlayer().getHero().setHealth(this.getCurrentPlayer().getHero().getHealth()+monMin.getAttack());
+					}
+				}
+			}
+		}
+		// si ma créature existe bien sur mon board et que j'ai sélectionné le joueur adverse
+		else if (this.getCurrentPlayer().getHero().isOnMyBoard(myCardUUID) && this.getNotCurrentPlayer().getPlayerID() == opponentUUID) {
+			Minion monMin = ((Minion)(this.getCurrentPlayer().getHero().getCardFromBoardByUUID(myCardUUID)));
+			
+			// on fais les degats sur l'adversaire
+			this.getNotCurrentPlayer().getHero().myHeroHasBeenAttack(monMin.getAttack());
+			monMin.setReadyToAttack(false);
+			// si ma créature à du vol de vie
+			if(monMin.getHasVolDeVie()) {
+				// on augmente les pv du hero
+				this.getCurrentPlayer().getHero().setHealth(this.getCurrentPlayer().getHero().getHealth()+monMin.getAttack());
+			}
+		}
+	}
 }
