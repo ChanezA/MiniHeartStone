@@ -63,7 +63,7 @@ public class Minion extends Card {
 	
 	// setter life.
 	public void setLife(int life){
-		this.attack = life;
+		this.life = life;
 	}
 	
 	public boolean getHasCharge() {

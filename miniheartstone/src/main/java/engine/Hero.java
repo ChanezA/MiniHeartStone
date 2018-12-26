@@ -3,6 +3,8 @@ package engine;
 import java.util.ArrayList;
 import java.util.UUID;
 
+import exception.MiniHeartStoneException;
+
 public abstract class Hero {
 		static int MANA_MAX= 10;
 		protected int mana;
@@ -41,13 +43,13 @@ public abstract class Hero {
 			Card lol = new Minion(5, 4,4, "Y�ti noroit", "je suis n4", null,true, false, false);
 			this.deck.add(lol);
 			
-			Card lil = new Minion(2, 1,1, "Soldat du compt� d'or", "je suis n4", null,true, false, false);
+			Card lil = new Minion(2, 1,1, "Soldat du compté d'or", "je suis n4", null,true, false, false);
 			this.deck.add(lil);
 			
 			Card lzl = new Spell(1, "Image miroir", "je suis un spell qui invoque 2 0/2 provoc", null);
 			this.deck.add(lzl);
 			
-			Card lyl = new Spell(3, "Ma�trise du blocage", "je suis un spell qui pioche", null);
+			Card lyl = new Spell(3, "Maîtrise du blocage", "je suis un spell qui pioche", null);
 			this.deck.add(lyl);
 			
 		}
@@ -61,57 +63,77 @@ public abstract class Hero {
 			return crd;
 		}
 		
-		public boolean invock(UUID cardID) {
-			boolean isInvock = false;
-			if(this.isOnMyHand(cardID) && this.getCardFromHandByUUID(cardID).getManaCost() <= this.getMana()) {
-					// on retire le mana au joueur
-					this.setMana(this.getMana() - this.getCardFromHandByUUID(cardID).getManaCost());
-					// si c'est un minion
-					if(this.getCardFromHandByUUID(cardID) instanceof Minion ) {
-						//System.out.println("exsque je passe ici lele�k�eckpaekcp");
-						Card card = this.getCardFromHandByUUID(cardID);
-						hand.remove(card);
-						// si ma carte est un chef de raid +1 att a toutes les cretures du board
-						if (card.getName() == "Chef de raid") {
-							for(int i =0; i< board.size(); i++) {
-								Card miniminion = this.getBoard().get(i);
-								((Minion)miniminion).setAttack(((Minion)miniminion).getAttack()+1);
-
+		/*
+		 * Invoque une créature ou un spell, seul les spells Image miroir et maitrise du blocage sont gerrés ici
+		 * peut lancer l'exception pas le mana suffisant et l'exception cette carte n'est pas dans ta main
+		 */
+		public void invock(UUID cardID) {
+			try {
+				// si la carte est bien en main
+				if(this.isOnMyHand(cardID)){
+					// si le joueur à le mana suffisant
+					if (this.getCardFromHandByUUID(cardID).getManaCost() <= this.getMana()) {
+						// on retire le mana au joueur
+						this.setMana(this.getMana() - this.getCardFromHandByUUID(cardID).getManaCost());
+						// si c'est un minion
+						if(this.getCardFromHandByUUID(cardID) instanceof Minion ) {
+							//System.out.println("exsque je passe ici lele�k�eckpaekcp");
+							Card card = this.getCardFromHandByUUID(cardID);
+							hand.remove(card);
+							// si ma carte est un chef de raid +1 att a toutes les cretures du board
+							if (card.getName() == "Chef de raid") {
+								for(int i =0; i< board.size(); i++) {
+									Card miniminion = this.getBoard().get(i);
+									((Minion)miniminion).setAttack(((Minion)miniminion).getAttack()+1);
+		
+								}
+							}
+							// ajout des pts d'attack en fonction du nombre de chef de raids presents sur le plateau alli�
+							((Minion)card).setAttack(((Minion)card).getAttack()+ this.howManyChefDeRaidInMyBoard());
+							board.add(card);
+		
+							// si la carte � charge
+							if(((Minion)card).getHasCharge()) {
+								((Minion)card).setReadyToAttack(true);
 							}
 						}
-						// ajout des pts d'attack en fonction du nombre de chef de raids presents sur le plateau alli�
-						((Minion)card).setAttack(((Minion)card).getAttack()+ this.howManyChefDeRaidInMyBoard());
-						board.add(card);
-
-						// si la carte � charge
-						if(((Minion)card).getHasCharge()) {
-							((Minion)card).setReadyToAttack(true);
+						//si c'est un spell
+						else {
+							//System.out.println("et la ");
+							Spell spell = (Spell)(this.getCardFromHandByUUID(cardID));
+		
+							// si c'est image miroir
+							if (spell.getName() == "Image miroir") {
+								Card one =new Minion(2, 0,0, "Serviteurs", "je suis invoque par img mir", null,true, false, false);
+								((Minion)one).setAttack(((Minion)one).getAttack()+ this.howManyChefDeRaidInMyBoard());
+								Card two =new Minion(2, 0,0, "Serviteurs", "je suis invoque par img mir", null,true, false, false);
+								((Minion)two).setAttack(((Minion)two).getAttack()+ this.howManyChefDeRaidInMyBoard());
+								this.getBoard().add(one);
+								this.getBoard().add(two);
+		
+								this.getHand().remove(this.getCardFromHandByUUID(cardID));
+							}
+							// si c'est maitrise du blocage
+							if(spell.getName() == "Maîtrise du blocage") {
+								this.getHand().remove(this.getCardFromHandByUUID(cardID));
+								this.setArmor(this.getArmor()+5);
+								this.draw();
+							}
 						}
 					}
-					//si c'est un spell
+					// si le joueur n'a pas le mana suffisant
 					else {
-						//System.out.println("et la ");
-						Spell spell = (Spell)(this.getCardFromHandByUUID(cardID));
-
-						// si c'est image miroir
-						if (spell.getName() == "Image miroir") {
-							Card one =new Minion(2, 0,0, "Serviteurs", "je suis invoque par img mir", null,true, false, false);
-							((Minion)one).setAttack(((Minion)one).getAttack()+ this.howManyChefDeRaidInMyBoard());
-							Card two =new Minion(2, 0,0, "Serviteurs", "je suis invoque par img mir", null,true, false, false);
-							((Minion)two).setAttack(((Minion)two).getAttack()+ this.howManyChefDeRaidInMyBoard());
-							this.getBoard().add(one);
-							this.getBoard().add(two);
-
-							this.getHand().remove(this.getCardFromHandByUUID(cardID));
-						}
-						if(spell.getName() == "Ma�trise du blocage") {
-							this.getHand().remove(this.getCardFromHandByUUID(cardID));
-							this.setArmor(this.getArmor()+5);
-							this.draw();
-						}
+						throw new MiniHeartStoneException("Vous n'avez pas le mana suffisant");
 					}
+				}
+				// si la carte n'est pas en main
+				else {
+					throw new MiniHeartStoneException("Vous n'avez pas cette carte en main");
+				}
+			}// fin du try
+			catch(MiniHeartStoneException e ) {
+				System.out.println(e.toString());
 			}
-			return isInvock;
 		}
 		
 		public void myHeroHasBeenAttack(int degats) {
@@ -140,23 +162,29 @@ public abstract class Hero {
 		}
 		
 		public void hasBeenAttack(UUID carteAttaqueeUUID, int degats) {
-			if(this.isOnMyHand(carteAttaqueeUUID)) {
-				Minion min = (Minion)(this.getCardFromHandByUUID(carteAttaqueeUUID));
-				min.setLife(min.getLife()-degats);
-				
-				if (min.getName() == "Chef de raid") {
-					this.getBoard().remove(min);
-				}
-				
-				if (min.getLife() <= 0) {
-					this.getBoard().remove(min);
-					if (min.getName() == "Chef de raid") {
-						for(int i =0; i< board.size(); i++) {
-							Card miniminion = this.getBoard().get(i);
-							((Minion)miniminion).setAttack(((Minion)miniminion).getAttack()-1);
+			try {
+				// si la créature est bien sur mon board
+				if(this.isOnMyBoard(carteAttaqueeUUID)) {
+					Minion min = (Minion)(this.getCardFromBoardByUUID(carteAttaqueeUUID));
+					min.setLife(min.getLife()-degats);
+					
+					if (min.getLife() <= 0) {
+						this.getBoard().remove(min);
+						if (min.getName() == "Chef de raid") {
+							for(int i =0; i< board.size(); i++) {
+								Card miniminion = this.getBoard().get(i);
+								((Minion)miniminion).setAttack(((Minion)miniminion).getAttack()-1);
+							}
 						}
 					}
 				}
+				// si la créature n'est pas sur mon board
+				else {
+					throw new MiniHeartStoneException("Cette créature n'est pas sur le borad adverse");
+				}
+			}
+			catch(MiniHeartStoneException e) {
+				System.out.println(e.toString());
 			}
 		}
 		
@@ -283,8 +311,8 @@ public abstract class Hero {
 		}
 		
 		public String superToString() {
-			String aff =    "					 PV Armor					\n"
-							+"					|   "+this.getHealth()+"  "+ this.getArmor()+"  |					\n"
+			String aff =    "					 PV Armor Mana					\n"
+							+"					|  PV : "+this.getHealth()+"  AR : "+ this.getArmor()+"  MN : "+this.getMana()+"  |					\n"
 							+"					----------					\n";
 			
 			aff = aff + "Cartes en main : \n";
@@ -296,7 +324,7 @@ public abstract class Hero {
 			
 			aff = aff + "Cartes en du board : \n";
 			for (int i =0; i< board.size(); i++ ) {
-				aff = aff + "|||"+board.get(i).getName()+"  nb attack ? : " +((Minion)board.get(i)).getAttack()+"|||	";
+				aff = aff + "|||"+board.get(i).getName()+" lf ? : " +((Minion)board.get(i)).getLife()+ " Att ? : " +((Minion)board.get(i)).getAttack()+"|||	";
 				
 			}
 			
