@@ -1,5 +1,5 @@
 package engine;
-
+// test
 public class Paladin_Doublure extends Hero_Doublure {
 	
 	public Paladin_Doublure() {
