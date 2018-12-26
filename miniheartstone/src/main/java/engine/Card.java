@@ -3,15 +3,26 @@ package engine;
  * Louis le bg
  *  Nice end
  */
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Transient;
 import java.util.UUID;
 
+@Entity
 abstract class Card {
-	
-	protected int manaCost;
-	protected String description;
-	protected String pictureURL;
-	
+
+	@Id
+	@Column(name="name")
 	protected String name;
+	@Column(name="description")
+	protected String description;
+	@Column(name="manaCost")
+	protected int manaCost;
+	@Transient
+	protected String pictureURL;
+
+	@Transient
 	protected UUID cardID;
 	
 	public Card(int manaCost, String name, String pictureURL, String description) {

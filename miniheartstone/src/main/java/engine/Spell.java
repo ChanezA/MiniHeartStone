@@ -3,17 +3,17 @@ package engine;
  * Louis le bg
  *  Nice end
  */
+import javax.persistence.Entity;
 import java.util.UUID;
 
+@Entity
 public class Spell extends Card {
-	
-	protected UUID MinionUUID;
 	
 	Spell(int manaCost, String name, String description, String pictureURL){
 		
 		super(manaCost, name, pictureURL, description);
 		
-		this.MinionUUID = UUID.randomUUID();
+		this.cardID = UUID.randomUUID();
 	}
 	
 	public Spell cloneSpell(){
@@ -22,7 +22,7 @@ public class Spell extends Card {
 	}
 	
 	public String toString() {
-		return	"MinionUUID : "+this.MinionUUID+"\n"+"\n"+
+		return	"MinionUUID : "+this.cardID+"\n"+"\n"+
 				
 				"manaCost : "+this.manaCost+"\n"+
 				"description : "+this.description+"\n"+
@@ -30,9 +30,5 @@ public class Spell extends Card {
 				"name : "+this.name+"\n"+
 				"cardID : "+this.cardID;
 	}
-	
-	public static void main(String[] args) {
-		Card maBite = new Spell(5, "Enorme Sexe Gold�", "tmtc c ma bite lol c==3", null);
-		System.out.println(maBite.toString());
-	}
+
 }

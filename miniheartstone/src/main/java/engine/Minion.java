@@ -1,21 +1,29 @@
 package engine;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Transient;
 import java.util.UUID;
 /*
  * Louis le bg
  *  Nice end
  */
+@Entity
 public class Minion extends Card {
 
+    @Column(name="attack")
+    protected int attack;
+    @Column(name="life")
 	protected int life;
-	protected int attack;
-	
+    @Column(name="hasTaunt")
+    protected boolean hasProvocation;
+    @Column(name="hasLifeSteal")
+    protected boolean hasVolDeVie;
+    @Column(name="hasCharge")
+    protected boolean hasCharge;
+
+    @Transient
 	protected boolean readyToAttack;
-	protected UUID MinionUUID;
-	
-	protected boolean hasProvocation;
-	protected boolean hasVolDeVie;
-	protected boolean hasCharge;
 	
 	Minion(int life, int attack,int manaCost, String name, String description, String pictureURL,
 			boolean hasProvocation, boolean hasVolDeVie, boolean hasCharge){
@@ -25,7 +33,7 @@ public class Minion extends Card {
 		this.attack = attack;
 		
 		this.readyToAttack = false;
-		this.MinionUUID = UUID.randomUUID();
+		this.cardID = UUID.randomUUID();
 		
 		this.hasProvocation = hasProvocation;
 		this.hasVolDeVie = hasVolDeVie;
@@ -96,7 +104,7 @@ public class Minion extends Card {
 		return "life : "+this.life+"\n"+
 				"attack : "+this.attack+"\n"+
 				"readyToAttack :"+this.readyToAttack+"\n"+
-				"MinionUUID : "+this.MinionUUID+"\n"+
+				"MinionUUID : "+this.cardID+"\n"+
 				"hasProvocation : "+this.hasProvocation+"\n"+
 				"hasLifeSteal : "+this.hasVolDeVie+"\n"+
 				"hasCharge : "+this.hasCharge+"\n"+"\n"+
@@ -107,9 +115,5 @@ public class Minion extends Card {
 				"name : "+this.name+"\n"+
 				"cardID : "+this.cardID;
 	}
-	
-	public static void main(String[] args) {
-		Card card = new Minion(6, 6,6, "bg", "je suis tr�s beau", null,true, true, true);
-		System.out.println(card.toString());
-	}
+
 }
