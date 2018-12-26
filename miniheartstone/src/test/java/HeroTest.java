@@ -6,7 +6,7 @@ import engine.Hero_Doublure;
 import engine.Minion;
 import engine.Paladin_Doublure;
 import engine.Card;
-// jpp
+// jpp jpp
 public class HeroTest {
 
     @Test
