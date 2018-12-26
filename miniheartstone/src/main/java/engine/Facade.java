@@ -50,11 +50,11 @@ public class Facade {
 		
 		Game game = allCurrentGame.get(gameID);
 		if (game.getPlayer1().getPlayerID() == playerID) {
-			return game.getPlayer1().getHand();
+			return game.getPlayer1().getHero().getHand();
 		}
 		
 		else {
-			return game.getPlayer2().getHand();
+			return game.getPlayer2().getHero().getHand();
 		}
 	}
 	
@@ -69,9 +69,9 @@ public class Facade {
 			Game game = allCurrentGame.get(gameID);
 			if (game.getCurrentPlayer().getPlayerID() == playerID) {
 				
-				Card ourcard=game.getCurrentPlayer().getSpecificCard(cardID);
+				Card ourcard = game.getCurrentPlayer().getSpecificCard(cardID);
 				//ecrire une fonction ajoute carte dans game pour ajouter une carte et appliquer ses effets si elle en as au d'ajouter seulement
-				game.getBoard(game.getCurrentPlayer()).add(ourcard);
+				game.getCurrentPlayer().getHero().getBoard();
 				game.getCurrentPlayer().removeCardHand(ourcard);
 				
 			}

@@ -300,24 +300,5 @@ public abstract class Hero {
 			aff = aff + "\n";
 			return aff;
 		}
-			
-		public static void main(String[] args) {
-			/*Hero her = new Hero("Louis le bg", 30, "le plus fort");
-			her.draw();
-			her.draw();
-			her.draw();
-			her.draw();
-			her.draw();
-			her.draw();
-			
-			her.setMana(20);
-			her.invock(her.getHand().get(0).getCardUUID());
-			her.invock(her.getHand().get(0).getCardUUID());
-			her.invock(her.getHand().get(0).getCardUUID());
-			her.invock(her.getHand().get(0).getCardUUID());
-			
-			
-			System.out.println(her.superToString());
-			System.out.println(her.getMana());*/
-		}
+
 }

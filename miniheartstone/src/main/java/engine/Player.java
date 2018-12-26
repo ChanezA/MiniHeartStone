@@ -4,13 +4,13 @@ import java.util.UUID;
 
 public class Player {
 	
-	protected String pseudo;
+	protected String name;
 	protected Hero hero;
 	protected int level;
 	protected UUID playerID;
 	
-	public Player(String pseudo,  Hero hero, int level) {
-		this.pseudo = pseudo;
+	public Player(String name,  Hero hero, int level) {
+		this.name = name;
 		this.hero = hero;
 		this.level = level;
 		UUID playerID = UUID.randomUUID();
@@ -20,8 +20,8 @@ public class Player {
 		return this.hero;
 	}
 
-	public String getPSeudo() {
-		return this.pseudo;
+	public String getName() {
+		return this.name;
 	}
 
 	public UUID getPlayerID() {
