@@ -10,7 +10,7 @@ import javax.persistence.Transient;
 import java.util.UUID;
 
 @Entity
-abstract class Card {
+public abstract class Card {
 
 	@Id
 	@Column(name="name")
