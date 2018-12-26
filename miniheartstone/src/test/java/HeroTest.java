@@ -51,6 +51,25 @@ public class HeroTest {
 	    pal.hasBeenAttack(crd2.getCardUUID(), 1);
 	    assertTrue(((Minion)crd1).getAttack() == 1);
 	    
+	    // mon hero prned une patate de 10
+	    pal.myHeroHasBeenAttack(10);
+	    assertTrue(pal.getHealth() == 20);
+	    assertTrue(pal.getLooser() == false);
+	    
+	 // mon hero prned une patate de 20
+	    pal.myHeroHasBeenAttack(20);
+	    assertTrue(pal.getHealth() == 0);
+	    
+	    assertTrue(pal.getLooser() == true);
+	    
+	   
+	    Card crd4 = pal.draw("Chef de raid");
+	    // invocation du chef de raid
+	    pal.invock(crd4.getCardUUID());
+	    
+	    // utilisation du pouvoir du paladin
+	    pal.power();
+	    
 	    System.out.println(pal.superToString());
 	 }
 

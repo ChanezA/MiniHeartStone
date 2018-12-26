@@ -278,6 +278,10 @@ public abstract class Hero {
 			}
 		}
 		
+		public boolean getLooser() {
+			return this.looser;
+		}
+		
 		public int getMana() {
 			return this.mana;
 		}
@@ -311,9 +315,9 @@ public abstract class Hero {
 		}
 		
 		public String superToString() {
-			String aff =    "					 PV Armor Mana					\n"
-							+"					|  PV : "+this.getHealth()+"  AR : "+ this.getArmor()+"  MN : "+this.getMana()+"  |					\n"
-							+"					----------					\n";
+			String aff =
+							"					|  PV : "+this.getHealth()+"  AR : "+ this.getArmor()+"  MN : "+this.getMana()+"  |					\n"
+							+"					------------------------------					\n";
 			
 			aff = aff + "Cartes en main : \n";
 			for (int i =0; i< hand.size(); i++ ) {
@@ -324,7 +328,7 @@ public abstract class Hero {
 			
 			aff = aff + "Cartes en du board : \n";
 			for (int i =0; i< board.size(); i++ ) {
-				aff = aff + "|||"+board.get(i).getName()+" lf ? : " +((Minion)board.get(i)).getLife()+ " Att ? : " +((Minion)board.get(i)).getAttack()+"|||	";
+				aff = aff + "|||"+board.get(i).getName()+"	lf : " +((Minion)board.get(i)).getLife()+ " Att : " +((Minion)board.get(i)).getAttack()+"|||	";
 				
 			}
 			
