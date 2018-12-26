@@ -35,7 +35,7 @@ public class HeroTest {
         Card crd3 = pal.draw("Sanglier brocheroc");
         assertTrue(pal.getHand().size() == 1);
         
-        //on invoque ce sanglier
+        //on invoque ce sanglier alazkoa
         pal.invock(crd3.getCardUUID());
         assertTrue(((Minion)crd3).getAttack() == 2);
         
