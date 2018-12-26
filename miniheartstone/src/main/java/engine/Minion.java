@@ -6,7 +6,7 @@ import java.util.UUID;
  *  Nice end
  */
 public class Minion extends Card {
-	
+
 	protected int life;
 	protected int attack;
 	

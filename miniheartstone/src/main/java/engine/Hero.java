@@ -1,4 +1,5 @@
 package engine;
+
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -18,7 +19,7 @@ public abstract class Hero {
 		
 		protected boolean looser = false;
 		protected boolean winner = false;
-		
+
 		protected Hero(String HeroName, int health, String description) {
 			this.HeroName= HeroName;
 			this.health=health;

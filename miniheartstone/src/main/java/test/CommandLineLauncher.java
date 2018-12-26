@@ -53,7 +53,7 @@ public class CommandLineLauncher {
         Hero ret = null;
         switch (input) {
             case 1 :
-                if (i == 1) ret = new Magus("Gandalf", 2000, 10);
+                /*if (i == 1) ret = new Magus("Gandalf", 2000, 10);
                 else ret = new Magus("Dumbledore", 100, 300);
                 break;
             case 2 :
@@ -62,7 +62,7 @@ public class CommandLineLauncher {
                 break;
             case 3 :
                 if (i == 1) ret = new Warrior("Boromir", 3000, 4, 10);
-                else ret = new Warrior("Gimli", 3000, 400, 20);
+                else ret = new Warrior("Gimli", 3000, 400, 20);*/
                 break;
             default:
                 break;

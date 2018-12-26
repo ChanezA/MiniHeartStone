@@ -69,14 +69,14 @@ public class Facade {
 			Game game = allCurrentGame.get(gameID);
 			if (game.getCurrentPlayer().getPlayerID() == playerID) {
 				
-				Card ourcard = game.getCurrentPlayer().getSpecificCard(cardID);
+				//Card ourcard = game.getCurrentPlayer().getSpecificCard(cardID);
 				//ecrire une fonction ajoute carte dans game pour ajouter une carte et appliquer ses effets si elle en as au d'ajouter seulement
 				game.getCurrentPlayer().getHero().getBoard();
-				game.getCurrentPlayer().removeCardHand(ourcard);
+				//game.getCurrentPlayer().removeCardHand(ourcard);
 				
 			}
 			
-		} catch (IllegalAccessException e) {
+		} catch (Exception e) {
 
 		    System.out.println("la carte n'est pas dans la main");
 
