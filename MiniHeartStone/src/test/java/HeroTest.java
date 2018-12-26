@@ -29,5 +29,7 @@ public class HeroTest {
         
         assertTrue(((Minion)crd1).getAttack() == 2);
         
+        System.out.println(pal.superToString());
+        
     }
 }
