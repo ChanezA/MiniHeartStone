@@ -12,6 +12,7 @@ public class HeroTest {
     @Test
     public final void testPaladin() {
     	Hero_Doublure pal = new Paladin_Doublure();
+    	pal.setMana(20);
         assertTrue(pal.getHealth() == 30);
 
         Card crd1 = pal.draw("Sanglier brocheroc");
