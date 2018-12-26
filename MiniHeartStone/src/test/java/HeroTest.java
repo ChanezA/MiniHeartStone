@@ -21,13 +21,24 @@ public class HeroTest {
         Card crd2 = pal.draw("Chef de raid");
         assertTrue(pal.getHand().size() == 2);
         
+        // invocation du sanglier
         pal.invock(crd1.getCardUUID());
         assertTrue(((Minion)crd1).getAttack() == 1);
         
+        //invocation du chef de raid
         pal.invock(crd2.getCardUUID());
         assertTrue(((Minion)crd2).getAttack() == 2);
         
         assertTrue(((Minion)crd1).getAttack() == 2);
+        
+        //on pioche un sanglier
+        Card crd3 = pal.draw("Sanglier brocheroc");
+        assertTrue(pal.getHand().size() == 1);
+        
+        //on invoque ce sanglier
+        pal.invock(crd3.getCardUUID());
+        assertTrue(((Minion)crd3).getAttack() == 2);
+        
         
         System.out.println(pal.superToString());
         

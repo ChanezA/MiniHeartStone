@@ -1,5 +1,5 @@
 package engine;
-//test
+//test test test
 public abstract class Hero_Doublure extends Hero {
 	
 	public Hero_Doublure(String HeroName, int health, String description) {
