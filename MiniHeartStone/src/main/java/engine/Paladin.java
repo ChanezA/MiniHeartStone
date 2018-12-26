@@ -36,6 +36,7 @@ public class Paladin extends Hero {
 		paladin.invock(crd4.getCardUUID());
 		
 		System.out.println(paladin.superToString());
+		// je fais des modifs et ça commit pas wtf
 		
 	}
 }

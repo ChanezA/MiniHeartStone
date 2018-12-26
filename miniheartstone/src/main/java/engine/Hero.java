@@ -54,60 +54,62 @@ public abstract class Hero {
 		
 		public abstract void power();
 		
-		public void draw() {
+		public Card draw() {
 			int rd = (int)(Math.random() * (deck.size()));
-			hand.add((deck.get(rd)).cloneCard());
+			Card crd = deck.get(rd).cloneCard();
+			hand.add(crd);
+			return crd;
 		}
 		
 		public boolean invock(UUID cardID) {
 			boolean isInvock = false;
 			if(this.isOnMyHand(cardID) && this.getCardFromHandByUUID(cardID).getManaCost() <= this.getMana()) {
-				// on retire le mana au joueur
-				this.setMana(this.getMana() - this.getCardFromHandByUUID(cardID).getManaCost());
-				// si c'est un minion
-				if(this.getCardFromHandByUUID(cardID) instanceof Minion ) {
-					//System.out.println("exsque je passe ici lele�k�eckpaekcp");
-					Card card = this.getCardFromHandByUUID(cardID);
-					hand.remove(card);
-					// si ma carte est un chef de raid +1 att a toutes les cretures du board
-					if (card.getName() == "Chef de raid") {
-						for(int i =0; i< board.size(); i++) {
-							Card miniminion = this.getBoard().get(i);
-							((Minion)miniminion).setAttack(((Minion)miniminion).getAttack()+1);
-							
+					// on retire le mana au joueur
+					this.setMana(this.getMana() - this.getCardFromHandByUUID(cardID).getManaCost());
+					// si c'est un minion
+					if(this.getCardFromHandByUUID(cardID) instanceof Minion ) {
+						//System.out.println("exsque je passe ici lele�k�eckpaekcp");
+						Card card = this.getCardFromHandByUUID(cardID);
+						hand.remove(card);
+						// si ma carte est un chef de raid +1 att a toutes les cretures du board
+						if (card.getName() == "Chef de raid") {
+							for(int i =0; i< board.size(); i++) {
+								Card miniminion = this.getBoard().get(i);
+								((Minion)miniminion).setAttack(((Minion)miniminion).getAttack()+1);
+
+							}
+						}
+						// ajout des pts d'attack en fonction du nombre de chef de raids presents sur le plateau alli�
+						((Minion)card).setAttack(((Minion)card).getAttack()+ this.howManyChefDeRaidInMyBoard());
+						board.add(card);
+
+						// si la carte � charge
+						if(((Minion)card).getHasCharge()) {
+							((Minion)card).setReadyToAttack(true);
 						}
 					}
-					// ajout des pts d'attack en fonction du nombre de chef de raids presents sur le plateau alli�
-					((Minion)card).setAttack(((Minion)card).getAttack()+ this.howManyChefDeRaidInMyBoard());
-					board.add(card);
-					
-					// si la carte � charge
-					if(((Minion)card).getHasCharge()) {
-						((Minion)card).setReadyToAttack(true);
+					//si c'est un spell
+					else {
+						//System.out.println("et la ");
+						Spell spell = (Spell)(this.getCardFromHandByUUID(cardID));
+
+						// si c'est image miroir
+						if (spell.getName() == "Image miroir") {
+							Card one =new Minion(2, 0,0, "Serviteurs", "je suis invoque par img mir", null,true, false, false);
+							((Minion)one).setAttack(((Minion)one).getAttack()+ this.howManyChefDeRaidInMyBoard());
+							Card two =new Minion(2, 0,0, "Serviteurs", "je suis invoque par img mir", null,true, false, false);
+							((Minion)two).setAttack(((Minion)two).getAttack()+ this.howManyChefDeRaidInMyBoard());
+							this.getBoard().add(one);
+							this.getBoard().add(two);
+
+							this.getHand().remove(this.getCardFromHandByUUID(cardID));
+						}
+						if(spell.getName() == "Ma�trise du blocage") {
+							this.getHand().remove(this.getCardFromHandByUUID(cardID));
+							this.setArmor(this.getArmor()+5);
+							this.draw();
+						}
 					}
-				}
-				//si c'est un spell
-				else {
-					//System.out.println("et la ");
-					Spell spell = (Spell)(this.getCardFromHandByUUID(cardID));
-					
-					// si c'est image miroir
-					if (spell.getName() == "Image miroir") {
-						Card one =new Minion(2, 0,0, "Serviteurs", "je suis invoque par img mir", null,true, false, false);
-						((Minion)one).setAttack(((Minion)one).getAttack()+ this.howManyChefDeRaidInMyBoard());
-						Card two =new Minion(2, 0,0, "Serviteurs", "je suis invoque par img mir", null,true, false, false);
-						((Minion)two).setAttack(((Minion)two).getAttack()+ this.howManyChefDeRaidInMyBoard());
-						this.getBoard().add(one);
-						this.getBoard().add(two);
-						
-						this.getHand().remove(this.getCardFromHandByUUID(cardID));
-					}
-					if(spell.getName() == "Ma�trise du blocage") {
-						this.getHand().remove(this.getCardFromHandByUUID(cardID));
-						this.setArmor(this.getArmor()+5);
-						this.draw();
-					}
-				}
 			}
 			return isInvock;
 		}
