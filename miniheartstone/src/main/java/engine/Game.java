@@ -3,6 +3,8 @@ package engine;
 import java.util.ArrayList;
 import java.util.UUID;
 
+import exception.MiniHeartStoneException;
+
 
 public class Game {
 
@@ -69,25 +71,34 @@ public class Game {
      * passage de tour
      */
     private void passTurn(UUID playerID) {
-    	if(this.CurrentPlayerOrNot(playerID)) {
-	    	// echange le joueur courant avec le non courant
-	        Player tmp = this.getCurrentPlayer();
-	        this.setCurrentPlayer(this.getNotCurrentPlayer());
-	        this.setNotCurrentPlayer(tmp);
-	        HeroicPowerHasBeenUse = false;
-	        
-	        // incr�mentation du mana pour le nouveau joueur courant si besoin
-	        if(this.getCurrentPlayer().getHero().getMana() < MANA_MAX) {
-	        	this.getCurrentPlayer().getHero().setMana(this.getCurrentPlayer().getHero().getMana()+1);
-	        }
-	        
-	        // on remet toutes les cr�atures du joueru courant ready to attack
-	        for(int i = 0; i<this.getCurrentPlayer().getHero().getBoard().size(); i++) {
-	        	Minion min =(Minion)(this.getCurrentPlayer().getHero().getBoard().get(i));
-	        	min.setReadyToAttack(true);
-	        }
-	
-	        this.getCurrentPlayer().getHero().draw();
+    	try {
+	    	// si tu es le current player
+	    	if(this.CurrentPlayerOrNot(playerID)) {
+		    	// echange le joueur courant avec le non courant
+		        Player tmp = this.getCurrentPlayer();
+		        this.setCurrentPlayer(this.getNotCurrentPlayer());
+		        this.setNotCurrentPlayer(tmp);
+		        HeroicPowerHasBeenUse = false;
+		        
+		        // incrémentation du mana pour le nouveau joueur courant si besoin
+		        if(this.getCurrentPlayer().getHero().getMana() < MANA_MAX) {
+		        	this.getCurrentPlayer().getHero().setMana(this.getCurrentPlayer().getHero().getMana()+1);
+		        }
+		        
+		        // on remet toutes les créatures du joueru courant ready to attack
+		        for(int i = 0; i<this.getCurrentPlayer().getHero().getBoard().size(); i++) {
+		        	Minion min =(Minion)(this.getCurrentPlayer().getHero().getBoard().get(i));
+		        	min.setReadyToAttack(true);
+		        }
+		
+		        this.getCurrentPlayer().getHero().draw();
+	    	}
+	    	else {
+	    		throw new MiniHeartStoneException("Vous n'etes pas le joueur courant, vous ne pouvez pas passer");
+	    	}
+    	}
+    	catch(MiniHeartStoneException e) {
+    		System.out.println(e.toString());
     	}
     }
     
@@ -161,7 +172,7 @@ public class Game {
     				this.getCurrentPlayer().getHero().setMana(this.getCurrentPlayer().getHero().getMana()-1);
     			}
     			
-    			// si c'est le spell cons�cration
+    			// si c'est le spell consécration
     			else if(this.getCurrentPlayer().getHero().getCardFromHandByUUID(cardID).getName() == "Cons�cration") {
     				// retire 2 pdv a tous les minions adverse
     				for(int i=0; i<this.getNotCurrentPlayer().getHero().getBoard().size(); i++) {
@@ -172,7 +183,7 @@ public class Game {
     				this.getNotCurrentPlayer().getHero().myHeroHasBeenAttack(2);
     				// on retire la carte de la main du joueur
     				this.getCurrentPlayer().getHero().getHand().remove(this.getCurrentPlayer().getHero().getCardFromHandByUUID(cardID));
-    				// on lui retire le mana en cons�quence
+    				// on lui retire le mana en conséquence
     				this.getCurrentPlayer().getHero().setMana(this.getCurrentPlayer().getHero().getMana()-4);
     			}
     			
@@ -188,14 +199,14 @@ public class Game {
     				// on lui retire le mana en cons�quence
     				this.getCurrentPlayer().getHero().setMana(this.getCurrentPlayer().getHero().getMana()-2);
     			}
-    			// si le spell c'est M�tamorphose
-    			else if(this.getCurrentPlayer().getHero().getCardFromHandByUUID(cardID).getName() == "M�tamorphose") {
-    				iAmWaitingFor = "M�tamorphose";
+    			// si le spell c'est Métamorphose
+    			else if(this.getCurrentPlayer().getHero().getCardFromHandByUUID(cardID).getName() == "Métamorphose") {
+    				iAmWaitingFor = "Métamorphose";
     				this.tmpUUID = cardID;
     			}
-    			// si le spell c'est B�n�diction de puissance
-    			else if(this.getCurrentPlayer().getHero().getCardFromHandByUUID(cardID).getName() == "B�n�diction de puissance") {
-    				iAmWaitingFor = "B�n�diction de puissance";
+    			// si le spell c'est Bénédiction de puissance
+    			else if(this.getCurrentPlayer().getHero().getCardFromHandByUUID(cardID).getName() == "Bénédiction de puissance") {
+    				iAmWaitingFor = "Bénédiction de puissance";
     				this.tmpUUID = cardID;
     			}
     		}
