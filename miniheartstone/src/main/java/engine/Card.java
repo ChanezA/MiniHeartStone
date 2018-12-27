@@ -17,16 +17,16 @@ public abstract class Card {
 
 	@Id
 	@Column(name="name")
-	protected String name;
+	private String name;
 	@Column(name="description")
-	protected String description;
+	private String description;
 	@Column(name="manaCost")
-	protected int manaCost;
+	private int manaCost;
 	@Transient
-	protected String pictureURL;
+	private String pictureURL;
 
 	@Transient
-	protected UUID cardID;
+	private UUID cardID;
 
 	/**
 	 * Instanciates the card to the given parameters and with a random UUID
