@@ -11,7 +11,7 @@ public class Spell extends Card {
 	
 	Spell(int manaCost, String name, String description, String pictureURL){
 		
-		super(manaCost, name, pictureURL, description);
+		super(name, description, manaCost, pictureURL);
 		
 		this.cardID = UUID.randomUUID();
 	}
