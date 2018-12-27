@@ -97,6 +97,11 @@ public class Minion extends Card {
 	public void setReadyToAttack(boolean readyToAttack){
 		this.readyToAttack = readyToAttack;
 	}
+
+	public Minion cloneCard() {
+		return new Minion(this.name,this.description,this.manaCost,this.attack,this.life,
+				this.hasTaunt,this.hasLifeSteal,this.hasCharge,this.pictureURL);
+	}
 	
 	public String toString() {
 		return "life : "+this.life+"\n"+

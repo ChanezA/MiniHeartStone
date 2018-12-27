@@ -20,6 +20,10 @@ public class Spell extends Card {
 		Spell theClone = new Spell(this.getManaCost(), this.getName(), this.getDescription(), this.getPictureURL());
 		return theClone;
 	}
+
+	public Spell cloneCard() {
+		return new Spell(this.manaCost,this.name,this.description,this.pictureURL);
+	}
 	
 	public String toString() {
 		return	"MinionUUID : "+this.cardID+"\n"+"\n"+
