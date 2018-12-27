@@ -69,6 +69,16 @@ public class Game {
         	
         	player1.getHero().draw("Chef de raid");
         	player2.getHero().draw("Chef de raid");
+        	
+        	player1.getHero().draw("Image miroir");
+        	player2.getHero().draw("Image miroir");
+        	
+        	player1.getHero().draw("Tourbillon");
+        	player2.getHero().draw("Tourbillon");
+        	
+        	//player1.getHero().draw("Explosion des arcanes");
+        	//player2.getHero().draw("Explosion des arcanes");
+        	
         }
         this.getCurrentPlayer().getHero().setMana(100);
         this.getNotCurrentPlayer().getHero().setMana(100);
@@ -168,11 +178,11 @@ public class Game {
 	    			// si c'est un spell c'est tourbilol
 	    			else if(this.getCurrentPlayer().getHero().getCardFromHandByUUID(cardID).getName() == "Tourbillon") {
 	    				// on retire 1 pv a toutes les invocations des bord des deux joueurs
-	    				for(int i=0; i<this.getCurrentPlayer().getHero().getBoard().size(); i++) {
+	    				for(int i=this.getCurrentPlayer().getHero().getBoard().size()-1; i>=0; i--) {
 	    					Minion min = (Minion)(this.getCurrentPlayer().getHero().getBoard().get(i));
 	    					this.getCurrentPlayer().getHero().hasBeenAttack(min.getCardUUID(), 1);
 	    				}
-	    				for(int i=0; i<this.getNotCurrentPlayer().getHero().getBoard().size(); i++) {
+	    				for(int i=this.getNotCurrentPlayer().getHero().getBoard().size()-1; i>=0; i--) {
 	    					Minion min = (Minion)(this.getNotCurrentPlayer().getHero().getBoard().get(i));
 	    					this.getNotCurrentPlayer().getHero().hasBeenAttack(min.getCardUUID(), 1);
 	    				}
@@ -185,7 +195,7 @@ public class Game {
 	    			// si c'est le spell consécration
 	    			else if(this.getCurrentPlayer().getHero().getCardFromHandByUUID(cardID).getName() == "Consécration") {
 	    				// retire 2 pdv a tous les minions adverse
-	    				for(int i=0; i<this.getNotCurrentPlayer().getHero().getBoard().size(); i++) {
+	    				for(int i=this.getNotCurrentPlayer().getHero().getBoard().size()-1; i>=0; i--) {
 	    					Minion min = (Minion)(this.getNotCurrentPlayer().getHero().getBoard().get(i));
 	    					this.getNotCurrentPlayer().getHero().hasBeenAttack(min.getCardUUID(), 2);
 	    				}
@@ -200,7 +210,7 @@ public class Game {
 	    			// si le spell c'est explosion des arcanes
 	    			else if(this.getCurrentPlayer().getHero().getCardFromHandByUUID(cardID).getName() == "Explosion des arcanes") {
 	    				// retire 1 pdv a tous les minions adverse
-	    				for(int i=0; i<this.getNotCurrentPlayer().getHero().getBoard().size(); i++) {
+	    				for(int i=this.getNotCurrentPlayer().getHero().getBoard().size()-1; i>=0; i--) {
 	    					Minion min = (Minion)(this.getNotCurrentPlayer().getHero().getBoard().get(i));
 	    					this.getNotCurrentPlayer().getHero().hasBeenAttack(min.getCardUUID(), 1);
 	    				}
@@ -416,7 +426,7 @@ public class Game {
 		// affichage du board j2
 		aff = aff + "Cartes en du board : \n";
 		for (int i =0; i< player2.getHero().getBoard().size(); i++ ) {
-		aff = aff + "|||"+player2.getHero().getBoard().get(i).getName()+"	lf : " +((Minion)player2.getHero().getBoard().get(i)).getLife()+ " Att : " +((Minion)player1.getHero().getHand().get(i)).getAttack()+"|||	";
+		aff = aff + "|||"+player2.getHero().getBoard().get(i).getName()+"	lf : " +((Minion)player2.getHero().getBoard().get(i)).getLife()+ " Att : " +((Minion)player2.getHero().getBoard().get(i)).getAttack()+"|||	";
 		}
 		aff = aff + "\n";
 		
@@ -447,8 +457,13 @@ public class Game {
 		
 		// le joueur 1 play
 		gm.invock(yoannTchoin.getPlayerID(), yoannTchoin.getHero().getHand().get(0).getCardUUID());
-		System.out.println(yoannTchoin.getHero().getHand().get(0).getName());
 		gm.invock(yoannTchoin.getPlayerID(), yoannTchoin.getHero().getHand().get(0).getCardUUID());
+		gm.invock(yoannTchoin.getPlayerID(), yoannTchoin.getHero().getHand().get(0).getCardUUID());
+		gm.passTurn(yoannTchoin.getPlayerID());
+		
+		// le joueur 2 play
+		gm.invock(pierreLaFouine.getPlayerID(), pierreLaFouine.getHero().getHand().get(0).getCardUUID());
+		gm.invock(pierreLaFouine.getPlayerID(), pierreLaFouine.getHero().getHand().get(2).getCardUUID());
 		
 		System.out.println(gm.toString());
 	}
