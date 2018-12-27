@@ -8,31 +8,31 @@ public abstract class Hero_Doublure extends Hero {
 	
 	public Card draw(String cardName) {
 		if(cardName == "Sanglier brocheroc") {
-			Card min = new Minion(1,1,1,"Sanglier brocheroc","description","picture",false,false,false);
+			Card min = new Minion("Sanglier de brocheroc", "je suis n1",1, 1, 1, false,false, false, null);
 			hand.add(min);
 			return min;
 		}
 		
 		else if(cardName == "Soldat du comté-de-l'or") {
-			Card min = new Minion(2,1,1,"Soldat du comté-de-l'or","description","picture",true,false,false);
+			Card min = new Minion("Soldat du compté d'or", "je suis n4",1, 1, 2, false,true, false, null);
 			hand.add(min);
 			return min;
 		}
 		
 		else if(cardName == "Chevaucheur de loup") {
-			Card min = new Minion(1,3,3,"Soldat du comté-de-l'or","description","picture",false,false,true);
+			Card min = new Minion("Chevaucheur de loup", "je suis n2",3, 1, 3, false,false, false, null);
 			hand.add(min);
 			return min;
 		}
 		
 		else if(cardName == "Chef de raid") {
-			Card min = new Minion(2,2,3,"Chef de raid","description","+1 d'att a tous les minions alliés",false,false,false);
+			Card min = new Minion("Chef de raid", "je suis fort",3, 1, 2, false,false, true, null);
 			hand.add(min);
 			return min;
 		}
 		
 		else if(cardName == "Yéti noroit") {
-			Card min = new Minion(4,5,4,"Yéti noroit","description","img",false,false,false);
+			Card min = new Minion("Yéti noroit", "je suis n4",4, 1, 2, false,true, false, null);
 			hand.add(min);
 			return min;
 		}
@@ -59,7 +59,7 @@ public abstract class Hero_Doublure extends Hero {
 		}
 		
 		else if(cardName == "Champion frisselame") {
-			Card min = new Minion(2,3,4,"Champion frisselame","description","img",false,true,true);
+			Card min = new Minion("Champion frisselame","description",4,2,8,false,false,true,null);
 			hand.add(min);
 			return min;
 		}
@@ -83,7 +83,7 @@ public abstract class Hero_Doublure extends Hero {
 		}
 		
 		else if(cardName == "Avocat commis d'office") {
-			Card min = new Minion(7,0,2,"Avocat commis d'office","description","img",true,false,false);
+			Card min = new Minion("Avocat commis d'office","description",2,0,7,false,true,false,null);
 			hand.add(min);
 			return min;
 		}
