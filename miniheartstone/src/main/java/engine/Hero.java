@@ -106,9 +106,9 @@ public abstract class Hero {
 		
 							// si c'est image miroir
 							if (spell.getName() == "Image miroir") {
-								Card one =new Minion("Soldat", "je suis n4",1, 0, 2, false,true, false, null);
+								Card one =new Minion("Soldat", "je suis n4",1, 0, 2, true,false, false, null);
 								((Minion)one).setAttack(((Minion)one).getAttack()+ this.howManyChefDeRaidInMyBoard());
-								Card two =new Minion("Soldat", "je suis n4",1, 0, 2, false,true, false, null);
+								Card two =new Minion("Soldat", "je suis n4",1, 0, 2, true,false, false, null);
 								((Minion)two).setAttack(((Minion)two).getAttack()+ this.howManyChefDeRaidInMyBoard());
 								this.getBoard().add(one);
 								this.getBoard().add(two);
@@ -363,7 +363,7 @@ public abstract class Hero {
 			}
 			
 			else if(cardName == "Yéti noroit") {
-				Card min = new Minion("Yéti noroit", "je suis n4",4, 1, 2, false,true, false, null);
+				Card min = new Minion("Yéti noroit", "je suis n4",4, 4, 5, false,true, false, null);
 				hand.add(min);
 				return min;
 			}

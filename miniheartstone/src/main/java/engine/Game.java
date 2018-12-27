@@ -64,8 +64,8 @@ public class Game {
             player1.getHero().draw();
             player2.getHero().draw();
             */
-        	player1.getHero().draw("Sanglier brocheroc");
-        	player2.getHero().draw("Sanglier brocheroc");
+        	player1.getHero().draw("Yéti noroit");
+        	player2.getHero().draw("Yéti noroit");
         	
         	player1.getHero().draw("Chef de raid");
         	player2.getHero().draw("Chef de raid");
@@ -352,34 +352,51 @@ public class Game {
 	public void attack(UUID myCardUUID, UUID opponentUUID) {
 		// on vérifie que les deux créatures éxixtent bien
 		if(this.getCurrentPlayer().getHero().isOnMyBoard(myCardUUID) && this.getNotCurrentPlayer().getHero().isOnMyBoard(opponentUUID)){
-			// on vérifie que ma créature n'a pas déja attaqué
-			if (((Minion)(this.getCurrentPlayer().getHero().getCardFromBoardByUUID(myCardUUID))).getReadyToAttack() == true) {
-				Minion monMin = ((Minion)(this.getCurrentPlayer().getHero().getCardFromBoardByUUID(myCardUUID)));
-				Minion oppMin = ((Minion)(this.getNotCurrentPlayer().getHero().getCardFromBoardByUUID(opponentUUID)));
-				// si une créature adverse é provovation
-				if (this.getNotCurrentPlayer().getHero().aCardWithProvocationInMyBorad() && oppMin.getHasPrococation()) {
-					// on fais les degats sur les deux minions oklm
-					this.getNotCurrentPlayer().getHero().hasBeenAttack(opponentUUID, monMin.getAttack());
-					this.getCurrentPlayer().getHero().hasBeenAttack(myCardUUID, oppMin.getAttack());
-					monMin.setReadyToAttack(false);
-					// si ma créature é du vol de vie
-					if(monMin.getHasVolDeVie()) {
-						// on augmente les pv du hero
-						this.getCurrentPlayer().getHero().setHealth(this.getCurrentPlayer().getHero().getHealth()+monMin.getAttack());
+			System.out.println("je suis bien passé ici");
+			try {
+				// on vérifie que ma créature n'a pas déja attaqué
+				if (((Minion)(this.getCurrentPlayer().getHero().getCardFromBoardByUUID(myCardUUID))).getReadyToAttack() == true) {
+					Minion monMin = ((Minion)(this.getCurrentPlayer().getHero().getCardFromBoardByUUID(myCardUUID)));
+					Minion oppMin = ((Minion)(this.getNotCurrentPlayer().getHero().getCardFromBoardByUUID(opponentUUID)));
+					try {
+						// si une créature adverse é provovation
+						if (this.getNotCurrentPlayer().getHero().aCardWithProvocationInMyBorad() && oppMin.getHasPrococation()) {
+							// on fais les degats sur les deux minions oklm
+							this.getNotCurrentPlayer().getHero().hasBeenAttack(opponentUUID, monMin.getAttack());
+							this.getCurrentPlayer().getHero().hasBeenAttack(myCardUUID, oppMin.getAttack());
+							monMin.setReadyToAttack(false);
+							// si ma créature é du vol de vie
+							if(monMin.getHasVolDeVie()) {
+								// on augmente les pv du hero
+								this.getCurrentPlayer().getHero().setHealth(this.getCurrentPlayer().getHero().getHealth()+monMin.getAttack());
+							}
+						}
+						// si il n'y a pas de provoc en face
+						else if (this.getNotCurrentPlayer().getHero().aCardWithProvocationInMyBorad() == false) {
+							// on fais les degats sur les deux minions oklm
+							this.getNotCurrentPlayer().getHero().hasBeenAttack(opponentUUID, monMin.getAttack());
+							this.getCurrentPlayer().getHero().hasBeenAttack(myCardUUID, oppMin.getAttack());
+							monMin.setReadyToAttack(false);
+							// si ma créature é du vol de vie
+							if(monMin.getHasVolDeVie()) {
+								// on augmente les pv du hero
+								this.getCurrentPlayer().getHero().setHealth(this.getCurrentPlayer().getHero().getHealth()+monMin.getAttack());
+							}
+						}
+						else {
+							throw new MiniHeartStoneException("Vous devez attaquer une des créatures avec provocation");
+						}
+					}
+					catch(MiniHeartStoneException e) {
+						System.out.println(e.toString());
 					}
 				}
-				// si il n'y a pas de provoc en face
 				else {
-					// on fais les degats sur les deux minions oklm
-					this.getNotCurrentPlayer().getHero().hasBeenAttack(opponentUUID, monMin.getAttack());
-					this.getCurrentPlayer().getHero().hasBeenAttack(myCardUUID, oppMin.getAttack());
-					monMin.setReadyToAttack(false);
-					// si ma créature é du vol de vie
-					if(monMin.getHasVolDeVie()) {
-						// on augmente les pv du hero
-						this.getCurrentPlayer().getHero().setHealth(this.getCurrentPlayer().getHero().getHealth()+monMin.getAttack());
-					}
+					throw new MiniHeartStoneException("Cette créature n'est pas prete à attaquer");
 				}
+			}
+			catch(MiniHeartStoneException e) {
+				System.out.println(e.toString());
 			}
 		}
 		// si ma créature existe bien sur mon board et que j'ai sélectionné le joueur adverse
@@ -457,14 +474,20 @@ public class Game {
 		
 		// le joueur 1 play
 		gm.invock(yoannTchoin.getPlayerID(), yoannTchoin.getHero().getHand().get(0).getCardUUID());
-		gm.invock(yoannTchoin.getPlayerID(), yoannTchoin.getHero().getHand().get(0).getCardUUID());
-		gm.invock(yoannTchoin.getPlayerID(), yoannTchoin.getHero().getHand().get(0).getCardUUID());
+		//gm.invock(yoannTchoin.getPlayerID(), yoannTchoin.getHero().getHand().get(0).getCardUUID());
+		//gm.invock(yoannTchoin.getPlayerID(), yoannTchoin.getHero().getHand().get(0).getCardUUID());
 		gm.passTurn(yoannTchoin.getPlayerID());
 		
 		// le joueur 2 play
 		gm.invock(pierreLaFouine.getPlayerID(), pierreLaFouine.getHero().getHand().get(0).getCardUUID());
-		gm.invock(pierreLaFouine.getPlayerID(), pierreLaFouine.getHero().getHand().get(2).getCardUUID());
+		gm.invock(pierreLaFouine.getPlayerID(), pierreLaFouine.getHero().getHand().get(1).getCardUUID());
+		gm.passTurn(pierreLaFouine.getPlayerID());
 		
+		
+		//gm.invock(pierreLaFouine.getHero().getHand().get(2).getCardUUID(),yoannTchoin.getPlayerID());
+		
+		gm.attack(yoannTchoin.getHero().getBoard().get(0).getCardUUID(), pierreLaFouine.getHero().getBoard().get(1).getCardUUID());
+		gm.attack(yoannTchoin.getHero().getBoard().get(0).getCardUUID(), pierreLaFouine.getHero().getBoard().get(1).getCardUUID());
 		System.out.println(gm.toString());
 	}
 	
