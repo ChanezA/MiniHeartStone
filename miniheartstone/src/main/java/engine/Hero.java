@@ -40,7 +40,7 @@ public abstract class Hero {
 			Card lul = new Minion(2, 2,3, "Chef de raid", "je suis fort", null,false, true, false);
 			this.deck.add(lul);
 
-			Card lol = new Minion(5, 4,4, "Y�ti noroit", "je suis n4", null,true, false, false);
+			Card lol = new Minion(5, 4,4, "Yéti noroit", "je suis n4", null,true, false, false);
 			this.deck.add(lol);
 			
 			Card lil = new Minion(2, 1,1, "Soldat du compté d'or", "je suis n4", null,true, false, false);

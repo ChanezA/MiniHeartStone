@@ -55,6 +55,7 @@ public class Game {
      */
     private void initGame() {
         this.currentPlayer = player1;
+        this.notCurrentPlayer = player2;
         int i;
         for (i = 0; i < 4; i++) {
             player1.getHero().draw();
@@ -343,18 +344,80 @@ public class Game {
 				}
 			}
 		}
-		// si ma cr�ature existe bien sur mon board et que j'ai s�lectionn� le joueur adverse
+		// si ma créature existe bien sur mon board et que j'ai sélectionné le joueur adverse
 		else if (this.getCurrentPlayer().getHero().isOnMyBoard(myCardUUID) && this.getNotCurrentPlayer().getPlayerID() == opponentUUID) {
 			Minion monMin = ((Minion)(this.getCurrentPlayer().getHero().getCardFromBoardByUUID(myCardUUID)));
 			
 			// on fais les degats sur l'adversaire
 			this.getNotCurrentPlayer().getHero().myHeroHasBeenAttack(monMin.getAttack());
 			monMin.setReadyToAttack(false);
-			// si ma cr�ature � du vol de vie
+			// si ma créature du vol de vie
 			if(monMin.getHasVolDeVie()) {
 				// on augmente les pv du hero
 				this.getCurrentPlayer().getHero().setHealth(this.getCurrentPlayer().getHero().getHealth()+monMin.getAttack());
 			}
 		}
 	}
+	
+	
+	
+	public String toString() {
+		String aff = "					"+this.getPlayer1().getName()+"	"+this.getPlayer1().getHero().getHeroName()+"\n";
+		aff = aff+"					-----------------------------					\n";
+		aff = aff+"					|  PV : "+this.getPlayer1().getHero().getHealth()+"  AR : "+ this.getPlayer1().getHero().getArmor()+"  MN : "+this.getPlayer1().getHero().getMana()+"  |					\n"
+			+"					-----------------------------					\n";
+	
+		aff = aff + "Cartes en main : \n";
+		
+		// affichage de la main j1
+		for (int i =0; i< player1.getHero().getHand().size(); i++ ) {
+		aff = aff + "|||"+player1.getHero().getHand().get(i).getName()+" Mana Cost : " +player1.getHero().getHand().get(i).getManaCost()+"|||	";
+		}
+		aff = aff + "\n";
+		
+		// affichage du board j1
+		aff = aff + "Cartes en du board : \n";
+		for (int i =0; i< player1.getHero().getBoard().size(); i++ ) {
+		aff = aff + "|||"+player1.getHero().getBoard().get(i).getName()+"	lf : " +((Minion)player1.getHero().getBoard().get(i)).getLife()+ " Att : " +((Minion)player1.getHero().getHand().get(i)).getAttack()+"|||	";
+		}
+		
+		aff = aff + "\n";
+		aff = aff + "***********************************************************************************************************************************************\n";
+		aff = aff + "\n";
+		
+		// affichage du board j2
+		aff = aff + "Cartes en du board : \n";
+		for (int i =0; i< player2.getHero().getBoard().size(); i++ ) {
+		aff = aff + "|||"+player2.getHero().getBoard().get(i).getName()+"	lf : " +((Minion)player2.getHero().getBoard().get(i)).getLife()+ " Att : " +((Minion)player1.getHero().getHand().get(i)).getAttack()+"|||	";
+		}
+		aff = aff + "\n";
+		
+		// affichage de la main j2
+		aff = aff + "Cartes en main : \n";
+		for (int i =0; i< player2.getHero().getHand().size(); i++ ) {
+		aff = aff + "|||"+player2.getHero().getHand().get(i).getName()+" Mana Cost : " +player2.getHero().getHand().get(i).getManaCost()+"|||	";
+		}
+		aff = aff + "\n";
+		
+		aff = aff+"					-----------------------------					\n";
+		aff = aff+"					|  PV : "+this.getPlayer2().getHero().getHealth()+"  AR : "+ this.getPlayer2().getHero().getArmor()+"  MN : "+this.getPlayer2().getHero().getMana()+"  |					\n"
+			+"					-----------------------------					\n";
+		aff = aff+ "					"+this.getPlayer2().getName()+"	"+this.getPlayer2().getHero().getHeroName()+"\n";
+		
+		
+		return aff;
+	}
+	public static void main(String[] args) {
+		
+		Hero yoann = new Magus();
+		Hero pierre = new Paladin();
+		
+		Player yoannTchoin = new Player("suce teub",yoann,3);
+		Player pierreLaFouine = new Player("l'appel d'air",pierre,4);
+		
+		Game gm = new Game(yoannTchoin,pierreLaFouine);
+		
+		System.out.println(gm.toString());
+	}
+	
 }
