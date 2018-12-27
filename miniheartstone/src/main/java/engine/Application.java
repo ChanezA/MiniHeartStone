@@ -22,12 +22,12 @@ public class Application {
     public CommandLineRunner demo(CardRepository repository) {
         return (args) -> {
             // save a couple of minions
-            repository.save(new Minion(2, 1,2,"Chef de raid","bonjour je suis un chef de raid",null,true, false, false));
+            /*repository.save(new Minion("Chef de raid","bonjour je suis un chef de  raid",3,2,2,null,true,false,false));
             repository.save(new Minion(3, 3,2,"Chevaucheur de loup","bonjour je suis un chevaucher de loup",null,true, false, true));
             repository.save(new Minion(4, 2,2,"Sanglier brocheroc","groink",null,false, false, true));
             repository.save(new Minion(1, 2,2,"Soldat du compté-de-l'or","bonjour je suis un soldat du compté-de-l'or",null,false, false, false));
             repository.save(new Minion(5, 3,3,"Yéti noroit","cc",null,false, false, true));
-
+*/
             Application.repo = repository;
 
             // fetch all customers
