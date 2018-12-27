@@ -59,12 +59,19 @@ public class Game {
         this.currentPlayer = player1;
         this.notCurrentPlayer = player2;
         int i;
-        for (i = 0; i < 4; i++) {
+        for (i = 0; i < 1; i++) {
+        	/*
             player1.getHero().draw();
             player2.getHero().draw();
+            */
+        	player1.getHero().draw("Sanglier brocheroc");
+        	player2.getHero().draw("Sanglier brocheroc");
+        	
+        	player1.getHero().draw("Chef de raid");
+        	player2.getHero().draw("Chef de raid");
         }
-        this.getCurrentPlayer().getHero().setMana(1);
-        this.getNotCurrentPlayer().getHero().setMana(0);
+        this.getCurrentPlayer().getHero().setMana(100);
+        this.getNotCurrentPlayer().getHero().setMana(100);
     }
 
     /**
@@ -143,7 +150,7 @@ public class Game {
     	try {
 	    	// si tu es bien le joueur courant et que la carte est bien dans ta main et que tu as bien le mana necessaire
 	    	if(this.CurrentPlayerOrNot(playerUUID) 
-	    			&& this.getCurrentPlayer().getHero().isOnMyHand(cardID) 
+	    		&& this.getCurrentPlayer().getHero().isOnMyHand(cardID)
 	    			&& this.getCurrentPlayer().getHero().getMana() >= this.getCurrentPlayer().getHero().getCardFromHandByUUID(cardID).getManaCost()) {
 	    		
 	    		// si cette carte est un minion
@@ -399,7 +406,7 @@ public class Game {
 		// affichage du board j1
 		aff = aff + "Cartes en du board : \n";
 		for (int i =0; i< player1.getHero().getBoard().size(); i++ ) {
-		aff = aff + "|||"+player1.getHero().getBoard().get(i).getName()+"	lf : " +((Minion)player1.getHero().getBoard().get(i)).getLife()+ " Att : " +((Minion)player1.getHero().getHand().get(i)).getAttack()+"|||	";
+		aff = aff + "|||"+player1.getHero().getBoard().get(i).getName()+"	lf : " +((Minion)player1.getHero().getBoard().get(i)).getLife()+ " Att : " +((Minion)player1.getHero().getBoard().get(i)).getAttack()+"|||	";
 		}
 		
 		aff = aff + "\n";
@@ -437,6 +444,11 @@ public class Game {
 		Player pierreLaFouine = new Player("l'appel d'air",pierre,4);
 		
 		Game gm = new Game(yoannTchoin,pierreLaFouine);
+		
+		// le joueur 1 play
+		gm.invock(yoannTchoin.getPlayerID(), yoannTchoin.getHero().getHand().get(0).getCardUUID());
+		System.out.println(yoannTchoin.getHero().getHand().get(0).getName());
+		gm.invock(yoannTchoin.getPlayerID(), yoannTchoin.getHero().getHand().get(0).getCardUUID());
 		
 		System.out.println(gm.toString());
 	}
