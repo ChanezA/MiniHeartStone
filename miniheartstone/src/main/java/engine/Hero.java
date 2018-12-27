@@ -31,19 +31,19 @@ public abstract class Hero {
 			this.HeroUUID = UUID.randomUUID();
 			// ici aller chercher dnas Spring pour remplier Deck
 			
-			Card lel = new Minion(1, 1,1, "Sanglier de brocheroc", "je suis n1", null,false, false, false);
+			Card lel = new Minion("Sanglier de brocheroc", "je suis n1",1, 1, 1, false,false, false, null);
 			this.deck.add(lel);
 			//						vie, attack , mana				provo life steal charge
-			Card lal = new Minion(1, 3,3, "Chevaucheur de loup", "je suis n2", null,false, false, true);
+			Card lal = new Minion("Chevaucheur de loup", "je suis n2",3, 1, 3, false,false, false, null);
 			this.deck.add(lal);
 
-			Card lul = new Minion(2, 2,3, "Chef de raid", "je suis fort", null,false, true, false);
+			Card lul = new Minion("Chef de raid", "je suis fort",3, 1, 2, false,false, true, null);
 			this.deck.add(lul);
 
-			Card lol = new Minion(5, 4,4, "Yéti noroit", "je suis n4", null,true, false, false);
+			Card lol = new Minion("Yéti noroit", "je suis n4",4, 1, 2, false,true, false, null);
 			this.deck.add(lol);
 			
-			Card lil = new Minion(2, 1,1, "Soldat du compté d'or", "je suis n4", null,true, false, false);
+			Card lil = new Minion("Soldat du compté d'or", "je suis n4",1, 1, 2, false,true, false, null);
 			this.deck.add(lil);
 			
 			Card lzl = new Spell(1, "Image miroir", "je suis un spell qui invoque 2 0/2 provoc", null);
