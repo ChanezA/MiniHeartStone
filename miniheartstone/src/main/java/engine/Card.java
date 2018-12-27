@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Transient;
 import java.util.UUID;
 
-/*
+/**
  * Abstract class
  * Represents a MiniHeartStone card
  */
