@@ -26,7 +26,7 @@ public abstract class Hero_Doublure extends Hero {
 		}
 		
 		else if(cardName == "Chef de raid") {
-			Card min = new Minion("Chef de raid", "je suis fort",3, 1, 2, false,false, true, null);
+			Card min = new Minion("Chef de raid", "je suis fort",3, 2, 2, false,false, true, null);
 			hand.add(min);
 			return min;
 		}
