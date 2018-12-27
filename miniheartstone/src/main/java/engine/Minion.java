@@ -3,10 +3,10 @@ package engine;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Transient;
-import java.util.UUID;
-/*
- * Louis le bg
- *  Nice end
+
+/**
+ * Represents a MiniHeartStone minion
+ * extends the Card abstract class
  */
 @Entity
 public class Minion extends Card {
@@ -16,33 +16,31 @@ public class Minion extends Card {
     @Column(name="life")
 	protected int life;
     @Column(name="hasTaunt")
-    protected boolean hasProvocation;
+    protected boolean hasTaunt;
     @Column(name="hasLifeSteal")
-    protected boolean hasVolDeVie;
+    protected boolean hasLifeSteal;
     @Column(name="hasCharge")
     protected boolean hasCharge;
 
     @Transient
 	protected boolean readyToAttack;
 	
-	Minion(int life, int attack,int manaCost, String name, String description, String pictureURL,
-			boolean hasProvocation, boolean hasVolDeVie, boolean hasCharge){
+	Minion(String name, String description, int manaCost, int attack, int life,
+			boolean hasTaunt, boolean hasLifeSteal, boolean hasCharge, String pictureURL) {
 		
-		super(manaCost, name, pictureURL, description);
-		this.life = life;
+		super(name, description, manaCost, pictureURL);
 		this.attack = attack;
-		
-		this.readyToAttack = false;
-		this.cardID = UUID.randomUUID();
-		
-		this.hasProvocation = hasProvocation;
-		this.hasVolDeVie = hasVolDeVie;
+		this.life = life;
+		this.hasTaunt = hasTaunt;
+		this.hasLifeSteal = hasLifeSteal;
 		this.hasCharge = hasCharge;
+
+		this.readyToAttack = false;
 	}
 	
 	public Minion cloneMinion(){
-		Minion theClone = new Minion(this.getLife(), this.getAttack(),this.getManaCost(), this.getName(), this.getDescription(), this.getPictureURL(),
-				this.getHasPrococation(), this.getHasVolDeVie(), this.getHasCharge());
+		Minion theClone = new Minion(this.name, this.description, this.manaCost, this.attack, this.life,
+				this.hasTaunt, this.hasLifeSteal, this.hasCharge, this.pictureURL);
 		return theClone;
 	}
 	
@@ -75,19 +73,19 @@ public class Minion extends Card {
 	}
 	
 	public boolean getHasPrococation() {
-		return this.hasProvocation;
+		return this.hasTaunt;
 	}
 	
 	public void setHasProvocation(boolean bl) {
-		this.hasProvocation = bl;
+		this.hasTaunt = bl;
 	}
 	
 	public boolean getHasVolDeVie() {
-		return this.hasVolDeVie;
+		return this.hasLifeSteal;
 	}
 	
 	public void setHasVolDeVie(boolean bl) {
-		this.hasVolDeVie = bl;
+		this.hasLifeSteal = bl;
 	}
 	
 	//getter .
@@ -105,8 +103,8 @@ public class Minion extends Card {
 				"attack : "+this.attack+"\n"+
 				"readyToAttack :"+this.readyToAttack+"\n"+
 				"MinionUUID : "+this.cardID+"\n"+
-				"hasProvocation : "+this.hasProvocation+"\n"+
-				"hasLifeSteal : "+this.hasVolDeVie+"\n"+
+				"hasProvocation : "+this.hasTaunt+"\n"+
+				"hasLifeSteal : "+this.hasLifeSteal+"\n"+
 				"hasCharge : "+this.hasCharge+"\n"+"\n"+
 
 				"manaCost : "+this.manaCost+"\n"+
