@@ -58,7 +58,9 @@ public abstract class Hero {
 		
 		public Card draw() {
 			int rd = (int)(Math.random() * (deck.size()));
-			Card crd = deck.get(rd).cloneCard();
+			Card crd = null;
+			try { crd = deck.get(rd).cloneCard(); }
+			catch (Exception e) { System.out.println(e.getMessage()); }
 			hand.add(crd);
 			return crd;
 		}
@@ -104,9 +106,9 @@ public abstract class Hero {
 		
 							// si c'est image miroir
 							if (spell.getName() == "Image miroir") {
-								Card one =new Minion(2, 0,0, "Serviteurs", "je suis invoque par img mir", null,true, false, false);
+								Card one =new Minion("Soldat du compté d'or", "je suis n4",1, 1, 2, false,true, false, null);
 								((Minion)one).setAttack(((Minion)one).getAttack()+ this.howManyChefDeRaidInMyBoard());
-								Card two =new Minion(2, 0,0, "Serviteurs", "je suis invoque par img mir", null,true, false, false);
+								Card two =new Minion("Soldat du compté d'or", "je suis n4",1, 1, 2, false,true, false, null);
 								((Minion)two).setAttack(((Minion)two).getAttack()+ this.howManyChefDeRaidInMyBoard());
 								this.getBoard().add(one);
 								this.getBoard().add(two);
