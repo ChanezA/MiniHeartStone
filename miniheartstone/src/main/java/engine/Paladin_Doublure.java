@@ -16,4 +16,5 @@ public class Paladin_Doublure extends Hero_Doublure {
 	public String toString() {
 		return "I'am Paladin, name: " + this.getHeroName() + " mana: "+this.mana +" health: "+this.getHealth() +" armor: "+ this.getArmor();
 	}
+	
 }
