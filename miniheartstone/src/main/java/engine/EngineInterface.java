@@ -1,5 +1,6 @@
 package engine;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Queue;
 import java.util.UUID;
@@ -12,6 +13,12 @@ public class EngineInterface {
 	public static Queue<Player> mmNoob;
 	public static Queue<Player> mmMid;
 	public static Queue<Player> mmPro;
+	
+	// ici faire du spring pour recup les noms les héros jouables
+	public static ArrayList<String> getAllHeroDescription() {
+		ArrayList<String> ar = new ArrayList<String>();
+		return ar;
+	}
 	
 	public static void wantPlay(int lvl,String pseudo, String heroStr) {
 		Hero her = null;
@@ -78,11 +85,28 @@ public class EngineInterface {
 		}
 	}
 	
-	public static void invock() {
-		
+	// xd
+	public static void invock(UUID gamUUID, UUID playerUUID, UUID cardID) {
+		allCurrentGame.get(gamUUID).invock(playerUUID, cardID);
 	}
 	
-	public ctatic void attack() {
-		
+	//lol
+	public static void attack(UUID gamUUID, UUID playerUUID, UUID MycardUUID, UUID oppCardUUID) {
+		allCurrentGame.get(gamUUID).attack(playerUUID, MycardUUID, oppCardUUID);
+	}
+	
+	//wtf
+	public static void select(UUID gamUUID, UUID playerUUID, UUID cardUUID) {
+		allCurrentGame.get(gamUUID).select(playerUUID, cardUUID);
+	}
+	
+	//power
+	public static void power(UUID gamUUID, UUID playerUUID) {
+		allCurrentGame.get(gamUUID).power(playerUUID);
+	}
+	
+	// culte
+	public static void passTurn(UUID gamUUID, UUID playerUUID) {
+		allCurrentGame.get(gamUUID).passTurn(playerUUID);
 	}
 }

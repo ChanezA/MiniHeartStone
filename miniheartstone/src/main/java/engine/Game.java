@@ -87,7 +87,7 @@ public class Game {
     /**
      * passage de tour
      */
-    private void passTurn(UUID playerID) {
+    public void passTurn(UUID playerID) {
     	try {
 	    	// si tu es le current player
 	    	if(this.CurrentPlayerOrNot(playerID)) {
@@ -361,7 +361,7 @@ public class Game {
     		System.out.print(e.toString());
     	}
     }
-	public void power(UUID playerUUID,UUID selectCardUUID) {
+	public void power(UUID playerUUID) {
 		try {
 			// si le joueur est bien le joueur courant
 			if(playerUUID == this.getCurrentPlayer().getPlayerID()) {
@@ -370,7 +370,7 @@ public class Game {
 					// si c'est un mage 
 					if (this.getCurrentPlayer().getHero().getHeroName() == "Mage") {
 						iAmWaitingFor = "Pouvoir du mage"+this.getCurrentPlayer().getPlayerID().toString();
-		    			this.tmpUUID = selectCardUUID;
+		    			//this.tmpUUID = selectCardUUID;
 					}
 					// si c'est un guerrier ou palladin
 					else{
