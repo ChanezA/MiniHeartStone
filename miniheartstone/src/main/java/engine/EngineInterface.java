@@ -78,5 +78,11 @@ public class EngineInterface {
 		}
 	}
 	
-	public static void 
+	public static void invock() {
+		
+	}
+	
+	public ctatic void attack() {
+		
+	}
 }

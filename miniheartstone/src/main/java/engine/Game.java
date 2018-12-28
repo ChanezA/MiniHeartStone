@@ -445,6 +445,15 @@ public class Game {
 				else if (this.getCurrentPlayer().getHero().isOnMyBoard(myCardUUID) && this.getNotCurrentPlayer().getPlayerID() == opponentUUID) {
 					Minion monMin = ((Minion)(this.getCurrentPlayer().getHero().getCardFromBoardByUUID(myCardUUID)));
 					
+					try {
+						// si une créature adverse é provovation
+						if (this.getNotCurrentPlayer().getHero().aCardWithProvocationInMyBorad()) {
+							throw new MiniHeartStoneException("Vous devez attauqer les créatures avec provocation");
+						}
+					}
+					catch(MiniHeartStoneException e) {
+						System.out.println(e.toString());
+					}
 					// on fais les degats sur l'adversaire
 					this.getNotCurrentPlayer().getHero().myHeroHasBeenAttack(monMin.getAttack());
 					monMin.setReadyToAttack(false);
