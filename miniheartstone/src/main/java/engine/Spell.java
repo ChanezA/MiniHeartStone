@@ -9,7 +9,7 @@ import java.util.UUID;
 @Entity
 public class Spell extends Card {
 	
-	Spell(int manaCost, String name, String description, String pictureURL){
+	public Spell(int manaCost, String name, String description, String pictureURL){
 		
 		super(name, description, manaCost, pictureURL);
 		
@@ -17,8 +17,7 @@ public class Spell extends Card {
 	}
 	
 	public Spell cloneSpell(){
-		Spell theClone = new Spell(this.getManaCost(), this.getName(), this.getDescription(), this.getPictureURL());
-		return theClone;
+		return new Spell(this.getManaCost(), this.getName(), this.getDescription(), this.getPictureURL());
 	}
 
 	public Spell cloneCard() {
