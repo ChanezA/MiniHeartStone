@@ -25,7 +25,7 @@ public class Minion extends Card {
     @Transient
 	protected boolean readyToAttack;
 	
-	Minion(String name, String description, int manaCost, int attack, int life,
+	public Minion(String name, String description, int manaCost, int attack, int life,
 			boolean hasTaunt, boolean hasLifeSteal, boolean hasCharge, String pictureURL) {
 		
 		super(name, description, manaCost, pictureURL);
@@ -39,9 +39,9 @@ public class Minion extends Card {
 	}
 	
 	public Minion cloneMinion(){
-		Minion theClone = new Minion(this.name, this.description, this.manaCost, this.attack, this.life,
+		return new Minion(this.name, this.description, this.manaCost, this.attack, this.life,
 				this.hasTaunt, this.hasLifeSteal, this.hasCharge, this.pictureURL);
-		return theClone;
+
 	}
 	
 	//getter attack.
