@@ -29,6 +29,11 @@ public abstract class Card {
 	protected UUID cardID;
 
 	/**
+	 * Empty conctructor
+	 */
+	protected Card() { }
+
+	/**
 	 * Instanciates the card to the given parameters and with a random UUID
 	 * @param name The name of the card
 	 * @param description The description of the card

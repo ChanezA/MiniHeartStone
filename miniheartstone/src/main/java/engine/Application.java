@@ -22,7 +22,6 @@ public class Application {
     public CommandLineRunner demo(CardRepository repository) {
         return (args) -> {
             // save a couple of minions
-            //repository.save(new Minion(1, 2,2,"Soldat du compté-de-l'or","bonjour je suis un soldat du compté-de-l'or",null,false, false, false));
 
             repository.save(new Minion("Sanglier de brocheroc","je suis n1",1,1,1,false,false,false,null));
             repository.save(new Minion("Chevaucheur de loup", "je suis n2",3, 1, 3, false,false, false, null));
