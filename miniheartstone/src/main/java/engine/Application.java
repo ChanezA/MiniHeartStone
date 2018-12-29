@@ -22,12 +22,13 @@ public class Application {
     public CommandLineRunner demo(CardRepository repository) {
         return (args) -> {
             // save a couple of minions
-            /*repository.save(new Minion("Chef de raid","bonjour je suis un chef de  raid",3,2,2,null,true,false,false));
-            repository.save(new Minion(3, 3,2,"Chevaucheur de loup","bonjour je suis un chevaucher de loup",null,true, false, true));
-            repository.save(new Minion(4, 2,2,"Sanglier brocheroc","groink",null,false, false, true));
-            repository.save(new Minion(1, 2,2,"Soldat du compté-de-l'or","bonjour je suis un soldat du compté-de-l'or",null,false, false, false));
-            repository.save(new Minion(5, 3,3,"Yéti noroit","cc",null,false, false, true));
-*/
+            //repository.save(new Minion(1, 2,2,"Soldat du compté-de-l'or","bonjour je suis un soldat du compté-de-l'or",null,false, false, false));
+
+            repository.save(new Minion("Sanglier de brocheroc","je suis n1",1,1,1,false,false,false,null));
+            repository.save(new Minion("Chevaucheur de loup", "je suis n2",3, 1, 3, false,false, false, null));
+            repository.save(new Minion("Chef de raid", "je suis fort",3, 1, 2, false,false, true, null));
+            repository.save(new Minion("Yéti noroit", "je suis n4",4, 1, 2, false,true, false, null));
+            repository.save(new Minion("Soldat du compté d'or", "je suis n4",1, 1, 2, false,true, false, null));
             Application.repo = repository;
 
             // fetch all customers
