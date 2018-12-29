@@ -35,7 +35,8 @@ public class Minion extends Card {
 		this.hasLifeSteal = hasLifeSteal;
 		this.hasCharge = hasCharge;
 
-		this.readyToAttack = false;
+		this.readyToAttack = hasCharge;
+
 	}
 	
 	public Minion cloneMinion(){
