@@ -29,29 +29,19 @@ public abstract class Hero {
 			this.mana=0;
 			this.armor =0;
 			this.HeroUUID = UUID.randomUUID();
-			// ici aller chercher dnas Spring pour remplier Deck
-			
-			Card lel = new Minion("Sanglier de brocheroc", "je suis n1",1, 1, 1, false,false, false, null);
-			this.deck.add(lel);
-			//						vie, attack , mana				provo life steal charge
-			Card lal = new Minion("Chevaucheur de loup", "je suis n2",3, 1, 3, false,false, false, null);
-			this.deck.add(lal);
 
-			Card lul = new Minion("Chef de raid", "je suis fort",3, 1, 2, false,false, true, null);
-			this.deck.add(lul);
+            // Retrieving card with Spring
+            CardRepository repo = Application.repo;
+            for (Card card : repo.findAll()) {
+                this.deck.add(card);
+            }
 
-			Card lol = new Minion("Yéti noroit", "je suis n4",4, 1, 2, false,true, false, null);
-			this.deck.add(lol);
-			
-			Card lil = new Minion("Soldat du compté d'or", "je suis n4",1, 1, 2, false,true, false, null);
-			this.deck.add(lil);
-			
 			Card lzl = new Spell(1, "Image miroir", "je suis un spell qui invoque 2 0/2 provoc", null);
 			this.deck.add(lzl);
-			
+
 			Card lyl = new Spell(3, "Maîtrise du blocage", "je suis un spell qui pioche", null);
 			this.deck.add(lyl);
-			
+
 		}
 		
 		public abstract void power();

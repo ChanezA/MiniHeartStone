@@ -24,7 +24,9 @@ public class Minion extends Card {
 
     @Transient
 	protected boolean readyToAttack;
-	
+
+    protected Minion() { }
+
 	public Minion(String name, String description, int manaCost, int attack, int life,
 			boolean hasTaunt, boolean hasLifeSteal, boolean hasCharge, String pictureURL) {
 		
