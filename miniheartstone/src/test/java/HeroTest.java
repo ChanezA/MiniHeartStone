@@ -1,14 +1,11 @@
 import static org.junit.Assert.assertTrue;
 
-import java.util.UUID;
-
 import org.junit.Test;
 
 import engine.Hero_Doublure;
 import engine.Minion;
 import engine.Paladin_Doublure;
-import exception.MiniHeartStoneException;
-import engine.Card;
+import engine.AbstractCard;
 
 
 public class HeroTest {
@@ -27,10 +24,10 @@ public class HeroTest {
 	    Hero_Doublure pal = new Paladin_Doublure();
 	    pal.setMana(20);
 	    assertTrue(pal.getHealth() == 30);
-	    Card crd1 = pal.draw("Sanglier brocheroc");
+	    AbstractCard crd1 = pal.draw("Sanglier brocheroc");
 	    assertTrue(pal.getHand().size() == 1);
 	        
-	    Card crd2 = pal.draw("Chef de raid");
+	    AbstractCard crd2 = pal.draw("Chef de raid");
 	    assertTrue(pal.getHand().size() == 2);
 	        
 	    // invocation du sanglier
@@ -63,7 +60,7 @@ public class HeroTest {
 	    assertTrue(pal.getLooser() == true);
 	    
 	   
-	    Card crd4 = pal.draw("Chef de raid");
+	    AbstractCard crd4 = pal.draw("Chef de raid");
 	    // invocation du chef de raid
 	    pal.invock(crd4.getCardUUID());
 	    
@@ -79,10 +76,10 @@ public class HeroTest {
     	pal.setMana(20);
         assertTrue(pal.getHealth() == 30);
 
-        Card crd1 = pal.draw("Sanglier brocheroc");
+        AbstractCard crd1 = pal.draw("Sanglier brocheroc");
         assertTrue(pal.getHand().size() == 1);
         
-        Card crd2 = pal.draw("Chef de raid");
+        AbstractCard crd2 = pal.draw("Chef de raid");
         assertTrue(pal.getHand().size() == 2);
         
         // invocation du sanglier
@@ -96,7 +93,7 @@ public class HeroTest {
         assertTrue(((Minion)crd1).getAttack() == 2);
         
         //on pioche un sanglier
-        Card crd3 = pal.draw("Sanglier brocheroc");
+        AbstractCard crd3 = pal.draw("Sanglier brocheroc");
         assertTrue(pal.getHand().size() == 1);
         
         //on invoque ce sanglier
@@ -104,7 +101,7 @@ public class HeroTest {
         assertTrue(((Minion)crd3).getAttack() == 2);
         
         // On mioche Image miroir
-        Card crd4 = pal.draw("Image miroir");
+        AbstractCard crd4 = pal.draw("Image miroir");
         assertTrue(pal.getHand().size() == 1);
         // On play la carte Imaghe miroir
         pal.invock(crd4.getCardUUID());

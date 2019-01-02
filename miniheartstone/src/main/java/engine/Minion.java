@@ -6,10 +6,10 @@ import javax.persistence.Transient;
 
 /**
  * Represents a MiniHeartStone minion
- * extends the Card abstract class
+ * extends the AbstractCard abstract class
  */
 @Entity
-public class Minion extends Card {
+public class Minion extends AbstractCard {
 
     @Column(name="attack")
     protected int attack;

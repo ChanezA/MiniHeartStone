@@ -46,7 +46,7 @@ public class Facade {
 		}
 	}
 	
-	public List<Card> getPioche(UUID gameID,UUID playerID){
+	public List<AbstractCard> getPioche(UUID gameID, UUID playerID){
 		
 		Game game = allCurrentGame.get(gameID);
 		if (game.getPlayer1().getPlayerID() == playerID) {
@@ -69,7 +69,7 @@ public class Facade {
 			Game game = allCurrentGame.get(gameID);
 			if (game.getCurrentPlayer().getPlayerID() == playerID) {
 				
-				//Card ourcard = game.getCurrentPlayer().getSpecificCard(cardID);
+				//AbstractCard ourcard = game.getCurrentPlayer().getSpecificCard(cardID);
 				//ecrire une fonction ajoute carte dans game pour ajouter une carte et appliquer ses effets si elle en as au d'ajouter seulement
 				game.getCurrentPlayer().getHero().getBoard();
 				//game.getCurrentPlayer().removeCardHand(ourcard);

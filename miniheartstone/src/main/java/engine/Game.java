@@ -131,10 +131,10 @@ public class Game {
 
     /**
      * Returns the board of the given player
-     * @param player
-     * @return The board as a List<Card>
+     * @param playerUUID
+     * @return The board as a List<AbstractCard>
      */
-    public ArrayList<Card> getMyBoard(UUID playerUUID){
+    public ArrayList<AbstractCard> getMyBoard(UUID playerUUID){
     	if (playerUUID == this.player1.getPlayerID() ) {
     		return this.getPlayer1().getHero().getBoard();
     	}
@@ -145,10 +145,10 @@ public class Game {
 
     /**
      * Returns the board the opponent of the given player
-     * @param player
-     * @return The board as a List<Card>
+     * @param playerUUID
+     * @return The board as a List<AbstractCard>
      */
-    public ArrayList<Card> getOpponentBoard(UUID playerUUID){
+    public ArrayList<AbstractCard> getOpponentBoard(UUID playerUUID){
     	if (playerUUID == this.player1.getPlayerID() ) {
     		return this.getPlayer2().getHero().getBoard();
     	}

@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication
 public class Application {
 
-    private static final Logger log = LoggerFactory.getLogger(Application.class);
+    private static final Logger LOG = LoggerFactory.getLogger(Application.class);
     public static CardRepository repo = null;
 
     public static void main(String[] args) {
@@ -31,32 +31,32 @@ public class Application {
             Application.repo = repository;
 
             // fetch all customers
-            log.info("Customers found with findAll():");
-            log.info("-------------------------------");
-            for (Card card : repository.findAll()) {
-                log.info(card.toString());
+            LOG.info("Customers found with findAll():");
+            LOG.info("-------------------------------");
+            for (AbstractCard abstractCard : repository.findAll()) {
+                LOG.info(abstractCard.toString());
             }
-            log.info("");
+            LOG.info("");
 
             // fetch an individual customer by ID
             /*repository.findById(1L)
                     .ifPresent(customer -> {
-                        log.info("Customer found with findById(1L):");
-                        log.info("--------------------------------");
-                        log.info(customer.toString());
-                        log.info("");
+                        LOG.info("Customer found with findById(1L):");
+                        LOG.info("--------------------------------");
+                        LOG.info(customer.toString());
+                        LOG.info("");
                     });
 */
             // fetch customers by last name
-            log.info("Customer found with findByLastName('Bauer'):");
-            log.info("--------------------------------------------");
+            LOG.info("Customer found with findByLastName('Bauer'):");
+            LOG.info("--------------------------------------------");
             repository.findByName("Sanglier brocheroc").forEach(sanglier -> {
-                log.info(sanglier.toString());
+                LOG.info(sanglier.toString());
             });
             // for (Customer bauer : repository.findByLastName("Bauer")) {
-            // 	log.info(bauer.toString());
+            // 	LOG.info(bauer.toString());
             // }
-            log.info("");
+            LOG.info("");
         };
     }
 

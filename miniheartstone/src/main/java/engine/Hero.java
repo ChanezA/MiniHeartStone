@@ -15,9 +15,9 @@ public abstract class Hero {
 		protected int health;
 		protected int armor;
 		//liste tte les carte que le heros peut avoir a recuperer dans la base de données.
-		protected ArrayList<Card> deck = new ArrayList<Card>();
-		protected ArrayList<Card> hand = new ArrayList<Card>();
-		protected ArrayList<Card> board = new ArrayList<Card>();
+		protected ArrayList<AbstractCard> deck = new ArrayList<AbstractCard>();
+		protected ArrayList<AbstractCard> hand = new ArrayList<AbstractCard>();
+		protected ArrayList<AbstractCard> board = new ArrayList<AbstractCard>();
 		
 		protected boolean looser = false;
 		protected boolean winner = false;
@@ -32,23 +32,23 @@ public abstract class Hero {
 
             // Retrieving card with Spring
             CardRepository repo = Application.repo;
-            for (Card card : repo.findAll()) {
-                this.deck.add(card);
+            for (AbstractCard abstractCard : repo.findAll()) {
+                this.deck.add(abstractCard);
             }
 
-			Card lzl = new Spell(1, "Image miroir", "je suis un spell qui invoque 2 0/2 provoc", null);
+			AbstractCard lzl = new Spell(1, "Image miroir", "je suis un spell qui invoque 2 0/2 provoc", null);
 			this.deck.add(lzl);
 
-			Card lyl = new Spell(3, "Maîtrise du blocage", "je suis un spell qui pioche", null);
+			AbstractCard lyl = new Spell(3, "Maîtrise du blocage", "je suis un spell qui pioche", null);
 			this.deck.add(lyl);
 
 		}
 		
 		public abstract void power();
 		
-		public Card draw() {
+		public AbstractCard draw() {
 			int rd = (int)(Math.random() * (deck.size()));
-			Card crd = null;
+			AbstractCard crd = null;
 			try { crd = deck.get(rd).cloneCard(); }
 			catch (Exception e) { System.out.println(e.getMessage()); }
 			hand.add(crd);
@@ -70,23 +70,23 @@ public abstract class Hero {
 						// si c'est un minion
 						if(this.getCardFromHandByUUID(cardID) instanceof Minion ) {
 							//System.out.println("exsque je passe ici lele�k�eckpaekcp");
-							Card card = this.getCardFromHandByUUID(cardID);
-							hand.remove(card);
+							AbstractCard abstractCard = this.getCardFromHandByUUID(cardID);
+							hand.remove(abstractCard);
 							// si ma carte est un chef de raid +1 att a toutes les cretures du board
-							if (card.getName() == "Chef de raid") {
+							if (abstractCard.getName() == "Chef de raid") {
 								for(int i =0; i< board.size(); i++) {
-									Card miniminion = this.getBoard().get(i);
+									AbstractCard miniminion = this.getBoard().get(i);
 									((Minion)miniminion).setAttack(((Minion)miniminion).getAttack()+1);
 		
 								}
 							}
 							// ajout des pts d'attack en fonction du nombre de chef de raids presents sur le plateau alli�
-							((Minion)card).setAttack(((Minion)card).getAttack()+ this.howManyChefDeRaidInMyBoard());
-							board.add(card);
+							((Minion) abstractCard).setAttack(((Minion) abstractCard).getAttack()+ this.howManyChefDeRaidInMyBoard());
+							board.add(abstractCard);
 		
 							// si la carte � charge
-							if(((Minion)card).getHasCharge()) {
-								((Minion)card).setReadyToAttack(true);
+							if(((Minion) abstractCard).getHasCharge()) {
+								((Minion) abstractCard).setReadyToAttack(true);
 							}
 						}
 						//si c'est un spell
@@ -96,9 +96,9 @@ public abstract class Hero {
 		
 							// si c'est image miroir
 							if (spell.getName() == "Image miroir") {
-								Card one =new Minion("Soldat", "je suis n4",1, 0, 2, true,false, false, null);
+								AbstractCard one =new Minion("Soldat", "je suis n4",1, 0, 2, true,false, false, null);
 								((Minion)one).setAttack(((Minion)one).getAttack()+ this.howManyChefDeRaidInMyBoard());
-								Card two =new Minion("Soldat", "je suis n4",1, 0, 2, true,false, false, null);
+								AbstractCard two =new Minion("Soldat", "je suis n4",1, 0, 2, true,false, false, null);
 								((Minion)two).setAttack(((Minion)two).getAttack()+ this.howManyChefDeRaidInMyBoard());
 								this.getBoard().add(one);
 								this.getBoard().add(two);
@@ -164,7 +164,7 @@ public abstract class Hero {
 						this.getBoard().remove(min);
 						if (min.getName() == "Chef de raid") {
 							for(int i =0; i< board.size(); i++) {
-								Card miniminion = this.getBoard().get(i);
+								AbstractCard miniminion = this.getBoard().get(i);
 								((Minion)miniminion).setAttack(((Minion)miniminion).getAttack()-1);
 							}
 						}
@@ -183,8 +183,8 @@ public abstract class Hero {
 		// retourne true si la carte est dans la main, fasle sinon
 		public boolean isOnMyHand (UUID cardID) {
 			boolean present = false;
-			for (Card card : hand) {
-			    if (card.getCardUUID() == cardID) {
+			for (AbstractCard abstractCard : hand) {
+			    if (abstractCard.getCardUUID() == cardID) {
 			    	present = true;
 			    	break;
 			    }
@@ -194,8 +194,8 @@ public abstract class Hero {
 		
 		public boolean isOnMyBoard (UUID cardID) {
 			boolean present = false;
-			for (Card card : board) {
-			    if (card.getCardUUID() == cardID) {
+			for (AbstractCard abstractCard : board) {
+			    if (abstractCard.getCardUUID() == cardID) {
 			    	present = true;
 			    	break;
 			    }
@@ -204,19 +204,19 @@ public abstract class Hero {
 		}
 		
 		// retourne la card de la main en fonction d'un UUID ou null si elle n'est pas dans la main du joueur
-		public Card getCardFromHandByUUID (UUID cardID) {
-			for (Card card : hand) {
-				if (card.getCardUUID() == cardID) {
-					return card;
+		public AbstractCard getCardFromHandByUUID (UUID cardID) {
+			for (AbstractCard abstractCard : hand) {
+				if (abstractCard.getCardUUID() == cardID) {
+					return abstractCard;
 				}
 			}
 			return null;
 		}
 		
-		public Card getCardFromBoardByUUID (UUID cardID) {
-			for (Card card : board) {
-				if (card.getCardUUID() == cardID) {
-					return card;
+		public AbstractCard getCardFromBoardByUUID (UUID cardID) {
+			for (AbstractCard abstractCard : board) {
+				if (abstractCard.getCardUUID() == cardID) {
+					return abstractCard;
 				}
 			}
 			return null;
@@ -249,15 +249,15 @@ public abstract class Hero {
 			return this.health;
 		}
 		
-		public ArrayList<Card> getDeck() {
+		public ArrayList<AbstractCard> getDeck() {
 			return this.deck;
 		}
 		
-		public ArrayList<Card> getHand() {
+		public ArrayList<AbstractCard> getHand() {
 			return this.hand;
 		}
 		
-		public ArrayList<Card> getBoard() {
+		public ArrayList<AbstractCard> getBoard() {
 			return this.board;
 		}
 		
@@ -327,90 +327,90 @@ public abstract class Hero {
 			aff = aff + "\n";
 			return aff;
 		}
-		public Card draw(String cardName) {
+		public AbstractCard draw(String cardName) {
 			if(cardName == "Sanglier brocheroc") {
-				Card min = new Minion("Sanglier de brocheroc", "je suis n1",1, 1, 1, false,false, false, null);
+				AbstractCard min = new Minion("Sanglier de brocheroc", "je suis n1",1, 1, 1, false,false, false, null);
 				hand.add(min);
 				return min;
 			}
 			
 			else if(cardName == "Soldat du comté-de-l'or") {
-				Card min = new Minion("Soldat du compté d'or", "je suis n4",1, 1, 2, false,true, false, null);
+				AbstractCard min = new Minion("Soldat du compté d'or", "je suis n4",1, 1, 2, false,true, false, null);
 				hand.add(min);
 				return min;
 			}
 			
 			else if(cardName == "Chevaucheur de loup") {
-				Card min = new Minion("Chevaucheur de loup", "je suis n2",3, 1, 3, false,false, false, null);
+				AbstractCard min = new Minion("Chevaucheur de loup", "je suis n2",3, 1, 3, false,false, false, null);
 				hand.add(min);
 				return min;
 			}
 			
 			else if(cardName == "Chef de raid") {
-				Card min = new Minion("Chef de raid", "je suis fort",3, 2, 2, false,false, true, null);
+				AbstractCard min = new Minion("Chef de raid", "je suis fort",3, 2, 2, false,false, true, null);
 				hand.add(min);
 				return min;
 			}
 			
 			else if(cardName == "Yéti noroit") {
-				Card min = new Minion("Yéti noroit", "je suis n4",4, 4, 5, false,true, false, null);
+				AbstractCard min = new Minion("Yéti noroit", "je suis n4",4, 4, 5, false,true, false, null);
 				hand.add(min);
 				return min;
 			}
 			
 			// Spell(int manaCost, String name, String description, String pictureURL)
 			else if(cardName == "Image miroir") {
-				Card min = new Spell(1,"Image miroir","description","img");
+				AbstractCard min = new Spell(1,"Image miroir","description","img");
 				hand.add(min);
 				return min;
 			}
 			
 			// Spell(int manaCost, String name, String description, String pictureURL)
 			else if(cardName == "Explosion des arcanes") {
-				Card min = new Spell(2,"Explosion des arcanes","description","img");
+				AbstractCard min = new Spell(2,"Explosion des arcanes","description","img");
 				hand.add(min);
 				return min;
 			}
 			
 			// Spell(int manaCost, String name, String description, String pictureURL)
 			else if(cardName == "Métamorphose") {
-				Card min = new Spell(4,"Métamorphose","description","img");
+				AbstractCard min = new Spell(4,"Métamorphose","description","img");
 				hand.add(min);
 				return min;
 			}
 			
 			else if(cardName == "Champion frisselame") {
-				Card min = new Minion("Champion frisselame","description",4,2,8,false,false,true,null);
+				AbstractCard min = new Minion("Champion frisselame","description",4,2,8,false,false,true,null);
 				hand.add(min);
 				return min;
 			}
 			
 			else if(cardName == "Bénédiction de puissance") {
-				Card min = new Spell(1,"Bénédiction de puissance","description","img");
+				AbstractCard min = new Spell(1,"Bénédiction de puissance","description","img");
 				hand.add(min);
 				return min;
 			}
 			
 			else if(cardName == "Consécration") {
-				Card min = new Spell(4,"Consécration","description","img");
+				AbstractCard min = new Spell(4,"Consécration","description","img");
 				hand.add(min);
 				return min;
 			}
 			
 			else if(cardName == "Tourbillon") {
-				Card min = new Spell(1,"Tourbillon","description","img");
+				AbstractCard min = new Spell(1,"Tourbillon","description","img");
 				hand.add(min);
 				return min;
 			}
 			
 			else if(cardName == "Avocat commis d'office") {
-				Card min = new Minion("Avocat commis d'office","description",2,0,7,false,true,false,null);
+				AbstractCard min = new Minion("Avocat commis d'office","description",2,0,7,false,true,false,null);
 				hand.add(min);
 				return min;
 			}
 			
 			else if(cardName == "Maîtrise du blocage") {
-				Card min = new Spell(3,"Maîtrise du blocage","description","img");
+				AbstractCard min = new Spell(3,"Maîtrise du blocage","description","img");
 				hand.add(min);
 				return min;
 			}

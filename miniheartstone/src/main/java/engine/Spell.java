@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 import java.util.UUID;
 
 @Entity
-public class Spell extends Card {
+public class Spell extends AbstractCard {
 	
 	public Spell(int manaCost, String name, String description, String pictureURL){
 		

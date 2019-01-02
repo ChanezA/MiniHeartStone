@@ -8,9 +8,9 @@ public class Paladin extends Hero {
 	
 	
 	public void power() {
-		Card card = new Minion("Recrue de la Main d'argent", "je suis la pour LE swag",0, 1, 1, false,false, false, null);
-		((Minion)card).setAttack(((Minion)card).getAttack()+ this.howManyChefDeRaidInMyBoard());
-		this.getBoard().add(card);
+		AbstractCard abstractCard = new Minion("Recrue de la Main d'argent", "je suis la pour LE swag",0, 1, 1, false,false, false, null);
+		((Minion) abstractCard).setAttack(((Minion) abstractCard).getAttack()+ this.howManyChefDeRaidInMyBoard());
+		this.getBoard().add(abstractCard);
 	}
 	
 	public String toString() {
@@ -22,12 +22,12 @@ public class Paladin extends Hero {
 		Hero paladin = new Paladin();
 		paladin.setMana(10);
 		
-		Card crd1 = paladin.draw();
-		Card crd2 = paladin.draw();
-		Card crd3 = paladin.draw();
-		Card crd4 = paladin.draw();
-		Card crd5 = paladin.draw();
-		Card crd6 = paladin.draw();
+		AbstractCard crd1 = paladin.draw();
+		AbstractCard crd2 = paladin.draw();
+		AbstractCard crd3 = paladin.draw();
+		AbstractCard crd4 = paladin.draw();
+		AbstractCard crd5 = paladin.draw();
+		AbstractCard crd6 = paladin.draw();
 		
 		paladin.invock(crd1.getCardUUID());
 		paladin.invock(crd2.getCardUUID());

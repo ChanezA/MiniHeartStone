@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
 
-public interface CardRepository extends CrudRepository<Card, String> {
+public interface CardRepository extends CrudRepository<AbstractCard, String> {
 
-    List<Card> findByName(String name);
+    List<AbstractCard> findByName(String name);
 }
