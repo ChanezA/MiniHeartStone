@@ -5,8 +5,8 @@ import java.util.*;
 
 public class Facade {
 	
-	protected Queue<Player> JewMatchMaking;
-	protected Queue<Player> collaboratorMatchMaking;
+	protected Queue<Player> jewMatchMaking;
+	protected Queue<Player> collabMatchMaking;
 	protected Queue<Player> onlySSMatchMaking;
 	
 	protected HashMap<UUID,Game> allCurrentGame;
@@ -17,32 +17,32 @@ public class Facade {
 		// envoyer son UUID au client
 		
 		if (level == 1) {
-			if(JewMatchMaking.peek() != null) {
-				Player player2 = JewMatchMaking.poll();
+			if(jewMatchMaking.peek() != null) {
+				Player player2 = jewMatchMaking.poll();
 				Game game = new Game(player,player2);
 				allCurrentGame.put(game.getGameID(),game);
 				// envoyer l'UUID de la game aux deux players
 				
 			}
-			JewMatchMaking.add(player);
+			jewMatchMaking.add(player);
 		}
 		
 		else if (level == 2) {
-			if(collaboratorMatchMaking.peek() != null) {
-				Player player2 = collaboratorMatchMaking.poll();
+			if(collabMatchMaking.peek() != null) {
+				Player player2 = collabMatchMaking.poll();
 				Game game = new Game(player,player2);
 				allCurrentGame.put(game.getGameID(),game);
 			}
-			collaboratorMatchMaking.add(player);
+			collabMatchMaking.add(player);
 		}
 		
 		else if (level == 3) {
-			if(collaboratorMatchMaking.peek() != null) {
-				Player player2 = collaboratorMatchMaking.poll();
+			if(collabMatchMaking.peek() != null) {
+				Player player2 = collabMatchMaking.poll();
 				Game game = new Game(player,player2);
 				allCurrentGame.put(game.getGameID(),game);
 			}
-			collaboratorMatchMaking.add(player);
+			collabMatchMaking.add(player);
 		}
 	}
 	
