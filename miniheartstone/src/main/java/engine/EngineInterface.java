@@ -16,22 +16,19 @@ public class EngineInterface {
 	
 	// ici faire du spring pour recup les noms les héros jouables
 	public static ArrayList<String> getAllHeroDescription() {
-		ArrayList<String> ar = new ArrayList<String>();
-		return ar;
+		return new ArrayList<String>();
 	}
-	
-	public static void wantPlay(int lvl,String pseudo, String heroStr) {
-		Hero her = null;
-		
+
+	public static Hero returnHero(String heroStr) {
 		try {
-			if (heroStr == "Mage") {
-				her = new Magus();
+			if (heroStr.equals("Mage")) {
+				return new Magus();
 			}
-			else if (heroStr == "Guerrier") {
-				her = new Warrior();
+			else if (heroStr.equals("Guerrier")) {
+				return new Warrior();
 			}
-			else if (heroStr == "Paladin") {
-				her = new Paladin();
+			else if (heroStr.equals("Paladin")) {
+				return new Paladin();
 			}
 			else {
 				throw new MiniHeartStoneException("Vous devez Choisir Mage, Guerrier ou Paladin");
@@ -40,17 +37,21 @@ public class EngineInterface {
 		catch(MiniHeartStoneException e) {
 			System.out.println(e.toString());
 		}
+		return null;
+	}
+
+	public static void wantPlay(int lvl,String pseudo, String heroStr) {
 		
 		// création du player
 		// lvl 1 = noob 2 = mid 3 = pro
-		Player play = new Player(pseudo,her,lvl);
+		Player play = new Player(pseudo,returnHero(heroStr),lvl);
 		
 		try {
 			if (lvl == 1) {
 				if (mmNoob.poll() != null) {
 					// création de la game
-					Game gm = new Game(mmNoob.poll(),play);
-					allCurrentGame.put(gm.getGameID(),gm);
+					Game game = new Game(mmNoob.poll(),play);
+					allCurrentGame.put(game.getGameID(),game);
 				}
 				else {
 					mmNoob.add(play);
@@ -59,8 +60,8 @@ public class EngineInterface {
 			else if (lvl == 2) {
 				if (mmMid.poll() != null) {
 					// création de la game
-					Game gm = new Game(mmMid.poll(),play);
-					allCurrentGame.put(gm.getGameID(),gm);
+					Game game = new Game(mmMid.poll(),play);
+					allCurrentGame.put(game.getGameID(),game);
 				}
 				else {
 					mmMid.add(play);
@@ -69,8 +70,8 @@ public class EngineInterface {
 			else if (lvl == 3) {
 				if (mmPro.poll() != null) {
 					// création de la game
-					Game gm = new Game(mmPro.poll(),play);
-					allCurrentGame.put(gm.getGameID(),gm);
+					Game game = new Game(mmPro.poll(),play);
+					allCurrentGame.put(game.getGameID(),game);
 				}
 				else {
 					mmPro.add(play);
@@ -91,8 +92,8 @@ public class EngineInterface {
 	}
 	
 	//lol
-	public static void attack(UUID gamUUID, UUID playerUUID, UUID MycardUUID, UUID oppCardUUID) {
-		allCurrentGame.get(gamUUID).attack(playerUUID, MycardUUID, oppCardUUID);
+	public static void attack(UUID gamUUID, UUID playerUUID, UUID myCardUUID, UUID oppCardUUID) {
+		allCurrentGame.get(gamUUID).attack(playerUUID, myCardUUID, oppCardUUID);
 	}
 	
 	//wtf
