@@ -16,11 +16,11 @@ public class Game {
     
     protected String iAmWaitingFor = "";
     protected UUID tmpUUID = null;
-    protected boolean HeroicPowerHasBeenUse = false;
+    protected boolean heroicPowerUsed = false;
     
     protected UUID gameID;
 
-    public static int MANA_MAX = 10;
+    public static final int MANA_MAX = 10;
 
     // Constructor
     public Game(Player player1, Player player2) {
@@ -58,8 +58,7 @@ public class Game {
     private void initGame() {
         this.currentPlayer = player1;
         this.notCurrentPlayer = player2;
-        int i;
-        for (i = 0; i < 1; i++) {
+        for (int i = 0; i < 1; i++) {
         	/*
             player1.getHero().draw();
             player2.getHero().draw();
@@ -95,7 +94,7 @@ public class Game {
 		        Player tmp = this.getCurrentPlayer();
 		        this.setCurrentPlayer(this.getNotCurrentPlayer());
 		        this.setNotCurrentPlayer(tmp);
-		        HeroicPowerHasBeenUse = false;
+		        heroicPowerUsed = false;
 		        iAmWaitingFor = "";
 		        
 		        // incrémentation du mana pour le nouveau joueur courant si besoin
@@ -161,7 +160,7 @@ public class Game {
     	try {
     		iAmWaitingFor = "";
 	    	// si tu es bien le joueur courant et que la carte est bien dans ta main et que tu as bien le mana necessaire
-	    	if(this.CurrentPlayerOrNot(playerUUID) 
+	    	if(this.CurrentPlayerOrNot(playerUUID)
 	    		&& this.getCurrentPlayer().getHero().isOnMyHand(cardID)
 	    			&& this.getCurrentPlayer().getHero().getMana() >= this.getCurrentPlayer().getHero().getCardFromHandByUUID(cardID).getManaCost()) {
 	    		
@@ -333,7 +332,7 @@ public class Game {
 		    				
 		    				this.iAmWaitingFor = "";
 		    				this.tmpUUID = null;
-		    				HeroicPowerHasBeenUse = true;
+		    				heroicPowerUsed = true;
 		    			}
 		    			// si c'est une créature adverse
 		    			else if(this.getNotCurrentPlayer().getHero().isOnMyBoard(tmpUUID)) {
@@ -343,7 +342,7 @@ public class Game {
 		    				
 		    				this.iAmWaitingFor = "";
 		    				this.tmpUUID = null;
-		    				HeroicPowerHasBeenUse = true;
+		    				heroicPowerUsed = true;
 		    			}
 		    		}
 		    	}
@@ -366,7 +365,7 @@ public class Game {
 			// si le joueur est bien le joueur courant
 			if(playerUUID == this.getCurrentPlayer().getPlayerID()) {
 				// si tu as le mana suffisant pour jouer le pouvoir et que tu n'as pas deja use ton pouvoir 
-	    		if(this.getCurrentPlayer().getHero().getMana()>=2 && HeroicPowerHasBeenUse == false) {
+	    		if(this.getCurrentPlayer().getHero().getMana()>=2 && heroicPowerUsed == false) {
 					// si c'est un mage 
 					if (this.getCurrentPlayer().getHero().getHeroName() == "Mage") {
 						iAmWaitingFor = "Pouvoir du mage"+this.getCurrentPlayer().getPlayerID().toString();
@@ -378,7 +377,7 @@ public class Game {
 						this.getCurrentPlayer().getHero().setMana(this.getCurrentPlayer().getHero().getMana()-2);
 						
 						// le pouvoir heroic est now utilisé pour ce tour;
-						HeroicPowerHasBeenUse = true;
+						heroicPowerUsed = true;
 					}
 	    		}
 			}
@@ -526,27 +525,27 @@ public class Game {
 		Player yoannTchoin = new Player("suce teub",yoann,3);
 		Player pierreLaFouine = new Player("l'appel d'air",pierre,4);
 		
-		Game gm = new Game(yoannTchoin,pierreLaFouine);
+		Game game = new Game(yoannTchoin,pierreLaFouine);
 		
 		// le joueur 1 play
-		gm.invock(yoannTchoin.getPlayerID(), yoannTchoin.getHero().getHand().get(0).getCardUUID());
-		//gm.invock(yoannTchoin.getPlayerID(), yoannTchoin.getHero().getHand().get(0).getCardUUID());
-		//gm.invock(yoannTchoin.getPlayerID(), yoannTchoin.getHero().getHand().get(0).getCardUUID());
-		gm.passTurn(yoannTchoin.getPlayerID());
+		game.invock(yoannTchoin.getPlayerID(), yoannTchoin.getHero().getHand().get(0).getCardUUID());
+		//game.invock(yoannTchoin.getPlayerID(), yoannTchoin.getHero().getHand().get(0).getCardUUID());
+		//game.invock(yoannTchoin.getPlayerID(), yoannTchoin.getHero().getHand().get(0).getCardUUID());
+		game.passTurn(yoannTchoin.getPlayerID());
 		
 		// le joueur 2 play
-		gm.invock(pierreLaFouine.getPlayerID(), pierreLaFouine.getHero().getHand().get(0).getCardUUID());
-		gm.invock(pierreLaFouine.getPlayerID(), pierreLaFouine.getHero().getHand().get(1).getCardUUID());
-		gm.passTurn(pierreLaFouine.getPlayerID());
+		game.invock(pierreLaFouine.getPlayerID(), pierreLaFouine.getHero().getHand().get(0).getCardUUID());
+		game.invock(pierreLaFouine.getPlayerID(), pierreLaFouine.getHero().getHand().get(1).getCardUUID());
+		game.passTurn(pierreLaFouine.getPlayerID());
 		
 		
-		//gm.invock(pierreLaFouine.getHero().getHand().get(2).getCardUUID(),yoannTchoin.getPlayerID());
+		//game.invock(pierreLaFouine.getHero().getHand().get(2).getCardUUID(),yoannTchoin.getPlayerID());
 		
-		gm.attack(yoannTchoin.getPlayerID(),yoannTchoin.getHero().getBoard().get(0).getCardUUID(), pierreLaFouine.getHero().getBoard().get(0).getCardUUID());
-		//gm.attack(yoannTchoin.getHero().getBoard().get(0).getCardUUID(), pierreLaFouine.getHero().getBoard().get(1).getCardUUID());
-		gm.invock(yoannTchoin.getPlayerID(), yoannTchoin.getHero().getHand().get(1).getCardUUID());
-		gm.select(yoannTchoin.getPlayerID(), pierreLaFouine.getHero().getBoard().get(0).getCardUUID());
-		System.out.println(gm.toString());
+		game.attack(yoannTchoin.getPlayerID(),yoannTchoin.getHero().getBoard().get(0).getCardUUID(), pierreLaFouine.getHero().getBoard().get(0).getCardUUID());
+		//game.attack(yoannTchoin.getHero().getBoard().get(0).getCardUUID(), pierreLaFouine.getHero().getBoard().get(1).getCardUUID());
+		game.invock(yoannTchoin.getPlayerID(), yoannTchoin.getHero().getHand().get(1).getCardUUID());
+		game.select(yoannTchoin.getPlayerID(), pierreLaFouine.getHero().getBoard().get(0).getCardUUID());
+		System.out.println(game.toString());
 	}
 	
 }
