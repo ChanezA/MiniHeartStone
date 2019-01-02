@@ -405,18 +405,18 @@ public class Game {
 				if(this.getCurrentPlayer().getHero().isOnMyBoard(myCardUUID) && this.getNotCurrentPlayer().getHero().isOnMyBoard(opponentUUID)){
 					try {
 						// on vérifie que ma créature n'a pas déja attaqué
-						if (((Minion)(this.getCurrentPlayer().getHero().getCardFromBoardByUUID(myCardUUID))).getReadyToAttack()) {
+						if (((Minion)(this.getCurrentPlayer().getHero().getCardFromBoardByUUID(myCardUUID))).isReadyToAttack()) {
 							Minion monMin = ((Minion)(this.getCurrentPlayer().getHero().getCardFromBoardByUUID(myCardUUID)));
 							Minion oppMin = ((Minion)(this.getNotCurrentPlayer().getHero().getCardFromBoardByUUID(opponentUUID)));
 							try {
 								// si une créature adverse é provovation
-								if (this.getNotCurrentPlayer().getHero().aCardWithProvocationInMyBorad() && oppMin.getHasPrococation()) {
+								if (this.getNotCurrentPlayer().getHero().aCardWithProvocationInMyBorad() && oppMin.isHasPrococation()) {
 									// on fais les degats sur les deux minions oklm
 									this.getNotCurrentPlayer().getHero().hasBeenAttack(opponentUUID, monMin.getAttack());
 									this.getCurrentPlayer().getHero().hasBeenAttack(myCardUUID, oppMin.getAttack());
 									monMin.setReadyToAttack(false);
 									// si ma créature é du vol de vie
-									if(monMin.getHasVolDeVie()) {
+									if(monMin.isHasVolDeVie()) {
 										// on augmente les pv du hero
 										this.getCurrentPlayer().getHero().setHealth(this.getCurrentPlayer().getHero().getHealth()+monMin.getAttack());
 									}
@@ -428,7 +428,7 @@ public class Game {
 									this.getCurrentPlayer().getHero().hasBeenAttack(myCardUUID, oppMin.getAttack());
 									monMin.setReadyToAttack(false);
 									// si ma créature é du vol de vie
-									if(monMin.getHasVolDeVie()) {
+									if(monMin.isHasVolDeVie()) {
 										// on augmente les pv du hero
 										this.getCurrentPlayer().getHero().setHealth(this.getCurrentPlayer().getHero().getHealth()+monMin.getAttack());
 									}
@@ -466,7 +466,7 @@ public class Game {
 					this.getNotCurrentPlayer().getHero().myHeroHasBeenAttack(monMin.getAttack());
 					monMin.setReadyToAttack(false);
 					// si ma créature du vol de vie
-					if(monMin.getHasVolDeVie()) {
+					if(monMin.isHasVolDeVie()) {
 						// on augmente les pv du hero
 						this.getCurrentPlayer().getHero().setHealth(this.getCurrentPlayer().getHero().getHealth()+monMin.getAttack());
 					}

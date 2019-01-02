@@ -67,7 +67,7 @@ public class Minion extends AbstractCard {
 		this.life = life;
 	}
 	
-	public boolean getHasCharge() {
+	public boolean isHasCharge() {
 		return this.hasCharge;
 	}
 	
@@ -75,7 +75,7 @@ public class Minion extends AbstractCard {
 		this.hasCharge = bl;
 	}
 	
-	public boolean getHasPrococation() {
+	public boolean isHasPrococation() {
 		return this.hasTaunt;
 	}
 	
@@ -83,7 +83,7 @@ public class Minion extends AbstractCard {
 		this.hasTaunt = bl;
 	}
 	
-	public boolean getHasVolDeVie() {
+	public boolean isHasVolDeVie() {
 		return this.hasLifeSteal;
 	}
 	
@@ -92,7 +92,7 @@ public class Minion extends AbstractCard {
 	}
 	
 	//getter .
-	public boolean getReadyToAttack(){
+	public boolean isReadyToAttack(){
 		return this.readyToAttack;
 	}
 	

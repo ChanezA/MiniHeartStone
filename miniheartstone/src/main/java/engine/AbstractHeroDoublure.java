@@ -5,7 +5,7 @@ import java.util.UUID;
 
 import exception.MiniHeartStoneException;
 
-public abstract class AbstractHero_Doublure {
+public abstract class AbstractHeroDoublure {
 
 	//public static final int MANA_MAX= 10;
 	protected int mana;
@@ -23,7 +23,7 @@ public abstract class AbstractHero_Doublure {
 	protected boolean looser = false;
 	protected boolean winner = false;
 
-	protected AbstractHero_Doublure(String heroName, int health, String description) {
+	protected AbstractHeroDoublure(String heroName, int health, String description) {
 		this.heroName = heroName;
 		this.health=health;
 		this.description=description;
@@ -85,7 +85,7 @@ public abstract class AbstractHero_Doublure {
 						board.add(abstractCard);
 
 						// si la carte � charge
-						if(((Minion) abstractCard).getHasCharge()) {
+						if(((Minion) abstractCard).isHasCharge()) {
 							((Minion) abstractCard).setReadyToAttack(true);
 						}
 					}
@@ -234,7 +234,7 @@ public abstract class AbstractHero_Doublure {
 
 	public boolean aCardWithProvocationInMyBorad() {
 		for(int i =0; i< board.size(); i++) {
-			if(((Minion)this.getBoard().get(i)).getHasPrococation()) {
+			if(((Minion)this.getBoard().get(i)).isHasPrococation()) {
 				return true;
 			}
 		}

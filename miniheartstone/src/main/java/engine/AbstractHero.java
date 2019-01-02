@@ -85,7 +85,7 @@ public abstract class AbstractHero {
 							board.add(abstractCard);
 		
 							// si la carte � charge
-							if(((Minion) abstractCard).getHasCharge()) {
+							if(((Minion) abstractCard).isHasCharge()) {
 								((Minion) abstractCard).setReadyToAttack(true);
 							}
 						}
@@ -234,7 +234,7 @@ public abstract class AbstractHero {
 		
 		public boolean aCardWithProvocationInMyBorad() {
 			for(int i =0; i< board.size(); i++) {
-				if(((Minion)this.getBoard().get(i)).getHasPrococation()) {
+				if(((Minion)this.getBoard().get(i)).isHasPrococation()) {
 					return true;
 				}
 			}

@@ -1,10 +1,10 @@
 import static org.junit.Assert.assertTrue;
 
-import engine.AbstractHero_Doublure;
+import engine.AbstractHeroDoublure;
 import org.junit.Test;
 
 import engine.Minion;
-import engine.Paladin_Doublure;
+import engine.PaladinDoublure;
 import engine.AbstractCard;
 
 
@@ -12,7 +12,7 @@ public class AbstractHeroTest {
 	/*
 	@Test (expected = exception.MiniHeartStoneException.class)
 	public final void testPaladinException() {
-		AbstractHero_Doublure pal = new Paladin_Doublure();
+		AbstractHeroDoublure pal = new PaladinDoublure();
     	pal.setMana(20);
         
 		// test de levé d'exception si la carte n'est pas en main
@@ -21,7 +21,7 @@ public class AbstractHeroTest {
 	
 	 @Test
 	 public final void testPaladinHasBeenAttack() {
-	    AbstractHero_Doublure pal = new Paladin_Doublure();
+	    AbstractHeroDoublure pal = new PaladinDoublure();
 	    pal.setMana(20);
 	    assertTrue(pal.getHealth() == 30);
 	    AbstractCard crd1 = pal.draw("Sanglier brocheroc");
@@ -72,7 +72,7 @@ public class AbstractHeroTest {
 
     @Test
     public final void testPaladinInvock() {
-    	AbstractHero_Doublure pal = new Paladin_Doublure();
+    	AbstractHeroDoublure pal = new PaladinDoublure();
     	pal.setMana(20);
         assertTrue(pal.getHealth() == 30);
 
