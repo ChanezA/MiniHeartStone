@@ -7,6 +7,6 @@ public class EngineInterfaceTest {
 
     @Test
     public final void wantPlayTest() {
-
+        assertTrue(true);
     }
 }
