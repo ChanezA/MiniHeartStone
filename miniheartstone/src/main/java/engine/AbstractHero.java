@@ -47,9 +47,9 @@ public abstract class AbstractHero {
 		public abstract void power();
 		
 		public AbstractCard draw() {
-			int rd = (int)(Math.random() * (deck.size()));
+			int random = (int)(Math.random() * (deck.size()));
 			AbstractCard crd = null;
-			try { crd = deck.get(rd).cloneCard(); }
+			try { crd = deck.get(random).cloneCard(); }
 			catch (Exception e) { System.out.println(e.getMessage()); }
 			hand.add(crd);
 			return crd;

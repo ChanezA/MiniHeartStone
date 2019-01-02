@@ -71,24 +71,24 @@ public class Minion extends AbstractCard {
 		return this.hasCharge;
 	}
 	
-	public void setHasCharge(boolean bl) {
-		this.hasCharge = bl;
+	public void setHasCharge(boolean hasCharge) {
+		this.hasCharge = hasCharge;
 	}
 	
 	public boolean isHasPrococation() {
 		return this.hasTaunt;
 	}
 	
-	public void setHasProvocation(boolean bl) {
-		this.hasTaunt = bl;
+	public void setHasProvocation(boolean hasTaunt) {
+		this.hasTaunt = hasTaunt;
 	}
 	
 	public boolean isHasVolDeVie() {
 		return this.hasLifeSteal;
 	}
 	
-	public void setHasVolDeVie(boolean bl) {
-		this.hasLifeSteal = bl;
+	public void setHasVolDeVie(boolean hasLifeSteal) {
+		this.hasLifeSteal = hasLifeSteal;
 	}
 	
 	//getter .

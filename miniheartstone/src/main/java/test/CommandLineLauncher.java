@@ -24,16 +24,16 @@ public class CommandLineLauncher {
         System.out.println("\n* Tour de : " + game.getCurrentPlayer().getName());
     }
 
-    private static Player getPlayer(int i) {
-        System.out.println("\n\nEntrez le pseudo du joueur " + i + " :");
-        Scanner sc = new Scanner(System.in);
-        String input1 = sc.nextLine();
+    private static Player getPlayer(int playerNum) {
+        System.out.println("\n\nEntrez le pseudo du joueur " + playerNum + " :");
+        Scanner scanner = new Scanner(System.in);
+        String input1 = scanner.nextLine();
         int input2;
         while (true) {
             try {
                 System.out.println("Entrez le héro que jouera " + input1);
                 System.out.println("1 : Mage, 2 : Paladin, 3 : Guerrier :");
-                input2 = sc.nextInt();
+                input2 = scanner.nextInt();
                 if (input2 < 1 || input2 > 3) {
                     System.out.println("Veuillez entrer un entier correct svp");
                 }
@@ -44,24 +44,24 @@ public class CommandLineLauncher {
             }
         }
 
-        AbstractHero hero = getHero(i, input2);
+        AbstractHero hero = getHero(playerNum, input2);
 
         return new Player(input1, hero, 1);
     }
 
-    private static AbstractHero getHero(int i, int input) {
+    private static AbstractHero getHero(int numero, int input) {
         AbstractHero ret = null;
         switch (input) {
             case 1 :
-                /*if (i == 1) ret = new Magus("Gandalf", 2000, 10);
+                /*if (numero == 1) ret = new Magus("Gandalf", 2000, 10);
                 else ret = new Magus("Dumbledore", 100, 300);
                 break;
             case 2 :
-                if (i == 1) ret = new Paladin("Lancelot", 20, 2);
+                if (numero == 1) ret = new Paladin("Lancelot", 20, 2);
                 else ret = new Magus("Perceval", 80, 3);
                 break;
             case 3 :
-                if (i == 1) ret = new Warrior("Boromir", 3000, 4, 10);
+                if (numero == 1) ret = new Warrior("Boromir", 3000, 4, 10);
                 else ret = new Warrior("Gimli", 3000, 400, 20);*/
                 break;
             default:
