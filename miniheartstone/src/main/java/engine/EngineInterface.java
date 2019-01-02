@@ -7,7 +7,7 @@ import java.util.UUID;
 
 import exception.MiniHeartStoneException;
 
-public class Engine_Interface {
+public class EngineInterface {
 	public static HashMap<UUID,Game> allCurrentGame = new HashMap<UUID,Game>();
 	
 	public static Queue<Player> mmNoob;
