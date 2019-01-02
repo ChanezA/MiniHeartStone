@@ -12,7 +12,7 @@ public class Facade {
 	protected HashMap<UUID,Game> allCurrentGame;
 	
 	
-	public void play(String pseudo,Hero hero,int level) {
+	public void play(String pseudo, AbstractHero hero, int level) {
 		Player player = new Player(pseudo,hero,level);
 		// envoyer son UUID au client
 		
@@ -59,7 +59,7 @@ public class Facade {
 	}
 	
 	
-	/*public List<Hero> getHero() {
+	/*public List<AbstractHero> getHero() {
 	 * creer une list et la remplir en récuperant les heros de la base de données 
 	}*/
 	//la methode met une card sur le plateau

@@ -1,6 +1,6 @@
 package engine;
 
-public class Paladin extends Hero {
+public class Paladin extends AbstractHero {
 	
 	public Paladin() {
 		super("Paladin", 30, "mdr je suis un palalol");
@@ -19,7 +19,7 @@ public class Paladin extends Hero {
 	
 	public static void main(String[] args) {
 		
-		Hero paladin = new Paladin();
+		AbstractHero paladin = new Paladin();
 		paladin.setMana(10);
 		
 		AbstractCard crd1 = paladin.draw();

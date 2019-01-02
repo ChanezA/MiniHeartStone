@@ -44,13 +44,13 @@ public class CommandLineLauncher {
             }
         }
 
-        Hero hero = getHero(i, input2);
+        AbstractHero hero = getHero(i, input2);
 
         return new Player(input1, hero, 1);
     }
 
-    private static Hero getHero(int i, int input) {
-        Hero ret = null;
+    private static AbstractHero getHero(int i, int input) {
+        AbstractHero ret = null;
         switch (input) {
             case 1 :
                 /*if (i == 1) ret = new Magus("Gandalf", 2000, 10);

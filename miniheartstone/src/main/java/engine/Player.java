@@ -5,18 +5,18 @@ import java.util.UUID;
 public class Player {
 	
 	protected String name;
-	protected Hero hero;
+	protected AbstractHero hero;
 	protected int level;
 	protected UUID playerID;
 	
-	public Player(String name,  Hero hero, int level) {
+	public Player(String name, AbstractHero hero, int level) {
 		this.name = name;
 		this.hero = hero;
 		this.level = level;
 		UUID playerID = UUID.randomUUID();
 	}
 	
-	public Hero getHero() {
+	public AbstractHero getHero() {
 		return this.hero;
 	}
 

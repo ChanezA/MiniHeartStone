@@ -1,6 +1,6 @@
 package engine;
 // test
-public class Paladin_Doublure extends Hero_Doublure {
+public class Paladin_Doublure extends AbstractHero_Doublure {
 	
 	public Paladin_Doublure() {
 		super("Paladin", 30, "mdr je suis un palalol");

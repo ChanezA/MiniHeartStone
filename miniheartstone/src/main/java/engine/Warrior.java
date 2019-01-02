@@ -1,6 +1,6 @@
 package engine;
 
-public class Warrior extends Hero {
+public class Warrior extends AbstractHero {
 	
 	static int PT_ARMOR_AUGMENTATION=2;
 	

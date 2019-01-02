@@ -5,54 +5,44 @@ import java.util.UUID;
 
 import exception.MiniHeartStoneException;
 
-public abstract class Hero_Doublure {
-		static int MANA_MAX= 10;
-		protected int mana;
-		protected UUID HeroUUID;
-		protected String description;
+public abstract class AbstractHero {
+
+	//public static final int MANA_MAX= 10;
+	protected int mana;
+	protected UUID heroUUID;
+	protected String description;
 		
-		protected String HeroName;
-		protected int health;
-		protected int armor;
-		//liste tte les carte que le heros peut avoir a recuperer dans la base de données.
-		protected ArrayList<AbstractCard> deck = new ArrayList<AbstractCard>();
-		protected ArrayList<AbstractCard> hand = new ArrayList<AbstractCard>();
-		protected ArrayList<AbstractCard> board = new ArrayList<AbstractCard>();
+	protected String heroName;
+	protected int health;
+	protected int armor;
+	//liste tte les carte que le heros peut avoir a recuperer dans la base de données.
+	protected ArrayList<AbstractCard> deck = new ArrayList<AbstractCard>();
+	protected ArrayList<AbstractCard> hand = new ArrayList<AbstractCard>();
+	protected ArrayList<AbstractCard> board = new ArrayList<AbstractCard>();
 		
-		protected boolean looser = false;
-		protected boolean winner = false;
+	protected boolean looser = false;
+	protected boolean winner = false;
 
-		protected Hero_Doublure(String HeroName, int health, String description) {
-			this.HeroName= HeroName;
-			this.health=health;
-			this.description=description;
-			this.mana=0;
-			this.armor =0;
-			this.HeroUUID = UUID.randomUUID();
-			// ici aller chercher dnas Spring pour remplier Deck
-			
-			AbstractCard lel = new Minion("Sanglier de brocheroc", "je suis n1",1, 1, 1, false,false, false, null);
-			this.deck.add(lel);
-			//						vie, attack , mana				provo life steal charge
-			AbstractCard lal = new Minion("Chevaucheur de loup", "je suis n2",3, 1, 3, false,false, false, null);
-			this.deck.add(lal);
+	protected AbstractHero(String heroName, int health, String description) {
+		this.heroName = heroName;
+		this.health=health;
+		this.description=description;
+		this.mana=0;
+		this.armor =0;
+		this.heroUUID = UUID.randomUUID();
 
-			AbstractCard lul = new Minion("Chef de raid", "je suis fort",3, 1, 2, false,false, true, null);
-			this.deck.add(lul);
+        // Retrieving card with Spring
+        CardRepository repo = Application.repo;
+        for (AbstractCard abstractCard : repo.findAll()) {
+            this.deck.add(abstractCard);
+        }
 
-			AbstractCard lol = new Minion("Yéti noroit", "je suis n4",4, 1, 2, false,true, false, null);
-			this.deck.add(lol);
-			
-			AbstractCard lil = new Minion("Soldat du compté d'or", "je suis n4",1, 1, 2, false,true, false, null);
-			this.deck.add(lil);
-			
-			AbstractCard lzl = new Spell(1, "Image miroir", "je suis un spell qui invoque 2 0/2 provoc", null);
-			this.deck.add(lzl);
-			
-			AbstractCard lyl = new Spell(3, "Maîtrise du blocage", "je suis un spell qui pioche", null);
-			this.deck.add(lyl);
-			
-		}
+		AbstractCard lzl = new Spell(1, "Image miroir", "je suis un spell qui invoque 2 0/2 provoc", null);
+		this.deck.add(lzl);
+
+		AbstractCard lyl = new Spell(3, "Maîtrise du blocage", "je suis un spell qui pioche", null);
+		this.deck.add(lyl);
+	}
 		
 		public abstract void power();
 		
@@ -252,7 +242,7 @@ public abstract class Hero_Doublure {
 		}
 		
 		public String getHeroName() {
-			return this.HeroName;
+			return this.heroName;
 		}
 		
 		public int getHealth() {
@@ -280,7 +270,7 @@ public abstract class Hero_Doublure {
 			}
 		}
 		
-		public boolean getLooser() {
+		public boolean isLooser() {
 			return this.looser;
 		}
 		
@@ -308,9 +298,9 @@ public abstract class Hero_Doublure {
 	 		}
 			
 			return "mana : "+this.mana+"\n"+
-					"HeroUUID : "+this.HeroUUID+"\n"+
+					"heroUUID : "+this.heroUUID +"\n"+
 					"description :"+this.description+"\n"+
-					"HeroName : "+this.HeroName+"\n"+
+					"heroName : "+this.heroName +"\n"+
 					"health : "+this.health+"\n"+
 					"armor : "+this.armor+affHand;
 					
@@ -337,93 +327,70 @@ public abstract class Hero_Doublure {
 			aff = aff + "\n";
 			return aff;
 		}
-		public AbstractCard draw(String cardName) {
-			if(cardName == "Sanglier brocheroc") {
-				AbstractCard min = new Minion("Sanglier de brocheroc", "je suis n1",1, 1, 1, false,false, false, null);
-				hand.add(min);
-				return min;
-			}
-			
-			else if(cardName == "Soldat du comté-de-l'or") {
-				AbstractCard min = new Minion("Soldat du compté d'or", "je suis n4",1, 1, 2, false,true, false, null);
-				hand.add(min);
-				return min;
-			}
-			
-			else if(cardName == "Chevaucheur de loup") {
-				AbstractCard min = new Minion("Chevaucheur de loup", "je suis n2",3, 1, 3, false,false, false, null);
-				hand.add(min);
-				return min;
-			}
-			
-			else if(cardName == "Chef de raid") {
-				AbstractCard min = new Minion("Chef de raid", "je suis fort",3, 2, 2, false,false, true, null);
-				hand.add(min);
-				return min;
-			}
-			
-			else if(cardName == "Yéti noroit") {
-				AbstractCard min = new Minion("Yéti noroit", "je suis n4",4, 4, 5, false,true, false, null);
-				hand.add(min);
-				return min;
-			}
-			
-			// Spell(int manaCost, String name, String description, String pictureURL)
-			else if(cardName == "Image miroir") {
-				AbstractCard min = new Spell(1,"Image miroir","description","img");
-				hand.add(min);
-				return min;
-			}
-			
-			// Spell(int manaCost, String name, String description, String pictureURL)
-			else if(cardName == "Explosion des arcanes") {
-				AbstractCard min = new Spell(2,"Explosion des arcanes","description","img");
-				hand.add(min);
-				return min;
-			}
-			
-			// Spell(int manaCost, String name, String description, String pictureURL)
-			else if(cardName == "Métamorphose") {
-				AbstractCard min = new Spell(4,"Métamorphose","description","img");
-				hand.add(min);
-				return min;
-			}
-			
-			else if(cardName == "Champion frisselame") {
-				AbstractCard min = new Minion("Champion frisselame","description",4,2,8,false,false,true,null);
-				hand.add(min);
-				return min;
-			}
-			
-			else if(cardName == "Bénédiction de puissance") {
-				AbstractCard min = new Spell(1,"Bénédiction de puissance","description","img");
-				hand.add(min);
-				return min;
-			}
-			
-			else if(cardName == "Consécration") {
-				AbstractCard min = new Spell(4,"Consécration","description","img");
-				hand.add(min);
-				return min;
-			}
-			
-			else if(cardName == "Tourbillon") {
-				AbstractCard min = new Spell(1,"Tourbillon","description","img");
-				hand.add(min);
-				return min;
-			}
-			
-			else if(cardName == "Avocat commis d'office") {
-				AbstractCard min = new Minion("Avocat commis d'office","description",2,0,7,false,true,false,null);
-				hand.add(min);
-				return min;
-			}
-			
-			else if(cardName == "Maîtrise du blocage") {
-				AbstractCard min = new Spell(3,"Maîtrise du blocage","description","img");
-				hand.add(min);
-				return min;
-			}
-			return null;
+	public AbstractCard draw(String cardName) {
+		AbstractCard min = null;
+		if(cardName.equals("Sanglier brocheroc")) {
+			min = new Minion("Sanglier de brocheroc", "je suis n1",1, 1, 1, false,false, false, null);
 		}
+
+		else if(cardName.equals("Soldat du comté-de-l'or")) {
+			min = new Minion("Soldat du compté d'or", "je suis n4",1, 1, 2, false,true, false, null);
+		}
+
+		else if(cardName.equals("Chevaucheur de loup")) {
+			min = new Minion("Chevaucheur de loup", "je suis n2",3, 1, 3, false,false, false, null);
+		}
+
+		else if(cardName.equals("Chef de raid")) {
+			min = new Minion("Chef de raid", "je suis fort",3, 2, 2, false,false, true, null);
+		}
+
+		else if(cardName.equals("Yéti noroit")) {
+			min = new Minion("Yéti noroit", "je suis n4",4, 4, 5, false,true, false, null);
+		}
+
+		// Spell(int manaCost, String name, String description, String pictureURL)
+		else if(cardName.equals("Image miroir")) {
+			min = new Spell(1,"Image miroir","description","img");
+		}
+
+		// Spell(int manaCost, String name, String description, String pictureURL)
+		else if(cardName.equals("Explosion des arcanes")) {
+			min = new Spell(2,"Explosion des arcanes","description","img");
+		}
+
+		// Spell(int manaCost, String name, String description, String pictureURL)
+		else if(cardName.equals("Métamorphose")) {
+			min = new Spell(4,"Métamorphose","description","img");
+		}
+
+		else if(cardName.equals("Champion frisselame")) {
+			min = new Minion("Champion frisselame","description",4,2,8,false,false,true,null);
+		}
+
+		else if(cardName.equals("Bénédiction de puissance")) {
+			min = new Spell(1,"Bénédiction de puissance","description","img");
+		}
+
+		else if(cardName.equals("Consécration")) {
+			min = new Spell(4,"Consécration","description","img");
+		}
+
+		else if(cardName.equals("Tourbillon")) {
+			min = new Spell(1,"Tourbillon","description","img");
+		}
+
+		else if(cardName.equals("Avocat commis d'office")) {
+			min = new Minion("Avocat commis d'office","description",2,0,7,false,true,false,null);
+		}
+
+		else if(cardName.equals("Maîtrise du blocage")) {
+			min = new Spell(3,"Maîtrise du blocage","description","img");
+		}
+
+		if(min != null) {
+			hand.add(min);
+		}
+		return min;
+	}
 }

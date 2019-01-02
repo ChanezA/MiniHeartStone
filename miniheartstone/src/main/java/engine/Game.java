@@ -528,8 +528,8 @@ public class Game {
 	}
 	public static void main(String[] args) {
 		
-		Hero yoann = new Magus();
-		Hero pierre = new Paladin();
+		AbstractHero yoann = new Magus();
+		AbstractHero pierre = new Paladin();
 		
 		Player yoannTchoin = new Player("suce teub",yoann,3);
 		Player pierreLaFouine = new Player("l'appel d'air",pierre,4);

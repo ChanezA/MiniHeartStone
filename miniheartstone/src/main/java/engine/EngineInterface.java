@@ -19,7 +19,7 @@ public class EngineInterface {
 		return new ArrayList<String>();
 	}
 
-	public static Hero returnHero(String heroStr) {
+	public static AbstractHero returnHero(String heroStr) {
 		try {
 			if (heroStr.equals("Mage")) {
 				return new Magus();

@@ -1,6 +1,6 @@
 package engine;
 //import java.util.Properties;
-public class Magus extends Hero {
+public class Magus extends AbstractHero {
 	
 	static int PT_DEGATS_POWER_MAGNUS=1;
 	
