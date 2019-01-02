@@ -89,7 +89,7 @@ public class Game {
     public void passTurn(UUID playerID) {
     	try {
 	    	// si tu es le current player
-	    	if(this.CurrentPlayerOrNot(playerID)) {
+	    	if(this.currentPlayerOrNot(playerID)) {
 		    	// echange le joueur courant avec le non courant
 		        Player tmp = this.getCurrentPlayer();
 		        this.setCurrentPlayer(this.getNotCurrentPlayer());
@@ -120,7 +120,7 @@ public class Game {
     }
     
     // retourne vrai si le joueur passé en param est courant ou faux pour tout le reste
-    public boolean CurrentPlayerOrNot(UUID playerUUID) {
+    public boolean currentPlayerOrNot(UUID playerUUID) {
     	boolean crt = false;
     	if(this.getCurrentPlayer().getPlayerID() == playerUUID) {
     		crt = true;
@@ -155,12 +155,74 @@ public class Game {
     		return this.getPlayer1().getHero().getBoard();
     	}
     }
-    
+
+    public void spellsDoStuff(UUID cardID) {
+
+    	switch (this.getCurrentPlayer().getHero().getCardFromHandByUUID(cardID).getName()) {
+			// si ce n'est pas un spell qui affecte l'ennemie ni un spell qui nécessite un ciblage
+			case "Image miroir":
+				this.getCurrentPlayer().getHero().invock(cardID);
+				break;
+			case "Maitrise du blocage":
+				this.getCurrentPlayer().getHero().invock(cardID);
+				break;
+			case "Tourbillon":
+				// on retire 1 pv a toutes les invocations des board des deux joueurs
+				for (int i = this.getCurrentPlayer().getHero().getBoard().size() - 1; i >= 0; i--) {
+					Minion min = (Minion) (this.getCurrentPlayer().getHero().getBoard().get(i));
+					this.getCurrentPlayer().getHero().hasBeenAttack(min.getCardUUID(), 1);
+				}
+				for (int i = this.getNotCurrentPlayer().getHero().getBoard().size() - 1; i >= 0; i--) {
+					Minion min = (Minion) (this.getNotCurrentPlayer().getHero().getBoard().get(i));
+					this.getNotCurrentPlayer().getHero().hasBeenAttack(min.getCardUUID(), 1);
+				}
+				// on retire la carte de la main du joueur
+				this.getCurrentPlayer().getHero().getHand().remove(this.getCurrentPlayer().getHero().getCardFromHandByUUID(cardID));
+				// on lui retire le mana en conséquence
+				this.getCurrentPlayer().getHero().setMana(this.getCurrentPlayer().getHero().getMana() - 1);
+				break;
+			case "Consécration":
+				// retire 2 pdv a tous les minions adverse
+				for (int i = this.getNotCurrentPlayer().getHero().getBoard().size() - 1; i >= 0; i--) {
+					Minion min = (Minion) (this.getNotCurrentPlayer().getHero().getBoard().get(i));
+					this.getNotCurrentPlayer().getHero().hasBeenAttack(min.getCardUUID(), 2);
+				}
+				// degats sur le joueur adverse
+				this.getNotCurrentPlayer().getHero().myHeroHasBeenAttack(2);
+				// on retire la carte de la main du joueur
+				this.getCurrentPlayer().getHero().getHand().remove(this.getCurrentPlayer().getHero().getCardFromHandByUUID(cardID));
+				// on lui retire le mana en conséquence
+				this.getCurrentPlayer().getHero().setMana(this.getCurrentPlayer().getHero().getMana() - 4);
+				break;
+			case "Explosion des arcanes":
+				// retire 1 pdv a tous les minions adverse
+				for (int i = this.getNotCurrentPlayer().getHero().getBoard().size() - 1; i >= 0; i--) {
+					Minion min = (Minion) (this.getNotCurrentPlayer().getHero().getBoard().get(i));
+					this.getNotCurrentPlayer().getHero().hasBeenAttack(min.getCardUUID(), 1);
+				}
+				// on retire la carte de la main du joueur
+				this.getCurrentPlayer().getHero().getHand().remove(this.getCurrentPlayer().getHero().getCardFromHandByUUID(cardID));
+				// on lui retire le mana en conséquence
+				this.getCurrentPlayer().getHero().setMana(this.getCurrentPlayer().getHero().getMana() - 2);
+				break;
+			case "Métamorphose":
+				iAmWaitingFor = "Métamorphose";
+				this.tmpUUID = cardID;
+				break;
+			case "Bénédiction de puissance":
+				iAmWaitingFor = "Bénédiction de puissance";
+				this.tmpUUID = cardID;
+				break;
+			default:
+				throw new IllegalArgumentException("Ce spell n'existe pas" + this.getCurrentPlayer().getHero().getCardFromHandByUUID(cardID).getName() );
+		}
+	}
+
     public void invock(UUID playerUUID, UUID cardID) {
     	try {
     		iAmWaitingFor = "";
 	    	// si tu es bien le joueur courant et que la carte est bien dans ta main et que tu as bien le mana necessaire
-	    	if(this.CurrentPlayerOrNot(playerUUID)
+	    	if(this.currentPlayerOrNot(playerUUID)
 	    		&& this.getCurrentPlayer().getHero().isOnMyHand(cardID)
 	    			&& this.getCurrentPlayer().getHero().getMana() >= this.getCurrentPlayer().getHero().getCardFromHandByUUID(cardID).getManaCost()) {
 	    		
@@ -170,66 +232,7 @@ public class Game {
 	    		}
 	    		// si c'est un spell
 	    		else if(this.getCurrentPlayer().getHero().getCardFromHandByUUID(cardID) instanceof Spell) {
-	    			// si ce n'est pas un spell qui affecte l'enemi ni un spell qui necessite un siblage
-	    			if(this.getCurrentPlayer().getHero().getCardFromHandByUUID(cardID).getName() == "Image miroir"
-	    					|| this.getCurrentPlayer().getHero().getCardFromHandByUUID(cardID).getName() == "Maétrise du blocage") {
-	    				this.getCurrentPlayer().getHero().invock(cardID);
-	    			}
-	    			
-	    			// si c'est un spell c'est tourbilol
-	    			else if(this.getCurrentPlayer().getHero().getCardFromHandByUUID(cardID).getName() == "Tourbillon") {
-	    				// on retire 1 pv a toutes les invocations des bord des deux joueurs
-	    				for(int i=this.getCurrentPlayer().getHero().getBoard().size()-1; i>=0; i--) {
-	    					Minion min = (Minion)(this.getCurrentPlayer().getHero().getBoard().get(i));
-	    					this.getCurrentPlayer().getHero().hasBeenAttack(min.getCardUUID(), 1);
-	    				}
-	    				for(int i=this.getNotCurrentPlayer().getHero().getBoard().size()-1; i>=0; i--) {
-	    					Minion min = (Minion)(this.getNotCurrentPlayer().getHero().getBoard().get(i));
-	    					this.getNotCurrentPlayer().getHero().hasBeenAttack(min.getCardUUID(), 1);
-	    				}
-	    				// on retire la carte de la main du joueur
-	    				this.getCurrentPlayer().getHero().getHand().remove(this.getCurrentPlayer().getHero().getCardFromHandByUUID(cardID));
-	    				// on lui retire le mana en conséquence
-	    				this.getCurrentPlayer().getHero().setMana(this.getCurrentPlayer().getHero().getMana()-1);
-	    			}
-	    			
-	    			// si c'est le spell consécration
-	    			else if(this.getCurrentPlayer().getHero().getCardFromHandByUUID(cardID).getName() == "Consécration") {
-	    				// retire 2 pdv a tous les minions adverse
-	    				for(int i=this.getNotCurrentPlayer().getHero().getBoard().size()-1; i>=0; i--) {
-	    					Minion min = (Minion)(this.getNotCurrentPlayer().getHero().getBoard().get(i));
-	    					this.getNotCurrentPlayer().getHero().hasBeenAttack(min.getCardUUID(), 2);
-	    				}
-	    				// degats sur le joueur adverse
-	    				this.getNotCurrentPlayer().getHero().myHeroHasBeenAttack(2);
-	    				// on retire la carte de la main du joueur
-	    				this.getCurrentPlayer().getHero().getHand().remove(this.getCurrentPlayer().getHero().getCardFromHandByUUID(cardID));
-	    				// on lui retire le mana en conséquence
-	    				this.getCurrentPlayer().getHero().setMana(this.getCurrentPlayer().getHero().getMana()-4);
-	    			}
-	    			
-	    			// si le spell c'est explosion des arcanes
-	    			else if(this.getCurrentPlayer().getHero().getCardFromHandByUUID(cardID).getName() == "Explosion des arcanes") {
-	    				// retire 1 pdv a tous les minions adverse
-	    				for(int i=this.getNotCurrentPlayer().getHero().getBoard().size()-1; i>=0; i--) {
-	    					Minion min = (Minion)(this.getNotCurrentPlayer().getHero().getBoard().get(i));
-	    					this.getNotCurrentPlayer().getHero().hasBeenAttack(min.getCardUUID(), 1);
-	    				}
-	    				// on retire la carte de la main du joueur
-	    				this.getCurrentPlayer().getHero().getHand().remove(this.getCurrentPlayer().getHero().getCardFromHandByUUID(cardID));
-	    				// on lui retire le mana en conséquence
-	    				this.getCurrentPlayer().getHero().setMana(this.getCurrentPlayer().getHero().getMana()-2);
-	    			}
-	    			// si le spell c'est Métamorphose
-	    			else if(this.getCurrentPlayer().getHero().getCardFromHandByUUID(cardID).getName() == "Métamorphose") {
-	    				iAmWaitingFor = "Métamorphose";
-	    				this.tmpUUID = cardID;
-	    			}
-	    			// si le spell c'est Bénédiction de puissance
-	    			else if(this.getCurrentPlayer().getHero().getCardFromHandByUUID(cardID).getName() == "Bénédiction de puissance") {
-	    				iAmWaitingFor = "Bénédiction de puissance";
-	    				this.tmpUUID = cardID;
-	    			}
+	    			spellsDoStuff(cardID);
 	    		}
 	    	}
 	    	else {
@@ -246,7 +249,7 @@ public class Game {
     	
     	try {
 	    	if (playerUUID == this.getCurrentPlayer().getPlayerID()) {
-		    	if (this.iAmWaitingFor == "Métamorphose") {
+		    	if (this.iAmWaitingFor.equals("Métamorphose")) {
 		    		try {
 			    		// si on cible une créature du board adverse
 			    		if(this.getNotCurrentPlayer().getHero().isOnMyBoard(ennemyUUID)) {
@@ -277,10 +280,10 @@ public class Game {
 			    		}
 		    		}
 		    		catch(MiniHeartStoneException e) {
-		    			System.out.println(e.toString());;
+		    			System.out.println(e.toString());
 		    		}
 		    	}
-		    	else if (this.iAmWaitingFor == "Bénédiction de puissance" && playerUUID == this.getCurrentPlayer().getPlayerID()) {
+		    	else if (this.iAmWaitingFor.equals("Bénédiction de puissance") && playerUUID == this.getCurrentPlayer().getPlayerID()) {
 		    		try {
 		    			// si la créature est sur le board adverse
 			    		if(this.getNotCurrentPlayer().getHero().isOnMyBoard(ennemyUUID)) {
@@ -320,7 +323,7 @@ public class Game {
 		    	}
 		    	// si on attend pour le pouvoir du mage
 		    	//try {
-		    	else if (this.iAmWaitingFor == "Pouvoir du mage"+this.getCurrentPlayer().getPlayerID().toString() && playerUUID == this.getCurrentPlayer().getPlayerID()) {
+		    	else if (this.iAmWaitingFor.equals("Pouvoir du mage"+this.getCurrentPlayer().getPlayerID().toString()) && playerUUID == this.getCurrentPlayer().getPlayerID()) {
 		    		// si tu as le mana suffisant pour jouer le pouvoir
 		    		if(this.getCurrentPlayer().getHero().getMana()>=2) {
 		    			// si la seclection est le joueur adverse
@@ -365,9 +368,9 @@ public class Game {
 			// si le joueur est bien le joueur courant
 			if(playerUUID == this.getCurrentPlayer().getPlayerID()) {
 				// si tu as le mana suffisant pour jouer le pouvoir et que tu n'as pas deja use ton pouvoir 
-	    		if(this.getCurrentPlayer().getHero().getMana()>=2 && heroicPowerUsed == false) {
+	    		if(this.getCurrentPlayer().getHero().getMana()>=2 && !heroicPowerUsed) {
 					// si c'est un mage 
-					if (this.getCurrentPlayer().getHero().getHeroName() == "Mage") {
+					if (this.getCurrentPlayer().getHero().getHeroName().equals("Mage")) {
 						iAmWaitingFor = "Pouvoir du mage"+this.getCurrentPlayer().getPlayerID().toString();
 		    			//this.tmpUUID = selectCardUUID;
 					}
@@ -396,7 +399,7 @@ public class Game {
 				if(this.getCurrentPlayer().getHero().isOnMyBoard(myCardUUID) && this.getNotCurrentPlayer().getHero().isOnMyBoard(opponentUUID)){
 					try {
 						// on vérifie que ma créature n'a pas déja attaqué
-						if (((Minion)(this.getCurrentPlayer().getHero().getCardFromBoardByUUID(myCardUUID))).getReadyToAttack() == true) {
+						if (((Minion)(this.getCurrentPlayer().getHero().getCardFromBoardByUUID(myCardUUID))).getReadyToAttack()) {
 							Minion monMin = ((Minion)(this.getCurrentPlayer().getHero().getCardFromBoardByUUID(myCardUUID)));
 							Minion oppMin = ((Minion)(this.getNotCurrentPlayer().getHero().getCardFromBoardByUUID(opponentUUID)));
 							try {
@@ -413,7 +416,7 @@ public class Game {
 									}
 								}
 								// si il n'y a pas de provoc en face
-								else if (this.getNotCurrentPlayer().getHero().aCardWithProvocationInMyBorad() == false) {
+								else if (!this.getNotCurrentPlayer().getHero().aCardWithProvocationInMyBorad()) {
 									// on fais les degats sur les deux minions oklm
 									this.getNotCurrentPlayer().getHero().hasBeenAttack(opponentUUID, monMin.getAttack());
 									this.getCurrentPlayer().getHero().hasBeenAttack(myCardUUID, oppMin.getAttack());
