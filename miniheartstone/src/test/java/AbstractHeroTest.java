@@ -1,10 +1,10 @@
 import static org.junit.Assert.assertTrue;
 
-import engine.AbstractHeroDoublure;
+import engine.AbstractHero;
+import engine.Paladin;
 import org.junit.Test;
 
 import engine.Minion;
-import engine.PaladinDoublure;
 import engine.AbstractCard;
 
 
@@ -21,7 +21,7 @@ public class AbstractHeroTest {
 	
 	 @Test
 	 public final void testPaladinHasBeenAttack() {
-	    AbstractHeroDoublure pal = new PaladinDoublure();
+	    AbstractHero pal = new Paladin();
 	    pal.setMana(20);
 	    assertTrue(pal.getHealth() == 30);
 	    AbstractCard crd1 = pal.draw("Sanglier brocheroc");
@@ -72,7 +72,7 @@ public class AbstractHeroTest {
 
     @Test
     public final void testPaladinInvock() {
-    	AbstractHeroDoublure pal = new PaladinDoublure();
+    	AbstractHero pal = new Paladin();
     	pal.setMana(20);
         assertTrue(pal.getHealth() == 30);
 
