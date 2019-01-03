@@ -21,13 +21,15 @@ public class Application {
     @Bean
     public CommandLineRunner demo(CardRepository repository) {
         return (args) -> {
-            // save a couple of minions
-
+            // save minions
             repository.save(new Minion("Sanglier de brocheroc","je suis n1",1,1,1,false,false,false,null));
             repository.save(new Minion("Chevaucheur de loup", "je suis n2",3, 1, 3, false,false, false, null));
             repository.save(new Minion("Chef de raid", "je suis fort",3, 1, 2, false,false, true, null));
             repository.save(new Minion("Yéti noroit", "je suis n4",4, 1, 2, false,true, false, null));
             repository.save(new Minion("Soldat du compté d'or", "je suis n4",1, 1, 2, false,true, false, null));
+            // save spells
+            repository.save(new Spell(1, "Image miroir", "je suis un spell qui invoque 2 0/2 provoc", null));
+            repository.save(new Spell(3, "Maîtrise du blocage", "je suis un spell qui pioche", null));
             Application.repo = repository;
 
             // fetch all customers

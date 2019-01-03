@@ -11,7 +11,7 @@ public abstract class AbstractHero {
 	protected int mana;
 	protected UUID heroUUID;
 	protected String description;
-		
+
 	protected String heroName;
 	protected int health;
 	protected int armor;
@@ -85,7 +85,7 @@ public abstract class AbstractHero {
 							board.add(abstractCard);
 		
 							// si la carte � charge
-							if(((Minion) abstractCard).isHasCharge()) {
+							if(((Minion) abstractCard).getHasCharge()) {
 								((Minion) abstractCard).setReadyToAttack(true);
 							}
 						}
@@ -234,7 +234,7 @@ public abstract class AbstractHero {
 		
 		public boolean aCardWithProvocationInMyBorad() {
 			for(int i =0; i< board.size(); i++) {
-				if(((Minion)this.getBoard().get(i)).isHasPrococation()) {
+				if(((Minion)this.getBoard().get(i)).getHasTaunt()) {
 					return true;
 				}
 			}

@@ -34,7 +34,7 @@ public abstract class AbstractCard {
 	protected AbstractCard() { }
 
 	/**
-	 * Instanciates the card to the given parameters and with a random UUID
+	 * Instantiates the card to the given parameters and with a random UUID
 	 * @param name The name of the card
 	 * @param description The description of the card
 	 * @param manaCost The mana cost of the card
