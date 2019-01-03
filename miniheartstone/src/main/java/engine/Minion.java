@@ -25,6 +25,9 @@ public class Minion extends AbstractCard {
     @Transient
 	protected boolean readyToAttack;
 
+	/**
+	 * Empty conctructor
+	 */
     protected Minion() { }
 
 	/**

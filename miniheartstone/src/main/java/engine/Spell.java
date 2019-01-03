@@ -8,9 +8,22 @@ import java.util.UUID;
 
 @Entity
 public class Spell extends AbstractCard {
-	
+
+	/**
+	 * Empty constructor
+	 */
+	protected Spell() {
+
+	}
+
+	/**
+	 * Instantiates the spell to the given parameters and with a random UUID
+	 * @param manaCost The mana cost of the spell
+	 * @param name The name of the spell
+	 * @param description The description of the spell
+	 * @param pictureURL The picture of the spell that will be displayed for the user
+	 */
 	public Spell(int manaCost, String name, String description, String pictureURL){
-		
 		super(name, description, manaCost, pictureURL);
 		
 		this.cardID = UUID.randomUUID();
