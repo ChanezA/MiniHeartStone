@@ -32,10 +32,10 @@ public abstract class AbstractHero {
 		this.heroUUID = UUID.randomUUID();
 
         // Retrieving card with Spring
-        CardRepository repo = Application.repo;
+        /*CardRepository repo = Application.repo;
         for (AbstractCard abstractCard : repo.findAll()) {
             this.deck.add(abstractCard);
-        }
+        }*/
 
 		AbstractCard lzl = new Spell(1, "Image miroir", "je suis un spell qui invoque 2 0/2 provoc", null);
 		this.deck.add(lzl);
