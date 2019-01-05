@@ -8,7 +8,7 @@ public class SpellTest {
     @Test
     public final void cloneTest() {
         Spell spell = new Spell(2, "test", "Ceci est un spell test", "http://ceciestunspelltest.com/ntm");
-        Spell clone = spell.cloneSpell();
+        Spell clone = spell.cloneCard();
         Spell clone2 = spell.cloneCard();
         assertTrue(spell.getDescription().equals(clone.getDescription()) && spell.getName().equals(clone.getName()) &&
                     spell.getManaCost() == clone.getManaCost() && spell.getPictureURL().equals(clone.getPictureURL()) &&
