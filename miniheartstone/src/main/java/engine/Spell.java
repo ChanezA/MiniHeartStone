@@ -28,15 +28,13 @@ public class Spell extends AbstractCard {
 		
 		this.cardID = UUID.randomUUID();
 	}
-	
-	public Spell cloneSpell(){
-		return new Spell(this.getManaCost(), this.getName(), this.getDescription(), this.getPictureURL());
-	}
 
+	@Override
 	public Spell cloneCard() {
 		return new Spell(this.manaCost,this.name,this.description,this.pictureURL);
 	}
-	
+
+	@Override
 	public String toString() {
 		return	"MinionUUID : "+this.cardID+"\n"+"\n"+
 				
