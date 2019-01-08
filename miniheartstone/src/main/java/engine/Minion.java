@@ -40,12 +40,13 @@ public class Minion extends AbstractCard {
 	 * @param hasTaunt Boolean set to true if the minion has the effect taunt, false otherwise
 	 * @param hasLifeSteal Boolean set to true if the minion has the effect life steal, false otherwise
 	 * @param hasCharge Boolean set to true if the minion has the effect charge, false otherwise
+	 * @param heroName The hero class to which the card belongs, null if this card is available for all heroes
 	 * @param pictureURL The picture of the minion that will be displayed for the user
 	 */
 	public Minion(String name, String description, int manaCost, int attack, int life,
-			boolean hasTaunt, boolean hasLifeSteal, boolean hasCharge, String pictureURL) {
+			boolean hasTaunt, boolean hasLifeSteal, boolean hasCharge,String heroName, String pictureURL) {
 		
-		super(name, description, manaCost, pictureURL);
+		super(name, description, manaCost,heroName, pictureURL);
 		this.attack = attack;
 		this.life = life;
 		this.hasTaunt = hasTaunt;
@@ -59,7 +60,7 @@ public class Minion extends AbstractCard {
 	@Override
 	public Minion cloneCard() {
 		return new Minion(this.name,this.description,this.manaCost,this.attack,this.life,
-				this.hasTaunt,this.hasLifeSteal,this.hasCharge,this.pictureURL);
+				this.hasTaunt,this.hasLifeSteal,this.hasCharge,this.heroName,this.pictureURL);
 	}
 
 	/**
@@ -171,7 +172,8 @@ public class Minion extends AbstractCard {
 				"description : "+this.description+"\n"+
 				"pictureURL : "+pictureURL+"\n"+
 				"name : "+this.name+"\n"+
-				"cardID : "+this.cardID;
+				"cardID : "+this.cardID+
+				"heroName :"+this.heroName;
 	}
 
 }

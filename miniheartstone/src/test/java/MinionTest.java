@@ -8,15 +8,15 @@ public class MinionTest {
     @Test
     public final void cannotAttackTurnOneExceptIfHasCharge() {
         //Tester avec une carte ayant l'effet Charge aussi
-        Minion minion = new Minion("test", "desc", 2, 3, 3, false, false, true, "null");
+        Minion minion = new Minion("test", "desc", 2, 3, 3, false, false, true, null,"null");
         assertTrue(minion.isReadyToAttack());
-        Minion minion2 = new Minion("test", "desc", 2, 3, 3, false, false, false, "null");
+        Minion minion2 = new Minion("test", "desc", 2, 3, 3, false, false, false, null,"null");
         assertFalse(minion2.isReadyToAttack());
     }
 
     @Test
     public final void cloneTest() {
-        Minion minion = new Minion("test", "desc", 2, 3, 3, false, false, true, "null");
+        Minion minion = new Minion("test", "desc", 2, 3, 3, false, false, true, null,"null");
         Minion clone = minion.cloneCard();
         assertTrue(minion.getName().equals(clone.getName()) && minion.getHasCharge() == clone.getHasCharge() && minion.getHasTaunt() == clone.getHasTaunt() &&
                     minion.getHasLifeSteal() == clone.getHasLifeSteal() && minion.isReadyToAttack() == clone.isReadyToAttack() && minion.getAttack() == clone.getAttack() &&

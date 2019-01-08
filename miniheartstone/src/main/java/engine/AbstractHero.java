@@ -5,22 +5,40 @@ import java.util.UUID;
 
 import exception.MiniHeartStoneException;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Transient;
+
+@Entity
 public abstract class AbstractHero {
 
-	//public static final int MANA_MAX= 10;
-	protected int mana;
-	protected UUID heroUUID;
+	@Column(name="description")
 	protected String description;
-
+	@Id
+	@Column(name="heroName")
 	protected String heroName;
+
+	//public static final int MANA_MAX= 10;
+	@Transient
+	protected int mana;
+	@Transient
+	protected UUID heroUUID;
+	@Transient
 	protected int health;
+	@Transient
 	protected int armor;
 	//liste tte les carte que le heros peut avoir a recuperer dans la base de données.
+	@Transient
 	protected ArrayList<AbstractCard> deck = new ArrayList<AbstractCard>();
+	@Transient
 	protected ArrayList<AbstractCard> hand = new ArrayList<AbstractCard>();
+	@Transient
 	protected ArrayList<AbstractCard> board = new ArrayList<AbstractCard>();
-		
+
+	@Transient
 	protected boolean looser = false;
+	@Transient
 	protected boolean winner = false;
 
 	protected AbstractHero(String heroName, int health, String description) {
@@ -37,10 +55,10 @@ public abstract class AbstractHero {
             this.deck.add(abstractCard);
         }*/
 
-		AbstractCard lzl = new Spell(1, "Image miroir", "je suis un spell qui invoque 2 0/2 provoc", null);
+		AbstractCard lzl = new Spell(1, "Image miroir", "je suis un spell qui invoque 2 0/2 provoc", null,null);
 		this.deck.add(lzl);
 
-		AbstractCard lyl = new Spell(3, "Maîtrise du blocage", "je suis un spell qui pioche", null);
+		AbstractCard lyl = new Spell(3, "Maîtrise du blocage", "je suis un spell qui pioche", null,null);
 		this.deck.add(lyl);
 	}
 		
@@ -96,9 +114,9 @@ public abstract class AbstractHero {
 		
 							// si c'est image miroir
 							if (spell.getName() == "Image miroir") {
-								AbstractCard one =new Minion("Soldat", "je suis n4",1, 0, 2, true,false, false, null);
+								AbstractCard one =new Minion("Soldat", "je suis n4",1, 0, 2, true,false, false,null, null);
 								((Minion)one).setAttack(((Minion)one).getAttack()+ this.howManyChefDeRaidInMyBoard());
-								AbstractCard two =new Minion("Soldat", "je suis n4",1, 0, 2, true,false, false, null);
+								AbstractCard two =new Minion("Soldat", "je suis n4",1, 0, 2, true,false, false,null, null);
 								((Minion)two).setAttack(((Minion)two).getAttack()+ this.howManyChefDeRaidInMyBoard());
 								this.getBoard().add(one);
 								this.getBoard().add(two);
@@ -330,62 +348,62 @@ public abstract class AbstractHero {
 	public AbstractCard draw(String cardName) {
 		AbstractCard min = null;
 		if(cardName.equals("Sanglier brocheroc")) {
-			min = new Minion("Sanglier de brocheroc", "je suis n1",1, 1, 1, false,false, false, null);
+			min = new Minion("Sanglier de brocheroc", "je suis n1",1, 1, 1, false,false, false,null, null);
 		}
 
 		else if(cardName.equals("Soldat du comté-de-l'or")) {
-			min = new Minion("Soldat du compté d'or", "je suis n4",1, 1, 2, false,true, false, null);
+			min = new Minion("Soldat du compté d'or", "je suis n4",1, 1, 2, false,true, false,null, null);
 		}
 
 		else if(cardName.equals("Chevaucheur de loup")) {
-			min = new Minion("Chevaucheur de loup", "je suis n2",3, 1, 3, false,false, false, null);
+			min = new Minion("Chevaucheur de loup", "je suis n2",3, 1, 3, false,false, false,null, null);
 		}
 
 		else if(cardName.equals("Chef de raid")) {
-			min = new Minion("Chef de raid", "je suis fort",3, 2, 2, false,false, true, null);
+			min = new Minion("Chef de raid", "je suis fort",3, 2, 2, false,false, true,null, null);
 		}
 
 		else if(cardName.equals("Yéti noroit")) {
-			min = new Minion("Yéti noroit", "je suis n4",4, 4, 5, false,true, false, null);
+			min = new Minion("Yéti noroit", "je suis n4",4, 4, 5, false,true, false,null, null);
 		}
 
 		// Spell(int manaCost, String name, String description, String pictureURL)
 		else if(cardName.equals("Image miroir")) {
-			min = new Spell(1,"Image miroir","description","img");
+			min = new Spell(1,"Image miroir","description",null,"img");
 		}
 
 		// Spell(int manaCost, String name, String description, String pictureURL)
 		else if(cardName.equals("Explosion des arcanes")) {
-			min = new Spell(2,"Explosion des arcanes","description","img");
+			min = new Spell(2,"Explosion des arcanes","description",null,"img");
 		}
 
 		// Spell(int manaCost, String name, String description, String pictureURL)
 		else if(cardName.equals("Métamorphose")) {
-			min = new Spell(4,"Métamorphose","description","img");
+			min = new Spell(4,"Métamorphose","description",null,"img");
 		}
 
 		else if(cardName.equals("Champion frisselame")) {
-			min = new Minion("Champion frisselame","description",4,2,8,false,false,true,null);
+			min = new Minion("Champion frisselame","description",4,2,8,false,false,true,null,null);
 		}
 
 		else if(cardName.equals("Bénédiction de puissance")) {
-			min = new Spell(1,"Bénédiction de puissance","description","img");
+			min = new Spell(1,"Bénédiction de puissance","description",null,"img");
 		}
 
 		else if(cardName.equals("Consécration")) {
-			min = new Spell(4,"Consécration","description","img");
+			min = new Spell(4,"Consécration","description",null,"img");
 		}
 
 		else if(cardName.equals("Tourbillon")) {
-			min = new Spell(1,"Tourbillon","description","img");
+			min = new Spell(1,"Tourbillon","description",null,"img");
 		}
 
 		else if(cardName.equals("Avocat commis d'office")) {
-			min = new Minion("Avocat commis d'office","description",2,0,7,false,true,false,null);
+			min = new Minion("Avocat commis d'office","description",2,0,7,false,true,false,null,null);
 		}
 
 		else if(cardName.equals("Maîtrise du blocage")) {
-			min = new Spell(3,"Maîtrise du blocage","description","img");
+			min = new Spell(3,"Maîtrise du blocage","description",null,"img");
 		}
 
 		if(min != null) {

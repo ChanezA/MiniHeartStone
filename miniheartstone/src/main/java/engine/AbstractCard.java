@@ -22,7 +22,9 @@ public abstract class AbstractCard {
 	protected String description;
 	@Column(name="manaCost")
 	protected int manaCost;
-	@Transient
+	@Column(name="heroName")
+	protected String heroName;
+	@Column(name="pictureURL")
 	protected String pictureURL;
 
 	@Transient
@@ -38,12 +40,14 @@ public abstract class AbstractCard {
 	 * @param name The name of the card
 	 * @param description The description of the card
 	 * @param manaCost The mana cost of the card
+	 * @param heroName The hero class to which the card belongs, null if this card is available for all heroes
 	 * @param pictureURL The picture of the card that will be displayed for the user
 	 */
-	public AbstractCard(String name, String description, int manaCost, String pictureURL) {
+	public AbstractCard(String name, String description, int manaCost, String heroName, String pictureURL) {
 		this.name = name;
 		this.description = description;
 		this.manaCost = manaCost;
+		this.heroName = heroName;
 		this.pictureURL = pictureURL;
 		
 		this.cardID = UUID.randomUUID();
@@ -88,6 +92,22 @@ public abstract class AbstractCard {
 	 */
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	/**
+	 * Returns the hero of the card
+	 * @return The hero of the card
+	 */
+	public String getHeroName() {
+		return this.heroName;
+	}
+
+	/**
+	 * Sets the hero of the card
+	 * @param heroName The new hero of the card
+	 */
+	public void setHeroName(String heroName) {
+		this.heroName = heroName;
 	}
 
 	/**
