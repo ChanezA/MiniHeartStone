@@ -37,7 +37,7 @@ public class Spell extends AbstractCard {
 
 	@Override
 	public String toString() {
-		return  "== Minion ==\nname:"+this.name+"\n"+
+		return  "== Spell ==\nname:"+this.name+"\n"+
 				"description:"+this.description+"\n"+
 				"manaCost:"+this.manaCost+"\n"+
 				"heroName :"+this.heroName+
