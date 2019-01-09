@@ -8,6 +8,8 @@ import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
 
+import engine.EngineInterface;
+
 @Controller
 public class WebSocketController {
 	
@@ -21,6 +23,7 @@ public class WebSocketController {
 	@MessageMapping("/send/message")
 	public void onReceivedMessage(String message) {
 		this.template.convertAndSend("/chat", new SimpleDateFormat("HH:mm:ss").format(new Date())+"- "+message);
+		this.template.convertAndSend("/chat", EngineInterface.getAllHeroDescription());
 	}
 	
 }

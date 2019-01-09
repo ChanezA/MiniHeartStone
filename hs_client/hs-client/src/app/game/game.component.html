@@ -9,3 +9,27 @@
     </div>
   </a>
 </div>
+
+<h3>Cards In my hand</h3>
+<div class="grid grid-pad">
+  <a *ngFor="let card of cardsHnd" class="col-1-4"
+     routerLink="/detail/{{card.manaCost}}">
+    <div class="module hero">
+      <h4>{{card.name}}</h4>
+      <p>Mana cost : {{card.manaCost}}</p>
+      <p>Description : {{card.description}} ch borldel uhcpshucihaxhahchxchzaihpaz uhcpshucihaxhahchxchz uhcpshucihaxhahchxchzaihpaz ihpaz</p>
+    </div>
+  </a>
+</div>
+
+<h3>Cards In my hand</h3>
+<div class="grid grid-pad">
+  <a *ngFor="let card of cardsHnd" class="col-1-4"
+     routerLink="/detail/{{card.manaCost}}">
+    <div class="module hero">
+      <h4>{{card.name}}</h4>
+      <p>Mana cost : {{card.manaCost}}</p>
+      <p>Description : {{card.description}} ch uhcpshucihaxhahchxchzaihpaz uhcpshucihaxhahchxchzaihpaz uhcpshucihaxhahchxchz uhcpshucihaxhahchxchzaihpaz ihpaz</p>
+    </div>
+  </a>
+</div>

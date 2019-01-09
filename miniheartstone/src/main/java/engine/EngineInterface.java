@@ -16,6 +16,11 @@ public class EngineInterface {
 	
 	// ici faire du spring pour recup les noms les héros jouables
 	public static ArrayList<String> getAllHeroDescription() {
+		
+		ArrayList<String> rep = new ArrayList<String>();
+		rep.add("Mage");
+		rep.add("Guerrier");
+		rep.add("Paladin");
 		return new ArrayList<String>();
 	}
 
