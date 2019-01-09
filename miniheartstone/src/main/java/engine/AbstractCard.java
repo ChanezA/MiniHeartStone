@@ -22,16 +22,16 @@ public abstract class AbstractCard {
 	@Column(name = "name")
 	protected String name;
 	@Column(name = "description")
-	private String description;
+	protected String description;
 	@Column(name = "manaCost")
-	private int manaCost;
+	protected int manaCost;
 	@Column(name = "heroName")
-	private String heroName;
+	protected String heroName;
 	@Column(name = "pictureURL")
-	private String pictureURL;
+	protected String pictureURL;
 
 	@Transient
-	private UUID cardID;
+	protected UUID cardID;
 
 	/**
 	 * Empty conctructor.
@@ -40,21 +40,21 @@ public abstract class AbstractCard {
 
 	/**
 	 * Instantiates the card to the given parameters and with a random UUID.
-	 * @param cname The name of the card
+	 * @param cName The name of the card
 	 * @param desc The description of the card
 	 * @param mana The mana cost of the card
-	 * @param hname The hero class to which the card belongs,
+	 * @param hName The hero class to which the card belongs,
      *              null if this card is available for all heroes
 	 * @param picture The picture of the card that will be displayed
      *                for the user
 	 */
-	public AbstractCard(final String cname, final String desc,
-                        final int mana, final String hname,
+	public AbstractCard(final String cName, final String desc,
+                        final int mana, final String hName,
                         final String picture) {
-		this.name = cname;
+		this.name = cName;
 		this.description = desc;
 		this.manaCost = mana;
-		this.heroName = hname;
+		this.heroName = hName;
 		this.pictureURL = picture;
 		this.cardID = UUID.randomUUID();
 	}
