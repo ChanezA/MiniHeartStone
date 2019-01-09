@@ -1,5 +1,12 @@
 package engine;
 
+/**
+ * <b>Classe abstraite représentant les différentes cartes de notre jeu.</b>
+ *
+ * @authors Amri Chanez, Baron Alan, Pineau Alexis, Quetel Louis.
+ * @version 1.0.
+ */
+
 import exception.MiniHeartStoneException;
 
 import javax.persistence.Column;
@@ -8,30 +15,26 @@ import javax.persistence.Id;
 import javax.persistence.Transient;
 import java.util.UUID;
 
-/**
- * Abstract class
- * Represents a MiniHeartStone card
- */
 @Entity
 public abstract class AbstractCard {
 
 	@Id
-	@Column(name="name")
+	@Column(name = "name")
 	protected String name;
-	@Column(name="description")
-	protected String description;
-	@Column(name="manaCost")
-	protected int manaCost;
-	@Column(name="heroName")
-	protected String heroName;
-	@Column(name="pictureURL")
-	protected String pictureURL;
+	@Column(name = "description")
+	private String description;
+	@Column(name = "manaCost")
+	private int manaCost;
+	@Column(name = "heroName")
+	private String heroName;
+	@Column(name = "pictureURL")
+	private String pictureURL;
 
 	@Transient
 	protected UUID cardID;
 
 	/**
-	 * Empty conctructor
+	 * Empty conctructor.
 	 */
 	protected AbstractCard() { }
 
@@ -59,7 +62,8 @@ public abstract class AbstractCard {
 	 * @throws MiniHeartStoneException If the method is not overridden
 	 */
 	public AbstractCard cloneCard() throws MiniHeartStoneException {
-		throw new MiniHeartStoneException("Error - please override this method");
+		throw new MiniHeartStoneException(
+                "Error - please override this method");
 	}
 
 	/**
@@ -72,10 +76,10 @@ public abstract class AbstractCard {
 
 	/**
 	 * Sets the name of the card
-	 * @param name The new name of the card
+	 * @param cname The new name of the card
 	 */
-	public void setName(String name) {
-		this.name = name;
+	public void setName(final String cname) {
+		this.name = cname;
 	}
 
 	/**
@@ -88,10 +92,10 @@ public abstract class AbstractCard {
 
 	/**
 	 * Sets the description of the card
-	 * @param description The new description of the card
+	 * @param desc The new description of the card
 	 */
-	public void setDescription(String description) {
-		this.description = description;
+	public void setDescription(final String desc) {
+		this.description = desc;
 	}
 
 	/**
@@ -104,10 +108,10 @@ public abstract class AbstractCard {
 
 	/**
 	 * Sets the hero of the card
-	 * @param heroName The new hero of the card
+	 * @param hname The new hero of the card
 	 */
-	public void setHeroName(String heroName) {
-		this.heroName = heroName;
+	public void setHeroName(final String hname) {
+		this.heroName = hname;
 	}
 
 	/**
@@ -120,14 +124,14 @@ public abstract class AbstractCard {
 
 	/**
 	 * Sets the mana cost of the card
-	 * @param manaCost The new mana cost of the card
+	 * @param mana The new mana cost of the card
 	 */
-	public void setManaCost(int manaCost) {
-		this.manaCost = manaCost;
+	public void setManaCost(final int mana) {
+		this.manaCost = mana;
 	}
 
 	/**
-	 * Returns the picture URL of the card
+	 * Returns the picture URL of the card.
 	 * @return The picture URL of the card
 	 */
 	public String getPictureURL() {
@@ -135,18 +139,18 @@ public abstract class AbstractCard {
 	}
 
 	/**
-	 * Sets the picture URL of the card
-	 * @param pictureURL The new picture URL of the card
+	 * Sets the picture URL of the card.
+	 * @param picture The new picture URL of the card
 	 */
-	public void setPictureURL(String pictureURL) {
-		this.pictureURL = pictureURL;
+	public void setPictureURL(final String picture) {
+		this.pictureURL = picture;
 	}
 
 	/**
-	 * Returns the card UUID
-	 * @return The card UUID
+	 * Returns the card UUID.
+	 * @return this.cardID
 	 */
-	public UUID getCardUUID(){
+	public UUID getCardUUID() {
 		return this.cardID;
 	}
 }
