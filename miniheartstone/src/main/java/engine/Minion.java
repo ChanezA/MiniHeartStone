@@ -161,19 +161,15 @@ public class Minion extends AbstractCard {
 
 	@Override
 	public String toString() {
-		return "life : "+this.life+"\n"+
-				"attack : "+this.attack+"\n"+
-				"readyToAttack :"+this.readyToAttack+"\n"+
-				"MinionUUID : "+this.cardID+"\n"+
-				"hasProvocation : "+this.hasTaunt+"\n"+
-				"hasLifeSteal : "+this.hasLifeSteal+"\n"+
-				"hasCharge : "+this.hasCharge+"\n"+"\n"+
-				"manaCost : "+this.manaCost+"\n"+
-				"description : "+this.description+"\n"+
-				"pictureURL : "+pictureURL+"\n"+
-				"name : "+this.name+"\n"+
-				"cardID : "+this.cardID+
-				"heroName :"+this.heroName;
+		return  "== Minion ==\nname:"+this.name+"\n"+
+				"description:"+this.description+"\n"+
+				"manaCost:"+this.manaCost+"\n"+"attack:"+this.attack+"\n"+
+				"life:"+this.life+"\n"+
+				"hasTaunt:"+this.hasTaunt+"\n"+
+				"hasLifeSteal:"+this.hasLifeSteal+"\n"+
+				"hasCharge:"+this.hasCharge+"\n"+"readyToAttack :"+this.readyToAttack+"\n"+
+				"heroName :"+this.heroName+
+				"pictureURL : "+pictureURL+"\n"+"cardUUID : "+this.cardID+"\n";
 	}
 
 }

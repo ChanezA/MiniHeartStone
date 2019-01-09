@@ -31,7 +31,7 @@ public abstract class AbstractCard {
 	protected String pictureURL;
 
 	@Transient
-	protected	 UUID cardID;
+	protected UUID cardID;
 
 	/**
 	 * Empty conctructor.

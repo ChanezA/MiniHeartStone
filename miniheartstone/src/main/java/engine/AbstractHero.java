@@ -55,10 +55,10 @@ public abstract class AbstractHero {
             this.deck.add(abstractCard);
         }*/
 
-		AbstractCard lzl = new Spell(1, "Image miroir", "je suis un spell qui invoque 2 0/2 provoc", null,null);
+		AbstractCard lzl = new Spell("Image miroir", "je suis un spell qui invoque 2 0/2 provoc",1, null,null);
 		this.deck.add(lzl);
 
-		AbstractCard lyl = new Spell(3, "Maîtrise du blocage", "je suis un spell qui pioche", null,null);
+		AbstractCard lyl = new Spell("Maîtrise du blocage", "je suis un spell qui pioche",3,null,null);
 		this.deck.add(lyl);
 	}
 		
@@ -369,17 +369,17 @@ public abstract class AbstractHero {
 
 		// Spell(int manaCost, String name, String description, String pictureURL)
 		else if(cardName.equals("Image miroir")) {
-			min = new Spell(1,"Image miroir","description",null,"img");
+			min = new Spell("Image miroir","description",1,null,"img");
 		}
 
 		// Spell(int manaCost, String name, String description, String pictureURL)
 		else if(cardName.equals("Explosion des arcanes")) {
-			min = new Spell(2,"Explosion des arcanes","description",null,"img");
+			min = new Spell("Explosion des arcanes","description",2,null,"img");
 		}
 
 		// Spell(int manaCost, String name, String description, String pictureURL)
 		else if(cardName.equals("Métamorphose")) {
-			min = new Spell(4,"Métamorphose","description",null,"img");
+			min = new Spell("Métamorphose","description",4,null,"img");
 		}
 
 		else if(cardName.equals("Champion frisselame")) {
@@ -387,15 +387,15 @@ public abstract class AbstractHero {
 		}
 
 		else if(cardName.equals("Bénédiction de puissance")) {
-			min = new Spell(1,"Bénédiction de puissance","description",null,"img");
+			min = new Spell("Bénédiction de puissance","description",1,null,"img");
 		}
 
 		else if(cardName.equals("Consécration")) {
-			min = new Spell(4,"Consécration","description",null,"img");
+			min = new Spell("Consécration","description",4,null,"img");
 		}
 
 		else if(cardName.equals("Tourbillon")) {
-			min = new Spell(1,"Tourbillon","description",null,"img");
+			min = new Spell("Tourbillon","description",1,null,"img");
 		}
 
 		else if(cardName.equals("Avocat commis d'office")) {
@@ -403,7 +403,7 @@ public abstract class AbstractHero {
 		}
 
 		else if(cardName.equals("Maîtrise du blocage")) {
-			min = new Spell(3,"Maîtrise du blocage","description",null,"img");
+			min = new Spell("Maîtrise du blocage","description",3,null,"img");
 		}
 
 		if(min != null) {
