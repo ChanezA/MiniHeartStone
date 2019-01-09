@@ -3,7 +3,7 @@ package engine;
 /**
  * <b>Classe abstraite représentant les différentes cartes de notre jeu.</b>
  *
- * @authors Amri Chanez, Baron Alan, Pineau Alexis, Quetel Louis.
+ * @authors Amri Chanez, Baron Alan, Pineau Alexis, Questel Louis.
  * @version 1.0
  */
 
@@ -31,7 +31,7 @@ public abstract class AbstractCard {
 	protected String pictureURL;
 
 	@Transient
-	protected UUID cardID;
+	protected	 UUID cardID;
 
 	/**
 	 * Empty conctructor.
