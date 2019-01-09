@@ -4,7 +4,7 @@ package engine;
  * <b>Classe abstraite représentant les différentes cartes de notre jeu.</b>
  *
  * @authors Amri Chanez, Baron Alan, Pineau Alexis, Quetel Louis.
- * @version 1.0.
+ * @version 1.0
  */
 
 import exception.MiniHeartStoneException;
@@ -22,13 +22,13 @@ public abstract class AbstractCard {
 	@Column(name = "name")
 	protected String name;
 	@Column(name = "description")
-	private String description;
+	protected String description;
 	@Column(name = "manaCost")
-	private int manaCost;
+	protected int manaCost;
 	@Column(name = "heroName")
-	private String heroName;
+	protected String heroName;
 	@Column(name = "pictureURL")
-	private String pictureURL;
+	protected String pictureURL;
 
 	@Transient
 	protected UUID cardID;
@@ -39,25 +39,29 @@ public abstract class AbstractCard {
 	protected AbstractCard() { }
 
 	/**
-	 * Instantiates the card to the given parameters and with a random UUID
-	 * @param name The name of the card
-	 * @param description The description of the card
-	 * @param manaCost The mana cost of the card
-	 * @param heroName The hero class to which the card belongs, null if this card is available for all heroes
-	 * @param pictureURL The picture of the card that will be displayed for the user
+	 * Instantiates the card to the given parameters and with a random UUID.
+	 * @param cName The name of the card
+	 * @param desc The description of the card
+	 * @param mana The mana cost of the card
+	 * @param hName The hero class to which the card belongs,
+     *              null if this card is available for all heroes
+	 * @param picture The picture of the card that will be displayed
+     *                for the user
 	 */
-	public AbstractCard(String name, String description, int manaCost, String heroName, String pictureURL) {
-		this.name = name;
-		this.description = description;
-		this.manaCost = manaCost;
-		this.heroName = heroName;
-		this.pictureURL = pictureURL;
-		
+	public AbstractCard(final String cName, final String desc,
+                        final int mana, final String hName,
+                        final String picture) {
+		this.name = cName;
+		this.description = desc;
+		this.manaCost = mana;
+		this.heroName = hName;
+		this.pictureURL = picture;
 		this.cardID = UUID.randomUUID();
 	}
 
 	/**
-	 * Clones this card, the returned object will have all the same attributes but a different UUID
+	 * Clones this card, the returned object will have all the same
+     * attributes but a different UUID.
 	 * @return The cloned AbstractCard
 	 * @throws MiniHeartStoneException If the method is not overridden
 	 */
@@ -67,15 +71,15 @@ public abstract class AbstractCard {
 	}
 
 	/**
-	 * Returns the name of the card
-	 * @return The name of the card
+	 * Returns the name of the card.
+	 * @return this.name
 	 */
 	public String getName() {
 		return this.name;
 	}
 
 	/**
-	 * Sets the name of the card
+	 * Sets the name of the card.
 	 * @param cname The new name of the card
 	 */
 	public void setName(final String cname) {
@@ -83,15 +87,15 @@ public abstract class AbstractCard {
 	}
 
 	/**
-	 * Returns the description of the card
-	 * @return The description of the card
+	 * Returns the description of the card.
+	 * @return this.description
 	 */
 	public String getDescription() {
 		return this.description;
 	}
 
 	/**
-	 * Sets the description of the card
+	 * Sets the description of the card.
 	 * @param desc The new description of the card
 	 */
 	public void setDescription(final String desc) {
@@ -99,15 +103,15 @@ public abstract class AbstractCard {
 	}
 
 	/**
-	 * Returns the hero of the card
-	 * @return The hero of the card
+	 * Returns the hero of the card.
+	 * @return this.heroName
 	 */
 	public String getHeroName() {
 		return this.heroName;
 	}
 
 	/**
-	 * Sets the hero of the card
+	 * Sets the hero of the card.
 	 * @param hname The new hero of the card
 	 */
 	public void setHeroName(final String hname) {
@@ -115,15 +119,15 @@ public abstract class AbstractCard {
 	}
 
 	/**
-	 * Returns the mana cost of the card
-	 * @return The mana cost of the card
+	 * Returns the mana cost of the card.
+	 * @return this.manaCost
 	 */
 	public int getManaCost() {
 		return this.manaCost;
 	}
 
 	/**
-	 * Sets the mana cost of the card
+	 * Sets the mana cost of the card.
 	 * @param mana The new mana cost of the card
 	 */
 	public void setManaCost(final int mana) {
@@ -132,7 +136,7 @@ public abstract class AbstractCard {
 
 	/**
 	 * Returns the picture URL of the card.
-	 * @return The picture URL of the card
+	 * @return this.pictureURL
 	 */
 	public String getPictureURL() {
 		return this.pictureURL;
