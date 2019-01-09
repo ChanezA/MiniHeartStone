@@ -26,9 +26,12 @@ public class Minion extends AbstractCard {
 	protected boolean readyToAttack;
 
 	/**
-	 * Empty conctructor
+	 * Empty conctructor for Spring
 	 */
-    protected Minion() { }
+    protected Minion() {
+		super();
+		this.readyToAttack = false;
+	}
 
 	/**
 	 * Instantiates the minion to the given parameters and with a random UUID
@@ -54,7 +57,6 @@ public class Minion extends AbstractCard {
 		this.hasCharge = hasCharge;
 
 		this.readyToAttack = hasCharge;
-
 	}
 
 	@Override
@@ -168,7 +170,7 @@ public class Minion extends AbstractCard {
 				"hasTaunt:"+this.hasTaunt+"\n"+
 				"hasLifeSteal:"+this.hasLifeSteal+"\n"+
 				"hasCharge:"+this.hasCharge+"\n"+"readyToAttack :"+this.readyToAttack+"\n"+
-				"heroName :"+this.heroName+
+				"heroName :"+this.heroName+"\n"+
 				"pictureURL : "+pictureURL+"\n"+"cardUUID : "+this.cardID+"\n";
 	}
 

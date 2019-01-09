@@ -10,10 +10,10 @@ import java.util.UUID;
 public class Spell extends AbstractCard {
 
 	/**
-	 * Empty constructor
+	 * Empty constructor for Spring
 	 */
 	protected Spell() {
-
+		super();
 	}
 
 	/**
@@ -40,7 +40,7 @@ public class Spell extends AbstractCard {
 		return  "== Spell ==\nname:"+this.name+"\n"+
 				"description:"+this.description+"\n"+
 				"manaCost:"+this.manaCost+"\n"+
-				"heroName :"+this.heroName+
+				"heroName :"+this.heroName+"\n"+
 				"pictureURL : "+pictureURL+"\n"+"cardUUID : "+this.cardID+"\n";
 	}
 

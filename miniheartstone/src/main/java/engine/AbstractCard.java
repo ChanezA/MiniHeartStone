@@ -34,9 +34,11 @@ public abstract class AbstractCard {
 	protected UUID cardID;
 
 	/**
-	 * Empty conctructor.
+	 * Empty conctructor for Spring.
 	 */
-	protected AbstractCard() { }
+	protected AbstractCard() {
+		this.cardID = UUID.randomUUID();
+	}
 
 	/**
 	 * Instantiates the card to the given parameters and with a random UUID.
