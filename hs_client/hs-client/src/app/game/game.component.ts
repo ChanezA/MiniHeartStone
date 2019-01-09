@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {CARDS} from '../mock-my-hand';
+import {MINION} from '../mock-my-board';
 
 @Component({
   selector: 'app-game',
@@ -8,7 +9,7 @@ import {CARDS} from '../mock-my-hand';
 })
 export class GameComponent implements OnInit {
   cardsHnd = CARDS;
-  //cardsInMyboard = CARDS;
+  cardsInMyboard = MINION;
  // cardsInOpponantBorad = CARDS;
 
 
