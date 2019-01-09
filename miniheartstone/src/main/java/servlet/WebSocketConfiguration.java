@@ -9,7 +9,6 @@ import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
 @Configuration
 @EnableWebSocketMessageBroker
 public class WebSocketConfiguration implements WebSocketMessageBrokerConfigurer{
-
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
         registry.addEndpoint("/socket")
@@ -23,4 +22,3 @@ public class WebSocketConfiguration implements WebSocketMessageBrokerConfigurer{
                 .enableSimpleBroker("/chat");
     }
 }
-
