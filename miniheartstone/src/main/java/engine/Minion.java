@@ -15,20 +15,23 @@ public class Minion extends AbstractCard {
     protected int attack;
     @Column(name="life")
 	protected int life;
-    @Column(name="hasTaunt")
+    @Column(name="has_taunt")
     protected boolean hasTaunt;
-    @Column(name="hasLifeSteal")
+    @Column(name="has_life_steal")
     protected boolean hasLifeSteal;
-    @Column(name="hasCharge")
+    @Column(name="has_charge")
     protected boolean hasCharge;
 
     @Transient
 	protected boolean readyToAttack;
 
 	/**
-	 * Empty conctructor
+	 * Empty conctructor for Spring
 	 */
-    protected Minion() { }
+    protected Minion() {
+		super();
+		this.readyToAttack = false;
+	}
 
 	/**
 	 * Instantiates the minion to the given parameters and with a random UUID
@@ -54,7 +57,6 @@ public class Minion extends AbstractCard {
 		this.hasCharge = hasCharge;
 
 		this.readyToAttack = hasCharge;
-
 	}
 
 	@Override
@@ -161,19 +163,15 @@ public class Minion extends AbstractCard {
 
 	@Override
 	public String toString() {
-		return "life : "+this.life+"\n"+
-				"attack : "+this.attack+"\n"+
-				"readyToAttack :"+this.readyToAttack+"\n"+
-				"MinionUUID : "+this.cardID+"\n"+
-				"hasProvocation : "+this.hasTaunt+"\n"+
-				"hasLifeSteal : "+this.hasLifeSteal+"\n"+
-				"hasCharge : "+this.hasCharge+"\n"+"\n"+
-				"manaCost : "+this.manaCost+"\n"+
-				"description : "+this.description+"\n"+
-				"pictureURL : "+pictureURL+"\n"+
-				"name : "+this.name+"\n"+
-				"cardID : "+this.cardID+
-				"heroName :"+this.heroName;
+		return  "== Minion ==\nname:"+this.name+"\n"+
+				"description:"+this.description+"\n"+
+				"manaCost:"+this.manaCost+"\n"+"attack:"+this.attack+"\n"+
+				"life:"+this.life+"\n"+
+				"hasTaunt:"+this.hasTaunt+"\n"+
+				"hasLifeSteal:"+this.hasLifeSteal+"\n"+
+				"hasCharge:"+this.hasCharge+"\n"+"readyToAttack :"+this.readyToAttack+"\n"+
+				"heroName :"+this.heroName+"\n"+
+				"pictureURL : "+pictureURL+"\n"+"cardUUID : "+this.cardID+"\n";
 	}
 
 }

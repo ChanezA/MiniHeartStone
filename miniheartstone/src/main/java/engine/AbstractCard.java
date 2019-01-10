@@ -3,7 +3,7 @@ package engine;
 /**
  * <b>Classe abstraite représentant les différentes cartes de notre jeu.</b>
  *
- * @authors Amri Chanez, Baron Alan, Pineau Alexis, Quetel Louis.
+ * @authors Amri Chanez, Baron Alan, Pineau Alexis, Questel Louis.
  * @version 1.0
  */
 
@@ -23,20 +23,22 @@ public abstract class AbstractCard {
 	protected String name;
 	@Column(name = "description")
 	protected String description;
-	@Column(name = "manaCost")
+	@Column(name = "mana_cost")
 	protected int manaCost;
-	@Column(name = "heroName")
+	@Column(name = "hero_name")
 	protected String heroName;
-	@Column(name = "pictureURL")
+	@Column(name = "picture_url")
 	protected String pictureURL;
 
 	@Transient
 	protected UUID cardID;
 
 	/**
-	 * Empty conctructor.
+	 * Empty conctructor for Spring.
 	 */
-	protected AbstractCard() { }
+	protected AbstractCard() {
+		this.cardID = UUID.randomUUID();
+	}
 
 	/**
 	 * Instantiates the card to the given parameters and with a random UUID.
