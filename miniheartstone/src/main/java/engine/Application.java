@@ -22,7 +22,7 @@ public class Application {
     public CommandLineRunner demo(CardRepository repository) {
         return (args) -> {
             // save minions
-            repository.save(new Minion("Sanglier de brocheroc", "je suis n1", 1, 1, 1, false, false, false, null, null));
+            /*repository.save(new Minion("Sanglier de brocheroc", "je suis n1", 1, 1, 1, false, false, false, null, null));
             repository.save(new Minion("Chevaucheur de loup", "je suis n2", 3, 1, 3, false, false, false, null, null));
             repository.save(new Minion("Chef de raid", "je suis fort", 3, 1, 2, false, false, true, null, null));
             repository.save(new Minion("Yéti noroit", "je suis n4", 4, 1, 2, false, true, false, null, null));
@@ -30,7 +30,7 @@ public class Application {
             // save spells
             repository.save(new Spell("Image miroir", "je suis un spell qui invoque 2 0/2 provoc", 1, null, null));
             repository.save(new Spell("Maîtrise du blocage", "je suis un spell qui pioche", 3, null, null));
-            Application.repo = repository;
+            Application.repo = repository;*/
 
             // fetch all customers
             LOG.info("Customers found with findAll():");
@@ -50,7 +50,7 @@ public class Application {
                     });
 */
             // fetch customers by last name
-            LOG.info("Customer found with findByLastName('Bauer'):");
+            LOG.info("Customer found with findByName('Sanglier brocheroc'):");
             LOG.info("--------------------------------------------");
             repository.findByName("Sanglier brocheroc").forEach(sanglier -> {
                 LOG.info(sanglier.toString());

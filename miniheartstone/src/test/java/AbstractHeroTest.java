@@ -2,6 +2,7 @@ import static org.junit.Assert.assertTrue;
 
 import engine.AbstractHero;
 import engine.Paladin;
+import exception.MiniHeartStoneException;
 import org.junit.Test;
 
 import engine.Minion;
@@ -31,10 +32,14 @@ public class AbstractHeroTest {
 	    assertTrue(pal.getHand().size() == 2);
 	        
 	    // invocation du sanglier
-	    pal.invock(crd1.getCardUUID());
+		 try {
+			 pal.invock(crd1.getCardUUID());
+		 } catch (MiniHeartStoneException e) { e.printStackTrace(); }
 	    assertTrue(((Minion)crd1).getAttack() == 1);
 	    // invocation du chef de raid
-	    pal.invock(crd2.getCardUUID());
+		 try {
+			 pal.invock(crd2.getCardUUID());
+		 } catch (MiniHeartStoneException e) { e.printStackTrace(); }
 	    assertTrue(((Minion)crd2).getAttack() == 2);
 	    
 	    assertTrue(((Minion)crd1).getAttack() == 2);
@@ -62,7 +67,9 @@ public class AbstractHeroTest {
 	   
 	    AbstractCard crd4 = pal.draw("Chef de raid");
 	    // invocation du chef de raid
-	    pal.invock(crd4.getCardUUID());
+	    try {
+	    	pal.invock(crd4.getCardUUID());
+		}catch (MiniHeartStoneException e) { e.printStackTrace(); }
 	    
 	    // utilisation du pouvoir du paladin
 	    pal.power();
@@ -83,11 +90,15 @@ public class AbstractHeroTest {
         assertTrue(pal.getHand().size() == 2);
         
         // invocation du sanglier
-        pal.invock(crd1.getCardUUID());
+        try {
+        	pal.invock(crd1.getCardUUID());
+		} catch (MiniHeartStoneException e) { e.printStackTrace(); }
         assertTrue(((Minion)crd1).getAttack() == 1);
         
         //invocation du chef de raid
-        pal.invock(crd2.getCardUUID());
+        try {
+        	pal.invock(crd2.getCardUUID());
+		} catch (MiniHeartStoneException e) { e.printStackTrace(); }
         assertTrue(((Minion)crd2).getAttack() == 2);
         
         assertTrue(((Minion)crd1).getAttack() == 2);
@@ -97,14 +108,18 @@ public class AbstractHeroTest {
         assertTrue(pal.getHand().size() == 1);
         
         //on invoque ce sanglier
-        pal.invock(crd3.getCardUUID());
+        try {
+        	pal.invock(crd3.getCardUUID());
+		} catch (MiniHeartStoneException e) { e.printStackTrace(); }
         assertTrue(((Minion)crd3).getAttack() == 2);
         
         // On mioche Image miroir
         AbstractCard crd4 = pal.draw("Image miroir");
         assertTrue(pal.getHand().size() == 1);
         // On play la carte Imaghe miroir
-        pal.invock(crd4.getCardUUID());
+        try {
+        	pal.invock(crd4.getCardUUID());
+		} catch (MiniHeartStoneException e) { e.printStackTrace(); }
  
         //System.out.println(pal.superToString());
     }
