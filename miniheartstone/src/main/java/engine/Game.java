@@ -147,7 +147,7 @@ public class Game {
 			case "Maitrise du blocage":
 				try {
 					this.getCurrentPlayer().getHero().invock(cardID);
-				} catch (MiniHeartStoneException e) { e.printStackTrace(); }	
+				} catch (MiniHeartStoneException e) { e.printStackTrace(); }
 				break;
 			case "Tourbillon":
 				// on retire 1 pv a toutes les invocations des board des deux joueurs
