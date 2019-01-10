@@ -339,7 +339,7 @@ public abstract class AbstractHero {
 			aff = aff + "\n";
 			return aff;
 		}
-		
+
 	public AbstractCard draw(String cardName) {
 		AbstractCard min = null;
 		if(cardName.equals("Sanglier brocheroc")) {

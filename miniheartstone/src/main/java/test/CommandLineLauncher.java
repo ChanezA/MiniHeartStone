@@ -28,9 +28,15 @@ public class CommandLineLauncher {
         System.out.println("\n" + game.getNotCurrentPlayer().getHero().toString());
         System.out.println("\nCurrent Player : " + game.getCurrentPlayer().getName());
         System.out.println("\n" + game.getCurrentPlayer().getHero().toString());
+        System.out.println("*** Board ***");
+        for (AbstractCard card : game.getCurrentPlayer().getHero().getBoard()) {
+            System.out.println(card.toString());
+        }
+        System.out.println("*** Hand ***");
         for (AbstractCard card : game.getCurrentPlayer().getHero().getHand()) {
             System.out.println(card.toString());
         }
+
     }
 
     private static Player getPlayer(int playerNum) {
