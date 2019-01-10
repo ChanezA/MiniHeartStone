@@ -1,0 +1,35 @@
+<h3>Cards In opponant board</h3>
+<div class="grid grid-pad">
+  <a *ngFor="let card of cardsInOpponantBorad" class="col-1-4">
+    <div class="module hero">
+      <h4>{{card.name}}</h4>
+      <p>Att : {{card.att}}</p>
+      <p>Life : {{card.life}}</p>
+      <p>Description : {{card.description}}</p>
+    </div>
+  </a>
+</div>
+
+<h3>Cards In my board</h3>
+<div class="grid grid-pad">
+  <a *ngFor="let card of cardsInMyboard" class="col-1-4">
+    <div class="module hero">
+      <h4>{{card.name}}</h4>
+      <p>Att : {{card.att}}</p>
+      <p>Life : {{card.life}}</p>
+      <p>Description : {{card.description}}</p>
+    </div>
+  </a>
+</div>
+
+<h3>Cards In my hand</h3>
+<div class="grid grid-pad">
+  <a *ngFor="let card of cardsHnd" class="col-1-4"
+     routerLink="/detail/{{card.manaCost}}">
+    <div class="module hero">
+      <h4>{{card.name}}</h4>
+      <p>Mana cost : {{card.manaCost}}</p>
+      <p>Description : {{card.description}} ch uhcpshucihaxhahchxchzaihpaz uhcpshucihaxhahchxchzaihpaz uhcpshucihaxhahchxchz uhcpshucihaxhahchxchzaihpaz ihpaz</p>
+    </div>
+  </a>
+</div>

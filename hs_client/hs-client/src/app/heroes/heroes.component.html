@@ -1,0 +1,32 @@
+<h1>Mini Hearstone</h1>
+<h2>Select one Hero</h2>
+<ul class="heroes">
+  <li *ngFor="let hero of heroes; let i = index"
+      [class.selected]="hero === selectedHero"
+      (click)="onSelect(hero)">
+    <span class="badge">{{i+1}}</span> {{hero.name}}
+  </li>
+</ul>
+
+<div *ngIf="selectedHero">
+
+  <h2>{{selectedHero.name | uppercase}} Details</h2>
+  <div><span>difficulty lvl : </span>{{selectedHero.difficulty}}</div>
+
+  <div>
+    <input type="radio" id="1" name="lvl" value="lvl 1"  (click)= "selectedHero.difficulty = 1" checked>
+    <label for="1">easy</label>
+    <input type="radio" id="2" name="lvl" value="lvl 2"  (click)= "selectedHero.difficulty = 2" />
+    <label for="2">medium</label>
+    <input type="radio" id="3" name="lvl" value="lvl 3"  (click)= "selectedHero.difficulty = 3" />
+    <label for="3">hard</label>
+  </div>
+
+  <div>
+    <label>pseudo:
+      <input [(ngModel)]="selectedHero.pseudo" placeholder="pseudo">
+      <button class="btn btn-success" >Play !</button>
+    </label>
+  </div>
+
+</div>
