@@ -4,7 +4,7 @@ public class Magus extends AbstractHero {
 	
 	public static final int DEGATS_POWER = 1;
 	
-	protected Magus() {
+	public Magus() {
 		super("Mage", 30, "Oh lala je suis un mage trrres puissant");
 	}
 

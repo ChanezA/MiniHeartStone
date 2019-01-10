@@ -10,10 +10,10 @@ import java.util.UUID;
 public class Spell extends AbstractCard {
 
 	/**
-	 * Empty constructor
+	 * Empty constructor for Spring
 	 */
 	protected Spell() {
-
+		super();
 	}
 
 	/**
@@ -24,7 +24,7 @@ public class Spell extends AbstractCard {
 	 * @param heroName The hero class to which the card belongs, null if this card is available for all heroes
 	 * @param pictureURL The picture of the spell that will be displayed for the user
 	 */
-	public Spell(int manaCost, String name, String description, String heroName, String pictureURL){
+	public Spell(String name, String description, int manaCost, String heroName, String pictureURL){
 		super(name, description, manaCost, heroName, pictureURL);
 		
 		this.cardID = UUID.randomUUID();
@@ -32,19 +32,16 @@ public class Spell extends AbstractCard {
 
 	@Override
 	public Spell cloneCard() {
-		return new Spell(this.manaCost,this.name,this.description,this.heroName,this.pictureURL);
+		return new Spell(this.name,this.description,this.manaCost,this.heroName,this.pictureURL);
 	}
 
 	@Override
 	public String toString() {
-		return	"MinionUUID : "+this.cardID+"\n"+"\n"+
-				
-				"manaCost : "+this.manaCost+"\n"+
-				"description : "+this.description+"\n"+
-				"pictureURL : "+pictureURL+"\n"+
-				"name : "+this.name+"\n"+
-				"cardID : "+this.cardID+
-				"heroName :"+this.heroName;
+		return  "== Spell ==\nname:"+this.name+"\n"+
+				"description:"+this.description+"\n"+
+				"manaCost:"+this.manaCost+"\n"+
+				"heroName :"+this.heroName+"\n"+
+				"pictureURL : "+pictureURL+"\n"+"cardUUID : "+this.cardID+"\n";
 	}
 
 }
