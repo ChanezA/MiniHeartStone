@@ -21,7 +21,7 @@ public class EngineInterface {
 		rep.add("Mage");
 		rep.add("Guerrier");
 		rep.add("Paladin");
-		return new ArrayList<String>();
+		return rep;
 	}
 
 	public static AbstractHero returnHero(String heroStr) {
