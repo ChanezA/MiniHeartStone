@@ -145,7 +145,9 @@ public class Game {
 			// si ce n'est pas un spell qui affecte l'ennemie ni un spell qui nécessite un ciblage
 			case "Image miroir":
 			case "Maitrise du blocage":
-				this.getCurrentPlayer().getHero().invock(cardID);
+				try {
+					this.getCurrentPlayer().getHero().invock(cardID);
+				} catch (MiniHeartStoneException e) { e.printStackTrace(); }	
 				break;
 			case "Tourbillon":
 				// on retire 1 pv a toutes les invocations des board des deux joueurs
