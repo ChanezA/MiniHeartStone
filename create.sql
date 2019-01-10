@@ -10,7 +10,7 @@ create table Minion (
     heroName VARCHAR(40),
     pictureURL VARCHAR(100),
     PRIMARY KEY (name)
-)
+);
 
 create table Spell (
     name VARCHAR(40),
@@ -19,4 +19,4 @@ create table Spell (
     heroName VARCHAR(40),
     pictureURL VARCHAR(100),
     PRIMARY KEY (name)
-)
+);

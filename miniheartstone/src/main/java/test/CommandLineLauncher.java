@@ -36,7 +36,15 @@ public class CommandLineLauncher {
         for (AbstractCard card : game.getCurrentPlayer().getHero().getHand()) {
             System.out.println(card.toString());
         }
-
+        playTurn(game, game.getCurrentPlayer());
+        System.out.println("*** Board ***");
+        for (AbstractCard card : game.getCurrentPlayer().getHero().getBoard()) {
+            System.out.println(card.toString());
+        }
+        System.out.println("*** Hand ***");
+        for (AbstractCard card : game.getCurrentPlayer().getHero().getHand()) {
+            System.out.println(card.toString());
+        }
     }
 
     private static Player getPlayer(int playerNum) {
@@ -81,6 +89,18 @@ public class CommandLineLauncher {
         }
 
         return ret;
+    }
+
+    private static void playTurn(Game game, Player player) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Veuillez choisir une carte à invoquer");
+        String input1 = scanner.nextLine();
+        for (AbstractCard card : player.getHero().getHand()) {
+            if (card.getCardUUID().toString().equals(input1)) {
+                game.invock(player.getPlayerID(), card.getCardUUID());
+                break;
+            }
+        }
     }
 
 }
