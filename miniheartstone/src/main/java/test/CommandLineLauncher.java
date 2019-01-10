@@ -24,10 +24,13 @@ public class CommandLineLauncher {
         Game game = new Game(player1, player2);
 
         System.out.println("\n\noO Début de la partie Oo");
-        System.out.println("\n\n" + game.getNotCurrentPlayer().getHero().toString());
-        //System.out.println("\n" + game.getNotCurrentPlayer().getHand().toString());
+        System.out.println("\n\nNot current player : "+ game.getNotCurrentPlayer().getName());
+        System.out.println("\n" + game.getNotCurrentPlayer().getHero().toString());
+        System.out.println("\nCurrent Player : " + game.getCurrentPlayer().getName());
         System.out.println("\n" + game.getCurrentPlayer().getHero().toString());
-        System.out.println("\n* Tour de : " + game.getCurrentPlayer().getName());
+        for (AbstractCard card : game.getCurrentPlayer().getHero().getHand()) {
+            System.out.println(card.toString());
+        }
     }
 
     private static Player getPlayer(int playerNum) {
@@ -59,16 +62,13 @@ public class CommandLineLauncher {
         AbstractHero ret = null;
         switch (input) {
             case 1 :
-                /*if (numero == 1) ret = new Magus("Gandalf", 2000, 10);
-                else ret = new Magus("Dumbledore", 100, 300);
+                ret = new Magus();
                 break;
             case 2 :
-                if (numero == 1) ret = new Paladin("Lancelot", 20, 2);
-                else ret = new Magus("Perceval", 80, 3);
+                ret = new Paladin();
                 break;
             case 3 :
-                if (numero == 1) ret = new Warrior("Boromir", 3000, 4, 10);
-                else ret = new Warrior("Gimli", 3000, 400, 20);*/
+                ret = new Warrior();
                 break;
             default:
                 break;

@@ -58,26 +58,9 @@ public class Game {
     private void initGame() {
         this.currentPlayer = player1;
         this.notCurrentPlayer = player2;
-        for (int i = 0; i < 1; i++) {
-        	/*
-            player1.getHero().draw();
-            player2.getHero().draw();
-            */
-        	player1.getHero().draw("Yéti noroit");
-        	player2.getHero().draw("Yéti noroit");
-        	
-        	//player1.getHero().draw("Chef de raid");
-        	//player2.getHero().draw("Chef de raid");
-        	
-        	player1.getHero().draw("Image miroir");
-        	player2.getHero().draw("Image miroir");
-        	
-        	player1.getHero().draw("Métamorphose");
-        	player2.getHero().draw("Métamorphose");
-        	
-        	//player1.getHero().draw("Explosion des arcanes");
-        	//player2.getHero().draw("Explosion des arcanes");
-        	
+        for (int i = 0; i < 4; i++) {
+        	this.player1.getHero().draw();
+        	this.player2.getHero().draw();
         }
         this.getCurrentPlayer().getHero().setMana(100);
         this.getNotCurrentPlayer().getHero().setMana(100);
