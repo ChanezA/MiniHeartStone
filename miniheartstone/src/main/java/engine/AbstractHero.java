@@ -66,19 +66,10 @@ public abstract class AbstractHero {
         this.heroUUID = UUID.randomUUID();
 
         // Retrieving card with Spring
-        /*CardRepository repo = Application.repo;
+        CardRepository repo = Application.repo;
         for (AbstractCard abstractCard : repo.findAll()) {
             this.deck.add(abstractCard);
-        }*/
-
-        AbstractCard lzl = new Spell("Image miroir",
-                "je suis un spell qui invoque 2 0/2 provoc", 1, null,
-                null);
-        this.deck.add(lzl);
-
-        AbstractCard lyl = new Spell("Maîtrise du blocage",
-                "je suis un spell qui pioche", 3, null, null);
-        this.deck.add(lyl);
+        }
     }
     /**
      * Used when the hero use its heroic power.

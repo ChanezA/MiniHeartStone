@@ -23,11 +23,11 @@ public abstract class AbstractCard {
 	protected String name;
 	@Column(name = "description")
 	protected String description;
-	@Column(name = "manaCost")
+	@Column(name = "mana_cost")
 	protected int manaCost;
-	@Column(name = "heroName")
+	@Column(name = "hero_name")
 	protected String heroName;
-	@Column(name = "pictureURL")
+	@Column(name = "picture_url")
 	protected String pictureURL;
 
 	@Transient

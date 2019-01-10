@@ -15,11 +15,11 @@ public class Minion extends AbstractCard {
     protected int attack;
     @Column(name="life")
 	protected int life;
-    @Column(name="hasTaunt")
+    @Column(name="has_taunt")
     protected boolean hasTaunt;
-    @Column(name="hasLifeSteal")
+    @Column(name="has_life_steal")
     protected boolean hasLifeSteal;
-    @Column(name="hasCharge")
+    @Column(name="has_charge")
     protected boolean hasCharge;
 
     @Transient

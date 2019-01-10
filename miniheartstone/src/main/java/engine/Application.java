@@ -29,16 +29,16 @@ public class Application {
             repository.save(new Minion("Soldat du compté d'or", "je suis n4", 1, 1, 2, false, true, false, null, null));
             // save spells
             repository.save(new Spell("Image miroir", "je suis un spell qui invoque 2 0/2 provoc", 1, null, null));
-            repository.save(new Spell("Maîtrise du blocage", "je suis un spell qui pioche", 3, null, null));
-            Application.repo = repository;*/
+            repository.save(new Spell("Maîtrise du blocage", "je suis un spell qui pioche", 3, null, null));*/
+            Application.repo = repository;
 
             // fetch all customers
-            LOG.info("Customers found with findAll():");
+            /*LOG.info("Customers found with findAll():");
             LOG.info("-------------------------------");
             for (AbstractCard abstractCard : repository.findAll()) {
                 LOG.info(abstractCard.toString());
             }
-            LOG.info("");
+            LOG.info("");*/
 
             // fetch an individual customer by ID
             /*repository.findById(1L)
@@ -50,7 +50,7 @@ public class Application {
                     });
 */
             // fetch customers by last name
-            LOG.info("Customer found with findByName('Sanglier brocheroc'):");
+            /*LOG.info("Customer found with findByName('Sanglier brocheroc'):");
             LOG.info("--------------------------------------------");
             repository.findByName("Sanglier brocheroc").forEach(sanglier -> {
                 LOG.info(sanglier.toString());
@@ -58,7 +58,7 @@ public class Application {
             // for (Customer bauer : repository.findByLastName("Bauer")) {
             // 	LOG.info(bauer.toString());
             // }
-            LOG.info("");
+            LOG.info("");*/
         };
     }
 

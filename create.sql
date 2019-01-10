@@ -1,7 +1,7 @@
 create table abstract_card (
     name VARCHAR(40),
     description VARCHAR(200),
-    manaCost INTEGER NOT NULL,
+    mana_cost INTEGER NOT NULL,
     hero_name VARCHAR(40),
     picture_url VARCHAR(100),
     PRIMARY KEY (name)
@@ -10,11 +10,11 @@ create table abstract_card (
 create table minion (
     name VARCHAR(40),
     description VARCHAR(200),
-    manaCost INTEGER NOT NULL,
+    mana_cost INTEGER NOT NULL,
     attack INTEGER NOT NULL,
     life INTEGER NOT NULL,
     has_taunt BOOLEAN NOT NULL,
-    has_lifeSteal BOOLEAN NOT NULL,
+    has_life_steal BOOLEAN NOT NULL,
     has_charge BOOLEAN NOT NULL,
     hero_name VARCHAR(40),
     picture_url VARCHAR(100),
@@ -24,8 +24,8 @@ create table minion (
 create table spell (
     name VARCHAR(40),
     description VARCHAR(200),
-    manaCost INTEGER NOT NULL,
-    heroName VARCHAR(40),
-    pictureURL VARCHAR(100),
+    mana_cost INTEGER NOT NULL,
+    hero_name VARCHAR(40),
+    picture_url VARCHAR(100),
     PRIMARY KEY (name)
 );
