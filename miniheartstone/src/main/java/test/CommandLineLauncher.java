@@ -25,9 +25,9 @@ public class CommandLineLauncher {
         Game game = new Game(player1, player2);
 
         System.out.println("\n\noooO Début de la partie Oooo");
-        playTurn(game);
-        playTurn(game);
-        playTurn(game);
+        while (!game.isEnded()) {
+            playTurn(game);
+        }
     }
 
     private static Player getPlayer(int playerNum) {
