@@ -50,33 +50,33 @@ public class EngineInterface {
 		
 		try {
 			if (lvl == 1) {
-				if (mmNoob.poll() != null) {
+				if (!mmNoob.isEmpty()) {
 					// création de la game
 					Game game = new Game(mmNoob.poll(),play);
 					allCurrentGame.put(game.getGameID(),game);
 				}
 				else {
-					mmNoob.add(play);
+					mmNoob.offer(play);
 				}
 			}
 			else if (lvl == 2) {
-				if (mmMid.poll() != null) {
+				if (!mmMid.isEmpty()) {
 					// création de la game
 					Game game = new Game(mmMid.poll(),play);
 					allCurrentGame.put(game.getGameID(),game);
 				}
 				else {
-					mmMid.add(play);
+					mmMid.offer(play);
 				}
 			}
 			else if (lvl == 3) {
-				if (mmPro.poll() != null) {
+				if (!mmPro.isEmpty()) {
 					// création de la game
 					Game game = new Game(mmPro.poll(),play);
 					allCurrentGame.put(game.getGameID(),game);
 				}
 				else {
-					mmPro.add(play);
+					mmPro.offer(play);
 				}
 			}
 			else {
