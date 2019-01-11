@@ -60,8 +60,8 @@ public class Game {
         	this.player1.getHero().draw();
         	this.player2.getHero().draw();
         }
-        this.getCurrentPlayer().getHero().setMana(100);
-        this.getNotCurrentPlayer().getHero().setMana(100);
+        this.getCurrentPlayer().getHero().setMana(1);
+        this.getNotCurrentPlayer().getHero().setMana(1);
     }
 
 	/**

@@ -45,7 +45,7 @@ public class EngineInterface {
 		return null;
 	}
 
-	public static void wantPlay(int lvl,String pseudo, String heroStr) {
+	public static UUID wantPlay(int lvl,String pseudo, String heroStr) {
 		
 		// création du player
 		// lvl 1 = noob 2 = mid 3 = pro
@@ -89,6 +89,8 @@ public class EngineInterface {
 		catch(MiniHeartStoneException e) {
 			System.out.println(e.toString());
 		}
+
+		return play.getPlayerID();
 	}
 	
 	// xd
