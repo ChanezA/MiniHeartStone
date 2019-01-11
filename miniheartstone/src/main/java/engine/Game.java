@@ -83,6 +83,9 @@ public class Game {
 		    }
 		        
 		    // on remet toutes les créatures du joueru courant ready to attack
+			/*for (AbstractCard card : this.getCurrentPlayer().getHero().getBoard()) {
+				(Minion)card.set
+			}*/
 		    for(int i = 0; i<this.getCurrentPlayer().getHero().getBoard().size(); i++) {
 		       	Minion min =(Minion)(this.getCurrentPlayer().getHero().getBoard().get(i));
 		       	min.setReadyToAttack(true);
@@ -91,7 +94,7 @@ public class Game {
 		    this.getNotCurrentPlayer().getHero().draw();
 		}
 		else {
-			throw new MiniHeartStoneException("The speicfied player id is not correct");
+			throw new MiniHeartStoneException("The specified player id is not correct");
 		}
     }
     
@@ -109,7 +112,7 @@ public class Game {
      * @param playerUUID
      * @return The board as a List<AbstractCard>
      */
-    public ArrayList<AbstractCard> getMyBoard(UUID playerUUID){
+    public ArrayList<Minion> getMyBoard(UUID playerUUID){
     	if (playerUUID == this.player1.getPlayerID() ) {
     		return this.getPlayer1().getHero().getBoard();
     	}
@@ -123,7 +126,7 @@ public class Game {
      * @param playerUUID
      * @return The board as a List<AbstractCard>
      */
-    public ArrayList<AbstractCard> getOpponentBoard(UUID playerUUID){
+    public ArrayList<Minion> getOpponentBoard(UUID playerUUID){
     	if (playerUUID == this.player1.getPlayerID() ) {
     		return this.getPlayer2().getHero().getBoard();
     	}
@@ -292,7 +295,7 @@ public class Game {
 			    			
 			    		}
 			    		else {
-			    			throw new MiniHeartStoneException("vous etes sencé selectionner une créature du board adverse");
+			    			throw new MiniHeartStoneException("vous etes sensé selectionner une créature du board adverse");
 			    		}
 		    		}
 		    		catch(MiniHeartStoneException e) {

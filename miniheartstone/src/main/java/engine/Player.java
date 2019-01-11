@@ -13,7 +13,7 @@ public class Player {
 		this.name = name;
 		this.hero = hero;
 		this.level = level;
-		UUID playerID = UUID.randomUUID();
+		this.playerID = UUID.randomUUID();
 	}
 	
 	public AbstractHero getHero() {

@@ -10,7 +10,7 @@ public class Paladin extends AbstractHero {
 	public void power() {
 		AbstractCard abstractCard = new Minion("Recrue de la Main d'argent", "je suis la pour LE swag",0, 1, 1, false,false, false,null, null);
 		((Minion) abstractCard).setAttack(((Minion) abstractCard).getAttack()+ this.howManyChefDeRaidInMyBoard());
-		this.getBoard().add(abstractCard);
+		this.getBoard().add((Minion)abstractCard);
 	}
 	
 	public String toString() {

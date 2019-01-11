@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a8d939b5-43a1-4bae-975f-7e5bbaa12f20" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/engine/EngineInterface.java" afterPath="$PROJECT_DIR$/src/main/java/engine/EngineInterface.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/AbstractHero.java" afterPath="$PROJECT_DIR$/src/main/java/engine/AbstractHero.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/engine/Game.java" afterPath="$PROJECT_DIR$/src/main/java/engine/Game.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/Paladin.java" afterPath="$PROJECT_DIR$/src/main/java/engine/Paladin.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/engine/Player.java" afterPath="$PROJECT_DIR$/src/main/java/engine/Player.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/test/CommandLineLauncher.java" afterPath="$PROJECT_DIR$/src/main/java/test/CommandLineLauncher.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -36,7 +39,7 @@
       <file leaf-file-name="Application.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/engine/Application.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
+            <state relative-caret-position="-371">
               <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
               <folding />
             </state>
@@ -46,18 +49,18 @@
       <file leaf-file-name="CommandLineLauncher.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/test/CommandLineLauncher.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="273">
-              <caret line="88" column="48" lean-forward="true" selection-start-line="88" selection-start-column="48" selection-end-line="88" selection-end-column="48" />
+            <state relative-caret-position="327">
+              <caret line="93" column="13" lean-forward="false" selection-start-line="93" selection-start-column="13" selection-end-line="93" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Game.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Game.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/engine/Game.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="63" column="54" lean-forward="false" selection-start-line="63" selection-start-column="54" selection-end-line="63" selection-end-column="54" />
+            <state relative-caret-position="360">
+              <caret line="301" column="57" lean-forward="true" selection-start-line="301" selection-start-column="57" selection-end-line="301" selection-end-column="57" />
               <folding>
                 <element signature="e#1170#1171#0" expanded="true" />
                 <element signature="e#1210#1211#0" expanded="true" />
@@ -66,32 +69,53 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="Player.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/engine/Player.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="252">
+              <caret line="14" column="27" lean-forward="true" selection-start-line="14" selection-start-column="27" selection-end-line="14" selection-end-column="27" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Paladin.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/engine/Paladin.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="12" column="36" lean-forward="false" selection-start-line="12" selection-start-column="36" selection-end-line="12" selection-end-column="36" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="AbstractHero.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/engine/AbstractHero.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="180">
-              <caret line="30" column="22" lean-forward="false" selection-start-line="30" selection-start-column="18" selection-end-line="30" selection-end-column="22" />
+              <caret line="36" column="24" lean-forward="true" selection-start-line="36" selection-start-column="24" selection-end-line="36" selection-end-column="24" />
               <folding>
-                <element signature="e#11839#11840#0" expanded="true" />
-                <element signature="e#11875#11876#0" expanded="true" />
-                <element signature="e#11981#11982#0" expanded="true" />
-                <element signature="e#12015#12016#0" expanded="true" />
-                <element signature="e#12159#12160#0" expanded="true" />
-                <element signature="e#12191#12192#0" expanded="true" />
-                <element signature="e#12314#12315#0" expanded="true" />
-                <element signature="e#12346#12347#0" expanded="true" />
-                <element signature="e#12472#12473#0" expanded="true" />
-                <element signature="e#12505#12506#0" expanded="true" />
-                <element signature="e#12917#12918#0" expanded="true" />
-                <element signature="e#12951#12952#0" expanded="true" />
-                <element signature="e#13064#13065#0" expanded="true" />
-                <element signature="e#13096#13097#0" expanded="true" />
-                <element signature="e#13279#13280#0" expanded="true" />
-                <element signature="e#13314#13315#0" expanded="true" />
-                <element signature="e#13426#13427#0" expanded="true" />
-                <element signature="e#13459#13460#0" expanded="true" />
-                <element signature="e#13652#13653#0" expanded="true" />
-                <element signature="e#13689#13690#0" expanded="true" />
+                <element signature="e#1194#1202#0" expanded="true" />
+                <element signature="e#11851#11852#0" expanded="true" />
+                <element signature="e#11887#11888#0" expanded="true" />
+                <element signature="e#11993#11994#0" expanded="true" />
+                <element signature="e#12027#12028#0" expanded="true" />
+                <element signature="e#12171#12172#0" expanded="true" />
+                <element signature="e#12203#12204#0" expanded="true" />
+                <element signature="e#12326#12327#0" expanded="true" />
+                <element signature="e#12358#12359#0" expanded="true" />
+                <element signature="e#12478#12479#0" expanded="true" />
+                <element signature="e#12511#12512#0" expanded="true" />
+                <element signature="e#12923#12924#0" expanded="true" />
+                <element signature="e#12957#12958#0" expanded="true" />
+                <element signature="e#13070#13071#0" expanded="true" />
+                <element signature="e#13102#13103#0" expanded="true" />
+                <element signature="e#13285#13286#0" expanded="true" />
+                <element signature="e#13320#13321#0" expanded="true" />
+                <element signature="e#13432#13433#0" expanded="true" />
+                <element signature="e#13465#13466#0" expanded="true" />
+                <element signature="e#13658#13659#0" expanded="true" />
+                <element signature="e#13695#13696#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -100,8 +124,8 @@
       <file leaf-file-name="EngineInterface.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/engine/EngineInterface.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1002">
-              <caret line="92" column="34" lean-forward="false" selection-start-line="92" selection-start-column="34" selection-end-line="92" selection-end-column="34" />
+            <state relative-caret-position="552">
+              <caret line="91" column="0" lean-forward="true" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -137,7 +161,6 @@
         <option value="$PROJECT_DIR$/src/main/java/engine/Effect.java" />
         <option value="$PROJECT_DIR$/src/main/java/exception/MiniHeartStoneException.java" />
         <option value="$PROJECT_DIR$/src/main/java/servlet/Servlet.java" />
-        <option value="$PROJECT_DIR$/src/main/java/engine/Player.java" />
         <option value="$PROJECT_DIR$/src/main/java/engine/Facade.java" />
         <option value="$PROJECT_DIR$/src/main/java/engine/Warrior.java" />
         <option value="$PROJECT_DIR$/src/main/java/engine/Hero.java" />
@@ -148,17 +171,18 @@
         <option value="$PROJECT_DIR$/src/main/java/engine/Application.java" />
         <option value="$PROJECT_DIR$/src/main/java/engine/Spell.java" />
         <option value="$PROJECT_DIR$/src/main/java/engine/Minion.java" />
-        <option value="$PROJECT_DIR$/src/main/java/engine/Paladin.java" />
         <option value="$PROJECT_DIR$/src/test/java/MinionTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/SpellTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/engine/HeroRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/engine/CardRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/engine/AbstractCard.java" />
         <option value="$PROJECT_DIR$/src/main/java/engine/Magus.java" />
-        <option value="$PROJECT_DIR$/src/main/java/engine/AbstractHero.java" />
-        <option value="$PROJECT_DIR$/src/main/java/test/CommandLineLauncher.java" />
         <option value="$PROJECT_DIR$/src/main/java/engine/EngineInterface.java" />
+        <option value="$PROJECT_DIR$/src/main/java/engine/AbstractHero.java" />
+        <option value="$PROJECT_DIR$/src/main/java/engine/Paladin.java" />
+        <option value="$PROJECT_DIR$/src/main/java/test/CommandLineLauncher.java" />
         <option value="$PROJECT_DIR$/src/main/java/engine/Game.java" />
+        <option value="$PROJECT_DIR$/src/main/java/engine/Player.java" />
       </list>
     </option>
   </component>
@@ -462,7 +486,7 @@
       <workItem from="1546783770242" duration="635000" />
       <workItem from="1546983170903" duration="1289000" />
       <workItem from="1547153877357" duration="2611000" />
-      <workItem from="1547200628416" duration="2954000" />
+      <workItem from="1547200628416" duration="4098000" />
     </task>
     <servers />
   </component>
@@ -472,7 +496,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="15462000" />
+    <option name="totallyTimeSpent" value="16606000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -545,26 +569,27 @@
         <state relative-caret-position="5238">
           <caret line="291" column="8" lean-forward="false" selection-start-line="291" selection-start-column="8" selection-end-line="295" selection-end-column="26" />
           <folding>
-            <element signature="e#11839#11840#0" expanded="true" />
-            <element signature="e#11875#11876#0" expanded="true" />
-            <element signature="e#11981#11982#0" expanded="true" />
-            <element signature="e#12015#12016#0" expanded="true" />
-            <element signature="e#12159#12160#0" expanded="true" />
-            <element signature="e#12191#12192#0" expanded="true" />
-            <element signature="e#12314#12315#0" expanded="true" />
-            <element signature="e#12346#12347#0" expanded="true" />
-            <element signature="e#12472#12473#0" expanded="true" />
-            <element signature="e#12505#12506#0" expanded="true" />
-            <element signature="e#12917#12918#0" expanded="true" />
-            <element signature="e#12951#12952#0" expanded="true" />
-            <element signature="e#13064#13065#0" expanded="true" />
-            <element signature="e#13096#13097#0" expanded="true" />
-            <element signature="e#13279#13280#0" expanded="true" />
-            <element signature="e#13314#13315#0" expanded="true" />
-            <element signature="e#13426#13427#0" expanded="true" />
-            <element signature="e#13459#13460#0" expanded="true" />
-            <element signature="e#13652#13653#0" expanded="true" />
-            <element signature="e#13689#13690#0" expanded="true" />
+            <element signature="e#1194#1202#0" expanded="true" />
+            <element signature="e#11851#11852#0" expanded="true" />
+            <element signature="e#11887#11888#0" expanded="true" />
+            <element signature="e#11993#11994#0" expanded="true" />
+            <element signature="e#12027#12028#0" expanded="true" />
+            <element signature="e#12171#12172#0" expanded="true" />
+            <element signature="e#12203#12204#0" expanded="true" />
+            <element signature="e#12326#12327#0" expanded="true" />
+            <element signature="e#12358#12359#0" expanded="true" />
+            <element signature="e#12478#12479#0" expanded="true" />
+            <element signature="e#12511#12512#0" expanded="true" />
+            <element signature="e#12923#12924#0" expanded="true" />
+            <element signature="e#12957#12958#0" expanded="true" />
+            <element signature="e#13070#13071#0" expanded="true" />
+            <element signature="e#13102#13103#0" expanded="true" />
+            <element signature="e#13285#13286#0" expanded="true" />
+            <element signature="e#13320#13321#0" expanded="true" />
+            <element signature="e#13432#13433#0" expanded="true" />
+            <element signature="e#13465#13466#0" expanded="true" />
+            <element signature="e#13658#13659#0" expanded="true" />
+            <element signature="e#13695#13696#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -661,26 +686,27 @@
         <state relative-caret-position="5238">
           <caret line="291" column="8" lean-forward="true" selection-start-line="291" selection-start-column="8" selection-end-line="295" selection-end-column="26" />
           <folding>
-            <element signature="e#11839#11840#0" expanded="true" />
-            <element signature="e#11875#11876#0" expanded="true" />
-            <element signature="e#11981#11982#0" expanded="true" />
-            <element signature="e#12015#12016#0" expanded="true" />
-            <element signature="e#12159#12160#0" expanded="true" />
-            <element signature="e#12191#12192#0" expanded="true" />
-            <element signature="e#12314#12315#0" expanded="true" />
-            <element signature="e#12346#12347#0" expanded="true" />
-            <element signature="e#12472#12473#0" expanded="true" />
-            <element signature="e#12505#12506#0" expanded="true" />
-            <element signature="e#12917#12918#0" expanded="true" />
-            <element signature="e#12951#12952#0" expanded="true" />
-            <element signature="e#13064#13065#0" expanded="true" />
-            <element signature="e#13096#13097#0" expanded="true" />
-            <element signature="e#13279#13280#0" expanded="true" />
-            <element signature="e#13314#13315#0" expanded="true" />
-            <element signature="e#13426#13427#0" expanded="true" />
-            <element signature="e#13459#13460#0" expanded="true" />
-            <element signature="e#13652#13653#0" expanded="true" />
-            <element signature="e#13689#13690#0" expanded="true" />
+            <element signature="e#1194#1202#0" expanded="true" />
+            <element signature="e#11851#11852#0" expanded="true" />
+            <element signature="e#11887#11888#0" expanded="true" />
+            <element signature="e#11993#11994#0" expanded="true" />
+            <element signature="e#12027#12028#0" expanded="true" />
+            <element signature="e#12171#12172#0" expanded="true" />
+            <element signature="e#12203#12204#0" expanded="true" />
+            <element signature="e#12326#12327#0" expanded="true" />
+            <element signature="e#12358#12359#0" expanded="true" />
+            <element signature="e#12478#12479#0" expanded="true" />
+            <element signature="e#12511#12512#0" expanded="true" />
+            <element signature="e#12923#12924#0" expanded="true" />
+            <element signature="e#12957#12958#0" expanded="true" />
+            <element signature="e#13070#13071#0" expanded="true" />
+            <element signature="e#13102#13103#0" expanded="true" />
+            <element signature="e#13285#13286#0" expanded="true" />
+            <element signature="e#13320#13321#0" expanded="true" />
+            <element signature="e#13432#13433#0" expanded="true" />
+            <element signature="e#13465#13466#0" expanded="true" />
+            <element signature="e#13658#13659#0" expanded="true" />
+            <element signature="e#13695#13696#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -850,13 +876,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/engine/Player.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="10" column="4" lean-forward="false" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/engine/Facade.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1404">
@@ -906,26 +925,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/package-info.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/engine/package-info.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/engine/AbstractCard.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/engine/CardRepository.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
           <caret line="10" column="1" lean-forward="false" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/engine/Paladin.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="18" column="1" lean-forward="false" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
           <folding />
         </state>
       </provider>
@@ -979,22 +982,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/engine/Application.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/test/CommandLineLauncher.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="88" column="48" lean-forward="true" selection-start-line="88" selection-start-column="48" selection-end-line="88" selection-end-column="48" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/engine/Magus.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
@@ -1003,51 +990,92 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/engine/EngineInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="552">
+          <caret line="91" column="0" lean-forward="true" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/engine/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-371">
+          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/engine/AbstractCard.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/engine/AbstractHero.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
-          <caret line="30" column="22" lean-forward="false" selection-start-line="30" selection-start-column="18" selection-end-line="30" selection-end-column="22" />
+          <caret line="36" column="24" lean-forward="true" selection-start-line="36" selection-start-column="24" selection-end-line="36" selection-end-column="24" />
           <folding>
-            <element signature="e#11839#11840#0" expanded="true" />
-            <element signature="e#11875#11876#0" expanded="true" />
-            <element signature="e#11981#11982#0" expanded="true" />
-            <element signature="e#12015#12016#0" expanded="true" />
-            <element signature="e#12159#12160#0" expanded="true" />
-            <element signature="e#12191#12192#0" expanded="true" />
-            <element signature="e#12314#12315#0" expanded="true" />
-            <element signature="e#12346#12347#0" expanded="true" />
-            <element signature="e#12472#12473#0" expanded="true" />
-            <element signature="e#12505#12506#0" expanded="true" />
-            <element signature="e#12917#12918#0" expanded="true" />
-            <element signature="e#12951#12952#0" expanded="true" />
-            <element signature="e#13064#13065#0" expanded="true" />
-            <element signature="e#13096#13097#0" expanded="true" />
-            <element signature="e#13279#13280#0" expanded="true" />
-            <element signature="e#13314#13315#0" expanded="true" />
-            <element signature="e#13426#13427#0" expanded="true" />
-            <element signature="e#13459#13460#0" expanded="true" />
-            <element signature="e#13652#13653#0" expanded="true" />
-            <element signature="e#13689#13690#0" expanded="true" />
+            <element signature="e#1194#1202#0" expanded="true" />
+            <element signature="e#11851#11852#0" expanded="true" />
+            <element signature="e#11887#11888#0" expanded="true" />
+            <element signature="e#11993#11994#0" expanded="true" />
+            <element signature="e#12027#12028#0" expanded="true" />
+            <element signature="e#12171#12172#0" expanded="true" />
+            <element signature="e#12203#12204#0" expanded="true" />
+            <element signature="e#12326#12327#0" expanded="true" />
+            <element signature="e#12358#12359#0" expanded="true" />
+            <element signature="e#12478#12479#0" expanded="true" />
+            <element signature="e#12511#12512#0" expanded="true" />
+            <element signature="e#12923#12924#0" expanded="true" />
+            <element signature="e#12957#12958#0" expanded="true" />
+            <element signature="e#13070#13071#0" expanded="true" />
+            <element signature="e#13102#13103#0" expanded="true" />
+            <element signature="e#13285#13286#0" expanded="true" />
+            <element signature="e#13320#13321#0" expanded="true" />
+            <element signature="e#13432#13433#0" expanded="true" />
+            <element signature="e#13465#13466#0" expanded="true" />
+            <element signature="e#13658#13659#0" expanded="true" />
+            <element signature="e#13695#13696#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/engine/EngineInterface.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/engine/Paladin.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1002">
-          <caret line="92" column="34" lean-forward="false" selection-start-line="92" selection-start-column="34" selection-end-line="92" selection-end-column="34" />
+        <state relative-caret-position="180">
+          <caret line="12" column="36" lean-forward="false" selection-start-line="12" selection-start-column="36" selection-end-line="12" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/test/CommandLineLauncher.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="327">
+          <caret line="93" column="13" lean-forward="false" selection-start-line="93" selection-start-column="13" selection-end-line="93" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/engine/Game.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="63" column="54" lean-forward="false" selection-start-line="63" selection-start-column="54" selection-end-line="63" selection-end-column="54" />
+        <state relative-caret-position="360">
+          <caret line="301" column="57" lean-forward="true" selection-start-line="301" selection-start-column="57" selection-end-line="301" selection-end-column="57" />
           <folding>
             <element signature="e#1170#1171#0" expanded="true" />
             <element signature="e#1210#1211#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/engine/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="14" column="27" lean-forward="true" selection-start-line="14" selection-start-column="27" selection-end-line="14" selection-end-column="27" />
+          <folding />
         </state>
       </provider>
     </entry>

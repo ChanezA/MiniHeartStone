@@ -89,12 +89,14 @@ public class CommandLineLauncher {
             System.out.println(card.toString());
         }
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Veuillez choisir une carte à invoquer");
+        System.out.println("Veuillez choisir une carte à invoquer (\"null\" pour ne pas invoquer)");
         String input1 = scanner.nextLine();
-        for (AbstractCard card : player.getHero().getHand()) {
-            if (card.getCardUUID().toString().equals(input1)) {
-                game.invock(player.getPlayerID(), card.getCardUUID());
-                break;
+        if (!input1.equals("null")) {
+            for (AbstractCard card : player.getHero().getHand()) {
+                if (card.getCardUUID().toString().equals(input1)) {
+                    game.invock(player.getPlayerID(), card.getCardUUID());
+                    break;
+                }
             }
         }
         try {

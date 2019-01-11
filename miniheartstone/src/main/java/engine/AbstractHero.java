@@ -42,7 +42,7 @@ public abstract class AbstractHero {
     @Transient
     protected ArrayList<AbstractCard> hand = new ArrayList<AbstractCard>();
     @Transient
-    protected ArrayList<AbstractCard> board = new ArrayList<AbstractCard>();
+    protected ArrayList<Minion> board = new ArrayList<Minion>();
 
     @Transient
     protected boolean looser = false;
@@ -125,7 +125,7 @@ public abstract class AbstractHero {
                         }
                         // ajout des pts d'attack en fonction du nombre de chef de raids presents sur le plateau alli�
                         ((Minion) abstractCard).setAttack(((Minion) abstractCard).getAttack() + this.howManyChefDeRaidInMyBoard());
-                        board.add(abstractCard);
+                        board.add((Minion)abstractCard);
                         // si la carte a charge
                         if (((Minion) abstractCard).getHasCharge()) {
                             ((Minion) abstractCard).setReadyToAttack(true);
@@ -139,8 +139,8 @@ public abstract class AbstractHero {
                             ((Minion) one).setAttack(((Minion) one).getAttack() + this.howManyChefDeRaidInMyBoard());
                             AbstractCard two = new Minion("Soldat", "je suis n4", 1, 0, 2, true, false, false, null, null);
                             ((Minion) two).setAttack(((Minion) two).getAttack() + this.howManyChefDeRaidInMyBoard());
-                            this.getBoard().add(one);
-                            this.getBoard().add(two);
+                            this.getBoard().add((Minion)one);
+                            this.getBoard().add((Minion)two);
 
                             this.getHand().remove(this.getCardFromHandByUUID(cardID));
                         }
@@ -344,7 +344,7 @@ public abstract class AbstractHero {
      * Retourne le board du héros.
      * @return this.board
      */
-    public ArrayList<AbstractCard> getBoard() {
+    public ArrayList<Minion> getBoard() {
         return this.board;
     }
 
