@@ -45,9 +45,7 @@ public abstract class AbstractHero {
     protected ArrayList<Minion> board = new ArrayList<Minion>();
 
     @Transient
-    protected boolean looser = false;
-    @Transient
-    protected boolean winner = false;
+    protected boolean isDead = false;
 
     /**
      * Instantiates the hero with the given parameters, without mana and armor,
@@ -187,7 +185,7 @@ public abstract class AbstractHero {
         }
         // je verifie que le hero n'est pas mort
         if (this.getHealth() <= 0) {
-            looser = true;
+            isDead = true;
         }
     }
 
@@ -362,10 +360,10 @@ public abstract class AbstractHero {
 
     /**
      * Retourne la valeur de looser.
-     * @return this.looser
+     * @return this.isDead
      */
-    public boolean isLooser() {
-        return this.looser;
+    public boolean isDead() {
+        return this.isDead;
     }
 
     /**

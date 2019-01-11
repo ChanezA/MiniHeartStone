@@ -507,6 +507,14 @@ public class Game {
 		
 		return aff;
 	}
+
+	public boolean isEnded() {
+    	if (this.player2.getHero().isDead() || this.player1.getHero().isDead)
+    		return true;
+    	else
+    		return false;
+	}
+
 	public static void main(String[] args) {
 
 		AbstractHero yoann = new Magus();
