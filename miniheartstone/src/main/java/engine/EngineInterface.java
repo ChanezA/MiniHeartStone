@@ -1,18 +1,15 @@
 package engine;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Queue;
-import java.util.UUID;
+import java.util.*;
 
 import exception.MiniHeartStoneException;
 
 public class EngineInterface {
 	public static HashMap<UUID,Game> allCurrentGame = new HashMap<UUID,Game>();
 	
-	public static Queue<Player> mmNoob;
-	public static Queue<Player> mmMid;
-	public static Queue<Player> mmPro;
+	public static Queue<Player> mmNoob = new ArrayDeque<>();
+	public static Queue<Player> mmMid = new ArrayDeque<>();
+	public static Queue<Player> mmPro = new ArrayDeque<>();
 	
 	// ici faire du spring pour recup les noms les héros jouables
 	public static ArrayList<String> getAllHeroDescription() {
