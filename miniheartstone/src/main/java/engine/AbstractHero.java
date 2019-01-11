@@ -67,7 +67,12 @@ public abstract class AbstractHero {
 
         // Retrieving card with Spring
         CardRepository repo = Application.repo;
-        for (AbstractCard abstractCard : repo.findAll()) {
+        // Cards available only for this hero
+        for (AbstractCard abstractCard : repo.findByHeroName(this.heroName)) {
+            this.deck.add(abstractCard);
+        }
+        // Cards available for all heros
+        for (AbstractCard abstractCard : repo.findByHeroName(null)) {
             this.deck.add(abstractCard);
         }
     }

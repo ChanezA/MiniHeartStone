@@ -10,7 +10,6 @@ public class Game {
 
     // Private attributes
     protected Player currentPlayer;
-    protected Player notCurrentPlayer;
     protected Player player1;
     protected Player player2;
     
@@ -37,7 +36,10 @@ public class Game {
     	return this.currentPlayer;
     }
     public Player getNotCurrentPlayer() {
-        return this.notCurrentPlayer;
+        if (this.currentPlayer == this.player1)
+        	return this.player2;
+		else
+			return this.player1;
     }
     public Player getPlayer1() { return this.player1; }
     public Player getPlayer2() { return this.player2; }
@@ -48,16 +50,12 @@ public class Game {
     public void setCurrentPlayer(Player player) {
     	this.currentPlayer = player;
     }
-    public void setNotCurrentPlayer(Player player) {
-    	this.notCurrentPlayer = player;
-    }
 
     /**
      * Initializes the game
      */
     private void initGame() {
         this.currentPlayer = player1;
-        this.notCurrentPlayer = player2;
         for (int i = 0; i < 4; i++) {
         	this.player1.getHero().draw();
         	this.player2.getHero().draw();
@@ -66,44 +64,39 @@ public class Game {
         this.getNotCurrentPlayer().getHero().setMana(100);
     }
 
-    /**
-     * passage de tour
-     */
-    public void passTurn(UUID playerID) {
-    	try {
+	/**
+	 * Ends the turn for the player with the specified Id.
+	 * @param playerID
+	 * @throws MiniHeartStoneException If the specified Id is not correct
+	 */
+	public void endTurn(UUID playerID) throws MiniHeartStoneException {
 	    	// si tu es le current player
-	    	if(this.currentPlayerOrNot(playerID)) {
-		    	// echange le joueur courant avec le non courant
-		        Player tmp = this.getCurrentPlayer();
-		        this.setCurrentPlayer(this.getNotCurrentPlayer());
-		        this.setNotCurrentPlayer(tmp);
-		        heroicPowerUsed = false;
-		        iAmWaitingFor = "";
+		if(this.isCurrentPlayer(playerID)) {
+		   	// echange le joueur courant avec le non courant
+			this.setCurrentPlayer(this.getNotCurrentPlayer());
+			heroicPowerUsed = false;
+		    iAmWaitingFor = "";
 		        
-		        // incrémentation du mana pour le nouveau joueur courant si besoin
-		        if(this.getCurrentPlayer().getHero().getMana() < MANA_MAX) {
-		        	this.getCurrentPlayer().getHero().setMana(this.getCurrentPlayer().getHero().getMana()+1);
-		        }
+		    // incrémentation du mana pour le nouveau joueur courant si besoin
+		    if(this.getCurrentPlayer().getHero().getMana() < MANA_MAX) {
+		     	this.getCurrentPlayer().getHero().setMana(this.getCurrentPlayer().getHero().getMana()+1);
+		    }
 		        
-		        // on remet toutes les créatures du joueru courant ready to attack
-		        for(int i = 0; i<this.getCurrentPlayer().getHero().getBoard().size(); i++) {
-		        	Minion min =(Minion)(this.getCurrentPlayer().getHero().getBoard().get(i));
-		        	min.setReadyToAttack(true);
-		        }
+		    // on remet toutes les créatures du joueru courant ready to attack
+		    for(int i = 0; i<this.getCurrentPlayer().getHero().getBoard().size(); i++) {
+		       	Minion min =(Minion)(this.getCurrentPlayer().getHero().getBoard().get(i));
+		       	min.setReadyToAttack(true);
+		    }
 		
-		        this.getCurrentPlayer().getHero().draw();
-	    	}
-	    	else {
-	    		throw new MiniHeartStoneException("Vous n'etes pas le joueur courant, vous ne pouvez pas passer");
-	    	}
-    	}
-    	catch(MiniHeartStoneException e) {
-    		System.out.println(e.toString());
-    	}
+		    this.getNotCurrentPlayer().getHero().draw();
+		}
+		else {
+			throw new MiniHeartStoneException("The speicfied player id is not correct");
+		}
     }
     
     // retourne vrai si le joueur passé en param est courant ou faux pour tout le reste
-    public boolean currentPlayerOrNot(UUID playerUUID) {
+    public boolean isCurrentPlayer(UUID playerUUID) {
     	boolean crt = false;
     	if(this.getCurrentPlayer().getPlayerID() == playerUUID) {
     		crt = true;
@@ -202,7 +195,7 @@ public class Game {
     	try {
     		iAmWaitingFor = "";
 	    	// si tu es bien le joueur courant et que la carte est bien dans ta main et que tu as bien le mana necessaire
-	    	if(this.currentPlayerOrNot(playerUUID)
+	    	if(this.isCurrentPlayer(playerUUID)
 	    		&& this.getCurrentPlayer().getHero().isOnMyHand(cardID)
 	    			&& this.getCurrentPlayer().getHero().getMana() >= this.getCurrentPlayer().getHero().getCardFromHandByUUID(cardID).getManaCost()) {
 	    		
@@ -512,29 +505,33 @@ public class Game {
 		return aff;
 	}
 	public static void main(String[] args) {
-		
+
 		AbstractHero yoann = new Magus();
 		AbstractHero pierre = new Paladin();
-		
+
 		Player yoannTchoin = new Player("suce teub",yoann,3);
 		Player pierreLaFouine = new Player("l'appel d'air",pierre,4);
-		
+
 		Game game = new Game(yoannTchoin,pierreLaFouine);
-		
+
 		// le joueur 1 play
 		game.invock(yoannTchoin.getPlayerID(), yoannTchoin.getHero().getHand().get(0).getCardUUID());
 		//game.invock(yoannTchoin.getPlayerID(), yoannTchoin.getHero().getHand().get(0).getCardUUID());
 		//game.invock(yoannTchoin.getPlayerID(), yoannTchoin.getHero().getHand().get(0).getCardUUID());
-		game.passTurn(yoannTchoin.getPlayerID());
-		
+		try {
+			game.endTurn(yoannTchoin.getPlayerID());
+		} catch (MiniHeartStoneException e) { e.printStackTrace(); }
+
 		// le joueur 2 play
 		game.invock(pierreLaFouine.getPlayerID(), pierreLaFouine.getHero().getHand().get(0).getCardUUID());
 		game.invock(pierreLaFouine.getPlayerID(), pierreLaFouine.getHero().getHand().get(1).getCardUUID());
-		game.passTurn(pierreLaFouine.getPlayerID());
-		
-		
+		try {
+			game.endTurn(pierreLaFouine.getPlayerID());
+		} catch (MiniHeartStoneException e) { e.printStackTrace(); }
+
+
 		//game.invock(pierreLaFouine.getHero().getHand().get(2).getCardUUID(),yoannTchoin.getPlayerID());
-		
+
 		game.attack(yoannTchoin.getPlayerID(),yoannTchoin.getHero().getBoard().get(0).getCardUUID(), pierreLaFouine.getHero().getBoard().get(0).getCardUUID());
 		//game.attack(yoannTchoin.getHero().getBoard().get(0).getCardUUID(), pierreLaFouine.getHero().getBoard().get(1).getCardUUID());
 		game.invock(yoannTchoin.getPlayerID(), yoannTchoin.getHero().getHand().get(1).getCardUUID());

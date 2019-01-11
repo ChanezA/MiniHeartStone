@@ -113,6 +113,8 @@ public class EngineInterface {
 	
 	// culte
 	public static void passTurn(UUID gamUUID, UUID playerUUID) {
-		allCurrentGame.get(gamUUID).passTurn(playerUUID);
+		try {
+			allCurrentGame.get(gamUUID).endTurn(playerUUID);
+		} catch (MiniHeartStoneException e) { e.printStackTrace(); }
 	}
 }

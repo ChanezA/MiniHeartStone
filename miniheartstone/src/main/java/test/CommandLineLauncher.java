@@ -1,6 +1,7 @@
 package test;
 
 import engine.*;
+import exception.MiniHeartStoneException;
 import org.springframework.boot.SpringApplication;
 
 import java.util.Scanner;
@@ -23,28 +24,10 @@ public class CommandLineLauncher {
 
         Game game = new Game(player1, player2);
 
-        System.out.println("\n\noO Début de la partie Oo");
-        System.out.println("\n\nNot current player : "+ game.getNotCurrentPlayer().getName());
-        System.out.println("\n" + game.getNotCurrentPlayer().getHero().toString());
-        System.out.println("\nCurrent Player : " + game.getCurrentPlayer().getName());
-        System.out.println("\n" + game.getCurrentPlayer().getHero().toString());
-        System.out.println("*** Board ***");
-        for (AbstractCard card : game.getCurrentPlayer().getHero().getBoard()) {
-            System.out.println(card.toString());
-        }
-        System.out.println("*** Hand ***");
-        for (AbstractCard card : game.getCurrentPlayer().getHero().getHand()) {
-            System.out.println(card.toString());
-        }
-        playTurn(game, game.getCurrentPlayer());
-        System.out.println("*** Board ***");
-        for (AbstractCard card : game.getCurrentPlayer().getHero().getBoard()) {
-            System.out.println(card.toString());
-        }
-        System.out.println("*** Hand ***");
-        for (AbstractCard card : game.getCurrentPlayer().getHero().getHand()) {
-            System.out.println(card.toString());
-        }
+        System.out.println("\n\noooO Début de la partie Oooo");
+        playTurn(game);
+        playTurn(game);
+        playTurn(game);
     }
 
     private static Player getPlayer(int playerNum) {
@@ -91,7 +74,20 @@ public class CommandLineLauncher {
         return ret;
     }
 
-    private static void playTurn(Game game, Player player) {
+    private static void playTurn(Game game) {
+        Player player = game.getCurrentPlayer();
+        System.out.println("\n\nNot current player : "+ game.getNotCurrentPlayer().getName());
+        System.out.println("\n" + game.getNotCurrentPlayer().getHero().toString());
+        System.out.println("\nCurrent Player : " + game.getCurrentPlayer().getName());
+        System.out.println("\n" + game.getCurrentPlayer().getHero().toString());
+        System.out.println("\n*** Board ***");
+        for (AbstractCard card : game.getCurrentPlayer().getHero().getBoard()) {
+            System.out.println(card.toString());
+        }
+        System.out.println("*** Hand ***");
+        for (AbstractCard card : game.getCurrentPlayer().getHero().getHand()) {
+            System.out.println(card.toString());
+        }
         Scanner scanner = new Scanner(System.in);
         System.out.println("Veuillez choisir une carte à invoquer");
         String input1 = scanner.nextLine();
@@ -101,6 +97,9 @@ public class CommandLineLauncher {
                 break;
             }
         }
+        try {
+            game.endTurn(player.getPlayerID());
+        } catch (MiniHeartStoneException e) { e.printStackTrace(); }
     }
 
 }
