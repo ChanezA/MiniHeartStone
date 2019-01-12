@@ -7,7 +7,7 @@ package engine;
  * @version 1.0
  */
 
-import exception.MiniHeartStoneException;
+import engine.util.MiniHeartStoneException;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

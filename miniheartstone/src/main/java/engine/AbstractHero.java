@@ -3,7 +3,7 @@ package engine;
 import java.util.ArrayList;
 import java.util.UUID;
 
-import exception.MiniHeartStoneException;
+import engine.util.MiniHeartStoneException;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

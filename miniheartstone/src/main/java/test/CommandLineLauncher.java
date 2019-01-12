@@ -1,7 +1,7 @@
 package test;
 
 import engine.*;
-import exception.MiniHeartStoneException;
+import engine.util.MiniHeartStoneException;
 import org.springframework.boot.SpringApplication;
 
 import java.util.Scanner;
@@ -89,7 +89,7 @@ public class CommandLineLauncher {
             System.out.println(card.toString());
         }
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Veuillez choisir une carte à invoquer (\"null\" pour ne pas invoquer)");
+        System.out.println("Veuillez choisir une carte à invoquer (UUID de la carte, \"null\" pour ne pas invoquer)");
         String input1 = scanner.nextLine();
         if (!input1.equals("null")) {
             for (AbstractCard card : player.getHero().getHand()) {

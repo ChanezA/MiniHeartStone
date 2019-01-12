@@ -3,7 +3,8 @@ package engine;
 import java.util.ArrayList;
 import java.util.UUID;
 
-import exception.MiniHeartStoneException;
+import engine.util.GameListener;
+import engine.util.MiniHeartStoneException;
 
 
 public class Game {
@@ -18,6 +19,8 @@ public class Game {
     protected boolean heroicPowerUsed = false;
     
     protected UUID gameID;
+
+    private ArrayList<GameListener> listeners = new ArrayList<GameListener>();
 
     public static final int MANA_MAX = 10;
 
@@ -62,6 +65,10 @@ public class Game {
         }
         this.getCurrentPlayer().getHero().setMana(1);
         this.getNotCurrentPlayer().getHero().setMana(1);
+        // Notify listener that the game is initializied
+		for (GameListener gl : this.listeners) {
+			gl.notify(this);
+		}
     }
 
 	/**
@@ -513,6 +520,14 @@ public class Game {
     		return true;
     	else
     		return false;
+	}
+
+	public void addGameListener(GameListener gl) {
+		this.listeners.add(gl);
+	}
+
+	public void removeListener(GameListener gl) {
+    	this.listeners.remove(gl);
 	}
 
 	public static void main(String[] args) {

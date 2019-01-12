@@ -2,7 +2,8 @@ package engine;
 
 import java.util.*;
 
-import exception.MiniHeartStoneException;
+import engine.util.GameListener;
+import engine.util.MiniHeartStoneException;
 
 public class EngineInterface {
 	public static HashMap<UUID,Game> allCurrentGame = new HashMap<UUID,Game>();
@@ -42,7 +43,7 @@ public class EngineInterface {
 		return null;
 	}
 
-	public static UUID wantPlay(int lvl,String pseudo, String heroStr) {
+	public static UUID wantPlay(int lvl, String pseudo, String heroStr, GameListener gl) {
 		
 		// création du player
 		// lvl 1 = noob 2 = mid 3 = pro
@@ -53,6 +54,7 @@ public class EngineInterface {
 				if (!mmNoob.isEmpty()) {
 					// création de la game
 					Game game = new Game(mmNoob.poll(),play);
+					game.addGameListener(gl);
 					allCurrentGame.put(game.getGameID(),game);
 				}
 				else {
@@ -63,6 +65,7 @@ public class EngineInterface {
 				if (!mmMid.isEmpty()) {
 					// création de la game
 					Game game = new Game(mmMid.poll(),play);
+					game.addGameListener(gl);
 					allCurrentGame.put(game.getGameID(),game);
 				}
 				else {
@@ -73,6 +76,7 @@ public class EngineInterface {
 				if (!mmPro.isEmpty()) {
 					// création de la game
 					Game game = new Game(mmPro.poll(),play);
+					game.addGameListener(gl);
 					allCurrentGame.put(game.getGameID(),game);
 				}
 				else {

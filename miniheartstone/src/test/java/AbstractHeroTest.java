@@ -2,7 +2,7 @@ import static org.junit.Assert.assertTrue;
 
 import engine.AbstractHero;
 import engine.Paladin;
-import exception.MiniHeartStoneException;
+import engine.util.MiniHeartStoneException;
 import org.junit.Test;
 
 import engine.Minion;
@@ -11,7 +11,7 @@ import engine.AbstractCard;
 
 public class AbstractHeroTest {
 	/*
-	@Test (expected = exception.MiniHeartStoneException.class)
+	@Test (expected = engine.util.MiniHeartStoneException.class)
 	public final void testPaladinException() {
 		AbstractHeroDoublure pal = new PaladinDoublure();
     	pal.setMana(20);
