@@ -54,7 +54,7 @@ public class EngineInterface {
 				if (!mmNoob.isEmpty()) {
 					// création de la game
 					Game game = new Game(mmNoob.poll(),play);
-					game.addGameListener(gl);
+					if (gl != null) game.addGameListener(gl);
 					allCurrentGame.put(game.getGameID(),game);
 				}
 				else {
@@ -65,7 +65,7 @@ public class EngineInterface {
 				if (!mmMid.isEmpty()) {
 					// création de la game
 					Game game = new Game(mmMid.poll(),play);
-					game.addGameListener(gl);
+					if (gl != null) game.addGameListener(gl);
 					allCurrentGame.put(game.getGameID(),game);
 				}
 				else {
@@ -76,7 +76,7 @@ public class EngineInterface {
 				if (!mmPro.isEmpty()) {
 					// création de la game
 					Game game = new Game(mmPro.poll(),play);
-					game.addGameListener(gl);
+					if (gl != null) game.addGameListener(gl);
 					allCurrentGame.put(game.getGameID(),game);
 				}
 				else {

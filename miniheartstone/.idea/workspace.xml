@@ -2,20 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a8d939b5-43a1-4bae-975f-7e5bbaa12f20" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/engine/util/GameListener.java" />
-      <change beforePath="$PROJECT_DIR$/../hs_client/hs-client/package-lock.json" afterPath="$PROJECT_DIR$/../hs_client/hs-client/package-lock.json" />
-      <change beforePath="$PROJECT_DIR$/../hs_client/hs-client/package.json" afterPath="$PROJECT_DIR$/../hs_client/hs-client/package.json" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/engine/AbstractCard.java" afterPath="$PROJECT_DIR$/src/main/java/engine/AbstractCard.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/engine/AbstractHero.java" afterPath="$PROJECT_DIR$/src/main/java/engine/AbstractHero.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/engine/EngineInterface.java" afterPath="$PROJECT_DIR$/src/main/java/engine/EngineInterface.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/engine/Game.java" afterPath="$PROJECT_DIR$/src/main/java/engine/Game.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/exception/MiniHeartStoneException.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/AllMessages.java" afterPath="$PROJECT_DIR$/src/main/java/servlet/AllMessages.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/servlet/WebSocketController.java" afterPath="$PROJECT_DIR$/src/main/java/servlet/WebSocketController.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/test/CommandLineLauncher.java" afterPath="$PROJECT_DIR$/src/main/java/test/CommandLineLauncher.java" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/AbstractHeroTest.java" afterPath="$PROJECT_DIR$/src/test/java/AbstractHeroTest.java" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/EngineInterfaceTest.java" afterPath="$PROJECT_DIR$/src/test/java/EngineInterfaceTest.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -38,11 +27,12 @@
       <file leaf-file-name="AllMessages.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/servlet/AllMessages.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="18" column="29" lean-forward="true" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="29" />
+            <state relative-caret-position="306">
+              <caret line="17" column="5" lean-forward="true" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
               <folding>
                 <element signature="e#249#250#0" expanded="true" />
                 <element signature="e#274#275#0" expanded="true" />
+                <element signature="e#301#302#0" expanded="true" />
                 <element signature="e#324#325#0" expanded="true" />
                 <element signature="e#347#348#0" expanded="true" />
                 <element signature="e#369#370#0" expanded="true" />
@@ -51,10 +41,30 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WebSocketController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Application.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/servlet/Application.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EngineInterfaceTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/EngineInterfaceTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="26" column="40" lean-forward="false" selection-start-line="26" selection-start-column="40" selection-end-line="26" selection-end-column="40" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="WebSocketController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/servlet/WebSocketController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
+            <state relative-caret-position="-64">
               <caret line="40" column="158" lean-forward="false" selection-start-line="40" selection-start-column="158" selection-end-line="40" selection-end-column="158" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -88,7 +98,7 @@
       <file leaf-file-name="Game.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/engine/Game.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-8448">
+            <state relative-caret-position="-3628">
               <caret line="69" column="26" lean-forward="false" selection-start-line="69" selection-start-column="26" selection-end-line="69" selection-end-column="26" />
               <folding>
                 <element signature="e#513#527#0" expanded="true" />
@@ -106,18 +116,18 @@
       <file leaf-file-name="MiniHeartStoneException.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/engine/util/MiniHeartStoneException.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="36">
-              <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+            <state relative-caret-position="126">
+              <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EngineInterface.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="EngineInterface.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/engine/EngineInterface.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="756">
-              <caret line="78" column="45" lean-forward="false" selection-start-line="78" selection-start-column="45" selection-end-line="78" selection-end-column="45" />
+            <state relative-caret-position="486">
+              <caret line="78" column="36" lean-forward="false" selection-start-line="78" selection-start-column="36" selection-end-line="78" selection-end-column="36" />
               <folding>
                 <element signature="e#209#220#0" expanded="true" />
                 <element signature="e#564#572#0" expanded="true" />
@@ -183,9 +193,10 @@
         <option value="$PROJECT_DIR$/src/main/java/util/MiniListener.java" />
         <option value="$PROJECT_DIR$/src/main/java/engine/util/MiniHeartStoneException.java" />
         <option value="$PROJECT_DIR$/src/main/java/engine/Game.java" />
-        <option value="$PROJECT_DIR$/src/main/java/engine/EngineInterface.java" />
         <option value="$PROJECT_DIR$/src/main/java/engine/util/GameListener.java" />
         <option value="$PROJECT_DIR$/src/main/java/servlet/WebSocketController.java" />
+        <option value="$PROJECT_DIR$/src/test/java/EngineInterfaceTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/engine/EngineInterface.java" />
       </list>
     </option>
   </component>
@@ -349,7 +360,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.CommandLineLauncher">
+  <component name="RunManager" selected="Spring Boot.Application (1)">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HTML_USED" value="false" />
       <option name="WIDTH" value="400" />
@@ -495,8 +506,8 @@
     </list>
     <recent_temporary>
       <list size="3">
-        <item index="0" class="java.lang.String" itemvalue="Application.CommandLineLauncher" />
-        <item index="1" class="java.lang.String" itemvalue="Spring Boot.Application (1)" />
+        <item index="0" class="java.lang.String" itemvalue="Spring Boot.Application (1)" />
+        <item index="1" class="java.lang.String" itemvalue="Application.CommandLineLauncher" />
         <item index="2" class="java.lang.String" itemvalue="JUnit.HeroTest" />
       </list>
     </recent_temporary>
@@ -521,7 +532,7 @@
       <workItem from="1547153877357" duration="2611000" />
       <workItem from="1547200628416" duration="4220000" />
       <workItem from="1547207959107" duration="4238000" />
-      <workItem from="1547297617035" duration="5042000" />
+      <workItem from="1547297617035" duration="6704000" />
     </task>
     <servers />
   </component>
@@ -531,7 +542,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="26008000" />
+    <option name="totallyTimeSpent" value="27670000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -591,14 +602,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/test/java/SpellTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="16" column="71" lean-forward="false" selection-start-line="16" selection-start-column="71" selection-end-line="16" selection-end-column="71" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/engine/CardRepository.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
@@ -994,52 +997,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/servlet/Application.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/servlet/AllMessages.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="18" column="29" lean-forward="true" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="29" />
-          <folding>
-            <element signature="e#249#250#0" expanded="true" />
-            <element signature="e#274#275#0" expanded="true" />
-            <element signature="e#324#325#0" expanded="true" />
-            <element signature="e#347#348#0" expanded="true" />
-            <element signature="e#369#370#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/util/MiniListener.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
           <caret line="4" column="4" lean-forward="false" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/engine/util/MiniHeartStoneException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/engine/EngineInterface.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="756">
-          <caret line="78" column="45" lean-forward="false" selection-start-line="78" selection-start-column="45" selection-end-line="78" selection-end-column="45" />
-          <folding>
-            <element signature="e#209#220#0" expanded="true" />
-            <element signature="e#564#572#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1059,9 +1021,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/engine/util/MiniHeartStoneException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/engine/Game.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-8448">
+        <state relative-caret-position="-3628">
           <caret line="69" column="26" lean-forward="false" selection-start-line="69" selection-start-column="26" selection-end-line="69" selection-end-column="26" />
           <folding>
             <element signature="e#513#527#0" expanded="true" />
@@ -1075,14 +1045,56 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/servlet/AllMessages.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="17" column="5" lean-forward="true" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
+          <folding>
+            <element signature="e#249#250#0" expanded="true" />
+            <element signature="e#274#275#0" expanded="true" />
+            <element signature="e#301#302#0" expanded="true" />
+            <element signature="e#324#325#0" expanded="true" />
+            <element signature="e#347#348#0" expanded="true" />
+            <element signature="e#369#370#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/servlet/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/EngineInterfaceTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="26" column="40" lean-forward="false" selection-start-line="26" selection-start-column="40" selection-end-line="26" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/servlet/WebSocketController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
+        <state relative-caret-position="-64">
           <caret line="40" column="158" lean-forward="false" selection-start-line="40" selection-start-column="158" selection-end-line="40" selection-end-column="158" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#856#857#0" expanded="true" />
             <element signature="e#887#888#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/engine/EngineInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="486">
+          <caret line="78" column="36" lean-forward="false" selection-start-line="78" selection-start-column="36" selection-end-line="78" selection-end-column="36" />
+          <folding>
+            <element signature="e#209#220#0" expanded="true" />
+            <element signature="e#564#572#0" expanded="true" />
           </folding>
         </state>
       </provider>
