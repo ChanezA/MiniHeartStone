@@ -39,7 +39,7 @@ public class Game {
     	return this.currentPlayer;
     }
     public Player getNotCurrentPlayer() {
-        if (this.currentPlayer == this.player1)
+        if (this.currentPlayer.equals(this.player1))
         	return this.player2;
 		else
 			return this.player1;
@@ -108,7 +108,7 @@ public class Game {
     // retourne vrai si le joueur passé en param est courant ou faux pour tout le reste
     public boolean isCurrentPlayer(UUID playerUUID) {
     	boolean crt = false;
-    	if(this.getCurrentPlayer().getPlayerID() == playerUUID) {
+    	if(this.getCurrentPlayer().getPlayerID().equals(playerUUID)) {
     		crt = true;
     	}
     	return crt;
@@ -120,7 +120,7 @@ public class Game {
      * @return The board as a List<AbstractCard>
      */
     public ArrayList<Minion> getMyBoard(UUID playerUUID){
-    	if (playerUUID == this.player1.getPlayerID() ) {
+    	if (playerUUID.equals(this.player1.getPlayerID())) {
     		return this.getPlayer1().getHero().getBoard();
     	}
     	else {
@@ -134,7 +134,7 @@ public class Game {
      * @return The board as a List<AbstractCard>
      */
     public ArrayList<Minion> getOpponentBoard(UUID playerUUID){
-    	if (playerUUID == this.player1.getPlayerID() ) {
+    	if (playerUUID.equals(this.player1.getPlayerID())) {
     		return this.getPlayer2().getHero().getBoard();
     	}
     	else {
@@ -292,7 +292,7 @@ public class Game {
     public void select(UUID playerUUID, UUID ennemyUUID) {
     	
     	try {
-	    	if (playerUUID == this.getCurrentPlayer().getPlayerID()) {
+	    	if (playerUUID.equals(this.getCurrentPlayer().getPlayerID())) {
 		    	if (this.iAmWaitingFor.equals("Métamorphose")) {
 		    		try {
 			    		// si on cible une créature du board adverse
@@ -309,18 +309,18 @@ public class Game {
 		    			System.out.println(e.toString());
 		    		}
 		    	}
-		    	else if (this.iAmWaitingFor.equals("Bénédiction de puissance") && playerUUID == this.getCurrentPlayer().getPlayerID()) {
+		    	else if (this.iAmWaitingFor.equals("Bénédiction de puissance") && playerUUID.equals(this.getCurrentPlayer().getPlayerID())) {
 
 		    		benedictionDoStuff(playerUUID, ennemyUUID);
 
 		    	}
 		    	// si on attend pour le pouvoir du mage
 		    	//try {
-		    	else if (this.iAmWaitingFor.equals("Pouvoir du mage"+this.getCurrentPlayer().getPlayerID().toString()) && playerUUID == this.getCurrentPlayer().getPlayerID()) {
+		    	else if (this.iAmWaitingFor.equals("Pouvoir du mage"+this.getCurrentPlayer().getPlayerID().toString()) && playerUUID.equals(this.getCurrentPlayer().getPlayerID())) {
 		    		// si tu as le mana suffisant pour jouer le pouvoir
 		    		if(this.getCurrentPlayer().getHero().getMana()>=2) {
 		    			// si la seclection est le joueur adverse
-		    			if(this.getNotCurrentPlayer().getPlayerID() == tmpUUID) {
+		    			if(this.getNotCurrentPlayer().getPlayerID().equals(tmpUUID)) {
 		    				// on applique les degats au hero adverse
 		    				this.getNotCurrentPlayer().getHero().myHeroHasBeenAttack(1);
 		    				// on retire le prix du pouvoir héroique ici 2
@@ -360,7 +360,7 @@ public class Game {
 	public void power(UUID playerUUID) {
 		try {
 			// si le joueur est bien le joueur courant
-			if(playerUUID == this.getCurrentPlayer().getPlayerID()) {
+			if(playerUUID.equals(this.getCurrentPlayer().getPlayerID())) {
 				// si tu as le mana suffisant pour jouer le pouvoir et que tu n'as pas deja use ton pouvoir 
 	    		if(this.getCurrentPlayer().getHero().getMana()>=2 && !heroicPowerUsed) {
 					// si c'est un mage 
@@ -388,7 +388,7 @@ public class Game {
 		iAmWaitingFor = "";
 		try {
 			// si je suis bien le joueur courant
-			if (myUUID == this.getCurrentPlayer().getPlayerID()) {
+			if (myUUID.equals(this.getCurrentPlayer().getPlayerID())) {
 				// on vérifie que les deux créatures éxixtent bien
 				if(this.getCurrentPlayer().getHero().isOnMyBoard(myCardUUID) && this.getNotCurrentPlayer().getHero().isOnMyBoard(opponentUUID)){
 					try {
@@ -438,7 +438,7 @@ public class Game {
 					}
 				}
 				// si ma créature existe bien sur mon board et que j'ai sélectionné le joueur adverse
-				else if (this.getCurrentPlayer().getHero().isOnMyBoard(myCardUUID) && this.getNotCurrentPlayer().getPlayerID() == opponentUUID) {
+				else if (this.getCurrentPlayer().getHero().isOnMyBoard(myCardUUID) && this.getNotCurrentPlayer().getPlayerID().equals(opponentUUID)) {
 					Minion monMin = ((Minion)(this.getCurrentPlayer().getHero().getCardFromBoardByUUID(myCardUUID)));
 					
 					try {
