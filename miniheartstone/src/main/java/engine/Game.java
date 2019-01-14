@@ -361,7 +361,7 @@ public class Game {
 		try {
 			// si le joueur est bien le joueur courant
 			if(playerUUID.equals(this.getCurrentPlayer().getPlayerID())) {
-				// si tu as le mana suffisant pour jouer le pouvoir et que tu n'as pas deja use ton pouvoir 
+				// si tu as le mana suffisant pour jouer le pouvoir et que tu n'as pas deja use ton pouvoir
 	    		if(this.getCurrentPlayer().getHero().getMana()>=2 && !heroicPowerUsed) {
 					// si c'est un mage 
 					if (this.getCurrentPlayer().getHero().getHeroName().equals("Mage")) {
