@@ -29,7 +29,7 @@ public class Game {
         this.player1  = player1;
         this.player2 = player2;
         
-        UUID gameID = UUID.randomUUID();
+        this.gameID = UUID.randomUUID();
         
         this.initGame();
     }
@@ -528,6 +528,12 @@ public class Game {
 
 	public void removeListener(GameListener gl) {
     	this.listeners.remove(gl);
+	}
+
+	public void ntyGameIsReady() {
+		for (GameListener gl : this.listeners) {
+			gl.notify(this);
+		}
 	}
 
 	public static void main(String[] args) {

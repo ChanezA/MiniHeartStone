@@ -48,14 +48,14 @@ public class EngineInterface {
 		// création du player
 		// lvl 1 = noob 2 = mid 3 = pro
 		Player play = new Player(pseudo,returnHero(heroStr),lvl);
-
 		try {
 			if (lvl == 1) {
 				if (!mmNoob.isEmpty()) {
+					System.out.println("******AAAAAAAAAAAAAAAA");
 					// création de la game
 					Game game = new Game(mmNoob.poll(),play);
 					game.addGameListener(gl);
-					//game.ntyGameIsReady();
+					game.ntyGameIsReady();
 					allCurrentGame.put(game.getGameID(),game);
 				}
 				else {
@@ -99,9 +99,9 @@ public class EngineInterface {
 	// retourne les cartes de ma main
 	public static String[] getMyHand(UUID gameUUID, UUID playerUUID) {
 		Game game = allCurrentGame.get(gameUUID);
+		System.out.println("---> j'ai trouvé la game d'ID : " + game.getGameID());
 		ArrayList<AbstractCard> hand;
-		System.out.println("1 : " + playerUUID);
-		System.out.println("2 : " + game);
+
 		if(game.getPlayer1().getPlayerID().equals(playerUUID)) {
 			hand = game.getPlayer1().getHero().getHand();
 		}
@@ -115,9 +115,11 @@ public class EngineInterface {
 		for (AbstractCard card : hand) {
 			str = card.getCardUUID().toString();
 			str += "!!" + card.getName() + "!!" + card.getDescription() + "!!" + card.getManaCost();
+			/*
 			if (card instanceof Minion) {
 				str += "!!" + ((Minion) card).getAttack() + "!!" + ((Minion) card).getLife();
 			}
+			*/
 			ret[i] = str;
 			i++;
 		}
@@ -132,7 +134,7 @@ public class EngineInterface {
 			board = game.getPlayer1().getHero().getBoard();
 		}
 		else {
-			board = game.getPlayer1().getHero().getBoard();
+			board = game.getPlayer2().getHero().getBoard();
 		}
 
 		String[] ret = new String[board.size()];
@@ -151,12 +153,25 @@ public class EngineInterface {
 	// retourne les minions du board adverse
 	public static String[] getOpponantBoard(UUID gameUUID, UUID playerUUID) {
 		Game game = allCurrentGame.get(gameUUID);
+		ArrayList<Minion> board;
 		if(game.getPlayer1().getPlayerID().equals(playerUUID)) {
-			return EngineInterface.getMyBoard(gameUUID,game.getPlayer2().getPlayerID());
+			board = game.getPlayer2().getHero().getBoard();
 		}
 		else {
-			return EngineInterface.getMyBoard(gameUUID,game.getPlayer1().getPlayerID());
+			board = game.getPlayer1().getHero().getBoard();
 		}
+
+		String[] ret = new String[board.size()];
+		int i = 0;
+		String str;
+		for (Minion card : board) {
+			str = card.getCardUUID().toString();
+			str += "!!" + card.getName() + "!!" + card.getDescription() + "!!" + card.getManaCost();
+			str += "!!" + card.getAttack() + "!!" + card.getLife();
+			ret[i] = str;
+			i++;
+		}
+		return ret;
 	}
 
 
@@ -181,9 +196,41 @@ public class EngineInterface {
 	}
 
 	// culte
-	public static void passTurn(UUID gamUUID, UUID playerUUID) {
+	public static boolean passTurn(UUID gamUUID, UUID playerUUID) {
 		try {
-			allCurrentGame.get(gamUUID).endTurn(playerUUID);
+			boolean succes = false;
+			if(allCurrentGame.get(gamUUID).getCurrentPlayer().getPlayerID().equals(playerUUID)) { succes = true; System.out.println("oui bordel de merde");}
+			System.out.println("UUID de la gamen par jrs : "+gamUUID);
+			System.out.println("UUID de la game: "+allCurrentGame.get(gamUUID).getGameID());
+
+			System.out.println("UUID du jrs couranr par jrs : "+playerUUID);
+			System.out.println("UUID du jrs courant : "+allCurrentGame.get(gamUUID).getCurrentPlayer().getPlayerID());
+			(allCurrentGame.get(gamUUID)).endTurn(playerUUID);
+			return succes;
 		} catch (MiniHeartStoneException e) { e.printStackTrace(); }
+		return false;
+	}
+
+	/*
+	 * retourne une game grace a sont UUID
+	 */
+	public static Game getGameFromUUID(UUID gamUUID) {
+		return allCurrentGame.get(gamUUID);
+	}
+
+	public static void main(String[] args) {
+		AbstractHero yoann = new Magus();
+		AbstractHero pierre = new Paladin();
+
+		Player oui = new Player("oui",yoann,3);
+		Player non = new Player("non",pierre,4);
+
+		Game game = new Game(oui,non);
+
+		System.out.println("hand size : ");
+		System.out.println(oui.getHero().getHand().size());
+		System.out.println(non.getHero().getHand().size());
+		System.out.println("test"+1);
+
 	}
 }
