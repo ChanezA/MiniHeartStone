@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 import engine.util.MiniHeartStoneException;
+import servlet.Application;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
