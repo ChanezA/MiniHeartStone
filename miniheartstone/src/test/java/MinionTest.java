@@ -5,6 +5,10 @@ import org.junit.Test;
 
 public class MinionTest {
 
+    /**
+     * On vérifie qu'un Minion ne puisse pas attaquer lorsqu'il vient d'être posé sur le terrain, sauf si
+     * celui-ci a Charge
+     */
     @Test
     public final void cannotAttackTurnOneExceptIfHasCharge() {
         //Tester avec une carte ayant l'effet Charge aussi
@@ -14,6 +18,9 @@ public class MinionTest {
         assertFalse(minion2.isReadyToAttack());
     }
 
+    /**
+     * On vérifie qu'une carte soit correctement clonée, avec un UUID différent
+     */
     @Test
     public final void cloneTest() {
         Minion minion = new Minion("test", "desc", 2, 3, 3, false, false, true, null,"null");
