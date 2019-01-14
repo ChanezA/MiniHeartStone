@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="a8d939b5-43a1-4bae-975f-7e5bbaa12f20" name="Default" comment="">
 <<<<<<< HEAD
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/src/main/java/engine/EngineInterface.java" afterPath="$PROJECT_DIR$/src/main/java/engine/EngineInterface.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/engine/Game.java" afterPath="$PROJECT_DIR$/src/main/java/engine/Game.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/servlet/AllMessages.java" afterPath="$PROJECT_DIR$/src/main/java/servlet/AllMessages.java" />
@@ -18,6 +19,13 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/engine/AbstractHero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/AbstractHero.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/engine/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/engine/Game.java" afterDir="false" />
 >>>>>>> 4d37ab4b3d3223471021cfcf5afdc40ca7df26c7
+=======
+      <change beforePath="$PROJECT_DIR$/src/test/java/EngineInterfaceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/EngineInterfaceTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/GameTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/GameTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/HerosPowerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/HerosPowerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/MinionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/MinionTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/SpellTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/SpellTest.java" afterDir="false" />
+>>>>>>> 9b45e101d9c519036aab99b000132da76c2477e4
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -83,9 +91,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CommandLineLauncher.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/test/CommandLineLauncher.java">
+      <file leaf-file-name="SpellRepository.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/engine/SpellRepository.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
 <<<<<<< HEAD
             <state relative-caret-position="218">
               <caret line="64" column="32" lean-forward="false" selection-start-line="64" selection-start-column="32" selection-end-line="64" selection-end-column="32" />
@@ -94,62 +103,34 @@
             <state relative-caret-position="51">
               <caret line="3" column="32" selection-start-line="3" selection-start-column="32" selection-end-line="3" selection-end-column="32" />
 >>>>>>> 4d37ab4b3d3223471021cfcf5afdc40ca7df26c7
+=======
+            <state relative-caret-position="68">
+              <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
+>>>>>>> 9b45e101d9c519036aab99b000132da76c2477e4
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
 <<<<<<< HEAD
       <file leaf-file-name="CommandLineLauncher.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/test/CommandLineLauncher.java">
 =======
       <file leaf-file-name="Minion.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/engine/Minion.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="288">
-              <caret line="177" lean-forward="true" selection-start-line="177" selection-end-line="177" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SpellRepository.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/engine/SpellRepository.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Spell.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/engine/Spell.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret lean-forward="true" />
-            </state>
-          </provider>
-        </entry>
-      </file>
+=======
       <file leaf-file-name="MinionRepository.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/engine/MinionRepository.java">
+>>>>>>> 9b45e101d9c519036aab99b000132da76c2477e4
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="68">
               <caret line="6" column="17" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MinionTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/MinionTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="29">
-              <caret line="5" column="19" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="23" />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="Paladin.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/engine/Paladin.java">
->>>>>>> 4d37ab4b3d3223471021cfcf5afdc40ca7df26c7
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="136">
               <caret line="10" column="68" lean-forward="true" selection-start-line="10" selection-start-column="47" selection-end-line="10" selection-end-column="75" />
@@ -160,8 +141,8 @@
       <file leaf-file-name="HerosPowerTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/HerosPowerTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="354">
-              <caret line="29" column="80" selection-start-line="29" selection-start-column="80" selection-end-line="29" selection-end-column="80" />
+            <state relative-caret-position="269">
+              <caret line="30" column="59" selection-start-line="30" selection-start-column="59" selection-end-line="30" selection-end-column="59" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -169,9 +150,52 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GameTest.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/test/java/GameTest.java">
+      <file leaf-file-name="MinionTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/MinionTest.java">
           <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="21" column="79" lean-forward="true" selection-start-line="21" selection-start-column="79" selection-end-line="21" selection-end-column="79" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SpellTest.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/SpellTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="8" column="86" selection-start-line="8" selection-start-column="86" selection-end-line="8" selection-end-column="86" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+<<<<<<< HEAD
+      <file leaf-file-name="Paladin.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/engine/Paladin.java">
+>>>>>>> 4d37ab4b3d3223471021cfcf5afdc40ca7df26c7
+=======
+      <file leaf-file-name="GameTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/GameTest.java">
+>>>>>>> 9b45e101d9c519036aab99b000132da76c2477e4
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="8" column="135" selection-start-line="8" selection-start-column="135" selection-end-line="8" selection-end-column="135" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EngineInterfaceTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/EngineInterfaceTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="13" column="114" selection-start-line="13" selection-start-column="114" selection-end-line="13" selection-end-column="114" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AbstractHeroTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/AbstractHeroTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
 <<<<<<< HEAD
             <state relative-caret-position="-1188">
               <caret line="57" column="39" lean-forward="false" selection-start-line="57" selection-start-column="25" selection-end-line="57" selection-end-column="39" />
@@ -185,6 +209,10 @@
             <state relative-caret-position="85">
               <caret line="8" column="29" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="34" />
 >>>>>>> 4d37ab4b3d3223471021cfcf5afdc40ca7df26c7
+=======
+            <state relative-caret-position="371">
+              <caret line="126" lean-forward="true" selection-start-line="126" selection-end-line="126" />
+>>>>>>> 9b45e101d9c519036aab99b000132da76c2477e4
             </state>
           </provider>
         </entry>
@@ -230,8 +258,6 @@
         <option value="$PROJECT_DIR$/src/main/java/engine/Application.java" />
         <option value="$PROJECT_DIR$/src/main/java/engine/Spell.java" />
         <option value="$PROJECT_DIR$/src/main/java/engine/Minion.java" />
-        <option value="$PROJECT_DIR$/src/test/java/MinionTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/SpellTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/engine/HeroRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/engine/CardRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/engine/AbstractCard.java" />
@@ -243,6 +269,7 @@
         <option value="$PROJECT_DIR$/src/main/java/util/MiniListener.java" />
         <option value="$PROJECT_DIR$/src/main/java/engine/util/MiniHeartStoneException.java" />
         <option value="$PROJECT_DIR$/src/main/java/engine/util/GameListener.java" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/src/test/java/EngineInterfaceTest.java" />
 <<<<<<< HEAD
         <option value="$PROJECT_DIR$/src/main/java/engine/AbstractHero.java" />
@@ -252,6 +279,9 @@
         <option value="$PROJECT_DIR$/src/main/java/servlet/WebSocketController.java" />
         <option value="$PROJECT_DIR$/src/main/java/engine/Game.java" />
 =======
+=======
+        <option value="$PROJECT_DIR$/src/main/java/servlet/WebSocketController.java" />
+>>>>>>> 9b45e101d9c519036aab99b000132da76c2477e4
         <option value="$PROJECT_DIR$/src/main/java/engine/EngineInterface.java" />
         <option value="$PROJECT_DIR$/src/main/java/servlet/Application.java" />
         <option value="$PROJECT_DIR$/src/main/java/test/CommandLineLauncher.java" />
@@ -259,8 +289,15 @@
         <option value="$PROJECT_DIR$/src/test/java/PaladinTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/HerosTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/engine/Game.java" />
+        <option value="$PROJECT_DIR$/src/test/java/GameTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/EngineInterfaceTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/HerosPowerTest.java" />
+<<<<<<< HEAD
 >>>>>>> 4d37ab4b3d3223471021cfcf5afdc40ca7df26c7
+=======
+        <option value="$PROJECT_DIR$/src/test/java/MinionTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/SpellTest.java" />
+>>>>>>> 9b45e101d9c519036aab99b000132da76c2477e4
       </list>
     </option>
   </component>
@@ -622,9 +659,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="HerosPowerTest_paladinPowerTest - 2019.01.14 at 18h 53m 40s.xml">
-      <configuration name="HerosPowerTest.paladinPowerTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="HerosPowerTest_paladinPowerTest - 2019.01.14 at 18h 54m 08s.xml">
       <configuration name="HerosPowerTest.paladinPowerTest" configurationId="JUnit" />
     </history-entry>
@@ -650,6 +684,9 @@
       <configuration name="HerosPowerTest.paladinPowerTest" configurationId="JUnit" />
     </history-entry>
     <history-entry file="HerosPowerTest_paladinPowerTestFail - 2019.01.14 at 19h 05m 57s.xml">
+      <configuration name="HerosPowerTest.paladinPowerTestFail" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="HerosPowerTest_paladinPowerTestFail - 2019.01.14 at 19h 45m 00s.xml">
       <configuration name="HerosPowerTest.paladinPowerTestFail" configurationId="JUnit" />
     </history-entry>
   </component>
@@ -866,13 +903,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/AbstractHeroTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="918">
-          <caret line="59" column="8" lean-forward="true" selection-start-line="59" selection-start-column="8" selection-end-line="59" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/util/MiniListener.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/engine/util/GameListener.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -885,13 +915,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/EngineInterfaceTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="26" column="40" selection-start-line="26" selection-start-column="40" selection-end-line="26" selection-end-column="40" />
         </state>
       </provider>
     </entry>
@@ -951,6 +974,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/test/java/SpellTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -960,6 +984,9 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/test/CommandLineLauncher.java">
+=======
+    <entry file="file://$PROJECT_DIR$/src/main/java/engine/AbstractHero.java">
+>>>>>>> 9b45e101d9c519036aab99b000132da76c2477e4
       <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
         <state relative-caret-position="540">
@@ -1018,13 +1045,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
           <caret line="177" lean-forward="true" selection-start-line="177" selection-end-line="177" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/MinionTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="29">
-          <caret line="5" column="19" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="23" />
         </state>
       </provider>
     </entry>
@@ -1088,11 +1108,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/GameTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="8" column="135" selection-start-line="8" selection-start-column="135" selection-end-line="8" selection-end-column="135" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/EngineInterfaceTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="13" column="114" selection-start-line="13" selection-start-column="114" selection-end-line="13" selection-end-column="114" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/AbstractHeroTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="371">
+          <caret line="126" lean-forward="true" selection-start-line="126" selection-end-line="126" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/HerosPowerTest.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="354">
           <caret line="29" column="80" selection-start-line="29" selection-start-column="80" selection-end-line="29" selection-end-column="80" />
 >>>>>>> 4d37ab4b3d3223471021cfcf5afdc40ca7df26c7
+=======
+        <state relative-caret-position="269">
+          <caret line="30" column="59" selection-start-line="30" selection-start-column="59" selection-end-line="30" selection-end-column="59" />
+>>>>>>> 9b45e101d9c519036aab99b000132da76c2477e4
           <folding>
             <element signature="e#798#799#0" expanded="true" />
             <element signature="e#854#855#0" expanded="true" />
@@ -1100,10 +1146,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/GameTest.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/MinionTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="21" column="79" lean-forward="true" selection-start-line="21" selection-start-column="79" selection-end-line="21" selection-end-column="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/SpellTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
-          <caret line="8" column="29" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="34" />
+          <caret line="8" column="86" selection-start-line="8" selection-start-column="86" selection-end-line="8" selection-end-column="86" />
         </state>
       </provider>
     </entry>

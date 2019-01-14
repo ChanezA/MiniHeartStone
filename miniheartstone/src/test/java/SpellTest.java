@@ -5,6 +5,9 @@ import org.junit.Test;
 
 public class SpellTest {
 
+    /**
+     * On vérifie que le clone d'un spell soit identique au dit spell, mis à part l'UUID.
+     */
     @Test
     public final void cloneTest() {
         Spell spell = new Spell("test", "Ceci est un spell test",2,null,"http://ceciestunspelltest.com/ntm");

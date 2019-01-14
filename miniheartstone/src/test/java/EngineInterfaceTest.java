@@ -8,6 +8,11 @@ import java.util.UUID;
 
 public class EngineInterfaceTest {
 
+    /**
+     * Test de la méthode wantPlay, qui fait en sorte que deux joueurs dans la même file puissent jouer entre eux.
+     * On vérifie bien que les joueurs soient placés dans la file correspondante à leur niveau, et qu'une fois deux
+     * joueurs au moins soint dans la même file, ces derniers puissent lancer une game et sont retirés de la file.
+     */
     @Test
     public final void wantPlayTest() {
         EngineInterface test = new EngineInterface();

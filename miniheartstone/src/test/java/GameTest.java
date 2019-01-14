@@ -5,6 +5,9 @@ import org.junit.Test;
 
 public class GameTest {
 
+    /**
+     * Test de l'initialisation d'une game (on vérifie que le player courant soit le bon, que les héros aiennt les bonnes statistiques)
+     */
     @Test
     public final void initGameTest() {
         Player player1 = new Player("p1", new Magus(), 1);
@@ -15,7 +18,6 @@ public class GameTest {
         assertTrue(game.getCurrentPlayer().getHero().getMana() == 1);
         assertTrue(game.getNotCurrentPlayer().getHero().getMana() == 1);
         assertTrue(game.getCurrentPlayer().getHero().getHealth() == game.getNotCurrentPlayer().getHero().getHealth());
-
     }
 
 }
