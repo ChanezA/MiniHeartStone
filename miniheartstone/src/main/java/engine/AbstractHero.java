@@ -64,7 +64,7 @@ public abstract class AbstractHero {
         this.armor = 0;
         this.heroUUID = UUID.randomUUID();
 
-        // Retrieving card with Spring
+/*        // Retrieving card with Spring
         CardRepository repo = Application.repo;
         // Cards available only for this hero
         for (AbstractCard abstractCard : repo.findByHeroName(this.heroName)) {
@@ -73,7 +73,7 @@ public abstract class AbstractHero {
         // Cards available for all heros
         for (AbstractCard abstractCard : repo.findByHeroName(null)) {
             this.deck.add(abstractCard);
-        }
+        } */
     }
     /**
      * Used when the hero use its heroic power.
