@@ -516,18 +516,18 @@ public class Game {
 	}
 
 	public boolean isEnded() {
-    	if (this.player2.getHero().isDead() || this.player1.getHero().isDead)
+    	if (this.player2.getHero().isItDead() || this.player1.getHero().isDead)
     		return true;
     	else
     		return false;
 	}
 
-	public void addGameListener(GameListener gl) {
-		this.listeners.add(gl);
+	public void addGameListener(GameListener listener) {
+		this.listeners.add(listener);
 	}
 
-	public void removeListener(GameListener gl) {
-    	this.listeners.remove(gl);
+	public void removeListener(GameListener listener) {
+    	this.listeners.remove(listener);
 	}
 
 	public void ntyGameIsReady() {

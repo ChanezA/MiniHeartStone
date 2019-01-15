@@ -363,7 +363,7 @@ public abstract class AbstractHero {
      * Retourne la valeur de looser.
      * @return this.isDead
      */
-    public boolean isDead() {
+    public boolean isItDead() {
         return this.isDead;
     }
 

@@ -43,7 +43,7 @@ public class EngineInterface {
 		return null;
 	}
 
-	public static UUID wantPlay(int lvl, String pseudo, String heroStr, GameListener gl) {
+	public static UUID wantPlay(int lvl, String pseudo, String heroStr, GameListener listener) {
 
 		// création du player
 		// lvl 1 = noob 2 = mid 3 = pro
@@ -54,7 +54,7 @@ public class EngineInterface {
 					System.out.println("******AAAAAAAAAAAAAAAA");
 					// création de la game
 					Game game = new Game(mmNoob.poll(),play);
-					game.addGameListener(gl);
+					game.addGameListener(listener);
 					game.ntyGameIsReady();
 					allCurrentGame.put(game.getGameID(),game);
 				}
@@ -66,7 +66,7 @@ public class EngineInterface {
 				if (!mmMid.isEmpty()) {
 					// création de la game
 					Game game = new Game(mmMid.poll(),play);
-					game.addGameListener(gl);
+					game.addGameListener(listener);
 					allCurrentGame.put(game.getGameID(),game);
 				}
 				else {
@@ -77,7 +77,7 @@ public class EngineInterface {
 				if (!mmPro.isEmpty()) {
 					// création de la game
 					Game game = new Game(mmPro.poll(),play);
-					game.addGameListener(gl);
+					game.addGameListener(listener);
 					allCurrentGame.put(game.getGameID(),game);
 				}
 				else {
@@ -110,7 +110,7 @@ public class EngineInterface {
 		}
 
 		String[] ret = new String[hand.size()];
-		int i = 0;
+		int iterator = 0;
 		String str;
 		for (AbstractCard card : hand) {
 			str = card.getCardUUID().toString();
@@ -120,8 +120,8 @@ public class EngineInterface {
 				str += "!!" + ((Minion) card).getAttack() + "!!" + ((Minion) card).getLife();
 			}
 			*/
-			ret[i] = str;
-			i++;
+			ret[iterator] = str;
+			iterator++;
 		}
 		return ret;
 	}
@@ -138,14 +138,14 @@ public class EngineInterface {
 		}
 
 		String[] ret = new String[board.size()];
-		int i = 0;
+		int iterator = 0;
 		String str;
 		for (Minion card : board) {
 			str = card.getCardUUID().toString();
 			str += "!!" + card.getName() + "!!" + card.getDescription() + "!!" + card.getManaCost();
 			str += "!!" + card.getAttack() + "!!" + card.getLife();
-			ret[i] = str;
-			i++;
+			ret[iterator] = str;
+			iterator++;
 		}
 		return ret;
 	}
@@ -162,14 +162,14 @@ public class EngineInterface {
 		}
 
 		String[] ret = new String[board.size()];
-		int i = 0;
+		int iterator = 0;
 		String str;
 		for (Minion card : board) {
 			str = card.getCardUUID().toString();
 			str += "!!" + card.getName() + "!!" + card.getDescription() + "!!" + card.getManaCost();
 			str += "!!" + card.getAttack() + "!!" + card.getLife();
-			ret[i] = str;
-			i++;
+			ret[iterator] = str;
+			iterator++;
 		}
 		return ret;
 	}

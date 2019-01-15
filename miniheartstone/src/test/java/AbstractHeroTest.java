@@ -56,13 +56,13 @@ public class AbstractHeroTest {
 	    // mon hero prned une patate de 10
 	    pal.myHeroHasBeenAttack(10);
 	    assertTrue(pal.getHealth() == 20);
-	    assertTrue(pal.isDead() == false);
+	    assertTrue(pal.isItDead() == false);
 	    
 	 // mon hero prned une patate de 20
 	    pal.myHeroHasBeenAttack(20);
 	    assertTrue(pal.getHealth() == 0);
 	    
-	    assertTrue(pal.isDead() == true);
+	    assertTrue(pal.isItDead() == true);
 	    
 	   
 	    AbstractCard crd4 = pal.draw("Chef de raid");
