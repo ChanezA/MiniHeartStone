@@ -32,16 +32,16 @@ public class Spell extends AbstractCard {
 
 	@Override
 	public Spell cloneCard() {
-		return new Spell(this.name,this.description,this.manaCost,this.heroName,this.pictureURL);
+		return new Spell(this.name, this.description, this.manaCost, this.heroName, this.pictureURL);
 	}
 
 	@Override
 	public String toString() {
-		return  "== Spell ==\nname:"+this.name+"\n"+
-				"description:"+this.description+"\n"+
-				"manaCost:"+this.manaCost+"\n"+
-				"heroName :"+this.heroName+"\n"+
-				"pictureURL : "+pictureURL+"\n"+"cardUUID : "+this.cardID+"\n";
+		return  "== Spell ==\nname:" + this.name+"\n"
+				+ "description:"+this.description+"\n"
+				+ "manaCost:"+this.manaCost + "\n"
+				+ "heroName :" + this.heroName + "\n"
+				+ "pictureURL : " + pictureURL + "\n" + "cardUUID : "
+				+ this.cardID + "\n";
 	}
-
 }

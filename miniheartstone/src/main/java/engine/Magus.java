@@ -12,7 +12,7 @@ public class Magus extends AbstractHero {
 	}
 	
 	public String toString() {
-		return "I'am Magus, name: " + this.getHeroName() + " mana: "+this.getMana() +" health: "+this.getHealth();
+		return "I'am Magus, name: " + this.getHeroName() + " mana: " + this.getMana() + " health: " + this.getHealth();
 	}
 }
 
